@@ -1,0 +1,17 @@
+name: Build Dispatcher
+
+on: [push]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log message
+        run: echo build dispatcher
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ secrets.USER_NAME }}/${{ secrets.BACKEND_REPO }}
+          event-type: editor_build_dispatch
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "message": "repository dispatch succesful"}'
