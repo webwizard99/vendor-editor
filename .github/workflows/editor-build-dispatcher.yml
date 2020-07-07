@@ -1,0 +1,38 @@
+name: repository dispatch reception
+on:
+  repository_dispatch:
+    types: [editor_build_dispatch]
+jobs:
+  build_dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ secrets.USER_NAME }}/${{ secrets.EDITOR_FRONTEND_REPO }} 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: frontend/editor
+      - name: install packages on frontend
+        run: |
+          cd frontend/editor
+          npm install
+      - name: create build files on frontend
+        run: |
+          cd frontend/editor
+          npm run build
+      - name: replace build files in backend and commit changes
+        run: |
+          rm -r public/editor/build
+          mv frontend/editor/build public/editor
+          git config --global user.name ${{ secrets.USER_NAME }}
+          git config --global user.email ${{ secrets.USER_EMAIL }}
+          git config --global user.password ${{ secrets.GITHUB_TOKEN }}
+          git status
+          git add .
+          git commit -m "Update editor React build files from dispatch event originating from frontend push."
+          git push origin master
+      - uses: akhileshns/heroku-deploy@v3.0.0 # This is the action
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "vendor-backend" #Must be unique in Heroku
+          heroku_email: ${{ secrets.USER_EMAIL }}
