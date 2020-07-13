@@ -1,0 +1,11 @@
+.ObjectListColumn {
+  width: 20%;
+  height: 100%;
+  background: rgb(100, 110, 100);
+  color: white;
+  padding-left: 1rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}

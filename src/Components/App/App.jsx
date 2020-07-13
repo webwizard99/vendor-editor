@@ -3,6 +3,8 @@ import './reset.css';
 import './App.css';
 
 import MenuBar from '../MenuBar/MenuBar';
+import ObjectListColumn from '../ObjectListColumn/ObjectListColumn';
+import DetailView from '../DetailView/DetailView';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -22,6 +24,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <MenuBar />
+        <div className="AppContainer">
+          <ObjectListColumn />
+          <DetailView />
+        </div>
       </div>
     )
   }
