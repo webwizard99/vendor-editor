@@ -1,4 +1,5 @@
 import React from 'react';
+import './reset.css';
 import './App.css';
 
 import MenuBar from '../MenuBar/MenuBar';
@@ -16,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
   }
-  
+
   render() {
     return (
       <div className="App">
