@@ -25,6 +25,7 @@
 .LoginContainer {
   display: flex;
   justify-content: right;
+  list-style: none;
 }
 
 .LoginContainer a {
