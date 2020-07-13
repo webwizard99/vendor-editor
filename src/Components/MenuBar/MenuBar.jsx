@@ -7,6 +7,7 @@ class MenuBar extends React.Component {
     super(props);
 
     this.renderLogin = this.renderLogin.bind(this);
+    this.renderGameLink = this.renderGameLink.bind(this);
   }
 
   renderLogin() {
@@ -24,12 +25,32 @@ class MenuBar extends React.Component {
         );
     }
   }
+
+  renderGameLink() {
+    switch(this.props.auth) {
+      case null:
+        return false;
+      case false:
+        return false;
+      default:
+        const userType = this.props.auth.type;
+        if (userType === 'owner') {
+          return (
+            <li key="gameLink"><a className="GameLink" href="/">game</a></li>
+          )
+        } else {
+          return false;
+        }
+    }
+
+  }
   
   render() {
     return (
       <div className="MenuBar">
         <span>MenuBar </span>
         <ul className="LoginContainer">
+          {this.renderGameLink()}
           {this.renderLogin()}
         </ul>
       </div>
