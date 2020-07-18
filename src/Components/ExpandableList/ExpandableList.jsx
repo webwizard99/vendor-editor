@@ -34,8 +34,9 @@ class ExpandableList extends React.Component {
       <div className="ExpandableList">
         <div className="expansionBtn" onClick={this.setExpansion}>
           {this.state.expanded ? '-' : '+'}
-          {this.state.expanded ? this.displayContents() : ''}
         </div>
+        <span className="ExpanderTitle">Item</span>
+        {this.state.expanded ? this.displayContents() : ''}
       </div>
     )
   }
