@@ -21,11 +21,6 @@ class ObjectListColumn extends React.Component {
   }
 
   render() {
-    if (this.props.potions) {
-      console.log(this.props.potions);
-    } else {
-      console.log('potions not yet fetched!');
-    }
     return (
       <div className="ObjectListColumn">
         <PotionsList />
