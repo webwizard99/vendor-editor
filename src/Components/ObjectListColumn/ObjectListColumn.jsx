@@ -28,7 +28,6 @@ class ObjectListColumn extends React.Component {
     }
     return (
       <div className="ObjectListColumn">
-        ObjectListColumn
         <PotionsList />
       </div>
     )
