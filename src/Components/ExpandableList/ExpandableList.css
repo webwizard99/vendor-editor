@@ -1,3 +1,8 @@
 .expansionBtn {
   cursor: pointer;
 }
+
+.detailList {
+  width: 80%;
+  margin-left: 1rem;
+}

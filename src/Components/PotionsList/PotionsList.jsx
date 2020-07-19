@@ -12,6 +12,10 @@ class PotionsList extends ExpandableList {
     this.displayContents = this.displayContents.bind(this);
   }
 
+  getTitle() {
+    return 'Potions'
+  }
+
   displayContents() {
     if (!this.props.potions) {
       console.log('no potions in PotionsList')
@@ -21,7 +25,7 @@ class PotionsList extends ExpandableList {
       const newPotions = this.props.potions;
       console.log(newPotions);
       return (
-        <div>
+        <div className="detailList">
           { newPotions.map(potion => {
             return (
               <div>

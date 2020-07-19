@@ -12,6 +12,10 @@ class ExpandableList extends React.Component {
     this.setExpansion = this.setExpansion.bind(this);
   }
 
+  getTitle() {
+    return 'Item'
+  }
+
   setExpansion() {
     const currentState = this.state.expanded;
     this.setState({
@@ -35,7 +39,7 @@ class ExpandableList extends React.Component {
         <span className="expansionBtn" onClick={this.setExpansion}>
           {this.state.expanded ? '-' : '+'}
         </span>
-        <span className="ExpanderTitle">Item</span>
+        <span className="ExpanderTitle">{this.getTitle()}</span>
         {this.state.expanded ? this.displayContents() : ''}
       </div>
     )
