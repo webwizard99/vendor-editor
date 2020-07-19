@@ -6,3 +6,7 @@
   width: 80%;
   margin-left: 1rem;
 }
+
+.ListDetail {
+  cursor: pointer;
+}

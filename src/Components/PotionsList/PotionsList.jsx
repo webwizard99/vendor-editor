@@ -27,7 +27,7 @@ class PotionsList extends ExpandableList {
           { newPotions.map(potion => {
             return (
               <div>
-                <span onClick={() => this.props.setDisplayForm('potion')}>{potion.type}</span>
+                <span className="ListDetail" onClick={() => this.props.setDisplayForm('potion')}>{potion.type}</span>
               </div>
             )
             })}
