@@ -25,7 +25,7 @@ class PotionsList extends ExpandableList {
           { newPotions.map(potion => {
             return (
               <div>
-                <span>{potion.name}</span>
+                <span>{potion.type}</span>
               </div>
             )
             })}
