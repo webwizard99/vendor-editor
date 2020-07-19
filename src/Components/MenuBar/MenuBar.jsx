@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './MenuBar.css';
+
+import { connect } from 'react-redux';
 
 class MenuBar extends React.Component {
   constructor(props) {
