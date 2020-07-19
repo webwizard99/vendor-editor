@@ -4,6 +4,7 @@
   background: rgb(100, 110, 100);
   color: white;
   padding-left: 1rem;
+  padding-top: 1rem;
   overflow-x: hidden;
   overflow-y: scroll;
 }

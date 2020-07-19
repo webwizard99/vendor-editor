@@ -4,6 +4,7 @@ import ExpandableList from '../ExpandableList/ExpandableList';
 
 // redux imports
 import { connect  } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class PotionsList extends ExpandableList {
   constructor(props) {
@@ -26,7 +27,7 @@ class PotionsList extends ExpandableList {
           { newPotions.map(potion => {
             return (
               <div>
-                <span>{potion.type}</span>
+                <span onClick={() => this.props.setDisplayForm('potion')}>{potion.type}</span>
               </div>
             )
             })}
@@ -41,4 +42,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(PotionsList);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (form) => dispatch({ type: SET_DETAIL_FORM, form: form })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PotionsList);
