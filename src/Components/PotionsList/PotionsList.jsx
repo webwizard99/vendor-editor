@@ -14,16 +14,22 @@ class PotionsList extends ExpandableList {
 
   displayContents() {
     if (!this.props.potions) {
+      console.log('no potions in PotionsList')
       return '';
     } else {
+      console.log('potions in potionList');
       const newPotions = this.props.potions;
-      return newPotions.map(potion => {
-        return (
-          <div>
-            <span>{potion.nam}</span>
-          </div>
-        )
-          });
+      console.log(newPotions);
+      return (
+        <div>
+          { newPotions.map(potion => {
+            return (
+              <div>
+                <span>{potion.name}</span>
+              </div>
+            )
+            })}
+        </div>);
     }
   }
 }
