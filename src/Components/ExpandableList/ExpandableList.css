@@ -1,5 +1,8 @@
 .expansionBtn {
   cursor: pointer;
+  margin-right: .5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .detailList {
