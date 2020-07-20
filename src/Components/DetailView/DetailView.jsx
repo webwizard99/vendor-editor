@@ -21,7 +21,7 @@ class DetailView extends React.Component {
       case 'potion':
         return <PotionForm />;
       default:
-        return 'detail type unknown'
+        return (<div className="BlankForm">detail type unknown</div>)
     }
   }
   
