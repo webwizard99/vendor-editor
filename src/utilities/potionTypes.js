@@ -1,7 +1,7 @@
 import { potion } from "../../../vendor-backend/config/itemTypes"
 
-const potionTypes = {
-  healing: 'healing'
-}
+const potionTypes = [
+  'healing'
+]
 
 export default potionTypes;
