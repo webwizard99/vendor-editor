@@ -14,14 +14,13 @@ class DetailView extends React.Component {
 
   getDetailForm() {
     if (!this.props.formType) {
-      return 'no details to display';
+      return (<div className="BlankForm">no details to display</div>);
     }
 
     switch(this.props.formType) {
       case 'potion':
         return <PotionForm />;
       default:
-        // this should return a div
         return (<div className="BlankForm">detail type unknown</div>)
     }
   }
