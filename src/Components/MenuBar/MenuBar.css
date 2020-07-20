@@ -1,5 +1,5 @@
 .MenuBar {
-  height: 2rem;
+  height: 4rem;
   width: 100%;
   border-bottom: rgb(30, 35, 30);
   font-family: "Roboto Slab", serif;
@@ -16,7 +16,7 @@
 
 .MenuTitle a {
   font-family: 'Piedra', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   text-decoration: none;
   color: white;
   text-shadow: 2px 2px 3px rgba(30, 40, 30, .9);
