@@ -16,32 +16,33 @@ class PotionForm extends React.Component {
   render() {
     return (
       <div className="PotionForm">
+        <h2>New Potion</h2>
         <form action={endpoints.api_root + 'potions'}
           id="PotionPostForm"
           method="POST">
             <div className="input-group">
-              <label className="item-label" htmlFor="name"></label>
+              <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="potion name"
                 maxLength="26"></input>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="value"></label>
+              <label className="item-label" htmlFor="value">Value</label>
               <input type="number" name="value" id="value" className="input-number" placeholder="#"
                 min="1" max="10000"></input>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="details"></label>
+              <label className="item-label" htmlFor="details">Details</label>
               <input type="text" name="details" id="details" className="input-text" placeholder="details..."
                 maxLength="200"></input>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="type"></label>
+              <label className="item-label" htmlFor="type">Type</label>
               <select className="potion-select" name="type" id="type">
                 {this.getPotionOptions()}
               </select>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="level"></label>
+              <label className="item-label" htmlFor="level">Level</label>
               <input type="number" name="level" id="level" className="input-number" placeholder="#"></input>
             </div>
             <input type="hidden" name="key" id="key" value={process.env.EDITOR_API_KEY}></input>
