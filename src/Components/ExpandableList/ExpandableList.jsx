@@ -36,10 +36,12 @@ class ExpandableList extends React.Component {
   render() {
     return (
       <div className="ExpandableList">
-        <span className="expansionBtn" onClick={this.setExpansion}>
-          {this.state.expanded ? '-' : '+'}
-        </span>
-        <span className="ExpanderTitle">{this.getTitle()}</span>
+        <div className="TitleBar">
+          <span className="expansionBtn" onClick={this.setExpansion}>
+            {this.state.expanded ? '-' : '+'}
+          </span>
+          <span className="ExpanderTitle">{this.getTitle()}</span>
+        </div>
         {this.state.expanded ? this.displayContents() : ''}
       </div>
     )
