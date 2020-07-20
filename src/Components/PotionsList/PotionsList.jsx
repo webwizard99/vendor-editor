@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ExpandableList from '../ExpandableList/ExpandableList';
+import NewButton from '../NewButton/NewButton';
 
 // redux imports
 import { connect  } from 'react-redux';
@@ -11,10 +12,19 @@ class PotionsList extends ExpandableList {
     super(props);
 
     this.displayContents = this.displayContents.bind(this);
+    this.getNewButton = this.getNewButton.bind(this);
   }
 
   getTitle() {
     return 'Potions'
+  }
+
+  getNewButton() {
+    return (
+      <div className="NewPotionButton" onClick={this.props.setDisplayForm}>
+        <NewButton />
+      </div>
+    )
   }
 
   displayContents() {

@@ -1,7 +1,9 @@
 import { SET_DETAIL_FORM } from '../actions/types';
 
 const initialState = {
-  type: false
+  type: false,
+  targetId: null,
+  edit: false
 }
 
 export default function(state = initialState, action) {
