@@ -21,7 +21,7 @@ class PotionsList extends ExpandableList {
 
   getNewButton() {
     return (
-      <div className="NewPotionButton" onClick={this.props.setDisplayForm}>
+      <div className="NewPotionButton" onClick={() => this.props.setDisplayForm('potion')}>
         <NewButton />
       </div>
     )
