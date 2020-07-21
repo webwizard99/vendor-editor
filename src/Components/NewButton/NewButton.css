@@ -5,9 +5,6 @@
   border-radius: .6rem;
   font-weight: 600;
   line-height: .6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .buttonIcon {
@@ -15,4 +12,5 @@
   height: .3rem;
   padding-bottom: .16rem;
   font-size: .96rem;
+  margin: auto;
 }
