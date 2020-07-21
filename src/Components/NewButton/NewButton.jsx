@@ -4,7 +4,9 @@ import './NewButton.css';
 class NewButton extends React.Component {
   render() {
     return (
-      <div className="NewButton">+</div>
+      <div className="NewButton">
+        <div>+</div>
+      </div>
     )
   }
 }

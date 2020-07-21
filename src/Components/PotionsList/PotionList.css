@@ -1,5 +1,6 @@
 .NewPotionButton {
-  border: 2px solid #1e231e;
+  border: 2px solid rgb(250, 252, 250);
+  cursor: pointer;
   border-radius: .6rem;
   background: rgb(140, 170, 140);
   margin-left: 2rem;
