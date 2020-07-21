@@ -1,5 +1,10 @@
 .NewButton {
   height: 1rem;
   width: 2rem;
-  padding: .1rem;
+  padding: .2rem;
+  border-radius: .6rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
