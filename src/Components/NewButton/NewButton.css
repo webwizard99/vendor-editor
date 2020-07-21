@@ -5,7 +5,24 @@
   border-radius: .3rem;
   font-weight: 600;
   line-height: .44rem;
+  border: 2px solid rgb(250, 252, 250);
+  cursor: pointer;
+  border-radius: .3rem;
+  background: rgb(140, 170, 140);
+  transition: all 40ms 60ms ease-out;
 }
+
+
+.NewButton:hover {
+  border: 2px solid rgb(100, 180, 100);
+  background: rgb(200, 220, 200);
+}
+
+.NewButton:active {
+  border: 2px solid rgb(30, 40, 30);
+  background: rgb(100, 110, 100);
+}
+
 
 .buttonIcon {
   width: .44rem;
