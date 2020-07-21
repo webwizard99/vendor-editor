@@ -5,3 +5,13 @@
   background: rgb(140, 170, 140);
   margin-left: 2rem;
 }
+
+.NewPotionButton:hover {
+  border: 2px solid rgb(60, 80, 60);
+  background: rgb(200, 220, 200);
+}
+
+.NewPotionButton:active {
+  border: 2px solid rgb(30, 40, 30);
+  background: rgb(100, 110, 100);
+}
