@@ -23,7 +23,7 @@ class PotionsList extends ExpandableList {
   getNewButton() {
     return (
       <div className="NewPotionButton" onClick={() => this.props.setDisplayForm('potion')}>
-        :)<NewButton />
+        <NewButton />
       </div>
     )
   }
