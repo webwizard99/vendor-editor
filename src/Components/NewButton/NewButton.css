@@ -8,10 +8,11 @@
 }
 
 .buttonIcon {
-  width: .60rem;
-  height: .60rem;
+  width: .48rem;
+  height: .48rem;
   padding-bottom: .22rem;
   padding-bottom: .22rem;
-  font-size: .80rem;
+  font-size: .64rem;
+  text-align: center;
   margin: auto;
 }
