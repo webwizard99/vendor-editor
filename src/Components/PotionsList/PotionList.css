@@ -4,7 +4,7 @@
   border-radius: .3rem;
   background: rgb(140, 170, 140);
   margin-left: 2rem;
-  transition: all 40ms 300ms ease-out;
+  transition: all 40ms 60ms ease-out;
 }
 
 .NewPotionButton:hover {
