@@ -1,5 +1,5 @@
 .NewButton {
-  height: 1rem;
+  height: .8rem;
   width: 1.2rem;
   padding: .2rem;
   border-radius: .6rem;
@@ -11,7 +11,7 @@
 }
 
 .buttonIcon {
-  width: .6rem;
-  height: .6rem;
+  width: .5rem;
+  height: .5rem;
   padding-bottom: .1rem;
 }
