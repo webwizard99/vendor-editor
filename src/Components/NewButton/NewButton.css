@@ -5,10 +5,12 @@
   border-radius: .6rem;
   font-weight: 600;
   line-height: .6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttonIcon {
-  margin: auto;
   width: .6rem;
   height: .6rem;
 }
