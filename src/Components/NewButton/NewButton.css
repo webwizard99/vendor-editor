@@ -4,7 +4,9 @@
   padding: .2rem;
   border-radius: .6rem;
   font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  line-height: 1rem;
+}
+
+.buttonIcon {
+  margin: auto;
 }

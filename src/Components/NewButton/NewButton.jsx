@@ -5,7 +5,7 @@ class NewButton extends React.Component {
   render() {
     return (
       <div className="NewButton">
-        <div>+</div>
+        <div className="buttonIcon">+</div>
       </div>
     )
   }
