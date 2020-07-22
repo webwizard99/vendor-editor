@@ -11,7 +11,9 @@
 
 .input-fields-area {
   padding: 1rem;
-  background: rgb(140, 160, 140);
+  height: 100%;
+  width: 100%;
+  background: rgb(200, 210, 200);
   color: white;
   display: flex;
   flex-wrap: wrap;
@@ -22,7 +24,7 @@
   padding: 1rem;
   width: 44%;
   height: 2rem;
-  background: rgb(200, 210, 200);
+  background: rgb(220, 230, 220);
 }
 
 .item-label {
