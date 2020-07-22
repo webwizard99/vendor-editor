@@ -1,7 +1,7 @@
 .DisplayForm {
   height: 80%;
   width: 80%;
-  box-shadow: 1px 1px 2px rgb(30, 40, 30);
+  background: rgb(220, 230, 220);
 }
 
 .form-heading {
@@ -13,7 +13,6 @@
   padding: 1rem;
   height: 100%;
   width: 100%;
-  background: rgb(200, 210, 200);
   color: white;
   display: flex;
   flex-wrap: wrap;
@@ -29,4 +28,5 @@
 
 .item-label {
   width: 3rem;
+  margin-right: 1rem;
 }
