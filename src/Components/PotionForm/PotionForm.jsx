@@ -6,18 +6,21 @@ import endpoints from '../../utilities/endpoints';
 
 import potionTypes from '../../utilities/potionTypes';
 
-class PotionForm extends React.Component {
+import DisplayForm from '../DisplayForm/DisplayForm';
+
+class PotionForm extends DisplayForm {
   getPotionOptions() {
     return potionTypes.map(potionType => {
       return <option value={potionType}>{potionType}</option>
     })
   }
-  
-  render() {
+
+  getForm() {
     return (
       <div className="PotionForm">
-        <h2>New Potion</h2>
+        <h2 className="form-heading">New Potion</h2>
         <form action={endpoints.api_root + 'potions'}
+          className="input-fields-area"
           id="PotionPostForm"
           method="POST">
             <div className="input-group">
