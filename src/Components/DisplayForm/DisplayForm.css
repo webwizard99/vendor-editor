@@ -1,7 +1,7 @@
 .DisplayForm {
   height: 80%;
   width: 80%;
-  background: rgb(220, 230, 220);
+  background: rgb(160, 180, 160);
 }
 
 .form-heading {
@@ -17,13 +17,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .input-group {
   padding: 1rem;
   width: 44%;
   height: 2rem;
-  background: rgb(220, 230, 220);
+  background: rgb(180, 200, 180);
 }
 
 .item-label {
