@@ -1,10 +1,9 @@
 .NewButton {
-  height: .44rem;
-  width: .54rem;
+  height: 80%;
+  width: auto;
   padding: .2rem;
-  border-radius: .3rem;
   font-weight: 600;
-  line-height: .44rem;
+  line-height: 80%;
   border: 2px solid rgb(250, 252, 250);
   cursor: pointer;
   border-radius: .3rem;
@@ -25,8 +24,8 @@
 
 
 .buttonIcon {
-  width: .44rem;
-  height: .44rem;
+  height: 100%;
+  width: auto;
   font-size: .76rem;
   text-align: center;
   margin: auto;
