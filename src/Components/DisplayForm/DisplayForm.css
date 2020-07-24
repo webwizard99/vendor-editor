@@ -7,6 +7,8 @@
 .form-heading {
   width: 100%;
   border-bottom: rgb(100, 110, 100);
+  color: white;
+  margin-left: 2rem;;
 }
 
 .input-fields-area {
@@ -16,15 +18,20 @@
   color: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
 .input-group {
   padding: 1rem;
+  margin-left: 2rem;
   width: 44%;
   height: 2rem;
   background: rgb(180, 200, 180);
+}
+
+.input-group input {
+  color: black;
 }
 
 .item-label {
