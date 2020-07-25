@@ -2,14 +2,17 @@
   height: 80%;
   width: 80%;
   background: rgb(160, 180, 160);
-  font-family: inherit;
+}
+
+.form-heading .input-fields-area {
+  font-family: "Roboto Slab", serif;
 }
 
 .form-heading {
   width: 100%;
   border-bottom: rgb(100, 110, 100);
   color: white;
-  margin-left: 2rem;
+  margin-left: 1rem;
   font-size: 1.5rem;
   margin-bottom: .5rem;
   padding-top: 1rem;
@@ -33,7 +36,7 @@
 
 .input-group {
   padding: 1rem;
-  margin-left: 2rem;
+  margin: 1rem;
   width: 44%;
   height: 2rem;
   background: rgb(180, 200, 180);
