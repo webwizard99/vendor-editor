@@ -8,7 +8,10 @@
   width: 100%;
   border-bottom: rgb(100, 110, 100);
   color: white;
-  margin-left: 2rem;;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+  padding-top: 1rem;
 }
 
 .input-fields-area {
@@ -21,7 +24,7 @@
   align-items: flex-start;
 }
 
-.input-fields-area button {
+.input-fields-area .button {
   margin: auto;
   color: black;
 }
