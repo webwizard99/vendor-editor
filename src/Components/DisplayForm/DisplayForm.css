@@ -2,6 +2,7 @@
   height: 80%;
   width: 80%;
   background: rgb(160, 180, 160);
+  font-family: inherit;
 }
 
 .form-heading {
@@ -27,6 +28,7 @@
 .input-fields-area .button {
   margin: auto;
   color: black;
+  padding: 6px;
 }
 
 .input-group {
