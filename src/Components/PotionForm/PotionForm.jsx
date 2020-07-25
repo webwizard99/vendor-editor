@@ -49,7 +49,7 @@ class PotionForm extends DisplayForm {
               <input type="number" name="level" id="level" className="input-number" placeholder="#"></input>
             </div>
             <input type="hidden" name="key" id="key" value={process.env.EDITOR_API_KEY}></input>
-            <input type="submit" value="Create Potion" class="create-button"></input>
+            <input type="submit" value="Create Potion" class="button create-button"></input>
         </form>
       </div>
     )
