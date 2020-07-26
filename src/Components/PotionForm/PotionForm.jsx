@@ -19,7 +19,7 @@ class PotionForm extends DisplayForm {
     return (
       <div className="PotionForm">
         <h2 className="form-heading">New Potion</h2>
-        <form action={endpoints.api_root + 'potions'}
+        <form action={'/potions'}
           className="input-fields-area"
           id="PotionPostForm"
           method="POST">
