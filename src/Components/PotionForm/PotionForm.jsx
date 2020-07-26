@@ -2,7 +2,7 @@ import React from 'react';
 import './PotionForm.css';
 
 // import endpoint for Post request
-import endpoints from '../../utilities/endpoints';
+// import endpoints from '../../utilities/endpoints';
 
 import potionTypes from '../../utilities/potionTypes';
 
