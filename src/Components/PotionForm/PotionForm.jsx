@@ -81,7 +81,8 @@ class PotionForm extends DisplayForm {
 const mapStateToProps = state => {
   return {
     edit: state.detail.edit,
-    potions: state.potions.potions
+    potions: state.potions.potions,
+    displayId: state.detail.targetId
   }
 }
 
