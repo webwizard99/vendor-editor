@@ -1,7 +1,6 @@
 .expansionBtn {
   cursor: pointer;
   display: block;
-  margin-right: .5rem;
   font-weight: bold;
   font-size: 1rem;
   width: 1rem;
@@ -20,7 +19,7 @@
 
 .ListDetail {
   cursor: pointer;
-  padding-top: .2rem;
+  padding-top: .4rem;
 }
 
 .ExpanderTitle {
