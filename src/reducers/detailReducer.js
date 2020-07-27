@@ -12,6 +12,7 @@ export default function(state = initialState, action) {
       let newTargetId = action.payload.targetId;
       let newEdit = action.payload.edit;
       let newForm = action.payload.form;
+      console.log(newEdit);
       // if (!newTargetId && newTargetId !== 0) {
       //   newTargetId = state.targetId;
       // }

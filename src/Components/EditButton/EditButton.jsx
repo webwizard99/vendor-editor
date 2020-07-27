@@ -5,7 +5,7 @@ class EditButton extends React.Component {
   render() {
     return (
       <div className="EditButton">
-        <div className="buttonIcon">edit</div>
+        <div className="editButtonIcon">edit</div>
       </div>
     )
   }
