@@ -30,7 +30,8 @@
 
 .display-label, .display-text, .display-number {
   color: black;
-  margin: auto 0px;
+  padding-bottom: .2rem;
+  display: block;
 }
 
 .display-label {
@@ -43,4 +44,5 @@
   width: 44%;
   height: 2rem;
   background: rgb(180, 200, 180);
+  display: flex;
 }
