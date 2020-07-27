@@ -15,7 +15,6 @@ class DetailView extends React.Component {
   }
 
   getPotionDetail() {
-    console.log(`targetId: ${this.props.targetId}, edit: ${this.props.edit}`)
     if (this.props.targetId === null || this.props.edit) {
       return <PotionForm />
     } else {

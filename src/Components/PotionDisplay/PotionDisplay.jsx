@@ -3,14 +3,22 @@ import './PotionDisplay.css';
 
 import DisplayStatic from '../DisplayStatic/DisplayStatic';
 
+import { connect } from 'react-redux';
+
 class PotionDisplay extends DisplayStatic {
-  render() {
-    return (
-      <div className="PotionDisplay">
-        PotionDisplay
-      </div>
-    )
+  getDisplay() {
+    const allPotions = this.props.potions;
+    const thisPotion = allPotions.find(potion => potion.id === displayId);
+    console.log(thisPotion);
+    return thisPotion.item.name;
   }
 }
 
-export default PotionDisplay;
+const mapStateToProps = state => {
+  return {
+    potions: state.potions.potions,
+    displayId: state.display.targetId
+  }
+}
+
+export default connect(mapStateToProps)(PotionDisplay);
