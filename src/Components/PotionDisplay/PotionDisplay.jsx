@@ -21,7 +21,9 @@ class PotionDisplay extends DisplayStatic {
       <div className="PotionDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <EditButton onClick={()=> this.props.setDisplayForm({ form: 'potion', edit: true, targetId: thisPotion.id })} />
+          <div className="PotionEditButton" onClick={()=> this.props.setDisplayForm({ form: 'potion', edit: true, targetId: thisPotion.id })}>
+            <EditButton />
+          </div>
         </div>
         
         <div className="display-fields-area">

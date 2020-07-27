@@ -1,6 +1,7 @@
 .EditButton {
   height: 26px;
   width: 3rem;
+  margin-right: 1rem;
   font-weight: 600;
   line-height: 26px;
   border: 2px solid rgb(250, 252, 250);
