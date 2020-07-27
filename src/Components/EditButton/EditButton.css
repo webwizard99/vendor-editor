@@ -1,0 +1,29 @@
+.EditButton {
+  height: 22px;
+  width: 2.4rem;
+  font-weight: 600;
+  line-height: 22px;
+  border: 2px solid rgb(250, 252, 250);
+  cursor: pointer;
+  border-radius: .3rem;
+  background: rgb(140, 170, 140);
+  transition: all 40ms 60ms ease-out;
+}
+
+.EditButton:hover {
+  border: 2px solid rgb(100, 180, 100);
+  background: rgb(200, 220, 200);
+}
+
+.EditButton:active {
+  border: 2px solid rgb(30, 40, 30);
+  background: rgb(100, 110, 100);
+}
+
+.editButtonIcon {
+  height: 18px;
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  margin: auto;
+}

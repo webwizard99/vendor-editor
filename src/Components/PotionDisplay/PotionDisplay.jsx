@@ -2,8 +2,10 @@ import React from 'react';
 import './PotionDisplay.css';
 
 import DisplayStatic from '../DisplayStatic/DisplayStatic';
+import EditButton from '../EditButton/EditButton';
 
 import { connect } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class PotionDisplay extends DisplayStatic {
   getDisplay() {
@@ -17,7 +19,11 @@ class PotionDisplay extends DisplayStatic {
     
     return (
       <div className="PotionDisplay">
-        <h2 className="display-heading">{name}</h2>
+        <div className="heading-bar">
+          <h2 className="display-heading">{name}</h2>
+          <EditButton onClick={()=> this.props.setDisplayForm({ form: 'potion', edit: true, targetId: thisPotion.id })} />
+        </div>
+        
         <div className="display-fields-area">
           <div className="display-group">
             <span className="display-label">Name</span>
@@ -52,4 +58,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(PotionDisplay);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PotionDisplay);
