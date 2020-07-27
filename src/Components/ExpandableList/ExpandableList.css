@@ -17,9 +17,14 @@
   margin-left: 1rem;
 }
 
+.detailList div {
+  margin-top: .2rem;
+}
+
 .ListDetail {
   cursor: pointer;
-  padding-top: .4rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .ExpanderTitle {
