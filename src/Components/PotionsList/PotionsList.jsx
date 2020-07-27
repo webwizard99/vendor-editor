@@ -38,7 +38,7 @@ class PotionsList extends ExpandableList {
           { newPotions.map(potion => {
             return (
               <div>
-                <span className="ListDetail" onClick={() => this.props.setDisplayForm('potion')}>{potion.item.name}</span>
+                <span className="ListDetail" onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: null })}>{potion.item.name}</span>
               </div>
             )
             })}
@@ -55,7 +55,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (form) => dispatch({ type: SET_DETAIL_FORM, form: form })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
   }
 }
 

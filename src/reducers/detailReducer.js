@@ -9,9 +9,23 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case SET_DETAIL_FORM:
+      let newTargetId = action.payload.targetId;
+      let newEdit = action.payload.edit;
+      let newForm = action.payload.form;
+      if (!newTargetId) {
+        newTargetId = state.targetId;
+      }
+      if (!newEdit) {
+        newEdit = state.edit;
+      }
+      if (!newForm) {
+        newForm = state.form;
+      }
       return {
         ...state,
-        type: action.form
+        type: newForm,
+        targetId: newTargetId,
+        edit: newEdit
       }
     default:
       return state;
