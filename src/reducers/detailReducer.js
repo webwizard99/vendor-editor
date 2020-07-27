@@ -12,15 +12,15 @@ export default function(state = initialState, action) {
       let newTargetId = action.payload.targetId;
       let newEdit = action.payload.edit;
       let newForm = action.payload.form;
-      if (!newTargetId && newTargetId !== 0) {
-        newTargetId = state.targetId;
-      }
-      if (!newEdit) {
-        newEdit = state.edit;
-      }
-      if (!newForm) {
-        newForm = state.form;
-      }
+      // if (!newTargetId && newTargetId !== 0) {
+      //   newTargetId = state.targetId;
+      // }
+      // if (!newEdit) {
+      //   newEdit = state.edit;
+      // }
+      // if (!newForm) {
+      //   newForm = state.form;
+      // }
       return {
         ...state,
         type: newForm,

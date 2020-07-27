@@ -28,6 +28,15 @@
   align-items: flex-start;
 }
 
+.display-label, .display-text, .display-number {
+  color: black;
+  padding-bottom: .2rem;
+}
+
+.display-label {
+  margin-right: 1rem;
+}
+
 .display-group {
   padding: 1rem;
   margin: 1rem;
