@@ -1,12 +1,12 @@
 import React from 'react';
 import './PotionForm.css';
 
-// import endpoint for Post request
-// import endpoints from '../../utilities/endpoints';
-
 import potionTypes from '../../utilities/potionTypes';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
+
+// redux imports
+import { connect } from 'react-redux';
 
 class PotionForm extends DisplayForm {
   getPotionOptions() {
@@ -15,10 +15,19 @@ class PotionForm extends DisplayForm {
     })
   }
 
+  getHeading() {
+
+  }
+
   getForm() {
+    let newHeading = 'New Potion';
+    if (this.props.edit) {
+      newHeading = '';
+    }
+    
     return (
       <div className="PotionForm">
-        <h2 className="form-heading">New Potion</h2>
+        <h2 className="form-heading">{newHeading}</h2>
         <form action={'/potions'}
           className="input-fields-area"
           id="PotionPostForm"
@@ -48,7 +57,6 @@ class PotionForm extends DisplayForm {
               <label className="item-label" htmlFor="level">Level</label>
               <input type="number" name="level" id="level" className="input-number" placeholder="#"></input>
             </div>
-            <input type="hidden" name="key" id="key" value={process.env.EDITOR_API_KEY}></input>
             <input type="submit" value="Create Potion" class="button create-button"></input>
         </form>
       </div>
@@ -56,4 +64,10 @@ class PotionForm extends DisplayForm {
   }
 }
 
-export default PotionForm;
+const mapStateToProps = state => {
+  return {
+    edit: state.detail.edit
+  }
+}
+
+export default connect(mapStateToProps)(PotionForm);
