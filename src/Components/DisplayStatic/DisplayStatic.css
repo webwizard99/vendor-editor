@@ -30,7 +30,7 @@
 
 .display-label, .display-text, .display-number {
   color: black;
-  padding-bottom: .5rem;
+  margin: auto 0px;
 }
 
 .display-label {
