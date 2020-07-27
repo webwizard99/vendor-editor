@@ -9,7 +9,7 @@
   border-radius: .3rem;
   background: rgb(140, 170, 140);
   transition: all 40ms 60ms ease-out;
-  align-self: center;
+  margin-top: 1rem;
 }
 
 .EditButton:hover {

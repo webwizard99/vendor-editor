@@ -15,8 +15,12 @@ class PotionForm extends DisplayForm {
     })
   }
 
-  getHeading() {
-
+  getMethod() {
+    if (!this.props.edit) {
+      return '_post'
+    } else {
+      return '_put'
+    }
   }
 
   getForm() {
@@ -30,7 +34,6 @@ class PotionForm extends DisplayForm {
     if (this.props.edit) {
       const allPotions = this.props.potions;
       const thisPotion = allPotions.find(potion => potion.id === this.props.displayId);
-      console.log(thisPotion);
       newName = thisPotion.item.name;
       newValue = thisPotion.item.value;
       newDetails = thisPotion.item.details;
@@ -71,6 +74,7 @@ class PotionForm extends DisplayForm {
               <label className="item-label" htmlFor="level">Level</label>
               <input type="number" name="level" id="level" className="input-number" placeholder="#" value={newLevel}></input>
             </div>
+            <input type="hidden" name="_METHOD" value={this.getMethod()}/>
             <input type="submit" value="Create Potion" class="button create-button"></input>
         </form>
       </div>

@@ -6,15 +6,15 @@ class DisplayForm extends React.Component {
     super(props);
 
     this.getForm = this.getForm.bind(this);
-    this.getHeading = this.getHeading.bind(this);
+    this.getMethod = this.getMethod.bind(this);
   }
 
   getForm() {
     return '';
   }
 
-  getHeading() {
-    return '';
+  getMethod() {
+    return ''
   }
   
   render() {
