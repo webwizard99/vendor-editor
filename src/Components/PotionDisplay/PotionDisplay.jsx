@@ -1,7 +1,7 @@
 import React from 'react';
 import './PotionDisplay.css';
 
-import DisplayStatic from '../DisplayStatic';
+import DisplayStatic from '../DisplayStatic/DisplayStatic';
 
 class PotionDisplay extends DisplayStatic {
   render() {
