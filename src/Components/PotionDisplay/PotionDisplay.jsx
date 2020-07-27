@@ -17,7 +17,7 @@ class PotionDisplay extends DisplayStatic {
 const mapStateToProps = state => {
   return {
     potions: state.potions.potions,
-    displayId: state.display.targetId
+    displayId: state.detail.targetId
   }
 }
 
