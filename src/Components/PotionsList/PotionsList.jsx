@@ -22,7 +22,7 @@ class PotionsList extends ExpandableList {
 
   getNewButton() {
     return (
-      <div className="NewPotionButton" onClick={() => this.props.setDisplayForm(() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: null })}>
+      <div className="NewPotionButton" onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: null })}>
         <NewButton />
       </div>
     )
@@ -38,7 +38,7 @@ class PotionsList extends ExpandableList {
           { newPotions.map(potion => {
             return (
               <div>
-                <span className="ListDetail" onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
+                <span className="ListDetail" onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.item.id })}>{potion.item.name}</span>
               </div>
             )
             })}
