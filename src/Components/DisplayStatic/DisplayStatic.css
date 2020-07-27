@@ -44,4 +44,5 @@
   height: 2rem;
   background: rgb(180, 200, 180);
   display: flex;
+  align-items: flex-end;
 }
