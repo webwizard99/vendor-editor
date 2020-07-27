@@ -36,9 +36,13 @@ class PotionsList extends ExpandableList {
       return (
         <div className="detailList">
           { newPotions.map(potion => {
+            let potionClass = "ListDetail";
+            if (this.props.form === "potion" && this.props.targetId === potion.id) {
+              potionClass += " activeItem"
+            }
             return (
               <div>
-                <span className="ListDetail" onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
+                <span className={potionClass} onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
               </div>
             )
             })}
@@ -49,7 +53,9 @@ class PotionsList extends ExpandableList {
 
 const mapStateToProps = state => {
   return {
-    potions: state.potions.potions
+    potions: state.potions.potions,
+    form: state.detail.type,
+    targetId: state.detail.targetId
   }
 }
 

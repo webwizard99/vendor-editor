@@ -21,6 +21,10 @@
   margin-top: .2rem;
 }
 
+.activeItem {
+  font-weight: 600;
+}
+
 .ListDetail {
   cursor: pointer;
   overflow: hidden;
