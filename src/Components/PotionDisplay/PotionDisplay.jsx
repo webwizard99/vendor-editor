@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 class PotionDisplay extends DisplayStatic {
   getDisplay() {
     const allPotions = this.props.potions;
-    const thisPotion = allPotions.find(potion => potion.id === displayId);
+    const thisPotion = allPotions.find(potion => potion.id === this.props.displayId);
     console.log(thisPotion);
     return thisPotion.item.name;
   }
