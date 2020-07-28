@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SET_DETAIL_FORM:
       let newTargetId = action.payload.targetId;
       let newEdit = action.payload.edit;

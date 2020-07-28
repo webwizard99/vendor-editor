@@ -14,23 +14,38 @@ class App extends React.Component {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.getApp = this.getApp.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser();
   }
 
-  render() {
-    return (
-      <div className="App">
-        <MenuBar />
+  getApp() {
+    if (!this.props.dialogActive) {
+      return (
         <div className="AppContainer">
           <ObjectListColumn />
           <DetailView />
         </div>
+      );
+    } 
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <MenuBar />
+        {this.getApp()}
       </div>
     )
   }
 }
 
-export default connect(null, actions)(App);
+const mapStateToProps = state => {
+  return {
+    dialogActive: state.dialog.active
+  }
+}
+
+export default connect(mapStateToProps, actions)(App);
