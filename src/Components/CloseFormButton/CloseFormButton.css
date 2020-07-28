@@ -1,28 +1,30 @@
 .CloseFormButton {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   margin-right: 1rem;
   font-weight: 600;
-  line-height: 32px;
+  line-height: 48px;
   color: white;
   cursor: pointer;
   border-radius: 16px;
-  background: rgba(110, 140, 110, .6);
+  background: rgba(110, 140, 110, .3);
   transition: all 40ms 60ms ease-out;
   margin-top: 1rem;
 }
 
 .CloseFormButton:hover {
-  background: rgba(110, 140, 110, .8);
+  background: rgba(110, 140, 110, .6);
+  text-shadow: 0px 0px 2px rgb(30, 40, 30);
 }
 
 .CloseFormButton:active {
   border: 2px solid rgb(30, 40, 30);
+  text-shadow: 0px 0px 4px rgb(30, 40, 30);
   background: rgba(80, 100, 80, .9);
 }
 
 .closeButtonIcon {
-  height: 26px;
+  height: 32px;
   width: auto;
   font-size: 1.5rem;
   text-align: center;
