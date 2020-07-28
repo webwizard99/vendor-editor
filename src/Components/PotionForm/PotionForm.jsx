@@ -8,6 +8,7 @@ import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class PotionForm extends DisplayForm {
   getPotionOptions() {
@@ -21,6 +22,15 @@ class PotionForm extends DisplayForm {
       return '_post'
     } else {
       return '_put'
+    }
+  }
+
+  handleCloseButton(e) {
+    e.preventDefault();
+    if (this.props.edit === false) {
+      this.props.setDisplayForm({ form: false, targetId: null, edit: false });
+    } else {
+      this.props.setDisplayForm({ form: 'potion', targetId: this.props.displayId, edit: false});
     }
   }
 
@@ -47,7 +57,9 @@ class PotionForm extends DisplayForm {
       <div className="PotionForm">
         <div className="form-heading-bar">
           <h2 className="form-heading">{newHeading}</h2>
-          <CloseFormButton />
+          <div className="close-potion-btn" onClick={this.handleCloseButton}>
+            <CloseFormButton />
+          </div>
         </div>
         
         <form action={'/potions'}
@@ -95,4 +107,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(PotionForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PotionForm);
