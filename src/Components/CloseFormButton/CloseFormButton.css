@@ -1,12 +1,12 @@
 .CloseFormButton {
-  height: 48px;
-  width: 48px;
+  height: 42px;
+  width: 42px;
   margin-right: 1rem;
   font-weight: 600;
-  line-height: 48px;
+  line-height: 42px;
   color: white;
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 24px;
   background: rgba(110, 140, 110, .3);
   transition: all 40ms 60ms ease-out;
   margin-top: 1rem;
