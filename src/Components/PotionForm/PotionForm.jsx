@@ -4,6 +4,7 @@ import './PotionForm.css';
 import potionTypes from '../../utilities/potionTypes';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
+import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -44,7 +45,11 @@ class PotionForm extends DisplayForm {
     
     return (
       <div className="PotionForm">
-        <h2 className="form-heading">{newHeading}</h2>
+        <div className="form-heading-bar">
+          <h2 className="form-heading">{newHeading}</h2>
+          <CloseFormButton />
+        </div>
+        
         <form action={'/potions'}
           className="input-fields-area"
           id="PotionPostForm"

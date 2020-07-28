@@ -4,6 +4,12 @@
   background: rgb(160, 180, 160);
 }
 
+.form-heading-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .form-heading .input-fields-area {
   font-family: "Roboto Slab", serif;
 }
