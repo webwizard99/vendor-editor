@@ -8,7 +8,7 @@
   border: 2px solid rgb(250, 252, 250);
   cursor: pointer;
   border-radius: .3rem;
-  background: rgb(140, 170, 140);
+  background: rgb(100, 110, 100);
   transition: all 40ms 60ms ease-out;
   margin-top: 1rem;
 }
@@ -20,7 +20,7 @@
 
 .EditButton:active {
   border: 2px solid rgb(30, 40, 30);
-  background: rgb(100, 110, 100);
+  background: rgb(140, 170, 140);
 }
 
 .editButtonIcon {
