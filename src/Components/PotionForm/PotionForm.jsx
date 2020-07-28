@@ -52,27 +52,27 @@ class PotionForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="potion name"
-                maxLength="26" value={newName}></input>
+                maxLength="26" defaultValue={newName}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="value">Value</label>
               <input type="number" name="value" id="value" className="input-number" placeholder="#"
-                min="1" max="10000" value={newValue}></input>
+                min="1" max="10000" defaultValue={newValue}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="details">Details</label>
               <input type="text" name="details" id="details" className="input-text" placeholder="details..."
-                maxLength="200" value={newDetails}></input>
+                maxLength="200" defaultValue={newDetails}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="type">Type</label>
-              <select className="potion-select" name="type" id="type" value={newPotionType}>
+              <select className="potion-select" name="type" id="type" defaultValue={newPotionType}>
                 {this.getPotionOptions()}
               </select>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="level">Level</label>
-              <input type="number" name="level" id="level" className="input-number" placeholder="#" value={newLevel}></input>
+              <input type="number" name="level" id="level" className="input-number" placeholder="#" defaultValue={newLevel}></input>
             </div>
             <input type="hidden" name="_METHOD" value={this.getMethod()}/>
             <input type="submit" value="Create Potion" class="button create-button"></input>
