@@ -5,6 +5,7 @@ import './App.css';
 import MenuBar from '../MenuBar/MenuBar';
 import ObjectListColumn from '../ObjectListColumn/ObjectListColumn';
 import DetailView from '../DetailView/DetailView';
+import DialogBox from '../DialogBox/DialogBox';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -14,29 +15,30 @@ class App extends React.Component {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.getApp = this.getApp.bind(this);
+    this.getDialog = this.getDialog.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser();
   }
 
-  getApp() {
+  getDialog() {
     if (!this.props.dialogActive) {
-      return (
-        <div className="AppContainer">
-          <ObjectListColumn />
-          <DetailView />
-        </div>
-      );
-    } 
+      return ''
+    } else {
+      return <DialogBox />
+    }
   }
 
   render() {
     return (
       <div className="App">
         <MenuBar />
-        {this.getApp()}
+        <div className="AppContainer">
+          <ObjectListColumn />
+          <DetailView />
+        </div>
+        {this.getDialog()}
       </div>
     )
   }

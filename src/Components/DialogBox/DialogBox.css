@@ -1,0 +1,18 @@
+.DialogBoxContainer {
+  height: 94vh;
+  width: 100vw;
+  display: flex;
+  background: rgba(100, 110, 100, .3);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 94vw;
+  z-index: 4;
+}
+
+.DialogBox {
+  height: 8rem;
+  width: 12rem;
+  background: rgb(180, 200, 180);
+  color: black;
+}

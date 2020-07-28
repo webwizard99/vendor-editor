@@ -1,7 +1,7 @@
 import { SET_DIALOG } from '../actions/types';
 
 const initialState = {
-  active: false,
+  active: true,
   text: '',
   ref: null,
   yesCallback: null,
