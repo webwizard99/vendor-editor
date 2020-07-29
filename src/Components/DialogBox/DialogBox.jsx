@@ -8,7 +8,9 @@ class DialogBox extends React.Component {
     return (
       <div className="DialogBoxContainer">
         <div className="DialogBox">
-          <h2 className="dialog-heading">{this.props.text}</h2>
+          <div className="dialog-heading-bar">
+            <h2 className="dialog-heading">{this.props.text}</h2>
+          </div>
         </div>
       </div>
     )

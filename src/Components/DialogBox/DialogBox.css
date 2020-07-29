@@ -18,7 +18,13 @@
   color: black;
 }
 
-.dialog-heading {
+.dialog-heading-bar {
   margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-heading {
+  font-size: 2rem;
   
 }
