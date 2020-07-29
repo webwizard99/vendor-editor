@@ -8,6 +8,7 @@
   position: relative;
   bottom: 94vh;
   z-index: 4;
+  font-family: "Roboto Slab", serif;
 }
 
 .DialogBox {
@@ -23,10 +24,24 @@
 }
 
 .dialog-heading {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .dialog-prompt {
   margin: 2rem 0 0 1rem;
-  font-family: "Roboto Slab", serif;
+  font-size: 1.2rem;
+}
+
+.dialog-button-bar {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-no-btn {
+  color: red;
+}
+
+.dialog-yes-btn {
+  color: green;
 }

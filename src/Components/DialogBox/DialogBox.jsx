@@ -4,6 +4,21 @@ import './DialogBox.css';
 import { connect } from 'react-redux';
 
 class DialogBox extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleNo = this.handleNo.bind(this);
+    this.handleYes = this.handleYes.bind(this);
+  }
+  
+  handleNo() {
+
+  }
+
+  handleYes() {
+    
+  }
+  
   render() {
     return (
       <div className="DialogBoxContainer">
@@ -13,6 +28,14 @@ class DialogBox extends React.Component {
           </div>
           <div className="dialog-prompt">
             {this.props.text}
+          </div>
+          <div className="dialog-button-bar">
+            <button className="dialog-no-btn" onClick={this.handleNo}>
+              NO
+            </button>
+            <button className="dialog-yes-btn" onClick={this.handleYes}>
+              YES
+            </button>
           </div>
         </div>
       </div>
