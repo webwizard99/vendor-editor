@@ -20,11 +20,13 @@
 
 .dialog-heading-bar {
   margin: 1rem;
-  display: flex;
-  justify-content: center;
 }
 
 .dialog-heading {
-  font-size: 2rem;
-  
+  font-size: 1.4rem;
+}
+
+.dialog-prompt {
+  margin: 2rem 0 0 1rem;
+  font-family: "Roboto Slab", serif;
 }

@@ -9,7 +9,10 @@ class DialogBox extends React.Component {
       <div className="DialogBoxContainer">
         <div className="DialogBox">
           <div className="dialog-heading-bar">
-            <h2 className="dialog-heading">{this.props.text}</h2>
+            <h2 className="dialog-heading">Confirm Choice</h2>
+          </div>
+          <div className="dialog-prompt">
+            {this.props.text}
           </div>
         </div>
       </div>
