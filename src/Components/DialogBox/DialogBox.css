@@ -38,6 +38,12 @@
   justify-content: center;
 }
 
+.dialog-no-btn, .dialog-yes-btn {
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
 .dialog-no-btn {
   color: red;
 }
