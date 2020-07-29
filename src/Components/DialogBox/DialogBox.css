@@ -17,3 +17,8 @@
   border: 1px solid rgb(30, 50, 30);
   color: black;
 }
+
+.dialog-heading {
+  margin: 1rem;
+  
+}
