@@ -53,7 +53,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDialog = payload => dispatch({ type: SET_DIALOG, payload: payload })
+    setDialog: payload => dispatch({ type: SET_DIALOG, payload: payload })
   }
 }
 
