@@ -2,6 +2,7 @@ import React from 'react';
 import './DialogBox.css';
 
 import { connect } from 'react-redux';
+import { SET_DIALOG } from '../../actions/types';
 
 class DialogBox extends React.Component {
   constructor(props) {
@@ -12,16 +13,17 @@ class DialogBox extends React.Component {
   }
   
   handleNo() {
-
+    this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })
   }
 
   handleYes() {
-    
+    //this.props.ref[this.props.yesCallback()];
   }
   
   render() {
     return (
-      <div className="DialogBoxContainer">
+      <div className="DialogBoxContainer" 
+        onClick={() => this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })}>
         <div className="DialogBox">
           <div className="dialog-heading-bar">
             <h2 className="dialog-heading">Confirm Choice</h2>
@@ -49,4 +51,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(DialogBox);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDialog = payload => dispatch({ type: SET_DIALOG, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DialogBox);

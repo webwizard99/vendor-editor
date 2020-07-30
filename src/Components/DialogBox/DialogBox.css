@@ -17,6 +17,7 @@
   background: rgb(200, 210, 200);
   border: 1px solid rgb(30, 50, 30);
   color: black;
+  pointer-events: none;
 }
 
 .dialog-heading-bar {
@@ -42,6 +43,7 @@
   margin: 2rem;
   padding: 1rem;
   font-size: 2rem;
+  pointer-events: all;
 }
 
 .dialog-no-btn {
