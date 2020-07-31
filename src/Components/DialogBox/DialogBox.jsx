@@ -12,7 +12,10 @@ class DialogBox extends React.Component {
     this.handleYes = this.handleYes.bind(this);
   }
   
-  handleNo() {
+  handleNo(e) {
+    console.log(e);
+    const clicked = e.target;
+    
     this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })
   }
 
@@ -23,7 +26,7 @@ class DialogBox extends React.Component {
   render() {
     return (
       <div className="DialogBoxContainer" 
-        onClick={() => this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })}>
+        onClick={this.handleNo}>
         <div className="DialogBox">
           <div className="dialog-heading-bar">
             <h2 className="dialog-heading">Confirm Choice</h2>
