@@ -15,7 +15,7 @@ class DialogBox extends React.Component {
   handleNo(e) {
     console.log(e);
     const clicked = e.target;
-    
+    console.log(clicked);
     this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })
   }
 
