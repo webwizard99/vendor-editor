@@ -13,10 +13,10 @@ class DialogBox extends React.Component {
   }
   
   handleNo(e) {
-    console.log(e);
-    const clicked = e.target;
-    console.log(clicked);
-    this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })
+    const clicked = e.target.classList;
+    if (clicked.contains('DialogBoxContainer') || clicked.contains('dialog-no-btn')) {
+      this.props.setDialog({ active: false, text: '', ref: null, yesCallback: null, noCallback: null })
+    }
   }
 
   handleYes() {
