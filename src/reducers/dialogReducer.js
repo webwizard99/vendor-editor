@@ -1,11 +1,10 @@
 import { SET_DIALOG } from '../actions/types';
 
 const initialState = {
-  active: true,
-  text: 'Test text',
+  active: false,
+  text: '',
   ref: null,
-  yesCallback: null,
-  noCallback: null
+  yesCallback: null
 }
 
 // const referenceState = {
@@ -24,8 +23,7 @@ export default function(state = initialState, action) {
         active: action.payload.active,
         text: action.payload.text,
         ref: action.payload.ref,
-        yesCallback: action.payload.yesCallback,
-        noCallback: action.payload.noCallback
+        yesCallback: action.payload.yesCallback
       }
     default:
       return state;
