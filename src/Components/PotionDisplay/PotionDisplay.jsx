@@ -10,12 +10,14 @@ import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 class PotionDisplay extends DisplayStatic {
   getDeleteButton() {
+    const thisRef = this;
+    console.log(thisRef);
     return (
       <div className="DeletePotionButton" 
         onClick={() => this.props.setDialog({
           active: true,
           text: 'Delete Potion from Database?',
-          ref: this,
+          ref: thisRef,
           yesCallback: this.handleYes
       })}>
         <DeleteButton />
