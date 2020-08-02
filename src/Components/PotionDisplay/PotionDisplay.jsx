@@ -3,11 +3,30 @@ import './PotionDisplay.css';
 
 import DisplayStatic from '../DisplayStatic/DisplayStatic';
 import EditButton from '../EditButton/EditButton';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 import { connect } from 'react-redux';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 class PotionDisplay extends DisplayStatic {
+  getDeleteButton() {
+    return (
+      <div className="DeletePotionButton" 
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Potion from Database?',
+          ref: this,
+          yesCallback: this.handleYes
+      })}>
+        <DeleteButton />
+      </div>
+    )
+  }
+
+  handleYes() {
+    console.log('Delete handler in potion display component reached!');
+  }
+  
   getDisplay() {
     const allPotions = this.props.potions;
     const thisPotion = allPotions.find(potion => potion.id === this.props.displayId);
@@ -62,7 +81,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
   }
 }
 

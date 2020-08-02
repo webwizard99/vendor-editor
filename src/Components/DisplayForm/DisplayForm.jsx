@@ -9,7 +9,6 @@ class DisplayForm extends React.Component {
     this.getMethod = this.getMethod.bind(this);
     this.handleCloseButton = this.handleCloseButton.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleYes = this.handleYes.bind(this);
   }
 
   getForm() {

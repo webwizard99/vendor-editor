@@ -1,0 +1,33 @@
+.DeleteButton {
+  height: 32px;
+  width: 5rem;
+  margin-left: 1rem;
+  font-weight: 600;
+  line-height: 32px;
+  color: white;
+  border: 2px solid rgb(250, 252, 250);
+  cursor: pointer;
+  border-radius: .3rem;
+  background: rgb(209, 41, 41);
+  transition: all 40ms 60ms ease-out;
+  margin-top: 2rem;
+}
+
+.DeleteButton:hover {
+  border: 2px solid rgb(190, 41, 41);
+  background: rgb(220, 200, 200);
+  color: rgb(50, 30, 30);
+}
+
+.DeleteButton:active {
+  border: 2px solid rgb(30, 40, 30);
+  background: rgb(170, 140, 140);
+}
+
+.deleteButtonIcon {
+  height: 18px;
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  margin: auto;
+}

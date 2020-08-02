@@ -6,21 +6,27 @@ class DisplayStatic extends React.Component {
     super(props);
 
     this.getDisplay = this.getDisplay.bind(this);
-    this.getHeading = this.getHeading.bind(this);
+    this.getDeleteButton = this.getDeleteButton.bind(this);
+    this.handleYes = this.handleYes.bind(this);
   }
 
   getDisplay() {
     return '';
   }
 
-  getHeading() {
+  getDeleteButton() {
     return '';
+  }
+
+  handleYes() {
+
   }
   
   render() {
     return (
       <div className="DisplayStatic">
         {this.getDisplay()}
+        {this.getDeleteButton()}
       </div>
     )
   }
