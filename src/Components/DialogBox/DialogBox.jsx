@@ -20,7 +20,8 @@ class DialogBox extends React.Component {
   }
 
   handleYes() {
-    console.log(window.dialogRef);
+    // dialogRef is attached to window method in component method
+    // that invokes dialogReducer to bring up dialog box
     window.dialogRef.handleYes();
   }
   
@@ -51,9 +52,7 @@ class DialogBox extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    text: state.dialog.text,
-    ref: state.dialog.ref,
-    yesCallback: state.dialog.yesCallback
+    text: state.dialog.text
   }
 }
 

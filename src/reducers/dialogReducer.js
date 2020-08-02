@@ -2,18 +2,8 @@ import { SET_DIALOG } from '../actions/types';
 
 const initialState = {
   active: false,
-  text: '',
-  ref: null,
-  yesCallback: null
+  text: ''
 }
-
-// const referenceState = {
-//   active: false,
-//   text: '',
-//   ref: null,
-//   yesCallback: null,
-//   noCallback: null
-// }
 
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -22,9 +12,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         active: action.payload.active,
-        text: action.payload.text,
-        ref: action.payload.ref,
-        yesCallback: action.payload.yesCallback
+        text: action.payload.text
       }
     default:
       return state;

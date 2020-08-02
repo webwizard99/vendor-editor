@@ -16,9 +16,7 @@ class PotionDisplay extends DisplayStatic {
       <div className="DeletePotionButton" 
         onClick={() => this.props.setDialog({
           active: true,
-          text: 'Delete Potion from Database?',
-          ref: thisRef,
-          yesCallback: this.handleYes
+          text: 'Delete Potion from Database?'
       })}>
         <DeleteButton />
       </div>
@@ -27,6 +25,7 @@ class PotionDisplay extends DisplayStatic {
 
   handleYes() {
     console.log('Delete handler in potion display component reached!');
+    this.props.setDialog({ active: false, text: ''});
   }
   
   getDisplay() {
