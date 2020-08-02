@@ -8,7 +8,7 @@ import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 // redux imports
 import { connect } from 'react-redux';
-import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class PotionForm extends DisplayForm {
   getPotionOptions() {
@@ -23,15 +23,6 @@ class PotionForm extends DisplayForm {
     } else {
       return '_put'
     }
-  }
-
-  handleSubmit(e) {
-    console.log(e);
-    this.props.setDialog({ active: true, text: 'Save changes?', ref: this, yesCallback: this.handleYes });
-  }
-
-  handleYes() {
-    console.log('dialog completed in potion form!');
   }
 
   handleCloseButton(e) {
@@ -71,7 +62,7 @@ class PotionForm extends DisplayForm {
           </div>
         </div>
         
-        <form action={this.handleSubmit}
+        <form action={'/potions'}
           className="input-fields-area"
           id="PotionPostForm"
           method="POST">
@@ -118,8 +109,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
   }
 }
 
