@@ -51,7 +51,9 @@ class DialogBox extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    text: state.dialog.text
+    text: state.dialog.text,
+    ref: state.dialog.ref,
+    yesCallback: state.dialog.yesCallback
   }
 }
 
