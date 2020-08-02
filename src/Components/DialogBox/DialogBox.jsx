@@ -21,7 +21,7 @@ class DialogBox extends React.Component {
 
   handleYes() {
     console.log(this.props.ref);
-    this.props.ref[this.props.yesCallback()];
+    this.props.ref[this.props.yesCallback]();
   }
   
   render() {
