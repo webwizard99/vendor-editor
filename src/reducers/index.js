@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import potionsReducer from './potionsReducer';
 import detailReducer from './detailReducer';
-import dialogReducr from './dialogReducer';
+import dialogReducer from './dialogReducer';
+import stateReducer from './stateReducer';
 
 export default combineReducers({
   auth: authReducer,
   potions: potionsReducer,
   detail: detailReducer,
-  dialog: dialogReducr
+  dialog: dialogReducer,
+  state: stateReducer
 });

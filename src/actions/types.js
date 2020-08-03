@@ -2,3 +2,4 @@ export const FETCH_USER = "FETCH_USER";
 export const SET_POTIONS = "SET_POTIONS";
 export const SET_DETAIL_FORM = "SET_DETAIL_FORM";
 export const SET_DIALOG = "SET_DIALOG";
+export const SET_DETAIL_UPDATE = "SET_DETAIL_UPDATE";
