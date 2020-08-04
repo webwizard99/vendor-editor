@@ -1,7 +1,7 @@
 import { SET_DETAIL_UPDATE } from '../actions/types';
 
 const initialState = {
-  detailUpdate = false
+  detailUpdate: false
 }
 
 export default function(state = initialState, action) {
