@@ -7,7 +7,8 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 // redux imports
 import { connect } from 'react-redux';
-import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
+import * as actions from '../../actions'
+import { SET_DETAIL_FORM, SET_DIALOG, SET_POTIONS } from '../../actions/types';
 
 // js utility imports
 import deleteRequests from '../../utilities/deleteRequests';
@@ -31,7 +32,7 @@ class PotionDisplay extends DisplayStatic {
     console.log('Delete handler in potion display component reached!');
     const delRes = deleteRequests.makeRequest('potion', this.props.displayId);
     console.log(delRes);
-    window.location.reload(false);
+    this.props.fetchPotions();
     this.props.setDialog({ active: false, text: ''});
   }
   
@@ -94,4 +95,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PotionDisplay);
+const allDispatches = {
+  ...mapDispatchToProps,
+  ...actions
+}
+
+export default connect(mapStateToProps, allDispatches)(PotionDisplay);
