@@ -8,7 +8,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import * as actions from '../../actions'
-import { SET_DETAIL_FORM, SET_DIALOG, SET_POTIONS } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import deleteRequests from '../../utilities/deleteRequests';
