@@ -6,7 +6,6 @@ import PotionDisplay from '../PotionDisplay/PotionDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
-import { SET_DETAIL_UPDATE } from '../../actions/types';
 
 class DetailView extends React.Component {
   constructor(props) {
@@ -14,12 +13,6 @@ class DetailView extends React.Component {
 
     this.getDetail = this.getDetail.bind(this);
     this.getPotionDetail = this.getPotionDetail.bind(this);
-  }
-
-  componentDidUpdate() {
-    if (this.props.detailUpdate) {
-      this.props.setDetailUpdate(false);
-    }
   }
 
   getPotionDetail() {
@@ -61,10 +54,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setDetailUpdate: (val) => dispatch({ type: SET_DETAIL_UPDATE, val: val })
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailView);
+export default connect(mapStateToProps)(DetailView);
