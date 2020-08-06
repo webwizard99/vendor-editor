@@ -49,8 +49,7 @@ const mapStateToProps = state => {
   return {
     formType: state.detail.type,
     targetId: state.detail.targetId,
-    edit: state.detail.edit,
-    detailUpdate: state.state.detailUpdate
+    edit: state.detail.edit
   }
 }
 
