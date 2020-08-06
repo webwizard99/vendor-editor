@@ -36,10 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setDetailForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
-  }
-}
-
 export default connect(mapStateToProps, actions)(ObjectListColumn);
