@@ -1,7 +1,7 @@
 const deleteRequests = (function(){
   return {
-    makeRequest: function(deleteType, deleteId) {
-      const deleteRes = fetch(`/${deleteType}/${deleteId}`, {
+    makeRequest: async function(deleteType, deleteId) {
+      const deleteRes = await fetch(`/${deleteType}/${deleteId}`, {
         method: 'DELETE'
       });
       return deleteRes;
