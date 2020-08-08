@@ -96,7 +96,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const allDispatches = {
-  ...mapDispatchToProps,
+  ...mapDispatchToProps(),
   ...actions
 }
 
