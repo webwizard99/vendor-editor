@@ -12,12 +12,21 @@ class ObjectListColumn extends React.Component {
   constructor(props) {
     super(props);
 
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchPotions();
+    this.props.fetchWeapons();
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.dialogActive & !nextProps.dialogActive) {
+      return true;
+    }
+  }
+
 
   render() {
     return (
@@ -30,7 +39,6 @@ class ObjectListColumn extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    potions: state.potions.potions,
     dialogActive: state.dialog.active
   }
 }

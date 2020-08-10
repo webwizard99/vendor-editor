@@ -1,5 +1,5 @@
 import React from 'react';
-import './PotionList.css';
+import './PotionsList.css';
 
 import ExpandableList from '../ExpandableList/ExpandableList';
 import NewButton from '../NewButton/NewButton';
