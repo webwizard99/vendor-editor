@@ -5,6 +5,7 @@ import ExpandableList from '../ExpandableList/ExpandableList';
 
 //redux imports
 import { connect } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class WeaponsList extends ExpandableList {
   constructor(props) {
@@ -36,7 +37,9 @@ class WeaponsList extends ExpandableList {
             }
             return (
               <div>
-                <span className={weaponClass}>{weapon.item.name}</span>
+                <span className={weaponClass}
+                onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: weapon.id })}
+                >{weapon.item.name}</span>
               </div>
             )
           })}
@@ -54,4 +57,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(WeaponsList);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponsList);

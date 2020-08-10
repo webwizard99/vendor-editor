@@ -39,9 +39,9 @@ class PotionDisplay extends DisplayStatic {
     const name = thisPotion.item.name;
     const value = thisPotion.item.value;
     const details = thisPotion.item.details;
+    const rarity = thisPotion.item.rarity;
     const potionType = thisPotion.type;
     const level = thisPotion.level;
-    const rarity = thisPotion.item.rarity;
     
     return (
       <div className="PotionDisplay">
