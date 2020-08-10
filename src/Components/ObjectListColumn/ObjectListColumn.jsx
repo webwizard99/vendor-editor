@@ -2,8 +2,7 @@ import React from 'react';
 import './ObjectListColumn.css';
 
 // component imports
-// import ExpandableList from '../ExpandableList/ExpandableList';
-import PotionsList from '../PotionsList/PotionsList';
+import ItemList from '../ItemList/ItemList';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -23,7 +22,7 @@ class ObjectListColumn extends React.Component {
   render() {
     return (
       <div className="ObjectListColumn">
-        <PotionsList />
+        <ItemList />
       </div>
     )
   }
