@@ -41,6 +41,7 @@ class PotionForm extends DisplayForm {
     let newDetails = '';
     let newPotionType = '';
     let newLevel = '';
+    let newRarity = 1000;
     let newId = null;
     let newItemId = null;
 
@@ -50,6 +51,7 @@ class PotionForm extends DisplayForm {
       newName = thisPotion.item.name;
       newValue = thisPotion.item.value;
       newDetails = thisPotion.item.details;
+      newRarity = thisPotion.item.rarity;
       newPotionType = thisPotion.type;
       newLevel = thisPotion.level;
       newHeading = newName;
@@ -84,6 +86,11 @@ class PotionForm extends DisplayForm {
               <label className="item-label" htmlFor="details">Details</label>
               <input type="text" name="details" id="details" className="input-text" placeholder="details..."
                 maxLength="200" defaultValue={newDetails}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="rarity">Rarity</label>
+              <input type="number" name="rarity" id="rarity" className="input-number" placeholder="#"
+                min="1" max="1000" defaultValue={newRarity}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="type">Type</label>

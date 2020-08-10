@@ -41,6 +41,7 @@ class PotionDisplay extends DisplayStatic {
     const details = thisPotion.item.details;
     const potionType = thisPotion.type;
     const level = thisPotion.level;
+    const rarity = thisPotion.item.rarity;
     
     return (
       <div className="PotionDisplay">
@@ -63,6 +64,10 @@ class PotionDisplay extends DisplayStatic {
           <div className="display-group">
             <span className="display-label">Details</span>
             <span className="display-text">{details}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">Rarity</span>
+            <span className="display-text">{rarity}</span>
           </div>
           <div className="display-group">
             <span className="display-label">Type</span>
