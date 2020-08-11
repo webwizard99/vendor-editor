@@ -42,7 +42,8 @@ class PotionsList extends ExpandableList {
             }
             return (
               <div>
-                <span className={potionClass} onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
+                <span className={potionClass} 
+                onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
               </div>
             )
             })}
