@@ -16,7 +16,7 @@
 .detailList {
   width: 80%;
   margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .8rem;
 }
 
 .detailList > p {
