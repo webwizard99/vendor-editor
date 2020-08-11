@@ -5,7 +5,7 @@ class DeleteButton extends React.Component {
   render() {
     return (
       <div className="DeleteButton">
-        <div className="deletButtonIcon">
+        <div className="deleteButtonIcon">
           DELETE
         </div>
       </div>
