@@ -6,6 +6,7 @@ import PotionForm from '../PotionForm/PotionForm';
 import PotionDisplay from '../PotionDisplay/PotionDisplay';
 import WeaponForm from '../WeaponForm/WeaponForm';
 import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
+import ArmorForm from '../ArmorForm/ArmorForm';
 import ArmorDisplay from '../ArmorDisplay/ArmorDisplay';
 
 // redux imports
@@ -39,7 +40,7 @@ class DetailView extends React.Component {
 
   getArmorDetail() {
     if (this.props.targetId == null || this.props.edit) {
-      return 'missingid'
+      return <ArmorForm />
     } else {
       return <ArmorDisplay />
     }
