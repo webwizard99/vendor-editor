@@ -7,15 +7,29 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 //redux imports
 import { connect } from 'react-redux';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
+
+// js utility imports
+import deleteRequests from '../../utilities/deleteRequests';
 
 class WeaponDisplay extends DisplayStatic {
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
-      <div className="DeleteWeaponButton">
+      <div className="DeleteWeaponButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Weapon from Database?'
+        })}>
         <DeleteButton />
       </div>
     )
+  }
+
+  handleYes() {
+    deleteRequests.makeRequest('weapon', this.props.displayId);
+    this.props.setDialog({ active: false, text: '' });
   }
 
   getDisplay() {
@@ -78,7 +92,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
   }
 }
 
