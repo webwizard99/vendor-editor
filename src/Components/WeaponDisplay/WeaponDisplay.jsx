@@ -7,6 +7,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 //redux imports
 import { connect } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class WeaponDisplay extends DisplayStatic {
   getDeleteButton() {
@@ -31,7 +32,7 @@ class WeaponDisplay extends DisplayStatic {
       <div className="WeaponDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="WeaponEditButton">
+          <div className="WeaponEditButton" onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: true, targetId: thisWeapon.id })}>
             <EditButton />
           </div>
         </div>
@@ -75,4 +76,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(WeaponDisplay);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponDisplay);
