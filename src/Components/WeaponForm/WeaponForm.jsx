@@ -43,7 +43,6 @@ class WeaponForm extends DisplayForm {
       newValue = thisWeapon.item.value;
       newDetails = thisWeapon.item.details;
       newRarity = thisWeapon.item.rarity;
-      newWeaponType = thisWeapon.type;
       newLevel = thisWeapon.level;
       newHeading = newName;
       newId = thisWeapon.id;
