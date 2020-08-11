@@ -4,7 +4,7 @@ import './WeaponsList.css';
 import ExpandableList from '../ExpandableList/ExpandableList';
 import NewButton from '../NewButton/NewButton';
 
-//redux imports
+// redux imports
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
 

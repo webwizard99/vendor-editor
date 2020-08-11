@@ -3,3 +3,4 @@ export const SET_POTIONS = "SET_POTIONS";
 export const SET_DETAIL_FORM = "SET_DETAIL_FORM";
 export const SET_DIALOG = "SET_DIALOG";
 export const SET_WEAPONS = "SET_WEAPONS";
+export const SET_ARMOR = "SET_ARMOR";

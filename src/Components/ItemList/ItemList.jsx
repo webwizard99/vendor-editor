@@ -5,6 +5,7 @@ import './ItemList.css';
 import ExpandableList from '../ExpandableList/ExpandableList';
 import PotionList from '../PotionsList/PotionsList';
 import WeaponList from '../WeaponsList/WeaponsList';
+import ArmorList from '../ArmorList/ArmorList';
 
 class ItemList extends ExpandableList {
   getTitle() {
@@ -16,6 +17,7 @@ class ItemList extends ExpandableList {
      <div className="detailList">
        <PotionList />
        <WeaponList />
+       <ArmorList />
      </div>
    ) 
   }
