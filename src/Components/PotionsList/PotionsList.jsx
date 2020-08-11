@@ -41,10 +41,10 @@ class PotionsList extends ExpandableList {
               potionClass += " activeItem"
             }
             return (
-              <div>
+              <p>
                 <span className={potionClass} 
                 onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
-              </div>
+              </p>
             )
             })}
         </div>);

@@ -41,11 +41,11 @@ class WeaponsList extends ExpandableList {
               weaponClass += " activeItem"
             }
             return (
-              <div>
+              <p>
                 <span className={weaponClass}
                 onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: weapon.id })}
                 >{weapon.item.name}</span>
-              </div>
+              </p>
             )
           })}
         </div>

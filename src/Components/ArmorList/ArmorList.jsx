@@ -40,10 +40,10 @@ class ArmorList extends ExpandableList {
               armorClass += " activeItem";
             }
             return (
-              <div>
+              <p>
                 <span className={armorClass}
                 >{armor.item.name}</span>
-              </div>
+              </p>
             )
           })}
         </div>

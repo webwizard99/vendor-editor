@@ -18,11 +18,11 @@
   margin-left: 1rem;
 }
 
-.detailList > div {
+.detailList > p {
   margin-top: .2rem;
 }
 
-.detailList > .ExpandlableList {
+.detailList > div {
   margin-top: .5rem;
 }
 
