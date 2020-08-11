@@ -44,7 +44,7 @@ class ArmorList extends ExpandableList {
             return (
               <p>
                 <span className={armorClass}
-                  onClick={() => this.props.setDisplayForm({ form: 'armor', edit: false, target: armor.id })}
+                  onClick={() => this.props.setDisplayForm({ form: 'armor', edit: false, targetId: armor.id })}
                 >{armor.item.name}</span>
               </p>
             )
