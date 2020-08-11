@@ -22,7 +22,7 @@ class ArmorList extends ExpandableList {
 
   getNewButton() {
     return (
-      <div className="NewArmorButton" >
+      <div className="NewArmorButton" onClick={() => this.props.setDisplayForm({ form: 'armor', edit: false, targetId: null })}>
         <NewButton />
       </div>
     )
