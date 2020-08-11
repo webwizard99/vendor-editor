@@ -9,6 +9,9 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
+// js utility imports
+import deleteRequests from '../../utilities/deleteRequests';
+
 class ArmorDisplay extends DisplayStatic {
   getDeleteButton() {
     const thisRef = this;
