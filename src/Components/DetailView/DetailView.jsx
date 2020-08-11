@@ -6,6 +6,7 @@ import PotionForm from '../PotionForm/PotionForm';
 import PotionDisplay from '../PotionDisplay/PotionDisplay';
 import WeaponForm from '../WeaponForm/WeaponForm';
 import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
+import ArmorDisplay from '../ArmorDisplay/ArmorDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -17,6 +18,7 @@ class DetailView extends React.Component {
     this.getDetail = this.getDetail.bind(this);
     this.getPotionDetail = this.getPotionDetail.bind(this);
     this.getWeaponDetail = this.getWeaponDetail.bind(this);
+    this.getArmorDetail = this.getArmorDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -35,6 +37,14 @@ class DetailView extends React.Component {
     }
   }
 
+  getArmorDetail() {
+    if (this.props.targetId == null || this.props.edit) {
+      return ''
+    } else {
+      return <ArmorDisplay />
+    }
+  }
+
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
@@ -45,6 +55,8 @@ class DetailView extends React.Component {
         return this.getPotionDetail();
       case 'weapon':
         return this.getWeaponDetail();
+      case 'armor':
+        return this.getArmorDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
