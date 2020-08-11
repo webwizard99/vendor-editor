@@ -40,3 +40,7 @@
   cursor: default;
   width: 6rem;
 }
+
+.ExpanderTitle + div {
+  margin-left: 1rem;
+}
