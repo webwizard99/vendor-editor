@@ -10,6 +10,7 @@
 
 .TitleBar {
   display: flex;
+  margin-top: .2rem;
 }
 
 .detailList {
