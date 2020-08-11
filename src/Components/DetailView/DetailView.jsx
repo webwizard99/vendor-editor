@@ -4,6 +4,7 @@ import './DetailView.css';
 // React component imports
 import PotionForm from '../PotionForm/PotionForm';
 import PotionDisplay from '../PotionDisplay/PotionDisplay';
+import WeaponForm from '../WeaponForm/WeaponForm';
 import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
 
 // redux imports
@@ -28,7 +29,7 @@ class DetailView extends React.Component {
 
   getWeaponDetail() {
     if (this.props.targetId == null || this.props.edit) {
-      return ''
+      return <WeaponForm />
     } else {
       return <WeaponDisplay />
     }

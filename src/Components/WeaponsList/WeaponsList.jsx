@@ -2,6 +2,7 @@ import React from 'react';
 import './WeaponsList.css';
 
 import ExpandableList from '../ExpandableList/ExpandableList';
+import NewButton from '../NewButton/NewButton';
 
 //redux imports
 import { connect } from 'react-redux';
@@ -20,7 +21,11 @@ class WeaponsList extends ExpandableList {
   }
 
   getNewButton() {
-    return '';
+    return (
+      <div className="NewWeaponButton" onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: null })}>
+        <NewButton />
+      </div>
+    )
   }
 
   displayContents() {
