@@ -40,7 +40,6 @@ class ArmorList extends ExpandableList {
             if (this.props.form === 'armor' && this.props.targetId === armor.id) {
               armorClass += " activeItem";
             }
-            console.log(armor.id);
             return (
               <p>
                 <span className={armorClass}

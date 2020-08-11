@@ -27,8 +27,7 @@
 .deleteButtonIcon {
   height: 18px;
   width: auto;
-  padding-left: .5rem;
   font-size: 1rem;
   text-align: center;
-  margin: auto;
+  margin: auto, auto, auto, .5rem;
 }
