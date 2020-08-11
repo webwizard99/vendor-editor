@@ -39,7 +39,7 @@ class DetailView extends React.Component {
 
   getArmorDetail() {
     if (this.props.targetId == null || this.props.edit) {
-      return ''
+      return 'missingid'
     } else {
       return <ArmorDisplay />
     }
