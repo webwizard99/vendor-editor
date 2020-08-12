@@ -52,7 +52,7 @@ class ArmorDisplay extends DisplayStatic {
         </div>
 
         <div className="display-fields-area">
-        <div className="display-group">
+          <div className="display-group">
             <span className="display-label">Name</span>
             <span className="display-text">{name}</span>
           </div>

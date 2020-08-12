@@ -8,6 +8,7 @@ import WeaponForm from '../WeaponForm/WeaponForm';
 import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
 import ArmorForm from '../ArmorForm/ArmorForm';
 import ArmorDisplay from '../ArmorDisplay/ArmorDisplay';
+import SupplierDisplay from '../SupplierDisplay/SupplierDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -20,6 +21,7 @@ class DetailView extends React.Component {
     this.getPotionDetail = this.getPotionDetail.bind(this);
     this.getWeaponDetail = this.getWeaponDetail.bind(this);
     this.getArmorDetail = this.getArmorDetail.bind(this);
+    this.getSupplierDetail = this.getSupplierDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -31,7 +33,7 @@ class DetailView extends React.Component {
   }
 
   getWeaponDetail() {
-    if (this.props.targetId == null || this.props.edit) {
+    if (this.props.targetId === null || this.props.edit) {
       return <WeaponForm />
     } else {
       return <WeaponDisplay />
@@ -39,10 +41,18 @@ class DetailView extends React.Component {
   }
 
   getArmorDetail() {
-    if (this.props.targetId == null || this.props.edit) {
+    if (this.props.targetId === null || this.props.edit) {
       return <ArmorForm />
     } else {
       return <ArmorDisplay />
+    }
+  }
+
+  getSupplierDetail() {
+    if (this.props.targetId === null || this.props.edit) {
+      return ''
+    } else {
+      return <SupplierDisplay />
     }
   }
 
@@ -58,6 +68,8 @@ class DetailView extends React.Component {
         return this.getWeaponDetail();
       case 'armor':
         return this.getArmorDetail();
+      case 'supplier':
+        return this.getSupplierDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }

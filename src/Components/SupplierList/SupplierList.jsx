@@ -6,6 +6,7 @@ import NewButton from '../NewButton/NewButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 class SupplierList extends ExpandableList {
   constructor(props) {
@@ -42,7 +43,7 @@ class SupplierList extends ExpandableList {
             return (
               <p>
                 <span className={supplierClass}
-                >{supplier.name}</span>
+                  onClick={this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: supplier.id })}>{supplier.name}</span>
               </p>
             )
           })}
@@ -60,4 +61,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(SupplierList);
+const mapDispatchToProps = dispatch => {
+  return {
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SupplierList);
