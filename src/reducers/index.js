@@ -5,6 +5,7 @@ import detailReducer from './detailReducer';
 import dialogReducer from './dialogReducer';
 import weaponsReducer from './weaponsReducer';
 import armorReducer from './armorReducer';
+import supplierReducer from './supplierReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   weapons: weaponsReducer,
   detail: detailReducer,
   dialog: dialogReducer,
-  armor: armorReducer
+  armor: armorReducer,
+  suppliers: supplierReducer
 });

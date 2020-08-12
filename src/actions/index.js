@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, SET_POTIONS, SET_WEAPONS, SET_ARMOR } from './types';
+import { FETCH_USER, SET_POTIONS, SET_WEAPONS, SET_ARMOR, SET_SUPPLIERS } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -19,4 +19,9 @@ export const fetchWeapons = () => async dispatch => {
 export const fetchArmor = () => async dispatch => {
   const res = await axios.get('/armor');
   dispatch({ type: SET_ARMOR, payload: res.data });
+}
+
+export const fetchSuppliers = () => async dispatch => {
+  const res = await axios.get('/suppliers');
+  dispatch({ type: SET_SUPPLIERS, payload: res.data });
 }

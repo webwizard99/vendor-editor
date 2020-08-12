@@ -3,6 +3,7 @@ import './ObjectListColumn.css';
 
 // component imports
 import ItemList from '../ItemList/ItemList';
+import SupplierList from '../SupplierList/SupplierList';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -20,6 +21,7 @@ class ObjectListColumn extends React.Component {
     this.props.fetchPotions();
     this.props.fetchWeapons();
     this.props.fetchArmor();
+    this.props.fetchSuppliers();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -33,6 +35,7 @@ class ObjectListColumn extends React.Component {
     return (
       <div className="ObjectListColumn">
         <ItemList />
+        <SupplierList />
       </div>
     )
   }
