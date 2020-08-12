@@ -46,11 +46,14 @@
   font-weight: 600;
 }
 
-.display-group {
+.display-group, .display-group-blank {
   margin: 1rem;
   width: 44%;
   height: 3rem;
-  background: rgb(180, 200, 180);
   display: flex;
   align-items: flex-end;
+}
+
+.display-group {
+  background: rgb(180, 200, 180);
 }

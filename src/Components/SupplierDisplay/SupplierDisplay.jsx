@@ -41,10 +41,9 @@ class SupplierDisplay extends DisplayStatic {
             <span className="display-label">Name</span>
             <span className="display-text">{name}</span>
           </div>
-          <div className="display-group">
-            {/* left blank for spacing */}
+          <div className="display-group-blank">
           </div>
-          <div className="display-group offerings-display">
+          <div className="offerings-display">
             <span className="display-label full-span">Offerings</span>
             <span className="display-label half-span left-half">Type</span>
             <span className="display-label half-span right-half">Markup</span>

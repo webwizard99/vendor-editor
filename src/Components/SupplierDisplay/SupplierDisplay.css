@@ -1,5 +1,6 @@
-.offerings.display {
+.offerings-display {
   display: flex;
+  width: 80%;
   flex-wrap: wrap;
   background: rgb(180, 185, 180);
   border: 1px solid rgb(100, 105, 100);
@@ -11,7 +12,7 @@
 }
 
 .full-span {
-  width: 100%;
+  width: 12rem;
   text-align: center;
 }
 
@@ -22,7 +23,7 @@
 }
 
 .half-span {
-  width: 50%;
+  width: 6rem;
 }
 
 .left-half, .right-half {
