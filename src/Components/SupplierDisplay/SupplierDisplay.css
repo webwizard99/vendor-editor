@@ -2,7 +2,8 @@
   display: flex;
   width: 20rem;
   flex-wrap: wrap;
-  background: rgb(210, 215, 210);
+  margin-left: 1rem;
+  background: rgb(180, 185, 180);
   border: 1px solid rgb(100, 105, 100);
   color: rgb(30, 35, 40);
 }
@@ -23,11 +24,7 @@
 }
 
 .half-span {
-  width: 10rem;
-}
-
-.left-half, .right-half {
-  border-bottom: 1px solid rgb(100, 105, 100);
+  width: 9.8rem;
 }
 
 .left-half {
