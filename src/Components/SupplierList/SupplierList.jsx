@@ -43,7 +43,7 @@ class SupplierList extends ExpandableList {
             return (
               <p>
                 <span className={supplierClass}
-                  onClick={this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: supplier.id })}>{supplier.name}</span>
+                  onClick={() => this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: supplier.id })}>{supplier.name}</span>
               </p>
             )
           })}
