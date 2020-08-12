@@ -21,7 +21,7 @@ class SupplierDisplay extends DisplayStatic {
   }
 
   getDisplay() {
-    if (!allSuppliers) return '';
+    if (!this.props.suppliers) return '';
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const name = thisSupplier.name;
