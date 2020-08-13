@@ -72,13 +72,13 @@ class SupplierForm extends DisplayForm {
             <div className="input-group-blank">
             </div>
             <div className="offerings-group">
-              <span className="item-label full-span">Offerings</span>
-              <span className="item-label pad half-span">Type</span>
-              <span className="item-label pad half-span">Markup</span>
+              <span className="item-label form-full-span">Offerings</span>
+              <span className="item-label form-pad form-half-span">Type</span>
+              <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
                 return (
-                  <div className="inner-span">
-                    <div className="half-span left-half">
+                  <div className="form-inner-span">
+                    <div className="form-half-span form-left-half">
                       {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
                         Type
                       </label> */}
@@ -86,7 +86,7 @@ class SupplierForm extends DisplayForm {
                         {this.getOfferingOptions()}
                       </select>
                     </div>
-                    <div className="half-span right-half">
+                    <div className="form-half-span form-right-half">
                       {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
                         Markup
                       </label> */}
