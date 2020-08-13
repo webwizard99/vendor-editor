@@ -1,4 +1,4 @@
-.offerings-form-area, .offerings-group {
+.offerings-group {
   display: flex;
   width: 30rem;
   flex-wrap: wrap;
@@ -7,34 +7,34 @@
   color: rgb(30, 35, 40);
 }
 
-.half-span input, .half-span select {
+.form-half-span input, .form-half-span select {
   color: black;
 }
 
-.half-span input {
+.form-half-span input {
   width: 80%;
 }
 
-.full-span, .half-span, .inner-span {
+.form-full-span, .form-half-span, .form-inner-span {
   box-sizing: border-box;
   margin: .2rem 0px .2rem 0px;
 }
 
-.pad {
+.form-pad {
   margin-left: 1rem;
 }
 
-.full-span {
+.form-full-span {
   width: 30rem;
   text-align: center;
 }
 
-.inner-span {
+.form-inner-span {
   width: 100%;
   display: flex;
 }
 
-.half-span {
+.form-half-span {
   width: 14rem;
 }
 
