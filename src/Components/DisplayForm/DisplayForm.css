@@ -40,11 +40,14 @@
   padding: 6px;
 }
 
-.input-group {
+.input-group, .input-group-blank {
   padding: 1rem;
   margin: 1rem;
   width: 44%;
   height: 2rem;
+}
+
+.input-group {
   background: rgb(180, 200, 180);
 }
 
