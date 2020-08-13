@@ -45,8 +45,8 @@ class SupplierDisplay extends DisplayStatic {
           </div>
           <div className="offerings-display">
             <span className="display-label full-span">Offerings</span>
-            <span className="display-label half-span left-half">Type</span>
-            <span className="display-label half-span right-half">Markup</span>
+            <span className="display-label half-span">Type</span>
+            <span className="display-label half-span">Markup</span>
             { offerings.map(offering => {
               return (
                 <div className="inner-span">

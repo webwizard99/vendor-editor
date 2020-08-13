@@ -7,7 +7,16 @@ import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
+// js imports
+import itemTypes from '../../utilities/itemTypes';
+
 class SupplierForm extends DisplayForm {
+  constructor(props) {
+    super(props);
+
+    this.getOfferingOptions = this.getOfferingOptions.bind(this);
+  }
+  
   getMethod() {
     if (!this.props.edit) {
       return '_post'
@@ -25,12 +34,18 @@ class SupplierForm extends DisplayForm {
     }
   }
 
+  getOfferingOptions() {
+    return itemTypes.map(itemType => {
+      return <option value={itemType}>{itemType}</option>
+    })
+  }
+
   getForm() {
     if (!this.props.suppliers) return '';
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
-    // const offerings = thisSupplier.offerings;
+    const offerings = thisSupplier.offerings;
     
     return (
       <div className="SupplierForm">
@@ -50,15 +65,32 @@ class SupplierForm extends DisplayForm {
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
                 maxLength="26" defaultValue={newName}></input>
             </div>
-            {/* <div className="input-group">
+            <div className="offerings-form-area">
+              <span className="item-label full-span">Offerings</span>
+              <span className="item-label half-span">Type</span>
+              <span className="item-label half-span">Markup</span>
               {offerings.map(offering => {
                 return (
-                  <div>
-                    {offering}
+                  <div className="inner-span">
+                    <div className="input-group half-span left-half">
+                      {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
+                        Type
+                      </label> */}
+                      <select className="offering-select" name={`offering-${offering.id}-type`} id={`offering-${offering.id}-type`} defaultValue={offering.type}>
+                        {this.getOfferingOptions()}
+                      </select>
+                    </div>
+                    <div className="input-group half-span right-half">
+                      {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
+                        Markup
+                      </label> */}
+                      <input className="input-number" type="number" name={`markup-${offering.id}-type`} id={`markup-${offering.id}-type`} defaultValue={offering.markup}>
+                      </input>
+                    </div>
                   </div>
                 )
               })}
-            </div> */}
+            </div>
         </form>
       </div>
     )
