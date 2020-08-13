@@ -9,7 +9,7 @@
 
 .full-span, .half-span, .inner-span {
   box-sizing: border-box;
-  margin: 1rem 0px 1rem 0px;
+  margin: .2rem 0px .2rem 0px;
 }
 
 .full-span {
