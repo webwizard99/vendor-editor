@@ -8,6 +8,7 @@ import WeaponForm from '../WeaponForm/WeaponForm';
 import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
 import ArmorForm from '../ArmorForm/ArmorForm';
 import ArmorDisplay from '../ArmorDisplay/ArmorDisplay';
+import SupplierForm from '../SupplierForm/SupplierForm';
 import SupplierDisplay from '../SupplierDisplay/SupplierDisplay';
 
 // redux imports
@@ -50,7 +51,7 @@ class DetailView extends React.Component {
 
   getSupplierDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return ''
+      return <SupplierForm />
     } else {
       return <SupplierDisplay />
     }
