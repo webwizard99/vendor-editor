@@ -30,13 +30,13 @@ class SupplierForm extends DisplayForm {
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
-    const offerings = thisSupplier.offerings;
+    // const offerings = thisSupplier.offerings;
     
     return (
       <div className="SupplierForm">
         <div className="form-heading-bar">
           <h2 className="form-heading">{newName}</h2>
-          <div className="close-weapon-btn" onClick={this.handleCloseButton}>
+          <div className="close-supplier-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
         </div>
@@ -50,7 +50,7 @@ class SupplierForm extends DisplayForm {
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
                 maxLength="26" defaultValue={newName}></input>
             </div>
-            <div className="input-group">
+            {/* <div className="input-group">
               {offerings.map(offering => {
                 return (
                   <div>
@@ -58,7 +58,7 @@ class SupplierForm extends DisplayForm {
                   </div>
                 )
               })}
-            </div>
+            </div> */}
         </form>
       </div>
     )
