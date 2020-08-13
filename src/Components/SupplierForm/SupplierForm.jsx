@@ -46,6 +46,8 @@ class SupplierForm extends DisplayForm {
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
     const offerings = thisSupplier.offerings;
+    console.dir(`supplier: ${thisSupplier}`);
+    console.log(offerings);
     
     return (
       <div className="SupplierForm">
@@ -69,27 +71,7 @@ class SupplierForm extends DisplayForm {
               <span className="item-label full-span">Offerings</span>
               <span className="item-label half-span">Type</span>
               <span className="item-label half-span">Markup</span>
-              {offerings.map(offering => {
-                return (
-                  <div className="inner-span">
-                    <div className="input-group half-span left-half">
-                      {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
-                        Type
-                      </label> */}
-                      <select className="offering-select" name={`offering-${offering.id}-type`} id={`offering-${offering.id}-type`} defaultValue={offering.type}>
-                        {this.getOfferingOptions()}
-                      </select>
-                    </div>
-                    <div className="input-group half-span right-half">
-                      {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
-                        Markup
-                      </label> */}
-                      <input className="input-number" type="number" name={`markup-${offering.id}-type`} id={`markup-${offering.id}-type`} defaultValue={offering.markup}>
-                      </input>
-                    </div>
-                  </div>
-                )
-              })}
+              
             </div>
         </form>
       </div>
