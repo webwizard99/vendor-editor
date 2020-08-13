@@ -50,10 +50,10 @@ class SupplierDisplay extends DisplayStatic {
             { offerings.map(offering => {
               return (
                 <div className="inner-span">
-                  <span className="display-label half-span left-half">
+                  <span className="display-text half-span left-half">
                     {offering.type}
                   </span>
-                  <span className="display-label half-span right-half">
+                  <span className="display-text half-span right-half">
                     {offering.markup}
                   </span>
                 </div>
