@@ -2,7 +2,7 @@ import React from 'react';
 import './SupplierForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
-// import CloseFormButton from '../CloseFormButton/CloseFormButton';
+import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
@@ -35,7 +35,7 @@ class SupplierForm extends DisplayForm {
     return (
       <div className="SupplierForm">
         <div className="form-heading-bar">
-          <h2 className="form-heading">{newHeading}</h2>
+          <h2 className="form-heading">{newName}</h2>
           <div className="close-weapon-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
