@@ -51,7 +51,13 @@ class SupplierForm extends DisplayForm {
                 maxLength="26" defaultValue={newName}></input>
             </div>
             <div className="input-group">
-              {offerings}
+              {offerings.map(offering => {
+                return (
+                  <div>
+                    {offering}
+                  </div>
+                )
+              })}
             </div>
         </form>
       </div>
