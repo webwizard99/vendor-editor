@@ -21,14 +21,39 @@ class SupplierForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false});
+      this.props.setDisplayForm({ form: 'supplier', targetId: this.props.displayId, edit: false});
     }
   }
 
   getForm() {
+    if (!this.props.suppliers) return '';
+    const allSuppliers = this.props.suppliers;
+    const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+    const newName = thisSupplier.name;
+    const offerings = thisSupplier.offerings;
+    
     return (
       <div className="SupplierForm">
-        SuplierForm
+        <div className="form-heading-bar">
+          <h2 className="form-heading">{newHeading}</h2>
+          <div className="close-weapon-btn" onClick={this.handleCloseButton}>
+            <CloseFormButton />
+          </div>
+        </div>
+
+        <form action={'/suppliers'}
+          className="input-fields-area"
+          id="SupplierPostForm"
+          method="POST">
+            <div className="input-group">
+              <label className="item-label" htmlFor="name">Name</label>
+              <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
+                maxLength="26" defaultValue={newName}></input>
+            </div>
+            <div className="input-group">
+              {offerings}
+            </div>
+        </form>
       </div>
     )
   }
