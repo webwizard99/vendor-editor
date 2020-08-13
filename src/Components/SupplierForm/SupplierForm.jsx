@@ -71,7 +71,7 @@ class SupplierForm extends DisplayForm {
             </div>
             <div className="input-group-blank">
             </div>
-            <div className="offerings-form-area">
+            <div className="offerings-form-area offerings-group">
               <span className="item-label full-span">Offerings</span>
               <span className="item-label half-span">Type</span>
               <span className="item-label half-span">Markup</span>
