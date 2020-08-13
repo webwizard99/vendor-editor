@@ -1,6 +1,6 @@
 .offerings-form-area, .offerings-group {
   display: flex;
-  width: 20rem;
+  width: 30rem;
   flex-wrap: wrap;
   margin-left: 1rem;
   background: rgb(180, 200, 180);
@@ -11,9 +11,17 @@
   color: black;
 }
 
+.half-span input {
+  width: 80%;
+}
+
 .full-span, .half-span, .inner-span {
   box-sizing: border-box;
   margin: .2rem 0px .2rem 0px;
+}
+
+.pad {
+  margin-left: 1rem;
 }
 
 .full-span {
@@ -27,7 +35,7 @@
 }
 
 .half-span {
-  width: 9rem;
+  width: 14rem;
 }
 
 .left-half {
