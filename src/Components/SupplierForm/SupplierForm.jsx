@@ -73,8 +73,8 @@ class SupplierForm extends DisplayForm {
             </div>
             <div className="offerings-form-area offerings-group">
               <span className="item-label full-span">Offerings</span>
-              <span className="item-label half-span">Type</span>
-              <span className="item-label half-span">Markup</span>
+              <span className="item-label pad half-span">Type</span>
+              <span className="item-label pad half-span">Markup</span>
               {offerings.map(offering => {
                 return (
                   <div className="inner-span">
