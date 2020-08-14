@@ -29,7 +29,6 @@ class PotionDisplay extends DisplayStatic {
 
   handleYes() {
     deleteRequests.makeRequest('potion', this.props.displayId);
-    window.fetcher.fetchPotions();
     this.props.setDialog({ active: false, text: ''});
   }
   
