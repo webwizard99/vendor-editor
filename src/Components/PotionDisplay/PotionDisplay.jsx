@@ -35,7 +35,7 @@ class PotionDisplay extends DisplayStatic {
   }
 
   *deletePotion() {
-    const res = yield deleteRequests.makeRequest('potion', this.props.displayId);
+    yield deleteRequests.makeRequest('potion', this.props.displayId);
   }
 
   handleYes() {
