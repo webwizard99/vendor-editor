@@ -36,8 +36,8 @@ class PotionDisplay extends DisplayStatic {
 
   *deletePotion() {
     console.log('deletePotion reached');
-    yield deleteRequests.makeRequest('potion', this.props.displayId);
-    console.log('delete request finished');
+    const res = yield deleteRequests.makeRequest('potion', this.props.displayId);
+    console.log('delete request finished', res);
     yield this.props.fetchPotions();
     this.props.setDialog({ active: false, text: ''});
   }
@@ -45,7 +45,16 @@ class PotionDisplay extends DisplayStatic {
   handleYes() {
     console.log('handleYes in Potion Display reached');
     let deletePotion = this.deletePotion();
-    deletePotion.next();
+    deletePotion.next().value.then(res => {
+      if (res) {
+        deletePotion.next().value.then(res => {
+          if (res) {
+            deletePotion.next();
+          }
+        })
+      }
+      
+    });
   }
   
   getDisplay() {
