@@ -1,4 +1,4 @@
-import React, { ComponentType} from 'react';
+import React from 'react';
 import './PotionDisplay.css';
 
 import DisplayStatic from '../DisplayStatic/DisplayStatic';
