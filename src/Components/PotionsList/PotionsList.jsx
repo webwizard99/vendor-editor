@@ -15,7 +15,7 @@ class PotionsList extends ExpandableList {
 
     this.displayContents = this.displayContents.bind(this);
     this.getNewButton = this.getNewButton.bind(this);
-    this.componentDidMount = this.componentDidMountmbind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
