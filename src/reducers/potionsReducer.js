@@ -12,6 +12,7 @@ export default function(state = initialState, action) {
       if (Array.isArray(action.payload)) {
         arrlen = action.payload.length;
       }
+      console.log(arrlen);
       return {
         ...state,
         potions: action.payload,
