@@ -6,7 +6,7 @@ import NewButton from '../NewButton/NewButton';
 
 // redux imports
 import { connect  } from 'react-redux';
-import { fetchPotions } from '../../actions'
+import * as actions from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 class PotionsList extends ExpandableList {
@@ -18,7 +18,9 @@ class PotionsList extends ExpandableList {
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    console.log(this.props.fetchPotions);
+    console.log(this.props.setDisplayForm);
     this.props.fetchPotions();
   }
 
@@ -70,7 +72,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchPotions: fetchPotions
+    fetchPotions: actions.fetchPotions
   }
 }
 
