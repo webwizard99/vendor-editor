@@ -11,9 +11,6 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 function withAction(wrappedComponent, actions) {
   return class extends React.Component {
-    constructor(props) {
-      super(props);
-    }
 
     render() {
       return connect(null, actions)(<wrappedComponent />)
