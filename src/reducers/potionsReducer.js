@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_POTIONS:
       let arrlen = 0;
-      if (typeof action.payload === 'array') {
+      if (Array.isArray(action.payload)) {
         arrlen = action.payload.length;
       }
       return {
