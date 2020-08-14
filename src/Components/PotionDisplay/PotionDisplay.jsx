@@ -27,9 +27,13 @@ class PotionDisplay extends DisplayStatic {
     )
   }
 
-  handleYes() {
+  async handleYes() {
     console.log('Delete handler in potion display component reached!');
-    deleteRequests.makeRequest('potion', this.props.displayId);
+    const delRes = await deleteRequests.makeRequest('potion', this.props.displayId);
+    Promise.allSettled(delRes).then(async results => {
+      console.log(results);
+      window.fetcher.fetchPotions();
+    });
     this.props.setDialog({ active: false, text: ''});
   }
   
