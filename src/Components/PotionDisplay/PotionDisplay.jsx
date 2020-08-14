@@ -39,10 +39,10 @@ class PotionDisplay extends DisplayStatic {
     yield deleteRequests.makeRequest('potion', this.props.displayId);
     console.log('delete request finished');
     yield this.props.fetchPotions();
+    this.props.setDialog({ active: false, text: ''});
   }
 
   handleYes() {
-    this.props.setDialog({ active: false, text: ''});
     this.deletePotion();
   }
   
