@@ -9,6 +9,18 @@ import { connect  } from 'react-redux';
 import * as actions from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
+function withAction(wrappedComponent, actions) {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return connect(null, actions)(<wrappedComponent />)
+    }
+  }
+}
+
 class PotionsList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -19,8 +31,8 @@ class PotionsList extends ExpandableList {
   }
 
   componentDidMount() {
-    console.log(this.props.fetchPotions());
-    console.log(this.props.setDisplayForm);
+    // console.log(this.props.fetchPotions());
+    // console.log(this.props.setDisplayForm);
     this.props.fetchPotions();
   }
 
@@ -71,9 +83,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchPotions: actions.fetchPotions()
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PotionsList);
+export default connect(mapStateToProps, mapDispatchToProps)(withAction(PotionsList, actions));
