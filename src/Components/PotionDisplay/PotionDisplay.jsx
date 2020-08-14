@@ -45,16 +45,17 @@ class PotionDisplay extends DisplayStatic {
   handleYes() {
     console.log('handleYes in Potion Display reached');
     let deletePotion = this.deletePotion();
-    deletePotion.next().then(res => {
-      if (res) {
-        deletePotion.next().then(res => {
-          if (res) {
-            deletePotion.next();
-          }
-        })
-      }
+    console.log(deletePotion.next());
+    // deletePotion.next().then(res => {
+    //   if (res) {
+    //     deletePotion.next().then(res => {
+    //       if (res) {
+    //         deletePotion.next();
+    //       }
+    //     })
+    //   }
       
-    });
+    // });
   }
   
   getDisplay() {
