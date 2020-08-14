@@ -72,7 +72,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchPotions: actions.fetchPotions
+    fetchPotions: actions.fetchPotions()
   }
 }
 
