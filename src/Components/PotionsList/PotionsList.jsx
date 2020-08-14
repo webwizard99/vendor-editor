@@ -18,7 +18,7 @@ class PotionsList extends ExpandableList {
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     console.log(this.props.fetchPotions);
     console.log(this.props.setDisplayForm);
     this.props.fetchPotions();
