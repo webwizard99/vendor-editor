@@ -18,7 +18,7 @@ class ObjectListColumn extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPotions();
+    // this.props.fetchPotions();
     this.props.fetchWeapons();
     this.props.fetchArmor();
     this.props.fetchSuppliers();

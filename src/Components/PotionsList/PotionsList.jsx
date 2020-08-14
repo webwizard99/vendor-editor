@@ -16,6 +16,10 @@ class PotionsList extends ExpandableList {
     this.getNewButton = this.getNewButton.bind(this);
   }
 
+  componentDidMount() {
+    window.potionFetcher.fetchPotions();
+  }
+
   getTitle() {
     return 'Potions'
   }

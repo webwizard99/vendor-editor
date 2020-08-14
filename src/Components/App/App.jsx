@@ -6,6 +6,7 @@ import MenuBar from '../MenuBar/MenuBar';
 import ObjectListColumn from '../ObjectListColumn/ObjectListColumn';
 import DetailView from '../DetailView/DetailView';
 import DialogBox from '../DialogBox/DialogBox';
+import Fetchers from '../Fetchers/Fetchers';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -39,6 +40,7 @@ class App extends React.Component {
           <DetailView />
         </div>
         {this.getDialog()}
+        <Fetchers />
       </div>
     )
   }
