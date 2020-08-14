@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import * as actons from '../../actions';
+import * as actions from '../../actions';
 
 class PotionFetcher extends React.Component {
   constructor(props) {
