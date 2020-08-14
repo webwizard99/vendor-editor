@@ -19,7 +19,7 @@ class PotionsList extends ExpandableList {
   }
 
   componentDidMount() {
-    console.log(this.props.fetchPotions);
+    console.log(this.props.fetchPotions());
     console.log(this.props.setDisplayForm);
     this.props.fetchPotions();
   }
