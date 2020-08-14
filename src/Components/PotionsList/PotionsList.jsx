@@ -17,7 +17,7 @@ class PotionsList extends ExpandableList {
   }
 
   componentDidMount() {
-    window.potionFetcher.fetchPotions();
+    window.fetcher.fetchPotions();
   }
 
   getTitle() {

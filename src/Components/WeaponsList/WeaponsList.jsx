@@ -17,7 +17,7 @@ class WeaponsList extends ExpandableList {
   }
 
   componentDidMount() {
-    window.weaponsFetcher.fetchWeapons();
+    window.fetcher.fetchWeapons();
   }
 
   getTitle() {

@@ -16,6 +16,10 @@ class SupplierList extends ExpandableList {
     this.getNewButton = this.getNewButton.bind(this);
   }
 
+  componentDidMount() {
+    window.fetcher.fetchSuppliers();
+  }
+
   getTitle() {
     return 'Suppliers';
   }

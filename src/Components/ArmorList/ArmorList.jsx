@@ -16,6 +16,10 @@ class ArmorList extends ExpandableList {
     this.getNewButton = this.getNewButton.bind(this);
   }
 
+  componentDidMount() {
+    window.fetcher.fetchArmor();
+  }
+
   getTitle() {
     return 'Armor';
   }
