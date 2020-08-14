@@ -16,6 +16,10 @@ class WeaponsList extends ExpandableList {
     this.getNewButton = this.getNewButton.bind(this);
   }
 
+  componentDidMount() {
+    window.weaponsFetcher.fetchWeapons();
+  }
+
   getTitle() {
     return 'Weapons';
   }
