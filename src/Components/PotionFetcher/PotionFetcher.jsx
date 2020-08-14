@@ -5,6 +5,8 @@ import * as actions from '../../actions';
 
 class PotionFetcher extends React.Component {
   constructor(props) {
+    super(props);
+    
     this.fetchPotions = this.fetchPotions.bind(this);
   }
 
