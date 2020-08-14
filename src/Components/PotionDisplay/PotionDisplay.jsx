@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType} from 'react';
 import './PotionDisplay.css';
 
 import DisplayStatic from '../DisplayStatic/DisplayStatic';
@@ -7,12 +7,19 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import deleteRequests from '../../utilities/deleteRequests';
 
 class PotionDisplay extends DisplayStatic {
+  constructor(props) {
+    super(props);
+    
+    this.deletePotion = this.deletePotion.bind(this);
+  }
+  
   getDeleteButton() {
     const thisRef = this;
     window.dialogRef = thisRef;
@@ -27,9 +34,14 @@ class PotionDisplay extends DisplayStatic {
     )
   }
 
-  handleYes() {
-    deleteRequests.makeRequest('potion', this.props.displayId);
+  *deletePotion() {
+    yield deleteRequests.makeRequest('potion', this.props.displayId);
+    yield this.props.fetchPotions();
     this.props.setDialog({ active: false, text: ''});
+  }
+
+  handleYes() {
+    this.deletePotion();
   }
   
   getDisplay() {
@@ -92,7 +104,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
+    fetchPotions: actions.fetchPotions
   }
 }
 
