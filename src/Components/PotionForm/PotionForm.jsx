@@ -8,6 +8,7 @@ import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import { fetchPotions } from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
@@ -37,10 +38,18 @@ class PotionForm extends DisplayForm {
     }
   }
 
+  *addPotion(data) {
+    yield itemPostRequest.makeRequest('potions', data);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
-    itemPostRequest.makeRequest('potions', data);
+    let addPotion = this.addPotion();
+    addPotion.next().value.then(() => {
+      this.props.fetchPotions();
+    });
+    
   }
 
   getForm() {
@@ -132,7 +141,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    fetchPotions: () => dispatch(fetchPotions())
   }
 }
 
