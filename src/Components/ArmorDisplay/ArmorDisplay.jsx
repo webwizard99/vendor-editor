@@ -13,6 +13,12 @@ import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class ArmorDisplay extends DisplayStatic {
+  constructor(props) {
+    super(props);
+
+    this.deleteArmor = this.deleteArmor.bind(this);
+  }
+  
   getDeleteButton() {
     const thisRef = this;
     window.dialogRef = thisRef;
@@ -27,9 +33,18 @@ class ArmorDisplay extends DisplayStatic {
     )
   }
 
+  *deleteArmor() {
+    yield deleteRequests.makeRequest('armor', this.props.displayId);
+  }
+
   handleYes() {
-    deleteRequests.makeRequest('armor', this.props.displayId);
-    this.props.setDialog({ active: false, text: '' });
+    const deleteArmor = this.deleteArmor;
+    deleteArmor.next().value.then(() => {
+      window.fetcher.fetchArmor();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    })
+    
   }
 
   getDisplay() {

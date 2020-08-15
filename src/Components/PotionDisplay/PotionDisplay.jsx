@@ -7,7 +7,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 // redux imports
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import { fetchPotions } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
@@ -41,7 +41,7 @@ class PotionDisplay extends DisplayStatic {
   handleYes() {
     let deletePotion = this.deletePotion();
     deletePotion.next().value.then(() => {
-      window.fetcher.fetchPotions();
+      this.props.fetchPotions();
       this.props.setDialog({ active: false, text: ''});
       this.props.setDisplayForm({ form: false, edit: false, targetId: null });
     });
@@ -108,7 +108,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
     setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
-    fetchPotions: actions.fetchPotions
+    fetchPotions: () => dispatch(fetchPotions())
   }
 }
 

@@ -13,6 +13,12 @@ import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class WeaponDisplay extends DisplayStatic {
+  constructor(props) {
+    super(props);
+
+    this.deleteWeapon = this.deleteWeapon.bind(this);
+  }
+  
   getDeleteButton() {
     const thisRef = this;
     window.dialogRef = thisRef;
@@ -27,9 +33,17 @@ class WeaponDisplay extends DisplayStatic {
     )
   }
 
+  *deleteWeapon() {
+    yield deleteRequests.makeRequest('weapon', this.props.displayId);
+  }
+
   handleYes() {
-    deleteRequests.makeRequest('weapon', this.props.displayId);
-    this.props.setDialog({ active: false, text: '' });
+    let deleteWeapon = this.deleteWeapon;
+    deleteWeapon.next().value.then(() => {
+      window.fetcher.fetchWeapons();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    });
   }
 
   getDisplay() {
