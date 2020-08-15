@@ -1,5 +1,3 @@
-const { delay } = require("../../../../redux-saga-beginner-tutorial/sagas");
-
 const itemPostRequests = (function() {
   return {
     makeRequest: async function(postRoute, postBody) {
