@@ -10,6 +10,9 @@ import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
+// js imports
+import itemPostRequest from '../../utilities/itemPostRequests';
+
 class PotionForm extends DisplayForm {
   getPotionOptions() {
     return potionTypes.map(potionType => {
@@ -36,26 +39,8 @@ class PotionForm extends DisplayForm {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
     const data = new FormData(e.target);
-    // console.log(data);
-    // let subBody = {};
-    // for ( let [ key, value ] of data) {
-    //   subBody[key] = value
-    // }
-
-    // console.log(subBody);
-    // subBody = JSON.stringify(subBody)
-    
-    // console.log(data.entries());
-
-    fetch('/potions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: data
-    });  
+    itemPostRequest.makeRequest('potions', data);
   }
 
   getForm() {
@@ -96,7 +81,6 @@ class PotionForm extends DisplayForm {
           className="input-fields-area"
           id="PotionPostForm"
           method="POST"
-          encType="application/x-www-form-urlencoded"
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
