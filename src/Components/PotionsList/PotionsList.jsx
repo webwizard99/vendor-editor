@@ -9,11 +9,11 @@ import { connect  } from 'react-redux';
 import * as actions from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
-function withAction(wrappedComponent, actions) {
+function withAction(wrappedComponent, reqDispatch) {
   return class extends React.Component {
 
     render() {
-      return connect(null, actions)(<wrappedComponent />)
+      return connect(null, reqDispatch)(wrappedComponent())
     }
   }
 }
