@@ -39,14 +39,17 @@ class PotionForm extends DisplayForm {
     console.log(e.target);
     const data = new FormData(e.target);
     console.log(data);
-    let fields = Array.from(data.entries());
-    console.log(fields);
-    // console.log(data.entries());
+    let subBody = {};
+    for ( let [ key, value ] of data) {
+      subBody[key] = value
+    }
+    
+    console.log(data.entries());
 
-    // fetch('/potions', {
-    //   method: 'POST',
-    //   body: data
-    // });  
+    fetch('/potions', {
+      method: 'POST',
+      body: subBody.json()
+    });  
   }
 
   getForm() {
