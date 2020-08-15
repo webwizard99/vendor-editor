@@ -45,7 +45,7 @@ class PotionForm extends DisplayForm {
   handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
-    let addPotion = this.addPotion();
+    let addPotion = this.addPotion(data);
     addPotion.next().value.then(() => {
       this.props.fetchPotions();
     });
