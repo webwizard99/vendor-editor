@@ -35,7 +35,7 @@ class PotionForm extends DisplayForm {
   }
 
   handleSubmit(e) {
-    console.log(e);
+    console.log(e.target);
     e.preventDefault();
   }
 
