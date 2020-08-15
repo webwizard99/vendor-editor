@@ -34,6 +34,14 @@ class PotionForm extends DisplayForm {
     }
   }
 
+  handleSubmit(e) {
+    // console.dir(e.target.name.value);
+    const data = new FormData(e.target);
+    console.log(data);
+
+    e.preventDefault();
+  }
+
   getForm() {
     let newHeading = 'New Potion';
     let newName = '';
@@ -71,7 +79,8 @@ class PotionForm extends DisplayForm {
         <form action={'/potions'}
           className="input-fields-area"
           id="PotionPostForm"
-          method="POST">
+          method="POST"
+          onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="potion name"
