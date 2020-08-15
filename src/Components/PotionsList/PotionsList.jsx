@@ -58,7 +58,6 @@ class PotionsList extends ExpandableList {
 const mapStateToProps = state => {
   return {
     potions: state.potions.potions,
-    potionCount: state.potions.count,
     form: state.detail.type,
     targetId: state.detail.targetId
   }

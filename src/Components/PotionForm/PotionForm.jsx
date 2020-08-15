@@ -34,14 +34,18 @@ class PotionForm extends DisplayForm {
     }
   }
 
+  handleSubmit(e) {
+    console.log(e);
+  }
+
   getForm() {
     let newHeading = 'New Potion';
     let newName = '';
     let newValue = '';
     let newDetails = '';
+    let newRarity = 1000;
     let newPotionType = '';
     let newLevel = '';
-    let newRarity = 1000;
     let newId = null;
     let newItemId = null;
 
