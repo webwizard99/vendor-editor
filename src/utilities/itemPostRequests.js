@@ -15,6 +15,8 @@ const itemPostRequests = (function() {
         },
         body: subBody
       });
+
+      return postRes;
     }
   }
 }());
