@@ -41,7 +41,7 @@ class PotionDisplay extends DisplayStatic {
   handleYes() {
     let deletePotion = this.deletePotion();
     deletePotion.next().value.then(() => {
-      this.props.fetchPotions();
+      window.fetcher.fetchPotions();
       this.props.setDialog({ active: false, text: ''});
       this.props.setDisplayForm({ form: false, edit: false, targetId: null });
     });

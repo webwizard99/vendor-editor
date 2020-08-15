@@ -6,31 +6,17 @@ import NewButton from '../NewButton/NewButton';
 
 // redux imports
 import { connect  } from 'react-redux';
-import * as actions from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
-
-function withAction(wrappedComponent, reqDispatch) {
-  return class extends React.Component {
-
-    render() {
-      return connect(null, reqDispatch)(wrappedComponent())
-    }
-  }
-}
 
 class PotionsList extends ExpandableList {
   constructor(props) {
     super(props);
-
     this.displayContents = this.displayContents.bind(this);
     this.getNewButton = this.getNewButton.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
-    // console.log(this.props.fetchPotions());
-    // console.log(this.props.setDisplayForm);
-    this.props.fetchPotions();
+    window.fetcher.fetchPotions();
   }
 
   getTitle() {
@@ -84,4 +70,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withAction(PotionsList, actions));
+export default connect(mapStateToProps, mapDispatchToProps)(PotionsList);
