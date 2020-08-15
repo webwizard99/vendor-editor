@@ -35,11 +35,15 @@ class PotionForm extends DisplayForm {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     // console.dir(e.target.name.value);
     const data = new FormData(e.target);
     console.log(data);
 
-    e.preventDefault();
+    fetch('/potions', {
+      method: 'POST',
+      body: data
+    });  
   }
 
   getForm() {
