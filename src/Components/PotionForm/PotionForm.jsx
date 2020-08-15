@@ -38,23 +38,23 @@ class PotionForm extends DisplayForm {
     e.preventDefault();
     console.log(e.target);
     const data = new FormData(e.target);
-    console.log(data);
-    let subBody = {};
-    for ( let [ key, value ] of data) {
-      subBody[key] = value
-    }
+    // console.log(data);
+    // let subBody = {};
+    // for ( let [ key, value ] of data) {
+    //   subBody[key] = value
+    // }
 
-    console.log(subBody);
-    subBody = JSON.stringify(subBody)
+    // console.log(subBody);
+    // subBody = JSON.stringify(subBody)
     
-    console.log(data.entries());
+    // console.log(data.entries());
 
     fetch('/potions', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: subBody
+      body: data
     });  
   }
 

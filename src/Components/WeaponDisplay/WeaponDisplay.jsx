@@ -39,7 +39,7 @@ class WeaponDisplay extends DisplayStatic {
   }
 
   handleYes() {
-    let deleteWeapon = this.deleteWeapon;
+    let deleteWeapon = this.deleteWeapon();
     deleteWeapon.next().value.then(() => {
       this.props.fetchWeapons();
       this.props.setDialog({ active: false, text: '' });

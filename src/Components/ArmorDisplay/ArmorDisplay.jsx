@@ -39,7 +39,7 @@ class ArmorDisplay extends DisplayStatic {
   }
 
   handleYes() {
-    const deleteArmor = this.deleteArmor;
+    const deleteArmor = this.deleteArmor();
     deleteArmor.next().value.then(() => {
       this.props.fetchArmor();
       this.props.setDialog({ active: false, text: '' });
