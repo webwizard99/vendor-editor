@@ -7,6 +7,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 //redux imports
 import { connect } from 'react-redux';
+import { fetchWeapons } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
@@ -40,7 +41,7 @@ class WeaponDisplay extends DisplayStatic {
   handleYes() {
     let deleteWeapon = this.deleteWeapon;
     deleteWeapon.next().value.then(() => {
-      window.fetcher.fetchWeapons();
+      this.props.fetchWeapons();
       this.props.setDialog({ active: false, text: '' });
       this.props.setDisplayForm({ form: false, edit: false, targetId: null });
     });
@@ -107,7 +108,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
+    fetchWeapons: () => dispatch(fetchWeapons())
   }
 }
 

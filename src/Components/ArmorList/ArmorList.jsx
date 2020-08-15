@@ -6,6 +6,7 @@ import NewButton from '../NewButton/NewButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import { fetchArmor } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 class ArmorList extends ExpandableList {
@@ -14,10 +15,11 @@ class ArmorList extends ExpandableList {
 
     this.displayContents = this.displayContents.bind(this);
     this.getNewButton = this.getNewButton.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
-    window.fetcher.fetchArmor();
+    this.props.fetchArmor();
   }
 
   getTitle() {
@@ -68,7 +70,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    fetchArmor: () => dispatch(fetchArmor())
   }
 }
 
