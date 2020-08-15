@@ -96,6 +96,7 @@ class PotionForm extends DisplayForm {
           className="input-fields-area"
           id="PotionPostForm"
           method="POST"
+          encType="application/x-www-form-urlencoded"
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
