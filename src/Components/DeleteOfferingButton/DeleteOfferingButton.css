@@ -1,0 +1,11 @@
+.DeleteOfferingButton {
+  height: 1rem;
+  width: 1rem;
+  margin-left: .5rem;
+  line-height: 1rem;
+}
+
+.offeringButtonIcon {
+  color: rgb(240, 20, 20);
+  text-shadow: 1px 1px 1px rgb(30, 35, 30);
+}

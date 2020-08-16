@@ -3,6 +3,7 @@ import './SupplierForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
+import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
@@ -21,6 +22,8 @@ class SupplierForm extends DisplayForm {
     this.getOfferingOptions = this.getOfferingOptions.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.addFormOffering = this.addFormOffering.bind(this);
+    this.deleteOffering = this.deleteOffering.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +47,9 @@ class SupplierForm extends DisplayForm {
       presentIds.push(offering.id);
     }
     initialState.presentIds = presentIds;
+    initialState.existingIdCount = offerings.length;
+    initialState.deletedIds = [];
+    initialState.newOfferingsCount = 0;
     this.setState(initialState);
   }
 
@@ -61,6 +67,14 @@ class SupplierForm extends DisplayForm {
     return itemArr.map(itemType => {
       return <option value={itemType}>{itemType}</option>
     })
+  }
+
+  addFormOffering() {
+
+  }
+
+  deleteOffering(offeringId) {
+    console.log(`delete ${offeringId}`);
   }
 
   handleChange(e) {
@@ -127,11 +141,17 @@ class SupplierForm extends DisplayForm {
                         onChange={this.handleChange} 
                         value={this.state[`markup-${offering.id}-type`]}>
                       </input>
+                      <div className="offeringDelete"
+                        onClick={() => this.deleteOffering(offering.id)}
+                      >
+                        <DeleteOfferingButton />
+                      </div>
                     </div>
                   </div>
                 )
               })}
             </div>
+          <input type="hidden" name="existingIds" value={this.state.presentIds} />
         </form>
       </div>
     )
