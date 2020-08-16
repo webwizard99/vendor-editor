@@ -129,7 +129,7 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
                 let deletedMap = this.state.deletedIds;
-                if (deletedMap.find(offering.id)) {
+                if (deletedMap.length > 0 && deletedMap.find(offering.id)) {
                   return ''
                 }
                 return (
