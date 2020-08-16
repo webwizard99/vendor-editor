@@ -77,7 +77,7 @@ class SupplierForm extends DisplayForm {
   deleteOffering(offeringId) {
     console.log(`delete ${offeringId}`);
     let updatedState = {};
-    if (offeringId) {
+    if (offeringId !== null) {
       let newDeleted = this.state.deletedIds;
       let newPresent = this.state.presentIds;
       newDeleted.push(offeringId);
@@ -131,7 +131,7 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
                 let deletedMap = this.state.deletedIds;
-                if (deletedMap.length > 0 && deletedMap.find(offering.id)) {
+                if (deletedMap.length > 0 && deletedMap.find(deletedId => deletedId === offering.id)) {
                   return ''
                 }
                 return (
