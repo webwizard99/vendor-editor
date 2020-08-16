@@ -4,6 +4,7 @@ import './SupplierForm.css';
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
+import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
 
 import { connect } from 'react-redux';
 import { SET_DETAIL_FORM } from '../../actions/types';
@@ -41,10 +42,12 @@ class SupplierForm extends DisplayForm {
 
     initialState['name'] = newName;
     let presentIds = [];
-    for (const offering of offerings) {
-      initialState[`offering-${offering.id}-type`] = offering.type;
-      initialState[`offering-${offering.id}-markup`] = offering.markup;
-      presentIds.push(offering.id);
+    if (offerings.length > 0) {
+      for (const offering of offerings) {
+        initialState[`offering-${offering.id}-type`] = offering.type;
+        initialState[`offering-${offering.id}-markup`] = offering.markup;
+        presentIds.push(offering.id);
+      }
     }
     initialState.presentIds = presentIds;
     initialState.existingIdCount = offerings.length;
@@ -71,11 +74,10 @@ class SupplierForm extends DisplayForm {
   }
 
   addFormOffering() {
-
+    console.log('add form offering');
   }
 
   deleteOffering(offeringId) {
-    console.log(`delete ${offeringId}`);
     let updatedState = {};
     if (offeringId !== null) {
       let newDeleted = this.state.deletedIds;
@@ -165,7 +167,14 @@ class SupplierForm extends DisplayForm {
                 )
               })}
             </div>
+          <div className="offeringAdd"
+            onClick={this.addFormOffering}
+          >
+            <AddOfferingButton />
+          </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
+          <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
+          <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
         </form>
       </div>
     )

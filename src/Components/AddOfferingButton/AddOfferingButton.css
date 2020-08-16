@@ -1,0 +1,30 @@
+.AddOfferingButton {
+  width: 3rem;
+  height: 2rem;
+  line-height: 2rem;
+  background: rgb(110, 140, 110);
+  cursor: pointer;
+  color: white;
+  border: 2px solid rgb(250, 252, 250);
+  border-radius: .5rem;
+  transition: all 40ms 60ms ease-out;
+  margin-top: 1rem;
+}
+
+.AddOfferingButton:hover {
+  border: 2px solid rgb(100, 180, 100);
+  background: rgb(200, 220, 200);
+}
+
+.AddOfferingButton:active {
+  border: 2px solid rgb(30, 40, 30);
+  background: rgb(140, 170, 140);
+}
+
+.addOfferingButtonIcon {
+  height: 24px;
+  width: auto;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: auto;
+}
