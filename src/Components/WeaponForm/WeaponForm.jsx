@@ -4,10 +4,23 @@ import './WeaponForm.css';
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
+// redux imports
 import { connect } from 'react-redux';
+import { fetchWeapons} from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
+// js imports
+import itemPostRequest from '../../utilities/itemPostRequests';
+import itemPutRequest from '../../utilities/itemPutRequests';
+
 class WeaponForm extends DisplayForm {
+  constructor(props) {
+    super(props);
+
+    this.addWeapon = this.addWeapon.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
   getMethod() {
     if (!this.props.edit) {
       return '_post'
@@ -23,6 +36,26 @@ class WeaponForm extends DisplayForm {
     } else {
       this.props.setDisplayForm({ form: 'weapon', targetId: this.props.displayId, edit: false});
     }
+  }
+
+  *addWeapon(data) {
+    if (this.props.edit) {
+      yield itemPutRequest.makeRequest('armor', data);
+    } else {
+      yield itemPostRequest.makeRequest('armor', data);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    let addWeapon = this.addWeapon(data);
+    addWeapon.next().value.then(() => {
+      this.props.fetchWeapons();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'weapon', targetId: this.props.displayId, edit: false });
+      }
+    });
   }
 
   getForm() {
@@ -63,7 +96,8 @@ class WeaponForm extends DisplayForm {
         <form action={'/weapons'}
           className="input-fields-area"
           id="WeaponPostForm"
-          method="POST">
+          method="POST"
+          onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
@@ -112,7 +146,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    fetchWeapons: () => dispatch(fetchWeapons())
   }
 }
 
