@@ -8,7 +8,7 @@ const itemPutRequests = (function(){
 
       subBody = JSON.stringify(subBody)
 
-      const postRes = fetch(`/${putRoute}`, {
+      const putRes = fetch(`/${putRoute}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
