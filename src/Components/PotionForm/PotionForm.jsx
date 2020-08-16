@@ -18,7 +18,8 @@ class PotionForm extends DisplayForm {
   constructor(props) {
     super(props);
 
-    this.addPotion = this.addPotion.bind(this);
+    // this.addPotion = this.addPotion.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   getPotionOptions() {
@@ -44,15 +45,16 @@ class PotionForm extends DisplayForm {
     }
   }
 
-  *addPotion() {
+  *addPotion(data) {
     const potionForm = document.getElementById('PotionPostForm');
-    const data = new FormData(potionForm);
+    // const data = new FormData(potionForm);
     yield itemPostRequest.makeRequest('potions', data);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let addPotion = this.addPotion();
+    const data = new FormData(e.target)
+    let addPotion = this.addPotion(data);
     addPotion.next().value.then(() => {
       this.props.fetchPotions();
     });
