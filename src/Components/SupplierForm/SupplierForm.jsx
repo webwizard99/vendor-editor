@@ -141,11 +141,11 @@ class SupplierForm extends DisplayForm {
                         onChange={this.handleChange} 
                         value={this.state[`markup-${offering.id}-type`]}>
                       </input>
-                      <div className="offeringDelete"
+                      <span className="offeringDelete"
                         onClick={() => this.deleteOffering(offering.id)}
                       >
                         <DeleteOfferingButton />
-                      </div>
+                      </span>
                     </div>
                   </div>
                 )
