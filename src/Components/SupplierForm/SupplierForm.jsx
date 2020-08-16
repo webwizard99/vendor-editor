@@ -20,6 +20,7 @@ class SupplierForm extends DisplayForm {
     this.initializeFields = this.initializeFields.bind(this);
     this.getOfferingOptions = this.getOfferingOptions.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -62,15 +63,19 @@ class SupplierForm extends DisplayForm {
     })
   }
 
+  handleChange(e) {
+    const eleName = e.target.getAttribute('name');
+    let stateUpdate = {};
+    stateUpdate[eleName] = e.target.value
+    this.setState(stateUpdate);
+  }
+
   getForm() {
     if (!this.state.name) return '';
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
     const offerings = thisSupplier.offerings;
-    console.dir(thisSupplier);
-    console.dir(offerings);
-    console.log(`offerings type: ${typeof offerings}`);
     
     return (
       <div className="SupplierForm">
@@ -88,7 +93,7 @@ class SupplierForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
-                maxLength="26" value={this.state.name}></input>
+                maxLength="26" onChange={this.handleChange} value={this.state.name}></input>
             </div>
             <div className="input-group-blank">
             </div>
@@ -103,7 +108,11 @@ class SupplierForm extends DisplayForm {
                       {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
                         Type
                       </label> */}
-                      <select className="offering-select" name={`offering-${offering.id}-type`} id={`offering-${offering.id}-type`} value={this.state[`offering-${offering.id}-type`]}>
+                      <select className="offering-select" 
+                        name={`offering-${offering.id}-type`} 
+                        id={`offering-${offering.id}-type`} 
+                        onChange={this.handleChange} 
+                        value={this.state[`offering-${offering.id}-type`]}>
                         {this.getOfferingOptions()}
                       </select>
                     </div>
@@ -111,7 +120,12 @@ class SupplierForm extends DisplayForm {
                       {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
                         Markup
                       </label> */}
-                      <input className="input-number" type="number" name={`markup-${offering.id}-type`} id={`markup-${offering.id}-type`} value={this.state[`markup-${offering.id}-type`]}>
+                      <input className="input-number" 
+                        type="number" 
+                        name={`markup-${offering.id}-type`} 
+                        id={`markup-${offering.id}-type`} 
+                        onChange={this.handleChange} 
+                        value={this.state[`markup-${offering.id}-type`]}>
                       </input>
                     </div>
                   </div>
