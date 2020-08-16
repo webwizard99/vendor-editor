@@ -74,7 +74,7 @@ class SupplierForm extends DisplayForm {
 
   }
 
-  deleteOffering(offeringId = null) {
+  deleteOffering(offeringId) {
     console.log(`delete ${offeringId}`);
     let updatedState = {};
     if (offeringId) {
@@ -85,6 +85,8 @@ class SupplierForm extends DisplayForm {
       updatedState.deletedIds = newDeleted;
       updatedState.presentIds = newPresent;
     }
+
+    console.log(updatedState);
 
     this.setState(updatedState);
   }
