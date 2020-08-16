@@ -79,11 +79,11 @@ class SupplierForm extends DisplayForm {
     let updatedState = {};
     if (offeringId !== null) {
       let newDeleted = this.state.deletedIds;
-      let newPresent = this.state.presentIds;
+      let newCount = this.state.existingIdCount;
       newDeleted.push(offeringId);
-      newPresent -= 1;
+      newCount -= 1;
       updatedState.deletedIds = newDeleted;
-      updatedState.presentIds = newPresent;
+      updatedState.existingIdCount = newCount;
     }
 
     console.log(updatedState);
@@ -131,7 +131,9 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
                 let deletedMap = this.state.deletedIds;
-                if (deletedMap.length > 0 && deletedMap.find(deletedId => deletedId === offering.id)) {
+                let thisDeleted = deletedMap.includes(offering.id);
+                console.log(thisDeleted);
+                if (deletedMap.length > 0 && deletedMap.includes(offering.id)) {
                   return ''
                 }
                 return (
