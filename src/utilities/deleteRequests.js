@@ -8,8 +8,6 @@ const deleteRequests = (function(){
         .then(data => {
           return data
         });
-
-      console.log(deleteRes);
       return deleteRes;
     }
   }
