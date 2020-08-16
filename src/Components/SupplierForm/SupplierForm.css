@@ -39,10 +39,15 @@
   margin-left: 1rem;
 }
 
-.left-half {
+.form-left-half {
   border-right: 1px solid rgb(100, 105, 100);
 }
 
-.left-half, .right-half {
+.form-right-half {
+  display: flex;
+}
+
+.form-left-half, .form-right-half {
   margin-left: 1rem;
 }
+
