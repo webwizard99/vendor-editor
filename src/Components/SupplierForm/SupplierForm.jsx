@@ -42,8 +42,8 @@ class SupplierForm extends DisplayForm {
     initialState['name'] = newName;
     let presentIds = [];
     for (const offering of offerings) {
-      initialState[`offering-${offering.id}-type`] = offering.id;
-      initialState[`markup-${offering.id}-type`] = offering.markup;
+      initialState[`offering-${offering.id}-type`] = offering.type;
+      initialState[`offering-${offering.id}-markup`] = offering.markup;
       presentIds.push(offering.id);
     }
     initialState.presentIds = presentIds;
@@ -150,10 +150,10 @@ class SupplierForm extends DisplayForm {
                     <div className="form-half-span form-right-half">
                       <input className="input-number" 
                         type="number" 
-                        name={`markup-${offering.id}-type`} 
-                        id={`markup-${offering.id}-type`} 
+                        name={`offering-${offering.id}-markup`} 
+                        id={`offering-${offering.id}-markup`} 
                         onChange={this.handleChange} 
-                        value={this.state[`markup-${offering.id}-type`]}>
+                        value={this.state[`offering-${offering.id}-markup`]}>
                       </input>
                       <span className="offeringDelete"
                         onClick={() => this.deleteOffering(offering.id)}
