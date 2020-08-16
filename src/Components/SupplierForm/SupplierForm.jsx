@@ -166,12 +166,12 @@ class SupplierForm extends DisplayForm {
                   </div>
                 )
               })}
+              <div className="offeringAdd"
+                onClick={this.addFormOffering}
+              >
+                <AddOfferingButton />
+              </div>
             </div>
-          <div className="offeringAdd"
-            onClick={this.addFormOffering}
-          >
-            <AddOfferingButton />
-          </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
           <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
