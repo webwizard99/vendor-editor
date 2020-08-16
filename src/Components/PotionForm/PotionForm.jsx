@@ -48,9 +48,9 @@ class PotionForm extends DisplayForm {
 
   *addPotion(data) {
     if (this.props.edit) {
-      yield itemPutRequest.makeRequest('potions', data);
+      yield itemPutRequest.makeRequest('potion', data);
     } else {
-      yield itemPostRequest.makeRequest('potions', data);
+      yield itemPostRequest.makeRequest('potion', data);
     }
     
   }
