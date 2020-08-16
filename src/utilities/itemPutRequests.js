@@ -20,3 +20,5 @@ const itemPutRequests = (function(){
     }
   }
 }());
+
+export default itemPutRequests;
