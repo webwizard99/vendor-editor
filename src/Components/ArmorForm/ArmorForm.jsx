@@ -4,16 +4,21 @@ import './ArmorForm.css';
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
+// redux imports
 import { connect } from 'react-redux';
+import { fetchArmor } from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
+// js imports
+import itemPostRequest from '../../utilities/itemPostRequests';
+import itemPutRequest from '../../utilities/itemPutRequests';
+
 class ArmorForm extends DisplayForm {
-  getMethod() {
-    if (!this.props.edit) {
-      return '_post'
-    } else {
-      return '_put'
-    }
+  constructor(props) {
+    super(props);
+
+    this.addArmor = this.addArmor.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleCloseButton(e) {
@@ -23,6 +28,26 @@ class ArmorForm extends DisplayForm {
     } else {
       this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false});
     }
+  }
+
+  *addArmor(data) {
+    if (this.props.edit) {
+      yield itemPutRequest.makeRequest('armor', data);
+    } else {
+      yield itemPostRequest.makeRequest('armor', data);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    this.addArmor = this.addArmor(data);
+    this.addArmor.next().value.then(() => {
+      this.props.fetchArmor();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false });
+      }
+    })
   }
 
   getForm() {
@@ -64,6 +89,7 @@ class ArmorForm extends DisplayForm {
         <form action={'/armor'}
           className="input-fields-area"
           id="ArmorPostForm"
+          onSubmit={this.handleSubmit}
           method="POST">
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
@@ -95,7 +121,6 @@ class ArmorForm extends DisplayForm {
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="hidden" name="_METHOD" value={this.getMethod()}/>
             <input type="submit" value={this.props.edit ? 'Update Armor' : 'Create Armor' } class="button create-button"></input>
         </form>
       </div>
@@ -113,7 +138,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    fetchArmor: () => dispatch(fetchArmor())
   }
 }
 

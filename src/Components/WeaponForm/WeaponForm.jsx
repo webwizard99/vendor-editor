@@ -20,14 +20,6 @@ class WeaponForm extends DisplayForm {
     this.addWeapon = this.addWeapon.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
-  getMethod() {
-    if (!this.props.edit) {
-      return '_post'
-    } else {
-      return '_put'
-    }
-  }
 
   handleCloseButton(e) {
     e.preventDefault();
@@ -101,12 +93,12 @@ class WeaponForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
-                maxLength="26" defaultValue={newName}></input>
+                maxLength="26" required defaultValue={newName}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="value">Value</label>
               <input type="number" name="value" id="value" className="input-number" placeholder="#"
-                min="1" max="10000" defaultValue={newValue}></input>
+                min="1" max="10000" required defaultValue={newValue}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="details">Details</label>
@@ -116,19 +108,18 @@ class WeaponForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="rarity">Rarity</label>
               <input type="number" name="rarity" id="rarity" className="input-number" placeholder="#"
-                min="1" max="1000" defaultValue={newRarity}></input>
+                min="1" max="1000" required defaultValue={newRarity}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="level">Level</label>
-              <input type="number" name="level" id="level" className="input-number" placeholder="#" defaultValue={newLevel}></input>
+              <input type="number" required name="level" id="level" className="input-number" placeholder="#" defaultValue={newLevel}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="damage">Damage</label>
-              <input type="number" name="damage" id="damage" className="input-number" placeholder="#" defaultValue={newDamage}></input>
+              <input type="number" required name="damage" id="damage" className="input-number" placeholder="#" defaultValue={newDamage}></input>
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="hidden" name="_METHOD" value={this.getMethod()}/>
             <input type="submit" value={this.props.edit ? 'Update Weapon' : 'Create Weapon' } class="button create-button"></input>
         </form>
       </div>

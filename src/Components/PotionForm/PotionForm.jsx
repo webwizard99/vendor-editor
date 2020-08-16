@@ -29,14 +29,6 @@ class PotionForm extends DisplayForm {
     })
   }
 
-  getMethod() {
-    if (!this.props.edit) {
-      return '_post'
-    } else {
-      return '_put'
-    }
-  }
-
   handleCloseButton(e) {
     e.preventDefault();
     if (this.props.edit === false) {
@@ -109,12 +101,12 @@ class PotionForm extends DisplayForm {
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" className="input-text" placeholder="potion name"
+              <input type="text" required name="name" id="name" className="input-text" placeholder="potion name"
                 maxLength="26" defaultValue={newName}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="value">Value</label>
-              <input type="number" name="value" id="value" className="input-number" placeholder="#"
+              <input type="number" required name="value" id="value" className="input-number" placeholder="#"
                 min="1" max="10000" defaultValue={newValue}></input>
             </div>
             <div className="input-group">
@@ -124,22 +116,21 @@ class PotionForm extends DisplayForm {
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="rarity">Rarity</label>
-              <input type="number" name="rarity" id="rarity" className="input-number" placeholder="#"
+              <input type="number" required name="rarity" id="rarity" className="input-number" placeholder="#"
                 min="1" max="1000" defaultValue={newRarity}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="type">Type</label>
-              <select className="potion-select" name="type" id="type" defaultValue={newPotionType}>
+              <select className="potion-select" required name="type" id="type" defaultValue={newPotionType}>
                 {this.getPotionOptions()}
               </select>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="level">Level</label>
-              <input type="number" name="level" id="level" className="input-number" placeholder="#" defaultValue={newLevel}></input>
+              <input type="number" required name="level" id="level" className="input-number" placeholder="#" defaultValue={newLevel}></input>
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="hidden" name="_METHOD" value={this.getMethod()}/>
             <input type="submit" value={this.props.edit ? 'Update Potion' : 'Create Potion' } class="button create-button"></input>
         </form>
       </div>
