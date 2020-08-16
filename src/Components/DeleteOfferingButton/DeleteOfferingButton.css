@@ -10,4 +10,6 @@
   text-shadow: 1px 1px 1px rgb(30, 35, 30);
   font-size: 1.2rem;
   cursor: pointer;
+  text-align: center;
+  margin: auto;
 }

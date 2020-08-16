@@ -50,6 +50,7 @@ class SupplierForm extends DisplayForm {
     initialState.existingIdCount = offerings.length;
     initialState.deletedIds = [];
     initialState.newOfferingsCount = 0;
+    initialState.newOfferingKeys = [];
     this.setState(initialState);
   }
 
@@ -73,8 +74,19 @@ class SupplierForm extends DisplayForm {
 
   }
 
-  deleteOffering(offeringId) {
+  deleteOffering(offeringId = null) {
     console.log(`delete ${offeringId}`);
+    let updatedState = {};
+    if (offeringId) {
+      let newDeleted = this.state.deletedIds;
+      let newPresent = this.state.presentIds;
+      newDeleted.push(offeringId);
+      newPresent -= 1;
+      updatedState.deletedIds = newDeleted;
+      updatedState.presentIds = newPresent;
+    }
+
+    this.setState(updatedState);
   }
 
   handleChange(e) {
@@ -116,12 +128,13 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Type</span>
               <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
+                let deletedMap = this.state.deletedIds;
+                if (deletedMap.find(offering.id)) {
+                  return ''
+                }
                 return (
                   <div className="form-inner-span">
                     <div className="form-half-span form-left-half">
-                      {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
-                        Type
-                      </label> */}
                       <select className="offering-select" 
                         name={`offering-${offering.id}-type`} 
                         id={`offering-${offering.id}-type`} 
@@ -131,9 +144,6 @@ class SupplierForm extends DisplayForm {
                       </select>
                     </div>
                     <div className="form-half-span form-right-half">
-                      {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
-                        Markup
-                      </label> */}
                       <input className="input-number" 
                         type="number" 
                         name={`markup-${offering.id}-type`} 
