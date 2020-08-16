@@ -61,6 +61,9 @@ class PotionForm extends DisplayForm {
     let addPotion = this.addPotion(data);
     addPotion.next().value.then(() => {
       this.props.fetchPotions();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'potion', targetId: this.props.displayId, edit: false });
+      }
     });
     
   }
