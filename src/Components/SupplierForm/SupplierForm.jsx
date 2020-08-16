@@ -166,7 +166,7 @@ class SupplierForm extends DisplayForm {
                   </div>
                 )
               })}
-              <div className="offeringAdd"
+              <div className="offeringAdd form-full-span form-center-content"
                 onClick={this.addFormOffering}
               >
                 <AddOfferingButton />

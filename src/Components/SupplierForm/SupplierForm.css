@@ -29,6 +29,11 @@
   text-align: center;
 }
 
+.form-center-conent {
+  display: flex;
+  justify-content: center;
+}
+
 .form-inner-span {
   width: 100%;
   display: flex;
