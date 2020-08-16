@@ -13,12 +13,13 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemPostRequest from '../../utilities/itemPostRequests';
+import itemPutRequest from '../../utilities/itemPutRequests';
 
 class PotionForm extends DisplayForm {
   constructor(props) {
     super(props);
 
-    // this.addPotion = this.addPotion.bind(this);
+    this.addPotion = this.addPotion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -46,9 +47,12 @@ class PotionForm extends DisplayForm {
   }
 
   *addPotion(data) {
-    // const potionForm = document.getElementById('PotionPostForm');
-    // const data = new FormData(potionForm);
-    yield itemPostRequest.makeRequest('potions', data);
+    if (this.props.edit) {
+      yield itemPutRequest.makeRequest('potions', data);
+    } else {
+      yield itemPostRequest.makeRequest('potions', data);
+    }
+    
   }
 
   handleSubmit(e) {
