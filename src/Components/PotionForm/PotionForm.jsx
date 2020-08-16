@@ -15,6 +15,12 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 import itemPostRequest from '../../utilities/itemPostRequests';
 
 class PotionForm extends DisplayForm {
+  constructor(props) {
+    super(props);
+
+    this.addPotion = this.addPotion.bind(this);
+  }
+  
   getPotionOptions() {
     return potionTypes.map(potionType => {
       return <option value={potionType}>{potionType}</option>
