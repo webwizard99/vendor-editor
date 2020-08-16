@@ -6,16 +6,11 @@ class DisplayForm extends React.Component {
     super(props);
 
     this.getForm = this.getForm.bind(this);
-    this.getMethod = this.getMethod.bind(this);
     this.handleCloseButton = this.handleCloseButton.bind(this);
   }
 
   getForm() {
     return '';
-  }
-
-  getMethod() {
-    return ''
   }
 
   handleCloseButton() {

@@ -13,16 +13,37 @@ import itemTypes from '../../utilities/itemTypes';
 class SupplierForm extends DisplayForm {
   constructor(props) {
     super(props);
+    this.state = {
 
-    this.getOfferingOptions = this.getOfferingOptions.bind(this);
-  }
-  
-  getMethod() {
-    if (!this.props.edit) {
-      return '_post'
-    } else {
-      return '_put'
     }
+
+    this.initializeFields = this.initializeFields.bind(this);
+    this.getOfferingOptions = this.getOfferingOptions.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+
+  componentDidMount() {
+    this.initializeFields();
+  }
+
+  initializeFields() {
+    if (!this.props.suppliers) return;
+    const allSuppliers = this.props.suppliers;
+    const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+    const newName = thisSupplier.name;
+    const offerings = thisSupplier.offerings;
+
+    let initialState = {};
+
+    initialState['name'] = newName;
+    let presentIds = [];
+    for (offering of offerings) {
+      initialState[`offering-${offering.id}-type`] = offering.id;
+      initialState[`markup-${offering.id}-type`] = offering.markup;
+      presentIds.push(offering.id);
+    }
+    initialState.presentIds = presentIds;
+    this.setState(initialState);
   }
 
   handleCloseButton(e) {
@@ -42,7 +63,7 @@ class SupplierForm extends DisplayForm {
   }
 
   getForm() {
-    if (!this.props.suppliers) return '';
+    if (!this.state.name) return '';
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
@@ -67,7 +88,7 @@ class SupplierForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
-                maxLength="26" defaultValue={newName}></input>
+                maxLength="26" value={this.state.name}></input>
             </div>
             <div className="input-group-blank">
             </div>
@@ -82,7 +103,7 @@ class SupplierForm extends DisplayForm {
                       {/* <label className="item-label" htmlFor={`offering-${offering.id}-type`}>
                         Type
                       </label> */}
-                      <select className="offering-select" name={`offering-${offering.id}-type`} id={`offering-${offering.id}-type`} defaultValue={offering.type}>
+                      <select className="offering-select" name={`offering-${offering.id}-type`} id={`offering-${offering.id}-type`} value={this.state[`offering-${offering.id}-type`]}>
                         {this.getOfferingOptions()}
                       </select>
                     </div>
@@ -90,7 +111,7 @@ class SupplierForm extends DisplayForm {
                       {/* <label className="item-label" htmlFor={`markup-${offering.id}-type`}>
                         Markup
                       </label> */}
-                      <input className="input-number" type="number" name={`markup-${offering.id}-type`} id={`markup-${offering.id}-type`} defaultValue={offering.markup}>
+                      <input className="input-number" type="number" name={`markup-${offering.id}-type`} id={`markup-${offering.id}-type`} value={this.state[`markup-${offering.id}-type`]}>
                       </input>
                     </div>
                   </div>
