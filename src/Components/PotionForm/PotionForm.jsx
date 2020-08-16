@@ -46,7 +46,7 @@ class PotionForm extends DisplayForm {
   }
 
   *addPotion(data) {
-    const potionForm = document.getElementById('PotionPostForm');
+    // const potionForm = document.getElementById('PotionPostForm');
     // const data = new FormData(potionForm);
     yield itemPostRequest.makeRequest('potions', data);
   }
