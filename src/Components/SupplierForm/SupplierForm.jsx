@@ -37,7 +37,7 @@ class SupplierForm extends DisplayForm {
 
     initialState['name'] = newName;
     let presentIds = [];
-    for (offering of offerings) {
+    for (const offering of offerings) {
       initialState[`offering-${offering.id}-type`] = offering.id;
       initialState[`markup-${offering.id}-type`] = offering.markup;
       presentIds.push(offering.id);
