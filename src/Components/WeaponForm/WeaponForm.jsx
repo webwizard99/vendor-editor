@@ -40,9 +40,9 @@ class WeaponForm extends DisplayForm {
 
   *addWeapon(data) {
     if (this.props.edit) {
-      yield itemPutRequest.makeRequest('armor', data);
+      yield itemPutRequest.makeRequest('weapon', data);
     } else {
-      yield itemPostRequest.makeRequest('armor', data);
+      yield itemPostRequest.makeRequest('weapon', data);
     }
   }
 
