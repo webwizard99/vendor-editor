@@ -12,6 +12,7 @@
   border-radius: .5rem;
   transition: all 40ms 60ms ease-out;
   margin-top: 1rem;
+  overflow: hidden;
 }
 
 .AddOfferingButton:hover {
@@ -25,10 +26,11 @@
 }
 
 .addOfferingButtonIcon {
-  height: 12px;
+  height: auto;
   width: auto;
   font-size: 1.2rem;
   text-align: center;
   margin: auto;
-  padding-bottom: 2px;
+  position: relative;
+  bottom: 2px;
 }
