@@ -77,7 +77,7 @@ class SupplierForm extends DisplayForm {
     console.log('add form offering');
 
     // limit offerings to 5
-    const totalCount = this.state.newOfferingKeys.length + this.state.presentIds.length;
+    const totalCount = this.state.newOfferingKeys.length + this.state.existingIdCount;
     if (totalCount >= 5) return;
 
     let updatedState = {};
