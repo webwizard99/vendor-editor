@@ -14,14 +14,6 @@ class ObjectListColumn extends React.Component {
     super(props);
 
     this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this)
-  }
-
-  componentDidMount() {
-    // this.props.fetchPotions();
-    // this.props.fetchWeapons();
-    // this.props.fetchArmor();
-    // this.props.fetchSuppliers();
   }
 
   shouldComponentUpdate(nextProps, nextState) {

@@ -2,14 +2,14 @@ import React from 'react';
 import './DetailView.css';
 
 // React component imports
-import PotionForm from '../PotionForm/PotionForm';
-import PotionDisplay from '../PotionDisplay/PotionDisplay';
-import WeaponForm from '../WeaponForm/WeaponForm';
-import WeaponDisplay from '../WeaponDisplay/WeaponDisplay';
-import ArmorForm from '../ArmorForm/ArmorForm';
-import ArmorDisplay from '../ArmorDisplay/ArmorDisplay';
-import SupplierForm from '../SupplierForm/SupplierForm';
-import SupplierDisplay from '../SupplierDisplay/SupplierDisplay';
+import PotionForm from '../../Components/PotionForm/PotionForm';
+import PotionDisplay from '../../Components/PotionDisplay/PotionDisplay';
+import WeaponForm from '../../Components/WeaponForm/WeaponForm';
+import WeaponDisplay from '../../Components/WeaponDisplay/WeaponDisplay';
+import ArmorForm from '../../Components/ArmorForm/ArmorForm';
+import ArmorDisplay from '../../Components/ArmorDisplay/ArmorDisplay';
+import SupplierForm from '../../Components/SupplierForm/SupplierForm';
+import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -27,7 +27,12 @@ class DetailView extends React.Component {
 
   getPotionDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return <PotionForm />
+      if (this.props.targetId === null) {
+        return <PotionForm />
+      } else {
+        return <PotionForm />
+      }
+      
     } else {
       return <PotionDisplay />
     }
@@ -35,7 +40,12 @@ class DetailView extends React.Component {
 
   getWeaponDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return <WeaponForm />
+      if (this.props.targetId === null) {
+        return <WeaponForm />
+      } else {
+        return <WeaponForm />
+      }
+      
     } else {
       return <WeaponDisplay />
     }
@@ -43,7 +53,12 @@ class DetailView extends React.Component {
 
   getArmorDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return <ArmorForm />
+      if (this.props.targetId === null) {
+        return <ArmorForm />
+      } else {
+        return <ArmorForm />
+      }
+      
     } else {
       return <ArmorDisplay />
     }
@@ -51,7 +66,12 @@ class DetailView extends React.Component {
 
   getSupplierDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return <SupplierForm />
+      if (this.props.targetId === null) {
+        return <SupplierForm />
+      } else {
+        return <SupplierForm />
+      }
+      
     } else {
       return <SupplierDisplay />
     }
