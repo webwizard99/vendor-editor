@@ -200,7 +200,9 @@ class SupplierForm extends DisplayForm {
                       </input>
                       <span className="offeringDelete"
                         onClick={() => this.deleteOffering({ existing: false, offeringId: index })}
-                      ></span>
+                      >
+                        <DeleteOfferingButton />
+                      </span>
                     </div>
                   </div>
                 )
