@@ -42,10 +42,12 @@ class WeaponForm extends DisplayForm {
     e.preventDefault();
     const data = new FormData(e.target);
     let addWeapon = this.addWeapon(data);
-    addWeapon.next().value.then(() => {
+    addWeapon.next().value.then((res) => {
       this.props.fetchWeapons();
       if (this.props.edit) {
         this.props.setDisplayForm({ form: 'weapon', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: 'weapon', targetId: res, edit: false });
       }
     });
   }

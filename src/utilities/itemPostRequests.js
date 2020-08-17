@@ -8,14 +8,17 @@ const itemPostRequests = (function() {
 
       subBody = JSON.stringify(subBody)
 
-      const postRes = fetch(`/${postRoute}`, {
+      let postRes;
+      fetch(`/${postRoute}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
         body: subBody
-      });
+      }).then(res => res.json())
+        .then(data => postRes = data);
 
+      console.log(postRes);
       return postRes;
     }
   }

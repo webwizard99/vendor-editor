@@ -146,6 +146,8 @@ class SupplierForm extends DisplayForm {
       this.props.fetchSuppliers();
       if (this.props.edit) {
         this.props.setDisplayForm({ form: 'supplier', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }
     })
   }
@@ -224,41 +226,43 @@ class SupplierForm extends DisplayForm {
                   </div>
                 )
               })}
-              {newOfferingKeys.length <= 0 ? '' : newOfferingKeys.map(index => {
-                return (
-                  <div className="form-inner-span">
-                    <div className="form-half-span form-left-half">
-                      <select className="offering-select"
-                        name={`new-offering-${index}-type`}
-                        id={`new-offering-${index}-type`}
-                        onChange={this.handleChange}
-                        value={this.state[`new-offering-${index}-type`]}>
-                          {this.getOfferingOptions()}
-                      </select>
-                    </div>
-                    <div className="form-half-span form-right-half">
-                      <input className="input-number"
-                        type="number"
-                        name={`new-offering-${index}-markup`}
-                        id={`new-offering-${index}-markup`}
-                        onChange={this.handleChange}
-                        value={this.state[`new-offering-${index}-markup`]}>
-                      </input>
-                      <span className="offeringDelete"
-                        onClick={() => this.deleteOffering({ existing: false, offeringId: index })}
-                      >
-                        <DeleteOfferingButton />
-                      </span>
-                    </div>
+            {newOfferingKeys.length <= 0 ? '' : newOfferingKeys.map(index => {
+              return (
+                <div className="form-inner-span">
+                  <div className="form-half-span form-left-half">
+                    <select className="offering-select"
+                      name={`new-offering-${index}-type`}
+                      id={`new-offering-${index}-type`}
+                      onChange={this.handleChange}
+                      value={this.state[`new-offering-${index}-type`]}>
+                        {this.getOfferingOptions()}
+                    </select>
                   </div>
-                )
-              })}
-              <div className="offeringAdd form-full-span form-center-content"
-                onClick={this.addFormOffering}
-              >
-                <AddOfferingButton />
-              </div>
+                  <div className="form-half-span form-right-half">
+                    <input className="input-number"
+                      type="number"
+                      name={`new-offering-${index}-markup`}
+                      id={`new-offering-${index}-markup`}
+                      onChange={this.handleChange}
+                      value={this.state[`new-offering-${index}-markup`]}>
+                    </input>
+                    <span className="offeringDelete"
+                      onClick={() => this.deleteOffering({ existing: false, offeringId: index })}
+                    >
+                      <DeleteOfferingButton />
+                    </span>
+                  </div>
+                </div>
+              )
+            })}
+            <div className="offeringAdd form-full-span form-center-content"
+              onClick={this.addFormOffering}
+            >
+              <AddOfferingButton />
             </div>
+          </div>
+          <div className="input-group-blank">
+          </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
           <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
