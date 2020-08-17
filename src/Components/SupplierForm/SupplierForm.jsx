@@ -153,10 +153,14 @@ class SupplierForm extends DisplayForm {
 
   getForm() {
     if (!this.state.name) return '';
-    // const allSuppliers = this.props.suppliers;
-    // const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
-    // const newName = thisSupplier.name;
-    // const offerings = thisSupplier.offerings;
+    
+    let offerings = [];
+    if (this.props.edit) {
+      const allSuppliers = this.props.suppliers;
+      const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+      let offerings = thisSupplier.offerings;
+    }
+    
     let newHeading = 'New Supplier';
     if (this.props.edit) {
       newHeading = this.state.name;
@@ -188,7 +192,7 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-full-span">Offerings</span>
               <span className="item-label form-pad form-half-span">Type</span>
               <span className="item-label form-pad form-half-span">Markup</span>
-              {offerings.map(offering => {
+              {offerings.length <= 0 ? '' : offerings.map(offering => {
                 let deletedMap = this.state.deletedIds;
                 if (deletedMap.length > 0 && deletedMap.includes(offering.id)) {
                   return ''
