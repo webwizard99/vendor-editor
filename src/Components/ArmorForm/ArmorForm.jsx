@@ -46,6 +46,8 @@ class ArmorForm extends DisplayForm {
       this.props.fetchArmor();
       if (this.props.edit) {
         this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }
     })
   }
