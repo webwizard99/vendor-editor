@@ -28,7 +28,7 @@ class DetailView extends React.Component {
   getPotionDetail() {
     if (this.props.targetId === null || this.props.edit) {
       if (this.props.targetId === null) {
-        return <PotionForm />
+        return <PotionForm refresh={true}/>
       } else {
         return <PotionForm />
       }
@@ -41,7 +41,7 @@ class DetailView extends React.Component {
   getWeaponDetail() {
     if (this.props.targetId === null || this.props.edit) {
       if (this.props.targetId === null) {
-        return <WeaponForm />
+        return <WeaponForm refresh={true}/>
       } else {
         return <WeaponForm />
       }
@@ -54,7 +54,7 @@ class DetailView extends React.Component {
   getArmorDetail() {
     if (this.props.targetId === null || this.props.edit) {
       if (this.props.targetId === null) {
-        return <ArmorForm />
+        return <ArmorForm refresh={true}/>
       } else {
         return <ArmorForm />
       }
@@ -67,7 +67,7 @@ class DetailView extends React.Component {
   getSupplierDetail() {
     if (this.props.targetId === null || this.props.edit) {
       if (this.props.targetId === null) {
-        return <SupplierForm />
+        return <SupplierForm refresh={true}/>
       } else {
         return <SupplierForm />
       }

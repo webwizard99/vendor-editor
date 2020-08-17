@@ -71,7 +71,7 @@ class PotionForm extends DisplayForm {
     let newId = null;
     let newItemId = null;
 
-    if (this.props.edit) {
+    if (this.props.edit && !this.props.refresh) {
       const allPotions = this.props.potions;
       const thisPotion = allPotions.find(potion => potion.id === this.props.displayId);
       newName = thisPotion.item.name;
