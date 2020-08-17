@@ -3,10 +3,11 @@ import './reset.css';
 import './App.css';
 
 import MenuBar from '../MenuBar/MenuBar';
-import ObjectListColumn from '../ObjectListColumn/ObjectListColumn';
-import DetailView from '../DetailView/DetailView';
+import ObjectListColumn from '../../Containers/ObjectListColumn/ObjectListColumn';
+import DetailView from '../../Containers/DetailView/DetailView';
 import DialogBox from '../DialogBox/DialogBox';
 
+// redux imports
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
