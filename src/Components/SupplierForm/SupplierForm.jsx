@@ -7,10 +7,13 @@ import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
 
 import { connect } from 'react-redux';
+import { fetchSuppliers } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemTypes from '../../utilities/itemTypes';
+import itemPostRequest from '../../utilities/itemPostRequests';
+import itemPutRequest from '../../utilities/itemPutRequests';
 
 class SupplierForm extends DisplayForm {
   constructor(props) {
@@ -25,6 +28,8 @@ class SupplierForm extends DisplayForm {
     this.handleChange = this.handleChange.bind(this);
     this.addFormOffering = this.addFormOffering.bind(this);
     this.deleteOffering = this.deleteOffering.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateSupplier = this.updateSupplier.bind(this);
   }
 
   componentDidMount() {
@@ -32,11 +37,17 @@ class SupplierForm extends DisplayForm {
   }
 
   initializeFields() {
-    if (!this.props.suppliers) return;
-    const allSuppliers = this.props.suppliers;
-    const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
-    const newName = thisSupplier.name;
-    const offerings = thisSupplier.offerings;
+    if (this.props.edit && !this.props.suppliers) return;
+
+    let newName = '';
+    let offerings = [];
+    if (this.props.edit) {
+      const allSuppliers = this.props.suppliers;
+      const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+      newName = thisSupplier.name;
+      offerings = thisSupplier.offerings;
+    }
+   
 
     let initialState = {};
 
@@ -74,8 +85,6 @@ class SupplierForm extends DisplayForm {
   }
 
   addFormOffering() {
-    console.log('add form offering');
-
     // limit offerings to 5
     const totalCount = this.state.newOfferingKeys.length + this.state.existingIdCount;
     if (totalCount >= 5) return;
@@ -122,18 +131,42 @@ class SupplierForm extends DisplayForm {
     this.setState(stateUpdate);
   }
 
+  *updateSupplier(data) {
+    if (this.props.edit) {
+      yield itemPutRequest.makeRequest('supplier', data);
+    } else {
+      yield itemPostRequest.makeRequest('supplier', data);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    let updateSupplier = this.updateSupplier(data);
+    updateSupplier.next().value.then(() => {
+      this.props.fetchSuppliers();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'supplier', targetId: this.props.displayId, edit: false });
+      }
+    })
+  }
+
   getForm() {
     if (!this.state.name) return '';
-    const allSuppliers = this.props.suppliers;
-    const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
-    const newName = thisSupplier.name;
-    const offerings = thisSupplier.offerings;
+    // const allSuppliers = this.props.suppliers;
+    // const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+    // const newName = thisSupplier.name;
+    // const offerings = thisSupplier.offerings;
+    let newHeading = 'New Supplier';
+    if (this.props.edit) {
+      newHeading = this.state.name;
+    }
     const newOfferingKeys = this.state.newOfferingKeys;
     
     return (
       <div className="SupplierForm">
         <div className="form-heading-bar">
-          <h2 className="form-heading">{newName}</h2>
+          <h2 className="form-heading">{newHeading}</h2>
           <div className="close-supplier-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
@@ -142,7 +175,8 @@ class SupplierForm extends DisplayForm {
         <form action={'/supplier'}
           className="input-fields-area"
           id="SupplierPostForm"
-          method="POST">
+          method="POST"
+          onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
@@ -242,7 +276,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload })
+    setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    fetchSuppliers: () => dispatch(fetchSuppliers())
   }
 }
 
