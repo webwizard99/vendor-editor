@@ -105,9 +105,9 @@ class SupplierForm extends DisplayForm {
       updatedState.existingIdCount = newCount;
     } else {
       let newOfferingKeys = this.state.newOfferingKeys;
-      const offeringIndex = newOfferingKeys.indexOf(offering => offering === offeringId);
+      const offeringIndex = newOfferingKeys.indexOf(offeringId);
       console.log(offeringIndex);
-      if (offeringIndex !== 0 && !offeringIndex) return;
+      if (offeringIndex < 0 || (offeringIndex !== 0 && !offeringIndex)) return;
       newOfferingKeys.splice(offeringIndex, 1);
       updatedState.newOfferingKeys = newOfferingKeys;
     }
