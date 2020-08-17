@@ -38,7 +38,6 @@ class SupplierForm extends DisplayForm {
 
   initializeFields() {
     if (this.props.edit && !this.props.suppliers) return;
-    console.log('in initializeFields...');
     let newName = '';
     let offerings = [];
     if (this.props.edit) {
@@ -116,7 +115,6 @@ class SupplierForm extends DisplayForm {
     } else {
       let newOfferingKeys = this.state.newOfferingKeys;
       const offeringIndex = newOfferingKeys.indexOf(offeringId);
-      console.log(offeringIndex);
       if (offeringIndex < 0 || (offeringIndex !== 0 && !offeringIndex)) return;
       newOfferingKeys.splice(offeringIndex, 1);
       updatedState.newOfferingKeys = newOfferingKeys;
@@ -184,7 +182,7 @@ class SupplierForm extends DisplayForm {
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" className="input-text" placeholder="weapon name"
+              <input type="text" name="name" id="name" className="input-text" placeholder="supplier name"
                 maxLength="26" onChange={this.handleChange} value={this.state.name}></input>
             </div>
             <div className="input-group-blank">

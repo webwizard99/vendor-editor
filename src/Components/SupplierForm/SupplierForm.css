@@ -44,10 +44,6 @@
   margin-left: 1rem;
 }
 
-.form-left-half {
-  border-right: 1px solid rgb(100, 105, 100);
-}
-
 .form-right-half {
   display: flex;
 }
