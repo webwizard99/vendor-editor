@@ -16,12 +16,13 @@ const itemPostRequests = (function() {
         },
         body: subBody
       }).then(res => {
-        console.log(res);  
+        console.log(res);
+        postRes = res;  
         res.json()
       })
         .then(data => {
           console.log(data);
-          postRes = data}
+          }
           );
 
       console.log(postRes);
