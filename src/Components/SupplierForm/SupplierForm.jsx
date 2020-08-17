@@ -19,7 +19,7 @@ class SupplierForm extends DisplayForm {
   constructor(props) {
     super(props);
     this.state = {
-
+      initialized: false
     }
 
     this.initializeFields = this.initializeFields.bind(this);
@@ -65,6 +65,7 @@ class SupplierForm extends DisplayForm {
     initialState.deletedIds = [];
     initialState.newOfferingIndex = 0;
     initialState.newOfferingKeys = [];
+    initialState.initialized = true;
     this.setState(initialState);
   }
 
@@ -152,7 +153,7 @@ class SupplierForm extends DisplayForm {
   }
 
   getForm() {
-    // if (!this.state.name) return '';
+    if (!this.state.initialized) return '';
     
     let offerings = [];
     if (this.props.edit) {
