@@ -12,6 +12,7 @@ import SupplierForm from '../../Components/SupplierForm/SupplierForm';
 import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 
 // redux imports
+// comment to update code
 import { connect } from 'react-redux';
 
 class DetailView extends React.Component {

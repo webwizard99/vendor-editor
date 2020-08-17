@@ -2,10 +2,11 @@ import React from 'react';
 import './ObjectListColumn.css';
 
 // component imports
-import ItemList from '../ItemList/ItemList';
-import SupplierList from '../SupplierList/SupplierList';
+import ItemList from '../../Components/ItemList/ItemList';
+import SupplierList from '../../Components/SupplierList/SupplierList';
 
 // redux imports
+// comment to update code
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
