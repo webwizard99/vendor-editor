@@ -15,8 +15,14 @@ const itemPostRequests = (function() {
           'Content-Type': 'application/json;charset=utf-8'
         },
         body: subBody
-      }).then(res => res.json())
-        .then(data => postRes = data);
+      }).then(res => {
+        console.log(res);  
+        res.json()
+      })
+        .then(data => {
+          console.log(data);
+          postRes = data}
+          );
 
       console.log(postRes);
       return postRes;
