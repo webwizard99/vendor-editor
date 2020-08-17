@@ -158,7 +158,7 @@ class SupplierForm extends DisplayForm {
     if (this.props.edit) {
       const allSuppliers = this.props.suppliers;
       const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
-      let offerings = thisSupplier.offerings;
+      offerings = thisSupplier.offerings;
     }
     
     let newHeading = 'New Supplier';
