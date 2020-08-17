@@ -83,8 +83,8 @@ class SupplierForm extends DisplayForm {
     let newOfferingKeys = this.state.newOfferingKeys;
     newOfferingKeys.push(newOfferingIndex);
     updatedState.newOfferingKeys = newOfferingKeys;
-    newOfferingsIndex += 1;
-    updatedState.newOfferingsCount = newNewOfferingsCount;
+    newOfferingIndex += 1;
+    updatedState.newOfferingIndex = newOfferingIndex;
     this.setState(updatedState);
     
   }
