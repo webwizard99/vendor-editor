@@ -52,7 +52,7 @@ class SupplierForm extends DisplayForm {
     initialState.presentIds = presentIds;
     initialState.existingIdCount = offerings.length;
     initialState.deletedIds = [];
-    initialState.newOfferingsCount = 0;
+    initialState.newOfferingIndex = 0;
     initialState.newOfferingKeys = [];
     this.setState(initialState);
   }
@@ -75,20 +75,33 @@ class SupplierForm extends DisplayForm {
 
   addFormOffering() {
     console.log('add form offering');
+
+    let updatedState = {};
+    let newOfferingIndex = this.state.newOfferingIndex;
+    updatedState[`new-offering-${newOfferingIndex}-type`] = 1;
+    updatedState[`new-offering-${newOfferingIndex}-markup`] = 100;
+    let newOfferingKeys = this.state.newOfferingKeys;
+    newOfferingKeys.push(newOfferingIndex);
+    updatedState.newOfferingKeys = newOfferingKeys;
+    newOfferingsIndex += 1;
+    updatedState.newOfferingsCount = newNewOfferingsCount;
+    this.setState(updatedState);
+    
   }
 
-  deleteOffering(offeringId) {
+  deleteOffering(payload) {
+    const { existing, offeringId } = payload
     let updatedState = {};
-    if (offeringId !== null) {
+    if (existing) {
       let newDeleted = this.state.deletedIds;
       let newCount = this.state.existingIdCount;
       newDeleted.push(offeringId);
       newCount -= 1;
       updatedState.deletedIds = newDeleted;
       updatedState.existingIdCount = newCount;
-    }
+    } else {
 
-    console.log(updatedState);
+    }
 
     this.setState(updatedState);
   }
@@ -106,6 +119,7 @@ class SupplierForm extends DisplayForm {
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const newName = thisSupplier.name;
     const offerings = thisSupplier.offerings;
+    const newOfferingKeys = this.state.newOfferingKeys;
     
     return (
       <div className="SupplierForm">
@@ -133,8 +147,6 @@ class SupplierForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Markup</span>
               {offerings.map(offering => {
                 let deletedMap = this.state.deletedIds;
-                let thisDeleted = deletedMap.includes(offering.id);
-                console.log(thisDeleted);
                 if (deletedMap.length > 0 && deletedMap.includes(offering.id)) {
                   return ''
                 }
@@ -158,10 +170,37 @@ class SupplierForm extends DisplayForm {
                         value={this.state[`offering-${offering.id}-markup`]}>
                       </input>
                       <span className="offeringDelete"
-                        onClick={() => this.deleteOffering(offering.id)}
+                        onClick={() => this.deleteOffering({ existing: true, offeringId: offering.id })}
                       >
                         <DeleteOfferingButton />
                       </span>
+                    </div>
+                  </div>
+                )
+              })}
+              {newOfferingKeys.length <= 0 ? '' : newOfferingKeys.map(index => {
+                return (
+                  <div className="form-inner-span">
+                    <div className="form-half-span form-left-half">
+                      <select className="offering-select"
+                        name={`new-offering-${index}-type`}
+                        id={`new-offering-${index}-type`}
+                        onChange={this.handleChange}
+                        value={this.state[`new-offering-${index}-type`]}>
+                          {this.getOfferingOptions()}
+                      </select>
+                    </div>
+                    <div className="form-half-span form-right-half">
+                      <input className="input-number"
+                        type="number"
+                        name={`new-offering-${index}-markup`}
+                        id={`new-offering-${index}-markup`}
+                        onChange={this.handleChange}
+                        value={this.state[`new-offering-${index}-markup`]}>
+                      </input>
+                      <span className="offeringDelete"
+                        onClick={() => this.deleteOffering({ existing: false, offeringId: index })}
+                      ></span>
                     </div>
                   </div>
                 )
@@ -174,6 +213,7 @@ class SupplierForm extends DisplayForm {
             </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
+          <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
           <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
         </form>
       </div>
