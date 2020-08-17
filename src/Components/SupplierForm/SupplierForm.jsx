@@ -76,6 +76,10 @@ class SupplierForm extends DisplayForm {
   addFormOffering() {
     console.log('add form offering');
 
+    // limit offerings to 5
+    const totalCount = this.state.newOfferingKeys.length + this.state.presentIds.length;
+    if (totalCount >= 5) return;
+
     let updatedState = {};
     let newOfferingIndex = this.state.newOfferingIndex;
     updatedState[`new-offering-${newOfferingIndex}-type`] = 1;
@@ -100,7 +104,12 @@ class SupplierForm extends DisplayForm {
       updatedState.deletedIds = newDeleted;
       updatedState.existingIdCount = newCount;
     } else {
-
+      let newOfferingKeys = this.state.newOfferingKeys;
+      const offeringIndex = newOfferingKeys.indexOf(offering => offering === offeringId);
+      console.log(offeringIndex);
+      if (offeringIndex !== 0 && !offeringIndex) return;
+      newOfferingKeys.splice(offeringIndex, 1);
+      updatedState.newOfferingKeys = newOfferingKeys;
     }
 
     this.setState(updatedState);
@@ -130,7 +139,7 @@ class SupplierForm extends DisplayForm {
           </div>
         </div>
 
-        <form action={'/suppliers'}
+        <form action={'/supplier'}
           className="input-fields-area"
           id="SupplierPostForm"
           method="POST">
