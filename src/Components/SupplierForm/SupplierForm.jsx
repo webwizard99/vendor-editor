@@ -38,7 +38,7 @@ class SupplierForm extends DisplayForm {
 
   initializeFields() {
     if (this.props.edit && !this.props.suppliers) return;
-
+    console.log('in initializeFields...');
     let newName = '';
     let offerings = [];
     if (this.props.edit) {
@@ -152,7 +152,7 @@ class SupplierForm extends DisplayForm {
   }
 
   getForm() {
-    if (!this.state.name) return '';
+    // if (!this.state.name) return '';
     
     let offerings = [];
     if (this.props.edit) {

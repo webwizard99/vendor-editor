@@ -29,7 +29,7 @@ class SupplierList extends ExpandableList {
   getNewButton() {
     return (
       <div className="NewSupplierButton"
-        onClick={this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: null })}>
+        onClick={() => this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: null })}>
         <NewButton />
       </div>
     )
