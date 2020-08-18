@@ -53,6 +53,7 @@ class SupplierDisplay extends DisplayStatic {
         offeringIds.push(offering.id);
       }
     }
+    console.log(offeringIds);
     payload.offeringIds = offeringIds;
 
     // invoke delete request
