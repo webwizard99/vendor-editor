@@ -166,6 +166,10 @@ class SupplierForm extends DisplayForm {
     if (this.props.edit) {
       newHeading = this.state.name;
     }
+    let newId = null;
+    if (this.props.edit) {
+      newId = this.props.displayId;
+    }
     const newOfferingKeys = this.state.newOfferingKeys;
     
     return (
@@ -267,6 +271,7 @@ class SupplierForm extends DisplayForm {
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
           <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
           <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
+          <input type="hidden" name="id" value={newId} />
           <input type="submit" value={this.props.edit ? 'Update Supplier' : 'Create Supplier' } class="button create-button"></input>
         </form>
       </div>
