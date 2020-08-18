@@ -59,3 +59,7 @@
 .supplier-submit-container {
   width: 90%;
 }
+
+.supplier-submit-container .button {
+  margin: 2rem auto auto auto;
+}
