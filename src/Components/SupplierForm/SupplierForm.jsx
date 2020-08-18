@@ -261,7 +261,7 @@ class SupplierForm extends DisplayForm {
               <AddOfferingButton />
             </div>
           </div>
-          <div className="input-group-blank">
+          <div className="supplier-group-blank">
           </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
