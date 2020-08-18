@@ -46,23 +46,21 @@ class SupplierDisplay extends DisplayStatic {
     const allSuppliers = this.props.suppliers;
     const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
     const offerings = thisSupplier.offerings;
-    console.log(offerings);
     let offeringIds = [];
     if (offerings.length > 0) {
       offerings.forEach(refOffering => {
         offeringIds.push(refOffering.id);
       });
     }
-    console.log(offeringIds);
     payload.offeringIds = offeringIds;
 
     // invoke delete request
-    // let deleteSupplier = this.deleteSupplier(payload);
-    // deleteSupplier.next().value.then(() => {
-    //   this.props.fetchSuppliers();
-    //   this.props.setDialog({ active: false, text: '' });
-    //   this.props.setDisplayForm({ form: false, edit: false, displayId: null });
-    // });
+    let deleteSupplier = this.deleteSupplier(payload);
+    deleteSupplier.next().value.then(() => {
+      this.props.fetchSuppliers();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, displayId: null });
+    });
   }
 
   getDisplay() {
