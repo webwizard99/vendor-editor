@@ -34,12 +34,28 @@ class SupplierDisplay extends DisplayStatic {
     )
   }
 
-  *deleteSupplier() {
-    yield deleteRequests.makeRequest('supplier', this.props.displayId);
+  *deleteSupplier(payload) {
+    yield deleteRequests.makeRequestSupplier(payload);
   }
 
   handleYes() {
-    let deleteSupplier = this.deleteSupplier();
+    // compose payload for delete request
+    let payload = {};
+    payload.route = 'supplier';
+    payload.id = this.props.displayId;
+    const allSuppliers = this.props.suppliers;
+    const thisSupplier = allSuppliers.find(supplier => supplier.id === this.props.displayId);
+    const offerings = thisSupplier.offerings;
+    let offeringIds = [];
+    if (offerings.length > 0) {
+      for (let offering in offerings) {
+        offeringIds.push(offering.id);
+      }
+    }
+    payload.offeringIds = offeringIds;
+
+    // invoke delete request
+    let deleteSupplier = this.deleteSupplier(payload);
     deleteSupplier.next().value.then(() => {
       this.props.fetchSuppliers();
       this.props.setDialog({ active: false, text: '' });
