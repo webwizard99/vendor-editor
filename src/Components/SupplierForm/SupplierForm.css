@@ -56,7 +56,6 @@
   margin-bottom: 1rem;
 }
 
-.supplier-group-blank {
-  width: 20%;
-  height: 1rem;
+.supplier-submit-container {
+  width: 90%;
 }

@@ -265,14 +265,14 @@ class SupplierForm extends DisplayForm {
               <AddOfferingButton />
             </div>
           </div>
-          <div className="supplier-group-blank">
-          </div>
           <input type="hidden" name="existingIds" value={this.state.presentIds} />
           <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
           <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
           <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
           <input type="hidden" name="id" value={newId} />
+          <div className="supplier-submit-container">
           <input type="submit" value={this.props.edit ? 'Update Supplier' : 'Create Supplier' } className="button create-button"></input>
+          </div>          
         </form>
       </div>
     )
