@@ -7,17 +7,44 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 // redux imports
 import { connect } from 'react-redux';
+import { fetchSuppliers } from '../../actions'
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import deleteRequests from '../../utilities/deleteRequests';
 
 class SupplierDisplay extends DisplayStatic {
+  constructor(props) {
+    super(props);
+
+    this.deleteSupplier = this.deleteSupplier.bind(this);
+  }
+
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
-      <div className="DeleteSupplierButton">
+      <div className="DeleteSupplierButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Supplier and Offerings from Database?'
+        })}>
         <DeleteButton />
       </div>
     )
+  }
+
+  *deleteSupplier() {
+    yield deleteRequests.makeRequest('supplier', this.props.displayId);
+  }
+
+  handleYes() {
+    let deleteSupplier = this.deleteSupplier();
+    deleteSupplier.next().value.then(() => {
+      this.props.fetchSuppliers();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, displayId: null });
+    });
   }
 
   getDisplay() {
@@ -76,7 +103,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
+    fetchSuppliers: () => dispatch(fetchSuppliers())
   }
 }
 
