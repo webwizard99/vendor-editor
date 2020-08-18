@@ -7,7 +7,7 @@ import NewButton from '../NewButton/NewButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchSuppliers } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
 class SupplierList extends ExpandableList {
   constructor(props) {
@@ -16,6 +16,7 @@ class SupplierList extends ExpandableList {
     this.displayContents = this.displayContents.bind(this);
     this.getNewButton = this.getNewButton.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleNew = this.handleNew.bind(this);
   }
 
   componentDidMount() {
@@ -26,10 +27,15 @@ class SupplierList extends ExpandableList {
     return 'Suppliers';
   }
 
+  handleNew() {
+    this.props.setRefresh(true);
+    this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: null });
+  }
+
   getNewButton() {
     return (
       <div className="NewSupplierButton"
-        onClick={() => this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: null })}>
+        onClick={this.handleNew}>
         <NewButton />
       </div>
     )
@@ -71,7 +77,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchSuppliers: () => dispatch(fetchSuppliers())
+    fetchSuppliers: () => dispatch(fetchSuppliers()),
+    setRefresh: (value) => dispatch({ type: SET_DETAIL_REFRESH, value: value })
   }
 }
 

@@ -35,10 +35,6 @@ class DetailView extends React.Component {
   }
 
   getWeaponDetail() {
-    if (this.props.refresh) {
-      this.props.setRefresh(false);
-      return ''
-    }
     if (this.props.targetId === null || this.props.edit) {
       return <WeaponForm />
     } else {
@@ -65,6 +61,10 @@ class DetailView extends React.Component {
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
+    }
+    if (this.props.refresh) {
+      this.props.setRefresh(false);
+      return '';
     }
 
     switch(this.props.formType) {
