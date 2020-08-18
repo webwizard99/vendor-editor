@@ -272,7 +272,7 @@ class SupplierForm extends DisplayForm {
           <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
           <input type="hidden" name="newOfferingsCount" value={this.state.newOfferingsCount} />
           <input type="hidden" name="id" value={newId} />
-          <input type="submit" value={this.props.edit ? 'Update Supplier' : 'Create Supplier' } class="button create-button"></input>
+          <input type="submit" value={this.props.edit ? 'Update Supplier' : 'Create Supplier' } className="button create-button"></input>
         </form>
       </div>
     )

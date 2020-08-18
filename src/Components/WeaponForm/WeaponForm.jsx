@@ -122,7 +122,7 @@ class WeaponForm extends DisplayForm {
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="submit" value={this.props.edit ? 'Update Weapon' : 'Create Weapon' } class="button create-button"></input>
+            <input type="submit" value={this.props.edit ? 'Update Weapon' : 'Create Weapon' } className="button create-button"></input>
         </form>
       </div>
     )

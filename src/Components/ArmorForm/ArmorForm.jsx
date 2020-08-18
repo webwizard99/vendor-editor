@@ -123,7 +123,7 @@ class ArmorForm extends DisplayForm {
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="submit" value={this.props.edit ? 'Update Armor' : 'Create Armor' } class="button create-button"></input>
+            <input type="submit" value={this.props.edit ? 'Update Armor' : 'Create Armor' } className="button create-button"></input>
         </form>
       </div>
     )

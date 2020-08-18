@@ -134,7 +134,7 @@ class PotionForm extends DisplayForm {
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="hidden" name="itemId" value={newItemId} />
-            <input type="submit" value={this.props.edit ? 'Update Potion' : 'Create Potion' } class="button create-button"></input>
+            <input type="submit" value={this.props.edit ? 'Update Potion' : 'Create Potion' } className="button create-button"></input>
         </form>
       </div>
     )
