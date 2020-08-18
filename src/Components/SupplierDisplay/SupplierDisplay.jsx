@@ -49,9 +49,9 @@ class SupplierDisplay extends DisplayStatic {
     console.log(offerings);
     let offeringIds = [];
     if (offerings.length > 0) {
-      for (let offering in offerings) {
-        offeringIds.push(offering.id);
-      }
+      offerings.forEach(refOffering => {
+        offeringIds.push(refOffering.id);
+      });
     }
     console.log(offeringIds);
     payload.offeringIds = offeringIds;
