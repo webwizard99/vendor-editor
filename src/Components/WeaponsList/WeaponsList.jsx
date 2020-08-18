@@ -7,7 +7,7 @@ import NewButton from '../NewButton/NewButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchWeapons } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
 class WeaponsList extends ExpandableList {
   constructor(props) {
@@ -26,9 +26,14 @@ class WeaponsList extends ExpandableList {
     return 'Weapons';
   }
 
+  handleNew() {
+    this.props.setRefresh(true);
+    this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: null });
+  }
+  
   getNewButton() {
     return (
-      <div className="NewWeaponButton" onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: null })}>
+      <div className="NewWeaponButton" onClick={this.handleNew}>
         <NewButton />
       </div>
     )
@@ -71,7 +76,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchWeapons: () => dispatch(fetchWeapons())
+    fetchWeapons: () => dispatch(fetchWeapons()),
+    setRefresh: (value) => dispatch({ type: SET_DETAIL_REFRESH, value: value })
   }
 }
 

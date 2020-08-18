@@ -12,8 +12,8 @@ import SupplierForm from '../../Components/SupplierForm/SupplierForm';
 import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 
 // redux imports
-// comment to update code
 import { connect } from 'react-redux';
+import { SET_DETAIL_REFRESH } from '../../actions/types';
 
 class DetailView extends React.Component {
   constructor(props) {
@@ -28,25 +28,19 @@ class DetailView extends React.Component {
 
   getPotionDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      if (this.props.targetId === null) {
-        return <PotionForm refresh={true}/>
-      } else {
-        return <PotionForm />
-      }
-      
+      return <PotionForm />
     } else {
       return <PotionDisplay />
     }
   }
 
   getWeaponDetail() {
+    if (this.props.refresh) {
+      this.props.setRefresh(false);
+      return ''
+    }
     if (this.props.targetId === null || this.props.edit) {
-      if (this.props.targetId === null) {
-        return <WeaponForm refresh={true}/>
-      } else {
-        return <WeaponForm />
-      }
-      
+      return <WeaponForm />
     } else {
       return <WeaponDisplay />
     }
@@ -54,12 +48,7 @@ class DetailView extends React.Component {
 
   getArmorDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      if (this.props.targetId === null) {
-        return <ArmorForm refresh={true}/>
-      } else {
-        return <ArmorForm />
-      }
-      
+      return <ArmorForm />
     } else {
       return <ArmorDisplay />
     }
@@ -67,12 +56,7 @@ class DetailView extends React.Component {
 
   getSupplierDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      if (this.props.targetId === null) {
-        return <SupplierForm refresh={true}/>
-      } else {
-        return <SupplierForm />
-      }
-      
+      return <SupplierForm />
     } else {
       return <SupplierDisplay />
     }
@@ -110,7 +94,14 @@ const mapStateToProps = state => {
   return {
     formType: state.detail.type,
     targetId: state.detail.targetId,
-    edit: state.detail.edit
+    edit: state.detail.edit,
+    refresh: state.detail.refresh
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setRefresh: (value) => dispatch({ type: SET_DETAIL_REFRESH, value: value })
   }
 }
 
