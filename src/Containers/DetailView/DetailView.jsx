@@ -63,7 +63,7 @@ class DetailView extends React.Component {
   }
 
   getTownBehaviorDetail() {
-    if (this.props.targetId ==- null || this.props.edit) {
+    if (this.props.targetId === null || this.props.edit) {
       return 'TownBehaviorForm'
     } else {
       return <TownBehaviorDisplay />
