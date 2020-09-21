@@ -50,6 +50,7 @@ class TownBehaviorList extends ExpandableList {
             return (
               <p>
                 <span className={townBehaviorClass}
+                  onClick={() => this.props.setDisplayForm({ form: 'town_behavior', edit: false, targetId: townBehavior.id })}
                 >{townBehavior.name}</span>
               </p>
             )

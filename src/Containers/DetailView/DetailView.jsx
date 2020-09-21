@@ -2,6 +2,7 @@ import React from 'react';
 import './DetailView.css';
 
 // React component imports
+// item components
 import PotionForm from '../../Components/PotionForm/PotionForm';
 import PotionDisplay from '../../Components/PotionDisplay/PotionDisplay';
 import WeaponForm from '../../Components/WeaponForm/WeaponForm';
@@ -10,6 +11,8 @@ import ArmorForm from '../../Components/ArmorForm/ArmorForm';
 import ArmorDisplay from '../../Components/ArmorDisplay/ArmorDisplay';
 import SupplierForm from '../../Components/SupplierForm/SupplierForm';
 import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
+// npc components
+import TownBehaviorDisplay from '../../Components/TownBehaviorDisplay/TownBehaviorDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -24,6 +27,7 @@ class DetailView extends React.Component {
     this.getWeaponDetail = this.getWeaponDetail.bind(this);
     this.getArmorDetail = this.getArmorDetail.bind(this);
     this.getSupplierDetail = this.getSupplierDetail.bind(this);
+    this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -58,6 +62,14 @@ class DetailView extends React.Component {
     }
   }
 
+  getTownBehaviorDetail() {
+    if (this.props.targetId ==- null || this.props.edit) {
+      return 'TownBehaviorForm'
+    } else {
+      return <TownBehaviorDisplay />
+    }
+  }
+
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
@@ -76,6 +88,8 @@ class DetailView extends React.Component {
         return this.getArmorDetail();
       case 'supplier':
         return this.getSupplierDetail();
+      case 'town_behavior':
+        return this.getTownBehaviorDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
