@@ -45,6 +45,7 @@ class TownBehaviorDisplay extends DisplayStatic {
 
     return (
       <div className="TownBehaviorDisplay">
+        <div className="display-fields-area">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'town_behavior', edit: true, targetId: thisTownBehavior.id })}>
@@ -52,70 +53,71 @@ class TownBehaviorDisplay extends DisplayStatic {
           </div>
         </div>
         <div className="display-fields-area">
-        <div className="display-group">
-            <span className="display-label">Name</span>
-            <span className="display-text">{name}</span>
+          <div className="display-group">
+              <span className="display-label">Name</span>
+              <span className="display-text">{name}</span>
+            </div>
           </div>
-        </div>
-        <div className="display-group">
-          <span className="display-label">buy potion</span>
-          <span className="display-text">{buy_potion}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">sell potion</span>
-          <span className="display-text">{sell_potion}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">upgrade potion</span>
-          <span className="display-text">{upgrade_potion}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">buy weapon</span>
-          <span className="display-text">{buy_weapon}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">sell weapon</span>
-          <span className="display-text">{sell_weapon}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">upgrade weapon</span>
-          <span className="display-text">{upgrade_weapon}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">buy armor</span>
-          <span className="display-text">{buy_armor}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">sell armor</span>
-          <span className="display-text">{sell_armor}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">upgrade armor</span>
-          <span className="display-text">{upgrade_armor}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">wealth</span>
-          <span className="display-text">{wealth}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">enter dungeon</span>
-          <span className="display-text">{enter_dungeon}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">use tavern</span>
-          <span className="display-text">{use_tavern}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">retire</span>
-          <span className="display-text">{retire}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">emigrate</span>
-          <span className="display-text">{emigrate}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">garrison wall</span>
-          <span className="display-text">{garrison_wall}</span>
+          <div className="display-group">
+            <span className="display-label">buy potion</span>
+            <span className="display-text">{buy_potion}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">sell potion</span>
+            <span className="display-text">{sell_potion}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">upgrade potion</span>
+            <span className="display-text">{upgrade_potion}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">buy weapon</span>
+            <span className="display-text">{buy_weapon}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">sell weapon</span>
+            <span className="display-text">{sell_weapon}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">upgrade weapon</span>
+            <span className="display-text">{upgrade_weapon}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">buy armor</span>
+            <span className="display-text">{buy_armor}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">sell armor</span>
+            <span className="display-text">{sell_armor}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">upgrade armor</span>
+            <span className="display-text">{upgrade_armor}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">wealth</span>
+            <span className="display-text">{wealth}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">enter dungeon</span>
+            <span className="display-text">{enter_dungeon}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">use tavern</span>
+            <span className="display-text">{use_tavern}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">retire</span>
+            <span className="display-text">{retire}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">emigrate</span>
+            <span className="display-text">{emigrate}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">garrison wall</span>
+            <span className="display-text">{garrison_wall}</span>
+          </div>
         </div>
       </div>
     )
