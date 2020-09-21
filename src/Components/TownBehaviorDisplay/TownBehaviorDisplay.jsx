@@ -45,7 +45,6 @@ class TownBehaviorDisplay extends DisplayStatic {
 
     return (
       <div className="TownBehaviorDisplay">
-        <div className="display-fields-area">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'town_behavior', edit: true, targetId: thisTownBehavior.id })}>
@@ -56,7 +55,6 @@ class TownBehaviorDisplay extends DisplayStatic {
           <div className="display-group">
               <span className="display-label">Name</span>
               <span className="display-text">{name}</span>
-            </div>
           </div>
           <div className="display-group">
             <span className="display-label">buy potion</span>
