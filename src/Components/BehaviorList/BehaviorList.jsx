@@ -3,6 +3,7 @@ import './BehaviorList.css';
 
 // component imports
 import ExpandableList from '../ExpandableList/ExpandableList';
+import TownBehaviorList from '../TownBehaviorList/TownBehaviorList';
 
 class BehaviorList extends ExpandableList {
   getTitle() {
@@ -11,8 +12,8 @@ class BehaviorList extends ExpandableList {
 
   displayContents() {
     return (
-      <div className="BehaviorList">
-
+      <div className="detailList">
+        <TownBehaviorList />
       </div>
     )
   }

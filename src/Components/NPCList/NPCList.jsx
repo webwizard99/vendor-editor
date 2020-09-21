@@ -12,7 +12,7 @@ class NPCList extends ExpandableList {
 
   displayContents() {
     return (
-      <div className="NPCList">
+      <div className="detaiList">
         <BehaviorList />
       </div>
     )
