@@ -4,6 +4,7 @@ import './ObjectListColumn.css';
 // component imports
 import ItemList from '../../Components/ItemList/ItemList';
 import SupplierList from '../../Components/SupplierList/SupplierList';
+import NPCList from '../../Components/NPCList/NPCList';
 
 // redux imports
 // comment to update code
@@ -29,6 +30,7 @@ class ObjectListColumn extends React.Component {
       <div className="ObjectListColumn">
         <ItemList />
         <SupplierList />
+        <NPCList />
       </div>
     )
   }
