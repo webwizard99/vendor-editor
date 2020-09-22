@@ -1,4 +1,5 @@
 .TownBehaviorDisplay {
   overflow: auto;
   scroll-snap-type: y;
+  max-height: 100%;
 }
