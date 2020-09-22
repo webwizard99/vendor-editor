@@ -44,7 +44,7 @@ class TownBehaviorList extends ExpandableList {
         <div className="detailList">
           {newTownBehaviors.map(townBehavior => {
             let townBehaviorClass = "ListDetail";
-            if (this.props.form === 'town behavior' && this.props.targetId === townBehavior.id) {
+            if (this.props.form === 'town_behavior' && this.props.targetId === townBehavior.id) {
               townBehaviorClass += " activeItem";
             }
             return (
