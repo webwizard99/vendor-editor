@@ -77,7 +77,7 @@ class TownBehaviorForm extends DisplayForm {
     return (
       <div className="TownBehaviorForm">
         <div className="form-heading-bar">
-          <h2 className="form-heading">{newHeading}</h2>
+          <h2 className="form-heading">Town Behavior: {newHeading}</h2>
           <div className="close-town-behavior-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
