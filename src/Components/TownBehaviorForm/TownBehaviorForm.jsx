@@ -10,6 +10,7 @@ import { fetchTownBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+// comment to force update
 
 class TownBehaviorForm extends DisplayForm {
   constructor(props) {

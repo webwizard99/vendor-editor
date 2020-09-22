@@ -27,9 +27,14 @@ class TownBehaviorList extends ExpandableList {
     return 'Town Behaviors';
   }
 
+  handleNew() {
+    this.props.setRefresh(true);
+    this.props.setDisplayForm({ form: 'town_behavior', edit: false, targetId: null })
+  }
+
   getNewButton() {
     return (
-      <div className="NewTownBehaviorButton">
+      <div className="NewTownBehaviorButton" onClick={this.handleNew}>
         <NewButton />
       </div>
     )

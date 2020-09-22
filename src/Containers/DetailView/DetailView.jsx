@@ -13,6 +13,7 @@ import SupplierForm from '../../Components/SupplierForm/SupplierForm';
 import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 // npc components
 import TownBehaviorDisplay from '../../Components/TownBehaviorDisplay/TownBehaviorDisplay';
+import TownBehaviorForm from '../../Components/TownBehaviorForm/TownBehaviorForm';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -64,7 +65,7 @@ class DetailView extends React.Component {
 
   getTownBehaviorDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return 'TownBehaviorForm'
+      return <TownBehaviorForm />
     } else {
       return <TownBehaviorDisplay />
     }
