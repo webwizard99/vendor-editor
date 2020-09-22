@@ -1,5 +1,5 @@
 import React from 'react';
-import './TownBehavior.css';
+import './TownBehaviorForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
