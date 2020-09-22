@@ -96,77 +96,77 @@ class TownBehaviorForm extends DisplayForm {
           <div className="input-group">
             <label className="item-label" htmlFor="buy_potion">buy potion</label>
             <input type="number" name="buy_potion" id="buy_potion" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newBuyPotion}></input>
+              step="50" min="0" max="1000" required defaultValue={newBuyPotion}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="sell_potion">sell potion</label>
             <input type="number" name="sell_potion" id="sell_potion" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newSellPotion}></input>
+              step="50" min="0" max="1000" required defaultValue={newSellPotion}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="upgrade_potion">upgrade potion</label>
             <input type="number" name="upgrade_potion" id="upgrade_potion" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newUpgradePotion}></input>
+              step="50" min="0" max="1000" required defaultValue={newUpgradePotion}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="buy_weapon">buy weapon</label>
             <input type="number" name="buy_weapon" id="buy_weapon" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newBuyWeapon}></input>
+              step="50" min="0" max="1000" required defaultValue={newBuyWeapon}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="sell_weapon">sell weapon</label>
             <input type="number" name="sell_weapon" id="sell_weapon" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newSellWeapon}></input>
+              step="50" min="0" max="1000" required defaultValue={newSellWeapon}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="upgrade_weapon">upgrade weapon</label>
             <input type="number" name="upgrade_weapon" id="upgrade_weapon" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newUpgradeWeapon}></input>
+              step="50" min="0" max="1000" required defaultValue={newUpgradeWeapon}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="buy_armor">buy armor</label>
             <input type="number" name="buy_armor" id="buy_armor" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newBuyArmor}></input>
+              step="50" min="0" max="1000" required defaultValue={newBuyArmor}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="sell_armor">sell armor</label>
             <input type="number" name="sell_armor" id="sell_armor" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newSellArmor}></input>
+              step="50" min="0" max="1000" required defaultValue={newSellArmor}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="upgrade_armor">upgrade armor</label>
             <input type="number" name="upgrade_armor" id="upgrade_armor" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newUpgradeArmor}></input>
+              step="50" min="0" max="1000" required defaultValue={newUpgradeArmor}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="wealth">wealth</label>
             <input type="number" name="wealth" id="wealth" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newWealth}></input>
+              step="50" min="0" max="1000" required defaultValue={newWealth}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="enter_dungeon">enter dungeon</label>
             <input type="number" name="enter_dungeon" id="enter_dungeon" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newEnterDungeon}></input>
+              step="50" min="0" max="1000" required defaultValue={newEnterDungeon}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="use_tavern">use tavern</label>
             <input type="number" name="use_tavern" id="use_tavern" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newUseTavern}></input>
+              step="50" min="0" max="1000" required defaultValue={newUseTavern}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="retire">retire</label>
             <input type="number" name="retire" id="retire" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newRetire}></input>
+              step="50" min="0" max="1000" required defaultValue={newRetire}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="emigrate">emigrate</label>
             <input type="number" name="emigrate" id="emigrate" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newEmigrate}></input>
+              step="50" min="0" max="1000" required defaultValue={newEmigrate}></input>
           </div>
           <div className="input-group">
             <label className="item-label" htmlFor="garrison_wall">garrison wall</label>
             <input type="number" name="garrison_wall" id="garrison_wall" className="input-number" placeholder="#"
-              min="0" max="1000" required defaultValue={newGarisonWall}></input>
+              step="50" min="0" max="1000" required defaultValue={newGarisonWall}></input>
           </div>
           <input type="hidden" name="id" value={newId} />
           <input type="submit" value={this.props.edit ? 'Update Town Behavior' : 'Create Town Behavior' } className="button create-button"></input>
