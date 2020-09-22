@@ -16,6 +16,7 @@ class TownBehaviorList extends ExpandableList {
     this.displayContents = this.displayContents.bind(this);
     this.getNewButton = this.getNewButton.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleNew = this.handleNew.bind(this);
 
   }
 

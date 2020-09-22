@@ -1,0 +1,8 @@
+.TownBehaviorForm {
+  max-height: 100%;
+  overflow: auto;
+}
+
+#Town-BehaviorPostForm {
+  padding-bottom: 1rem;
+}
