@@ -1,0 +1,4 @@
+.TownBehaviorDisplay {
+  overflow: auto;
+  scroll-snap-type: y;
+}
