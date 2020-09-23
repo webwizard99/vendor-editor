@@ -75,8 +75,7 @@ class TownBehaviorForm extends DisplayForm {
 
     if (this.props.edit) {
       const allTownBehaviors = this.props.townBehaviors;
-      const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id = this.props.displayId);
-      console.log(thisTownBehavior);
+      const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id === this.props.displayId);
       newName = thisTownBehavior.name;
       newHeading = newName;
       newId = thisTownBehavior.id;
