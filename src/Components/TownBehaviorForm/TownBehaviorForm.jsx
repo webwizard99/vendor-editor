@@ -10,12 +10,14 @@ import { fetchTownBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
-// comment to force update
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class TownBehaviorForm extends DisplayForm {
   constructor(props) {
     super(props);
 
+    this.addTownBehavior = this.addTownBehavior.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -28,8 +30,27 @@ class TownBehaviorForm extends DisplayForm {
     }
   }
 
+  *addTownBehavior(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('town_behavior', data);
+    } else {
+      yield postRequest.makeRequest('town_behavior', data);
+    }
+    
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addTownBehavior = this.addTownBehavior(data);
+    this.addTownBehavior.next().value.then(() => {
+      this.props.fetchTownBehaviors();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'town_behavior', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false })
+      }
+    })
   }
 
   getForm() {
