@@ -14,6 +14,7 @@ import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 // npc components
 import TownBehaviorDisplay from '../../Components/TownBehaviorDisplay/TownBehaviorDisplay';
 import TownBehaviorForm from '../../Components/TownBehaviorForm/TownBehaviorForm';
+import DungeonBehaviorDisplay from '../../Components/DungeonBehaviorDisplay/DungeonBehaviorDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ class DetailView extends React.Component {
     this.getArmorDetail = this.getArmorDetail.bind(this);
     this.getSupplierDetail = this.getSupplierDetail.bind(this);
     this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
+    this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -68,6 +70,14 @@ class DetailView extends React.Component {
       return <TownBehaviorForm />
     } else {
       return <TownBehaviorDisplay />
+    }
+  }
+
+  getDungeonBehaviorDetail() {
+    if (this.props.targetId === null || this.props.edit) {
+      return 'DungeonBehaviorForm';
+    } else {
+      return <DungeonBehaviorDisplay />
     }
   }
 
