@@ -29,14 +29,23 @@ class DungeonBehaviorDisplay extends DisplayStatic {
       advance_tile,
       conserve_health,
       use_potion,
+      rest,
       return_to_town,
       check_for_traps,
+      disarm_trap,
+      avoid_trap,
       search_for_treasure,
       fight_monster,
       flee_encounter,
+      defend,
+      attack,
+      check_monster_weakness,
       explore_level,
       advance_next_level,
+      fill_inventory,
+      upgrade_inventory,
       fight_boss_monster,
+      prefer_weaker_monster,
       try_for_level
     } = thisDungeonBehavior;
 
@@ -66,12 +75,24 @@ class DungeonBehaviorDisplay extends DisplayStatic {
             <span className="display-text">{use_potion}</span>
           </div>
           <div className="display-group">
+            <span className="display-label">rest</span>
+            <span className="display-text">{rest}</span>
+          </div>
+          <div className="display-group">
             <span className="display-label">return to town</span>
             <span className="display-text">{return_to_town}</span>
           </div>
           <div className="display-group">
             <span className="display-label">check for traps</span>
             <span className="display-text">{check_for_traps}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">disarm trap</span>
+            <span className="display-text">{disarm_trap}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">avoid trap</span>
+            <span className="display-text">{avoid_trap}</span>
           </div>
           <div className="display-group">
             <span className="display-label">search for treasure</span>
@@ -86,6 +107,18 @@ class DungeonBehaviorDisplay extends DisplayStatic {
             <span className="display-text">{flee_encounter}</span>
           </div>
           <div className="display-group">
+            <span className="display-label">defend</span>
+            <span className="display-text">{defend}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">attack</span>
+            <span className="display-text">{attack}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">check monster weakness</span>
+            <span className="display-text">{check_monster_weakness}</span>
+          </div>
+          <div className="display-group">
             <span className="display-label">explore level</span>
             <span className="display-text">{explore_level}</span>
           </div>
@@ -94,8 +127,20 @@ class DungeonBehaviorDisplay extends DisplayStatic {
             <span className="display-text">{advance_next_level}</span>
           </div>
           <div className="display-group">
+            <span className="display-label">fill inventory</span>
+            <span className="display-text">{fill_inventory}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">upgrade inventory</span>
+            <span className="display-text">{upgrade_inventory}</span>
+          </div>
+          <div className="display-group">
             <span className="display-label">fight boss monster</span>
             <span className="display-text">{fight_boss_monster}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">prefer weaker monster</span>
+            <span className="display-text">{prefer_weaker_monster}</span>
           </div>
           <div className="display-group">
             <span className="display-label">try for level</span>
