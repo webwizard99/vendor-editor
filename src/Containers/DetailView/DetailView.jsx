@@ -101,6 +101,8 @@ class DetailView extends React.Component {
         return this.getSupplierDetail();
       case 'town_behavior':
         return this.getTownBehaviorDetail();
+      case 'dungeon_behavior':
+        return this.getDungeonBehaviorDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
