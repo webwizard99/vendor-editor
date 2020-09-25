@@ -35,7 +35,7 @@ class DungeonBehaviorForm extends DisplayForm {
   getForm() {
     let newHeading ='New Dungeon Behavior';
     let newName = '';
-    let id;
+    let newId;
     let newAdvanceTile = 0;
     let newConserveHealth = 0;
     let newUsePotion = 0;
@@ -63,7 +63,7 @@ class DungeonBehaviorForm extends DisplayForm {
       const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === this.props.displayId);
       newName = thisDungeonBehavior.name;
       newHeading = newName;
-      id = thisDungeonBehavior.id;
+      newId = thisDungeonBehavior.id;
       newAdvanceTile = thisDungeonBehavior.advance_tile;
       newConserveHealth = thisDungeonBehavior.conserve_health;
       newUsePotion = thisDungeonBehavior.use_potion;
