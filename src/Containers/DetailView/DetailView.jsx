@@ -15,6 +15,7 @@ import SupplierDisplay from '../../Components/SupplierDisplay/SupplierDisplay';
 import TownBehaviorDisplay from '../../Components/TownBehaviorDisplay/TownBehaviorDisplay';
 import TownBehaviorForm from '../../Components/TownBehaviorForm/TownBehaviorForm';
 import DungeonBehaviorDisplay from '../../Components/DungeonBehaviorDisplay/DungeonBehaviorDisplay';
+import DungeonBehaviorForm from '../../Components/DungeonBehaviorForm/DungeonBehaviorForm';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -75,7 +76,7 @@ class DetailView extends React.Component {
 
   getDungeonBehaviorDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return 'DungeonBehaviorForm';
+      return <DungeonBehaviorForm />;
     } else {
       return <DungeonBehaviorDisplay />
     }
