@@ -1,0 +1,8 @@
+.DungeonBehaviorForm {
+  max-height: 100%;
+  overflow: auto;
+}
+
+#DungeonBehaviorForm {
+  padding-bottom: 1rem;
+}
