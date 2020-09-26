@@ -10,13 +10,15 @@ import { fetchDungeonBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
-// comment to push ref
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class DungeonBehaviorForm extends DisplayForm {
   constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addDungeonBehavior = this.addDungeonBehavior.bind(this);
   }
 
   handleCloseButton(e) {
@@ -28,8 +30,26 @@ class DungeonBehaviorForm extends DisplayForm {
     }
   }
 
+  *addDungeonBehavior(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('dungeon_behavior', data);
+    } else {
+      yield postRequest.makeRequest('dungeon_behavior', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addDungeonBehavior = this.addDungeonBehavior(data);
+    this.addDungeonBehavior.next().value.then(() => {
+      this.props.fetchDungeonBehaviors();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'dungeon_behavior', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
