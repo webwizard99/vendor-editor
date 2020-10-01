@@ -7,6 +7,7 @@ import weaponsReducer from './weaponsReducer';
 import armorReducer from './armorReducer';
 import supplierReducer from './supplierReducer';
 import behaviorsReducer from './behaviorsReducer';
+import adventurerClassReducer from './adventurerClassReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   dialog: dialogReducer,
   armor: armorReducer,
   suppliers: supplierReducer,
-  behaviors: behaviorsReducer
+  behaviors: behaviorsReducer,
+  adventurerClasses: adventurerClassReducer
 });

@@ -5,7 +5,8 @@ import { FETCH_USER,
   SET_ARMOR, 
   SET_SUPPLIERS,
   SET_TOWN_BEHAVIORS,
-  SET_DUNGEON_BEHAVIORS } from './types';
+  SET_DUNGEON_BEHAVIORS,
+  SET_ADVENTURER_CLASSES } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -40,4 +41,9 @@ export const fetchTownBehaviors = () => async dispatch => {
 export const fetchDungeonBehaviors = () => async dispatch => {
   const res = await axios.get('/dungeon_behaviors');
   dispatch({ type: SET_DUNGEON_BEHAVIORS, payload: res.data });
+}
+
+export const fetchAdventurerClasses = () => async dispatch => {
+  const res = await axios.get('/adventurer_classes');
+  dispatch({ type: SET_ADVENTURER_CLASSES, payload: res.data });
 }
