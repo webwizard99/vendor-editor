@@ -16,6 +16,7 @@ import TownBehaviorDisplay from '../../Components/TownBehaviorDisplay/TownBehavi
 import TownBehaviorForm from '../../Components/TownBehaviorForm/TownBehaviorForm';
 import DungeonBehaviorDisplay from '../../Components/DungeonBehaviorDisplay/DungeonBehaviorDisplay';
 import DungeonBehaviorForm from '../../Components/DungeonBehaviorForm/DungeonBehaviorForm';
+import AdventurerClassDisplay from '../../Components/AdventurerClassDisplay/AdventurerClassDisplay';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -32,6 +33,7 @@ class DetailView extends React.Component {
     this.getSupplierDetail = this.getSupplierDetail.bind(this);
     this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
     this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
+    this.getAdventurerClassDetail = this.getAdventurerClassDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -82,6 +84,14 @@ class DetailView extends React.Component {
     }
   }
 
+  getAdventurerClassDetail() {
+    if (this.props.targetId === null || this.props.edit) {
+      return 'AdventurerClassForm'
+    } else {
+      return <AdventurerClassDisplay />
+    }
+  }
+
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
@@ -104,6 +114,8 @@ class DetailView extends React.Component {
         return this.getTownBehaviorDetail();
       case 'dungeon_behavior':
         return this.getDungeonBehaviorDetail();
+      case 'adventurer_class':
+        return this.getAdventurerClassDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
