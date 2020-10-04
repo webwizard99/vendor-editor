@@ -124,6 +124,8 @@ class AdventurerClassForm extends DisplayForm {
               <input type="number" name="anatomy" id="anatomy" className="input-number" placeholder="#"
                 min="0" max="10" required defaultValue={newAnatomy}></input>
             </div>
+            <input type="hidden" name="id" value={newId} />
+            <input type="submit" value={this.props.edit ? 'Update Adventurer Class' : 'Create Adventurer Class' } className="button create-button"></input>
           </form>
       </div>
     )
