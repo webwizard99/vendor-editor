@@ -10,11 +10,14 @@ import { fetchAdventurerClasses } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class AdventurerClassForm extends DisplayForm {
   constructor(props) {
     super(props);
 
+    this.addAdventurerClass = this.addAdventurerClass.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -26,8 +29,26 @@ class AdventurerClassForm extends DisplayForm {
     }
   }
 
+  *addAdventurerClass(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('adventurer_class', data);
+    } else {
+      yield postRequest.makeRequest('adventurer_class', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addAdventurerClass = this.addAdventurerClass(data);
+    this.addAdventurerClass.next().value.then(() => {
+      this.props.fetchAdventurerClasses();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'adventurer_class', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
