@@ -8,6 +8,7 @@ import armorReducer from './armorReducer';
 import supplierReducer from './supplierReducer';
 import behaviorsReducer from './behaviorsReducer';
 import adventurerClassReducer from './adventurerClassReducer';
+import adventurerReducer from './adventurerReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   armor: armorReducer,
   suppliers: supplierReducer,
   behaviors: behaviorsReducer,
-  adventurerClasses: adventurerClassReducer
+  adventurerClasses: adventurerClassReducer,
+  adventurers: adventurerReducer
 });

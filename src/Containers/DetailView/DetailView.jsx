@@ -35,6 +35,7 @@ class DetailView extends React.Component {
     this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
     this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
     this.getAdventurerClassDetail = this.getAdventurerClassDetail.bind(this);
+    this.getAdventurerDetail = this.getAdventurerDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -93,6 +94,14 @@ class DetailView extends React.Component {
     }
   }
 
+  getAdventurerDetail() {
+    if (this.props.targetId === null || this.props.edit) {
+      return 'AdventurerForm';
+    } else {
+      return 'AdventurerDisplay';
+    }
+  }
+
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
@@ -117,6 +126,8 @@ class DetailView extends React.Component {
         return this.getDungeonBehaviorDetail();
       case 'adventurer_class':
         return this.getAdventurerClassDetail();
+      case 'adventurer':
+        return this.getAdventurerDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
