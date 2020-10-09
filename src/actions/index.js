@@ -53,3 +53,9 @@ export const fetchAdventurers = () => async dispatch => {
   const res = await axios.get('/adventurers');
   dispatch({ type: SET_ADVENTURERS, payload: res.data });
 }
+
+export const loadAdventurerDetails = () => async dispatch => {
+  dispatch(fetchTownBehaviors());
+  dispatch(fetchDungeonBehaviors());
+  dispatch(fetchAdventurerClasses());
+}
