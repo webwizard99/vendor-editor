@@ -47,6 +47,9 @@ class AdventurerDisplay extends DisplayStatic {
       town_behavior_id,
       adventurer_class_id
     } = thisAdventurer;
+    if (!this.props.dungeonBehaviors || !this.props.townBehaviors || !this.props.adventurerClasses) {
+      return '';
+    }
     const allDungeonBehaviors = this.props.dungeonBehaviors;
     const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === dungeon_behavior_id);
     const dungeonBehaviorName = thisDungeonBehavior.name;
