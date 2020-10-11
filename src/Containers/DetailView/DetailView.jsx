@@ -19,6 +19,7 @@ import DungeonBehaviorForm from '../../Components/DungeonBehaviorForm/DungeonBeh
 import AdventurerClassDisplay from '../../Components/AdventurerClassDisplay/AdventurerClassDisplay';
 import AdventurerClassForm from '../../Components/AdventurerClassForm/AdventurerClassForm';
 import AdventurerDisplay from '../../Components/AdventurerDisplay/AdventurerDisplay';
+import AdventurerForm from '../../Components/AdventurerForm/AdventurerForm';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -97,7 +98,7 @@ class DetailView extends React.Component {
 
   getAdventurerDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return 'AdventurerForm';
+      return <AdventurerForm />;
     } else {
       return <AdventurerDisplay />;
     }

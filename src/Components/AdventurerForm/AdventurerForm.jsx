@@ -10,6 +10,7 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+// comment to push ref
 
 class AdventurerForm extends DisplayForm {
   constructor(props) {
