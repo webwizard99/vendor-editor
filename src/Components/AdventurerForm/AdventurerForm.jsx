@@ -172,6 +172,7 @@ class AdventurerForm extends DisplayForm {
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Adventurer' : 'Create Adventurer' } className="button create-button"></input>
         </form>
+        <p>Points should total 15</p>
       </div>
     )
   }
