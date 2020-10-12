@@ -10,7 +10,8 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
-// comment to push ref
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class AdventurerForm extends DisplayForm {
   constructor(props) {
@@ -20,6 +21,8 @@ class AdventurerForm extends DisplayForm {
     this.getDungeonBehaviorOptions = this.getDungeonBehaviorOptions.bind(this);
     this.getTownBehaviorOptions = this.getTownBehaviorOptions.bind(this);
     this.getAdventurerClassOptions = this.getAdventurerClassOptions.bind(this);
+    this.addAdventurer = this.addAdventurer.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getDungeonBehaviorOptions() {
@@ -58,8 +61,26 @@ class AdventurerForm extends DisplayForm {
     }
   }
 
+  *addAdventurer(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('adventurer', data);
+    } else {
+      yield postRequest.makeRequest('adventurer', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addAdventurer = this.addAdventurer(data);
+    this.addAdventurer.next().value.then(() => {
+      this.props.fetchAdventurers();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'adventurer', target: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
