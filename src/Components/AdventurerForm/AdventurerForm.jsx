@@ -106,7 +106,7 @@ class AdventurerForm extends DisplayForm {
             <CloseFormButton />
           </div>
         </div>
-
+        <p>Points should total 15</p>
         <form action={'/adventurer'}
           className="input-fields-area"
           id="AdventurerPostForm"
@@ -172,7 +172,6 @@ class AdventurerForm extends DisplayForm {
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Adventurer' : 'Create Adventurer' } className="button create-button"></input>
         </form>
-        <p>Points should total 15</p>
       </div>
     )
   }
