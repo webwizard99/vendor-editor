@@ -112,7 +112,6 @@ class AdventurerForm extends DisplayForm {
           id="AdventurerPostForm"
           method="POST"
           onSubmit={this.handleSubmit}>
-            <p>Points should total 15</p>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="adventurer name"
@@ -173,6 +172,7 @@ class AdventurerForm extends DisplayForm {
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Adventurer' : 'Create Adventurer' } className="button create-button"></input>
         </form>
+        <p>Points should total 15</p>
       </div>
     )
   }
