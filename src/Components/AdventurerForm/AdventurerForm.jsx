@@ -142,24 +142,33 @@ class AdventurerForm extends DisplayForm {
               <input type="number" name="constitution" id="constitution" className="input-number" placeholder="#"
                 min="0" max="10" required defaultValue={newConstitution}></input>
             </div>
-            <select className="dungeon-behavior-select"
-              name="dungeon_behavior_id"
-              id="dungeon_behavior_id"
-              defaultValue={newDungeonBehavior === undefined ? null : newDungeonBehavior.id}>
-                {this.getDungeonBehaviorOptions()}
-            </select>
-            <select className="town-behavior-select"
-              name="town_behavior_id"
-              id="town_behavior_id"
-              defaultValue={newTownBehavior === undefined ? null : newTownBehavior.id}>
-                {this.getTownBehaviorOptions()}
-            </select>
-            <select className="adventurer-class-select"
-              name="adventurer_class_id"
-              id="adventurer_class_id"
-              defaultValue={newAdventurerClass === undefined ? null : newAdventurerClass.id}>
-                {this.getAdventurerClassOptions()}
-            </select>
+            <div className="input-group">
+              <label className="item-label" htmlFor="dungeon_behavior_id">dungeon behavior</label>
+              <select className="dungeon-behavior-select"
+                name="dungeon_behavior_id"
+                id="dungeon_behavior_id"
+                defaultValue={newDungeonBehavior === undefined ? null : newDungeonBehavior.id}>
+                  {this.getDungeonBehaviorOptions()}
+              </select>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="town_behavior_id">town behavior</label>
+              <select className="town-behavior-select"
+                name="town_behavior_id"
+                id="town_behavior_id"
+                defaultValue={newTownBehavior === undefined ? null : newTownBehavior.id}>
+                  {this.getTownBehaviorOptions()}
+              </select>  
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="adventurer_class_id">class</label>
+              <select className="adventurer-class-select"
+                name="adventurer_class_id"
+                id="adventurer_class_id"
+                defaultValue={newAdventurerClass === undefined ? null : newAdventurerClass.id}>
+                  {this.getAdventurerClassOptions()}
+              </select>
+            </div>
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Adventurer' : 'Create Adventurer' } className="button create-button"></input>
         </form>

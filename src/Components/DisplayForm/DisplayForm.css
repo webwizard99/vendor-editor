@@ -56,7 +56,14 @@
 }
 
 .item-label {
-  width: 3rem;
+  width: 5rem;
   margin-right: 1rem;
 }
 
+.input-number {
+  width: 5rem;
+}
+
+.input-text {
+  width: 9.5rem;
+}
