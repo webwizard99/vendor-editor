@@ -89,12 +89,13 @@ class AdventurerClassForm extends DisplayForm {
             <CloseFormButton />
           </div>
         </div>
-        <p>Points should total 45</p>
+        
         <form action={'/adventurer_class'}
           className="input-fields-area"
           id="AdventurerClassPostForm"
           method="POST"
           onSubmit={this.handleSubmit}>
+            <p>Points should total 45</p>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
               <input type="text" name="name" id="name" className="input-text" placeholder="class name"
