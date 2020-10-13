@@ -76,7 +76,7 @@ class AdventurerForm extends DisplayForm {
     this.addAdventurer.next().value.then(() => {
       this.props.fetchAdventurers();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'adventurer', target: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: 'adventurer', targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }
