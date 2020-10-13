@@ -11,7 +11,6 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
-console.log('comment');
 import deleteRequests from '../../utilities/deleteRequests';
 
 class AdventurerDisplay extends DisplayStatic {
@@ -19,7 +18,7 @@ class AdventurerDisplay extends DisplayStatic {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.deleteAdventurer = deleteAdventurer.bind(this);
+    this.deleteAdventurer = this.deleteAdventurer.bind(this);
   }
 
   componentDidMount() {
