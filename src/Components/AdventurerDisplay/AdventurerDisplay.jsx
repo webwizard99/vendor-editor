@@ -11,7 +11,6 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
-console.log('pushing ref');
 import deleteRequests from '../../utilities/deleteRequests';
 
 class AdventurerDisplay extends DisplayStatic {
