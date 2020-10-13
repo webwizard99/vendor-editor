@@ -8,15 +8,17 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import deleteRequests from '../../utilities/deleteRequests';
 
 class AdventurerDisplay extends DisplayStatic {
   constructor(props) {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.deleteAdventurer = deleteAdventurer.bind(this);
   }
 
   componentDidMount() {
@@ -27,10 +29,27 @@ class AdventurerDisplay extends DisplayStatic {
 
   getDeleteButton() {
     return (
-      <div className="DeleteAdventurerButton">
+      <div className="DeleteAdventurerButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Adventurer from Database?'
+        })}>
         <DeleteButton />
       </div>
     );
+  }
+
+  *deleteAdventurer() {
+    yield deleteRequests.makeRequest('adventurer', this.props.displayId);
+  }
+
+  handleYes() {
+    const deleteAdventurer = this.deleteAdventurer();
+    deleteAdventurer.next().value.then(() => {
+      this.props.fetchAdventurers();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    })
   }
 
   getDisplay() {
@@ -124,6 +143,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
     fetchAdventurers: () => dispatch(fetchAdventurers()),
     loadAdventurerDetails: () => dispatch(loadAdventurerDetails())
   }
