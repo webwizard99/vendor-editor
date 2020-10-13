@@ -28,6 +28,8 @@ class AdventurerDisplay extends DisplayStatic {
   }
 
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
       <div className="DeleteAdventurerButton"
         onClick={() => this.props.setDialog({
