@@ -101,11 +101,11 @@ class AdventurerForm extends DisplayForm {
       const allAdventurers = this.props.adventurers;
       const thisAdventurer = allAdventurers.find(adventurer => adventurer.id === this.props.displayId);
       const allDungeonBehaviors = this.props.dungeonBehaviors;
-      const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === thisAdventurer.dungeon_behavior_id);
+      const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === thisAdventurer.dungeoBehaviorId);
       const allTownBehaviors = this.props.townBehaviors;
-      const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id === thisAdventurer.town_behavior_id);
+      const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id === thisAdventurer.townBehaviorId);
       const allAdventurerClasses = this.props.adventurerClasses;
-      const thisAdventurerClass = allAdventurerClasses.find(adventurerClass => adventurerClass.id === thisAdventurer.adventurer_class_id);
+      const thisAdventurerClass = allAdventurerClasses.find(adventurerClass => adventurerClass.id === thisAdventurer.adventurerClassId);
       newId = thisAdventurer.id;
       newName = thisAdventurer.name;
       newHeading = newName;
@@ -173,7 +173,7 @@ class AdventurerForm extends DisplayForm {
               </select>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="townBehavioId">town behavior</label>
+              <label className="item-label" htmlFor="townBehaviorId">town behavior</label>
               <select className="town-behavior-select"
                 name="townBehaviorId"
                 id="townBehaviorId"
