@@ -164,28 +164,28 @@ class AdventurerForm extends DisplayForm {
                 min="0" max="10" required defaultValue={newConstitution}></input>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="dungeon_behavior_id">dungeon behavior</label>
+              <label className="item-label" htmlFor="dungeonBehaviorId">dungeon behavior</label>
               <select className="dungeon-behavior-select"
-                name="dungeon_behavior_id"
-                id="dungeon_behavior_id"
+                name="dungeonBehaviorId"
+                id="dungeonBehaviorId"
                 defaultValue={newDungeonBehavior === undefined ? null : newDungeonBehavior.id}>
                   {this.getDungeonBehaviorOptions()}
               </select>
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="town_behavior_id">town behavior</label>
+              <label className="item-label" htmlFor="townBehavioId">town behavior</label>
               <select className="town-behavior-select"
-                name="town_behavior_id"
-                id="town_behavior_id"
+                name="townBehaviorId"
+                id="townBehaviorId"
                 defaultValue={newTownBehavior === undefined ? null : newTownBehavior.id}>
                   {this.getTownBehaviorOptions()}
               </select>  
             </div>
             <div className="input-group">
-              <label className="item-label" htmlFor="adventurer_class_id">class</label>
+              <label className="item-label" htmlFor="adventurerClassId">class</label>
               <select className="adventurer-class-select"
-                name="adventurer_class_id"
-                id="adventurer_class_id"
+                name="adventurerClassId"
+                id="adventurerClassId"
                 defaultValue={newAdventurerClass === undefined ? null : newAdventurerClass.id}>
                   {this.getAdventurerClassOptions()}
               </select>
