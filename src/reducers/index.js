@@ -9,6 +9,7 @@ import supplierReducer from './supplierReducer';
 import behaviorsReducer from './behaviorsReducer';
 import adventurerClassReducer from './adventurerClassReducer';
 import adventurerReducer from './adventurerReducer';
+import dropListReducer from './dropListReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   suppliers: supplierReducer,
   behaviors: behaviorsReducer,
   adventurerClasses: adventurerClassReducer,
-  adventurers: adventurerReducer
+  adventurers: adventurerReducer,
+  dropLists: dropListReducer
 });
