@@ -5,6 +5,7 @@ import './ObjectListColumn.css';
 import ItemList from '../../Components/ItemList/ItemList';
 import SupplierList from '../../Components/SupplierList/SupplierList';
 import NPCList from '../../Components/NPCList/NPCList';
+import MonsterList from '../../Components/MonsterList/MonsterList';
 
 // redux imports
 // comment to update code
@@ -31,6 +32,7 @@ class ObjectListColumn extends React.Component {
         <ItemList />
         <SupplierList />
         <NPCList />
+        <MonsterList />
       </div>
     )
   }

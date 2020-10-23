@@ -38,6 +38,7 @@ class DetailView extends React.Component {
     this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
     this.getAdventurerClassDetail = this.getAdventurerClassDetail.bind(this);
     this.getAdventurerDetail = this.getAdventurerDetail.bind(this);
+    this.getMonsterDropListDetail = this.getMonsterDropListDetail.bind(this);
   }
 
   getPotionDetail() {
@@ -104,6 +105,14 @@ class DetailView extends React.Component {
     }
   }
 
+  getMonsterDropListDetail() {
+    if (this.props.targetId === null || this.props.edit) {
+      return 'MonsterDropListForm';
+    } else {
+      return 'MonsterDropListDisplay';
+    }
+  }
+
   getDetail() {
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
@@ -130,6 +139,8 @@ class DetailView extends React.Component {
         return this.getAdventurerClassDetail();
       case 'adventurer':
         return this.getAdventurerDetail();
+      case 'monster_drop_list':
+        return this.getMonsterDropListDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)
     }
