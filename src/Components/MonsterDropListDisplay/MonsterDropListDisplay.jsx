@@ -71,7 +71,7 @@ class MonsterDropListDisplay extends DisplayStatic {
           <span className="display-label pad half-span">Drop Chance</span>
           {thisDrops.map(drop => {
             let itemName = ''
-            switch (drop.type) {
+            switch (drop.drop_type) {
               case itemTypes.armor:
                 let allArmor = this.props.armor;
                 let thisArmor = allArmor.find(armor => armor.id === drop.itemId);
