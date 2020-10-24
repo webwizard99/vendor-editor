@@ -38,7 +38,7 @@ class MonsterDropListDisplay extends DisplayStatic {
     if (!this.props.monsterDropLists) return '';
     const allMonsterDropLists = this.props.monsterDropLists;
     const thisDropList = allMonsterDropLists.find(monsterDropList => monsterDropList.id === this.props.displayId);
-    const thisMonsterDropList = thisDropList.monsterDropList;
+    const thisMonsterDropList = thisDropList.monster_drop_list;
     const thisName = thisMonsterDropList.name;
     const thisGoldMin = thisDropList.gold_min;
     const thisGoldMax = thisDropList.gold_max;
