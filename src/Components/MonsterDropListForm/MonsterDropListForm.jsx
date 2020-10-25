@@ -14,6 +14,10 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemTypes from '../../utilities/itemTypes';
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
+import itemPutRequests from '../../utilities/itemPutRequests';
+import itemPostRequests from '../../utilities/itemPostRequests';
 
 class MonsterDropListForm extends DisplayForm {
   constructor(props) {
@@ -29,6 +33,8 @@ class MonsterDropListForm extends DisplayForm {
     this.deleteDrop = this.deleteDrop.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getForm = this.getForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateMonsterDropList = this.updateMonsterDropList.bind(this);
   }
 
   componentDidMount() {
@@ -151,8 +157,26 @@ class MonsterDropListForm extends DisplayForm {
     this.setState(stateUpdate);
   }
 
+  *updateMonsterDropList(data) {
+    if (this.props.edit) {
+      yield itemPutRequests.makeRequest('monster_drop_list', data);
+    } else {
+      yield itemPostRequests.makeRequest('monster_drop_list', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    let updateMonsterDropList = this.updateMonsterDropList(data);
+    updateMonsterDropList.next().value.then(() => {
+      this.props.fetchMonsterDropLists();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'monster_drop_list', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    });
   }
 
   getForm() {
