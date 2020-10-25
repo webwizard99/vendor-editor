@@ -18,6 +18,7 @@ class MonsterDropListDisplay extends DisplayStatic {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.getDrops = this.getDrops.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,50 @@ class MonsterDropListDisplay extends DisplayStatic {
         <DeleteButton />
       </div>
     );
+  }
+
+  getDrops(drops) {
+    if (!drops) return '';
+    return (
+      <div className="monster-drops-display">
+          <span className="display-label full-span">Drops</span>
+          <span className="display-label pad half-span">Item</span>
+          <span className="display-label pad half-span">Drop Chance</span>
+          {drops.map(drop => {
+            let itemName = ''
+            switch (drop.drop_type) {
+              case itemTypes.armor:
+                let allArmor = this.props.armor;
+                let thisArmor = allArmor.find(armor => armor.id === drop.itemId);
+                itemName = thisArmor.item.name;
+                break;
+              case itemTypes.potion:
+                let allPotions = this.props.potions;
+                let thisPotion = allPotions.find(potion => potion.id === drop.itemId);
+                itemName = thisPotion.item.name;
+                break;
+              case itemTypes.weapon:
+                let allWeapons = this.props.weapons;
+                let thisWeapon = allWeapons.find(weapon => weapon.id === drop.itemId);
+                itemName = thisWeapon.item.name;
+                break;
+              default:
+                itemName = 'Unknown Item Type'
+            }
+
+            return (
+              <div className="inner-span">
+                <span className="display-text half-span left-half">
+                  {itemName}
+                </span>
+                <span className="display-text half-span right-half">
+                  {drop.dropChance}
+                </span>
+              </div>
+            )            
+          })}
+        </div>
+    )
   }
 
   getDisplay() {
@@ -67,44 +112,7 @@ class MonsterDropListDisplay extends DisplayStatic {
           <span className="display-label">gold chance</span>
           <span className="display-text">{thisGoldChance}</span>
         </div>
-        <div className="monster-drops-display">
-          <span className="display-label full-span">Drops</span>
-          <span className="display-label pad half-span">Item</span>
-          <span className="display-label pad half-span">Drop Chance</span>
-          {thisDrops.map(drop => {
-            let itemName = ''
-            switch (drop.drop_type) {
-              case itemTypes.armor:
-                let allArmor = this.props.armor;
-                let thisArmor = allArmor.find(armor => armor.id === drop.itemId);
-                itemName = thisArmor.item.name;
-                break;
-              case itemTypes.potion:
-                let allPotions = this.props.potions;
-                let thisPotion = allPotions.find(potion => potion.id === drop.itemId);
-                itemName = thisPotion.item.name;
-                break;
-              case itemTypes.weapon:
-                let allWeapons = this.props.weapons;
-                let thisWeapon = allWeapons.find(weapon => weapon.id === drop.itemId);
-                itemName = thisWeapon.item.name;
-                break;
-              default:
-                itemName = 'Unknown Item Type'
-            }
-
-            return (
-              <div className="inner-span">
-                <span className="display-text half-span left-half">
-                  {itemName}
-                </span>
-                <span className="display-text half-span right-half">
-                  {drop.dropChance}
-                </span>
-              </div>
-            )            
-          })}
-        </div>
+        {this.getDrops(thisDrops)}
       </div>
     )
   }
