@@ -1,5 +1,5 @@
 import React from 'react';
-import '/MonsterDropListForm.css';
+import './MonsterDropListForm.css';
 
 //component imports
 import DisplayForm from '../DisplayForm/DisplayForm';
