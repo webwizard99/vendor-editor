@@ -22,6 +22,7 @@ import AdventurerDisplay from '../../Components/AdventurerDisplay/AdventurerDisp
 import AdventurerForm from '../../Components/AdventurerForm/AdventurerForm';
 // monster components
 import MonsterDropListDisplay from '../../Components/MonsterDropListDisplay/MonsterDropListDisplay';
+import MonsterDropListForm from '../../Components/MonsterDropListForm/MonsterDropListForm';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -109,7 +110,7 @@ class DetailView extends React.Component {
 
   getMonsterDropListDetail() {
     if (this.props.targetId === null || this.props.edit) {
-      return 'MonsterDropListForm';
+      return <MonsterDropListForm />;
     } else {
       return <MonsterDropListDisplay />;
     }

@@ -68,42 +68,56 @@
   width: 9.5rem;
 }
 
-.subgroup-display {
+.form-subgroup {
   display: flex;
-  width: 20rem;
+  width: 30rem;
   flex-wrap: wrap;
-  margin-left: 1rem;
+  margin: 0px 0px 1rem 1rem;
   background: rgb(180, 200, 180);
   color: rgb(30, 35, 40);
 }
 
-.full-span, .half-span, .inner-span {
+.form-half-span input, .form-half-span select {
+  color: black;
+}
+
+.form-half-span input {
+  width: 80%;
+}
+
+.form-full-span, .form-half-span, .form-inner-span {
   box-sizing: border-box;
   margin: .2rem 0px .2rem 0px;
 }
 
-.pad {
+.form-pad {
   margin-left: 1rem;
 }
 
-.full-span {
-  width: 20rem;
+.form-full-span {
+  width: 30rem;
   text-align: center;
 }
 
-.inner-span {
+.form-center-content {
+  display: flex;
+  justify-content: center;
+}
+
+.form-inner-span {
   width: 100%;
   display: flex;
 }
 
-.half-span {
-  width: 9rem;
+.form-half-span {
+  width: 14rem;
+  margin-left: 1rem;
 }
 
-.left-half {
-  border-right: 1px solid rgb(100, 105, 100);
+.form-right-half {
+  display: flex;
 }
 
-.left-half, .right-half {
+.form-left-half, .form-right-half {
   margin-left: 1rem;
 }

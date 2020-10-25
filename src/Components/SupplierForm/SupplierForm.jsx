@@ -193,7 +193,7 @@ class SupplierForm extends DisplayForm {
             </div>
             <div className="input-group-blank">
             </div>
-            <div className="offerings-group">
+            <div className="offerings-group form-subgroup">
               <span className="item-label form-full-span">Offerings</span>
               <span className="item-label form-pad form-half-span">Type</span>
               <span className="item-label form-pad form-half-span">Markup</span>
