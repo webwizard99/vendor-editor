@@ -27,6 +27,7 @@ class MonsterDropListForm extends DisplayForm {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.addFormDrop = this.addFormDrop.bind(this);
     this.deleteDrop = this.deleteDrop.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.getForm = this.getForm.bind(this);
   }
 
@@ -90,7 +91,7 @@ class MonsterDropListForm extends DisplayForm {
       return (
         <optgroup label={itemType}>
           {allItemsOfType.map(item => {
-            return <option value={item.id}>{item.item.name}</option>
+            return <option item_type={itemType} value={item.id}>{item.item.name}</option>
           })}
         </optgroup>
       )
