@@ -14,10 +14,8 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemTypes from '../../utilities/itemTypes';
-import postRequest from '../../utilities/itemPostRequests';
-import putRequest from '../../utilities/itemPutRequests';
-import itemPutRequests from '../../utilities/itemPutRequests';
-import itemPostRequests from '../../utilities/itemPostRequests';
+import postRequests from '../../utilities/itemPostRequests';
+import putRequests from '../../utilities/itemPutRequests';
 
 class MonsterDropListForm extends DisplayForm {
   constructor(props) {
@@ -159,9 +157,9 @@ class MonsterDropListForm extends DisplayForm {
 
   *updateMonsterDropList(data) {
     if (this.props.edit) {
-      yield itemPutRequests.makeRequest('monster_drop_list', data);
+      yield putRequests.makeRequest('monster_drop_list', data);
     } else {
-      yield itemPostRequests.makeRequest('monster_drop_list', data);
+      yield postRequests.makeRequest('monster_drop_list', data);
     }
   }
 
