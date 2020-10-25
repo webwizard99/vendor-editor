@@ -82,7 +82,11 @@ class MonsterDropListForm extends DisplayForm {
     if (!this.props.armor || !this.props.potions || !this.props.weapons) return '';
     const itemArr = Object.values(itemTypes);
     return itemArr.map(itemType => {
-      const allItemsOfType = this.props[`${itemType}`];
+      let propName = itemType;
+      if (itemType !== itemTypes.armor) {
+        propName += 's';
+      }
+      const allItemsOfType = this.props[`${propName}`];
       return (
         <optgroup label={itemType}>
           {allItemsOfType.map(item => {
