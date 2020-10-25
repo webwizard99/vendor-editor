@@ -159,17 +159,21 @@ class MonsterDropListForm extends DisplayForm {
     if (!this.state.initialized) return '';
 
     let drops = [];
+    let newMonsterDroplistId = null;
     if (this.props.edit) {
       const allDropsLists = this.props.monsterDropLists;
       const thisDropList = allDropsLists.find(dropList => dropList.id === this.props.displayId);
       drops = thisDropList.drops;
+      newMonsterDroplistId = thisDropList.monster_drop_list.id
     }
 
     let newHeading = 'New Monster Drop List';
     let newId = null;
+    
     if (this.props.edit) {
       newHeading = this.state.name;
       newId = this.props.displayId;
+
     }
 
     const newDropKeys = this.state.newDropKeys;
@@ -284,6 +288,7 @@ class MonsterDropListForm extends DisplayForm {
               <input type="hidden" name="newIndexes" value={this.state.newDropKeys} />
               {/* <input type="hidden" name="newDropsCount" value={this.state.newD} */}
               <input type="hidden" name="id" value={newId} />
+              <input type="hidden" name="monsterDroplistId" value={newMonsterDroplistId} />
               <input type="submit" value={this.props.edit ? 'Update Monster Droplist' : 'Create Monster Droplist'} className="button create-button"></input>
             </div>
         </form>
