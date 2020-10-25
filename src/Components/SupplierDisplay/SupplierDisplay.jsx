@@ -86,7 +86,7 @@ class SupplierDisplay extends DisplayStatic {
           </div>
           <div className="display-group-blank">
           </div>
-          <div className="offerings-display">
+          <div className="offerings-display subgroup-display">
             <span className="display-label full-span">Offerings</span>
             <span className="display-label pad half-span">Type</span>
             <span className="display-label pad half-span">Markup</span>

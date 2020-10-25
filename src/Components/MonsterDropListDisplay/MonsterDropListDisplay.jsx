@@ -38,7 +38,7 @@ class MonsterDropListDisplay extends DisplayStatic {
   getDrops(drops) {
     if (!drops) return '';
     return (
-      <div className="monster-drops-display">
+      <div className="monster-drops-display subgroup-display">
           <span className="display-label full-span">Drops</span>
           <span className="display-label pad half-span">Item</span>
           <span className="display-label pad half-span">Drop Chance</span>
