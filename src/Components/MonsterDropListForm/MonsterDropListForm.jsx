@@ -64,7 +64,7 @@ class MonsterDropListForm extends DisplayForm {
     let presentIds = [];
     if (newDrops.length > 0) {
       for (const drop of newDrops) {
-        initialState[`drop-${drop.id}-item-id`] = `id:${drop.itemId}, type:${drop.drop_type}`;
+        initialState[`drop-${drop.id}-item-id`] = `"id":"${drop.itemId}", "type":"${drop.drop_type}"`;
         initialState[`drop-${drop.id}-drop-chance`] = drop.dropChance;
         presentIds.push(drop.id);
       }
@@ -90,7 +90,7 @@ class MonsterDropListForm extends DisplayForm {
       return (
         <optgroup label={itemType}>
           {allItemsOfType.map(item => {
-            return <option value={`id: ${item.id}, type:${itemType}`}>{item.item.name}</option>
+            return <option value={`"id":"${item.id}", "type":"${itemType}"`}>{item.item.name}</option>
           })}
         </optgroup>
       )
@@ -104,7 +104,7 @@ class MonsterDropListForm extends DisplayForm {
 
     let updatedState = {};
     let newDropIndex = this.state.newDropIndex;
-    updatedState[`new-drop-${newDropIndex}-item-id`] = `id:${0}, type:${itemTypes.potion}`;
+    updatedState[`new-drop-${newDropIndex}-item-id`] = `"id":"${0}", "type":"${itemTypes.potion}"`;
     updatedState[`new-drop-${newDropIndex}-drop-chance`] = 0;
     let newDropKeys = this.state.newDropKeys;
     newDropKeys.push(newDropIndex);
