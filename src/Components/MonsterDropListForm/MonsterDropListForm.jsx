@@ -27,6 +27,7 @@ class MonsterDropListForm extends DisplayForm {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.addFormDrop = this.addFormDrop.bind(this);
     this.deleteDrop = this.deleteDrop.bind(this);
+    this.getForm = this.getForm.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +70,7 @@ class MonsterDropListForm extends DisplayForm {
       }
     }
     initialState.presentIds = presentIds;
-    initialState.existingIdCount = drops.length;
+    initialState.existingIdCount = newDrops.length;
     initialState.deletedIds = [];
     initialState.newDropIndex = 0;
     initialState.newDropKeys = [];
@@ -162,9 +163,6 @@ class MonsterDropListForm extends DisplayForm {
     }
 
     let newHeading = 'New Monster Drop List';
-    let newMinGold = state.gold_min;
-    let newMaxgold = state.gold_max;
-    let newGoldChance = state.gold_chance;
     let newId = null;
     if (this.props.edit) {
       newHeading = this.state.name;
@@ -233,7 +231,7 @@ class MonsterDropListForm extends DisplayForm {
                         name={`drop-${drop.id}-drop-chance`}
                         id={`drop-${drop.id}-drop-chance`}
                         onChange={this.handleChange}
-                        value={this.state[`drop-${drop-id}-drop-chance`]}>
+                        value={this.state[`drop-${drop.id}-drop-chance`]}>
                       </input>
                       <span className="dropDelete"
                         onClick={() => this.deleteDrop({ existing: true, dropId: drop.id })}
