@@ -59,7 +59,7 @@ class SupplierDisplay extends DisplayStatic {
     deleteSupplier.next().value.then(() => {
       this.props.fetchSuppliers();
       this.props.setDialog({ active: false, text: '' });
-      this.props.setDisplayForm({ form: false, edit: false, displayId: null });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
     });
   }
 
