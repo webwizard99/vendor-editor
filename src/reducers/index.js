@@ -10,6 +10,7 @@ import behaviorsReducer from './behaviorsReducer';
 import adventurerClassReducer from './adventurerClassReducer';
 import adventurerReducer from './adventurerReducer';
 import dropListReducer from './dropListReducer';
+import monsterBehaviorReducer from './monsterBehaviorReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   behaviors: behaviorsReducer,
   adventurerClasses: adventurerClassReducer,
   adventurers: adventurerReducer,
-  dropLists: dropListReducer
+  dropLists: dropListReducer,
+  monsterBehaviors: monsterBehaviorReducer
 });

@@ -8,7 +8,8 @@ import { FETCH_USER,
   SET_DUNGEON_BEHAVIORS,
   SET_ADVENTURER_CLASSES,
   SET_ADVENTURERS,
-  SET_MONSTER_DROP_LISTS } from './types';
+  SET_MONSTER_DROP_LISTS,
+  SET_MONSTER_BEHAVIORS } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -70,4 +71,9 @@ export const loadItems = () => async dispatch => {
   dispatch(fetchPotions());
   dispatch(fetchWeapons());
   dispatch(fetchArmor());
+}
+
+export const fetchMonsterBehaviors = () => async dispatch => {
+  const res = await axios.get('/monster_behaviors');
+  dispatch({ type: SET_MONSTER_BEHAVIORS, payload: res.data });
 }
