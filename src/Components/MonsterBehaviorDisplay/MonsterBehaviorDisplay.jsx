@@ -38,7 +38,7 @@ class MonsterBehaviorDisplay extends DisplayStatic {
       <div className="MonsterBehaviorDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'monster_behavior', edit: true, targetId: thisTownBehavior.id })}>
+          <div className="MonsterBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'monster_behavior', edit: true, targetId: thisMonsterBehavior.id })}>
             <EditButton />
           </div>
         </div>
