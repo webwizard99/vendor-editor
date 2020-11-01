@@ -104,8 +104,12 @@ class MonsterBehaviorForm extends DisplayForm {
               <input type="number" name="migrate" id="migrate" className="input-number" placeholder="#"
                 step="50" min="0" max="1000" required defaultValue={newMigrate}></input>
             </div>
+            <div className="input-group-blank">
+            </div>
             <input type="hidden" name="id" value={newId} />
-          <input type="submit" value={this.props.edit ? 'Update Monster Behavior' : 'Create Monster Behavior' } className="button create-button"></input>
+            <div className="supplier-submit-container">
+            <input type="submit" value={this.props.edit ? 'Update Monster Behavior' : 'Create Monster Behavior' } className="button create-button"></input>
+            </div>
         </form>
       </div>
     )
