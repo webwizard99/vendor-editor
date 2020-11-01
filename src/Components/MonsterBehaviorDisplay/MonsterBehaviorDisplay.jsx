@@ -11,6 +11,7 @@ import { fetchMonsterBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 
 class MonsterBehaviorDisplay extends DisplayStatic {
   getDeleteButton() {
@@ -38,7 +39,7 @@ class MonsterBehaviorDisplay extends DisplayStatic {
       <div className="MonsterBehaviorDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="MonsterBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'monster_behavior', edit: true, targetId: thisMonsterBehavior.id })}>
+          <div className="MonsterBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.monster_behavior, edit: true, targetId: thisMonsterBehavior.id })}>
             <EditButton />
           </div>
         </div>

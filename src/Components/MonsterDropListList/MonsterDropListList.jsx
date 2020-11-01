@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import { fetchMonsterDropLists } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class MonsterDropListList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -30,7 +33,7 @@ class MonsterDropListList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'monster_drop_list', edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: false, targetId: null });
   }
 
   getNewButton() {
@@ -50,13 +53,13 @@ class MonsterDropListList extends ExpandableList {
       <div className="detailList">
         { newMonsterDropLists.map(monsterDropList => {
           let monsterDropListClass = "ListDetail";
-          if (this.props.form === 'monster_drop_list' && this.props.targetId === monsterDropList.id) {
+          if (this.props.form === formTypes.monster_drop_list && this.props.targetId === monsterDropList.id) {
             monsterDropListClass += " activeItem";
           }
           return (
             <p>
               <span className={monsterDropListClass}
-              onClick={() => this.props.setDisplayForm({ form: 'monster_drop_list', edit: false, targetId: monsterDropList.id })}
+              onClick={() => this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: false, targetId: monsterDropList.id })}
               >{monsterDropList.monster_drop_list.name}</span>
             </p>
           )

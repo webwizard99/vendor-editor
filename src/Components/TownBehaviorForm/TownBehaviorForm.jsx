@@ -10,6 +10,7 @@ import { fetchTownBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import formTypes from '../../utilities/formTypes';
 import postRequest from '../../utilities/itemPostRequests';
 import putRequest from '../../utilities/itemPutRequests';
 
@@ -26,7 +27,7 @@ class TownBehaviorForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'town_behavior', targetId: this.props.displayId, edit: false });
+      this.props.setDisplayForm({ form: formTypes.town_behavior, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -46,7 +47,7 @@ class TownBehaviorForm extends DisplayForm {
     this.addTownBehavior.next().value.then(() => {
       this.props.fetchTownBehaviors();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'town_behavior', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.town_behavior, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false })
       }

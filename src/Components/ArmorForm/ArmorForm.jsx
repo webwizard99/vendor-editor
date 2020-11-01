@@ -10,6 +10,7 @@ import { fetchArmor } from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import formTypes from '../../utilities/formTypes';
 import itemPostRequest from '../../utilities/itemPostRequests';
 import itemPutRequest from '../../utilities/itemPutRequests';
 
@@ -26,7 +27,7 @@ class ArmorForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false});
+      this.props.setDisplayForm({ form: formTypes.armor, targetId: this.props.displayId, edit: false});
     }
   }
 
@@ -45,7 +46,7 @@ class ArmorForm extends DisplayForm {
     this.addArmor.next().value.then(() => {
       this.props.fetchArmor();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'armor', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.armor, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }

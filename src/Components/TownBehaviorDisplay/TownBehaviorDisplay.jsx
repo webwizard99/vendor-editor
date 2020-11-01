@@ -11,6 +11,7 @@ import { fetchTownBehaviors } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class TownBehaviorDisplay extends DisplayStatic {
@@ -72,7 +73,7 @@ class TownBehaviorDisplay extends DisplayStatic {
       <div className="TownBehaviorDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: 'town_behavior', edit: true, targetId: thisTownBehavior.id })}>
+          <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.town_behavior, edit: true, targetId: thisTownBehavior.id })}>
             <EditButton />
           </div>
         </div>

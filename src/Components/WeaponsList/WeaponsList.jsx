@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { fetchWeapons } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class WeaponsList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -29,7 +32,7 @@ class WeaponsList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.weapon, edit: false, targetId: null });
   }
   
   getNewButton() {
@@ -49,13 +52,13 @@ class WeaponsList extends ExpandableList {
         <div className="detailList">
           { newWeapons.map(weapon => {
             let weaponClass = "ListDetail";
-            if (this.props.form === "weapon" && this.props.targetId === weapon.id) {
+            if (this.props.form === formTypes.weapon && this.props.targetId === weapon.id) {
               weaponClass += " activeItem"
             }
             return (
               <p>
                 <span className={weaponClass}
-                onClick={() => this.props.setDisplayForm({ form: 'weapon', edit: false, targetId: weapon.id })}
+                onClick={() => this.props.setDisplayForm({ form: formTypes.weapon, edit: false, targetId: weapon.id })}
                 >{weapon.item.name}</span>
               </p>
             )

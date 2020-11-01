@@ -12,7 +12,7 @@ import { fetchPotions } from '../../actions'
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
-// gratitous comment to push code.
+import formTypes from '../../utilities/formTypes';
 import itemPostRequest from '../../utilities/itemPostRequests';
 import itemPutRequest from '../../utilities/itemPutRequests';
 
@@ -35,7 +35,7 @@ class PotionForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'potion', targetId: this.props.displayId, edit: false});
+      this.props.setDisplayForm({ form: formTypes.potion, targetId: this.props.displayId, edit: false});
     }
   }
 
@@ -55,7 +55,7 @@ class PotionForm extends DisplayForm {
     addPotion.next().value.then(() => {
       this.props.fetchPotions();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'potion', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.potion, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }

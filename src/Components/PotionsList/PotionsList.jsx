@@ -9,6 +9,9 @@ import { connect  } from 'react-redux';
 import { fetchPotions } from '../../actions'
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class PotionsList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -28,7 +31,7 @@ class PotionsList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'potion', edit: false, targetId: null })
+    this.props.setDisplayForm({ form: formTypes.potion, edit: false, targetId: null })
   }
 
   getNewButton() {
@@ -48,13 +51,13 @@ class PotionsList extends ExpandableList {
         <div className="detailList">
           { newPotions.map(potion => {
             let potionClass = "ListDetail";
-            if (this.props.form === "potion" && this.props.targetId === potion.id) {
+            if (this.props.form === formTypes.potion && this.props.targetId === potion.id) {
               potionClass += " activeItem"
             }
             return (
               <p>
                 <span className={potionClass} 
-                onClick={() => this.props.setDisplayForm({ form: 'potion', edit: false, targetId: potion.id })}>{potion.item.name}</span>
+                onClick={() => this.props.setDisplayForm({ form: formTypes.potion, edit: false, targetId: potion.id })}>{potion.item.name}</span>
               </p>
             )
             })}

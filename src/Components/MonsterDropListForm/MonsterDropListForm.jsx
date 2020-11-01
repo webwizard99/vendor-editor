@@ -14,6 +14,7 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemTypes from '../../utilities/itemTypes';
+import formTypes from '../../utilities/formTypes';
 import postRequests from '../../utilities/itemPostRequests';
 import putRequests from '../../utilities/itemPutRequests';
 
@@ -144,7 +145,7 @@ class MonsterDropListForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'monster_drop_list', targetId: this.props.displayId, edit: false });
+      this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -170,7 +171,7 @@ class MonsterDropListForm extends DisplayForm {
     updateMonsterDropList.next().value.then(() => {
       this.props.fetchMonsterDropLists();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'monster_drop_list', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }

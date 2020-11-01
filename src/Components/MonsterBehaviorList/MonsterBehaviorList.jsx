@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { fetchMonsterBehaviors } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class MonsterBehaviorList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -29,7 +32,7 @@ class MonsterBehaviorList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'monster_behavior', edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.monster_behavior, edit: false, targetId: null });
   }
 
   getNewButton() {
@@ -49,13 +52,13 @@ class MonsterBehaviorList extends ExpandableList {
       <div className="detailList">
         {newMonsterBehaviors.map(monsterBehavior => {
           let monsterBehaviorClass = "ListDetail";
-          if (this.props.form === 'monster_behavior' && monsterBehavior.id === this.props.targetId) {
+          if (this.props.form === formTypes.monster_behavior && monsterBehavior.id === this.props.targetId) {
             monsterBehaviorClass += " activeItem";
           }
           return (
             <p>
               <span className={monsterBehaviorClass}
-                onClick={() => this.props.setDisplayForm({ form: 'monster_behavior', edit: false, targetId: monsterBehavior.id })}
+                onClick={() => this.props.setDisplayForm({ form: formTypes.monster_behavior, edit: false, targetId: monsterBehavior.id })}
               >{monsterBehavior.name}</span>
             </p>
           )

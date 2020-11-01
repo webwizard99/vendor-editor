@@ -11,6 +11,7 @@ import { fetchPotions } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class PotionDisplay extends DisplayStatic {
@@ -61,7 +62,7 @@ class PotionDisplay extends DisplayStatic {
       <div className="PotionDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="PotionEditButton" onClick={()=> this.props.setDisplayForm({ form: 'potion', edit: true, targetId: thisPotion.id })}>
+          <div className="PotionEditButton" onClick={()=> this.props.setDisplayForm({ form: formTypes.potion, edit: true, targetId: thisPotion.id })}>
             <EditButton />
           </div>
         </div>

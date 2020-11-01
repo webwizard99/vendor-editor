@@ -26,6 +26,9 @@ import MonsterDropListForm from '../../Components/MonsterDropListForm/MonsterDro
 import MonsterBehaviorDisplay from '../../Components/MonsterBehaviorDisplay/MonsterBehaviorDisplay'
 import MonsterBehaviorForm from '../../Components/MonsterBehaviorForm/MonsterBehaviorForm';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 // redux imports
 import { connect } from 'react-redux';
 import { SET_DETAIL_REFRESH } from '../../actions/types';
@@ -137,25 +140,25 @@ class DetailView extends React.Component {
     }
 
     switch(this.props.formType) {
-      case 'potion':
+      case formTypes.potion:
         return this.getPotionDetail();
-      case 'weapon':
+      case formTypes.weapon:
         return this.getWeaponDetail();
-      case 'armor':
+      case formTypes.armor:
         return this.getArmorDetail();
-      case 'supplier':
+      case formTypes.supplier:
         return this.getSupplierDetail();
-      case 'town_behavior':
+      case formTypes.town_behavior:
         return this.getTownBehaviorDetail();
-      case 'dungeon_behavior':
+      case formTypes.dungeon_behavior:
         return this.getDungeonBehaviorDetail();
-      case 'adventurer_class':
+      case formTypes.adventurer_class:
         return this.getAdventurerClassDetail();
-      case 'adventurer':
+      case formTypes.adventurer:
         return this.getAdventurerDetail();
-      case 'monster_drop_list':
+      case formTypes.monster_drop_list:
         return this.getMonsterDropListDetail();
-      case 'monster_behavior':
+      case formTypes.monster_behavior:
         return this.getMonsterBehaviorDetail();
       default:
         return (<div className="BlankForm">detail type unknown</div>)

@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { fetchDungeonBehaviors } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class DungeonBehaviorList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -29,7 +32,7 @@ class DungeonBehaviorList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'dungeon_behavior', edit: false, targetId: null })
+    this.props.setDisplayForm({ form: formTypes.dungeon_behavior, edit: false, targetId: null })
   }
 
   getNewButton() {
@@ -49,13 +52,13 @@ class DungeonBehaviorList extends ExpandableList {
         <div className="detailList">
           {newDungeonBehaviors.map(dungeonBehavior => {
             let dungeonBehaviorClass = "ListDetail";
-            if (this.props.form === 'dungeon_behavior' && dungeonBehavior.id === this.props.targetId) {
+            if (this.props.form === formTypes.dungeon_behavior && dungeonBehavior.id === this.props.targetId) {
               dungeonBehaviorClass += " activeItem";
             }
             return (
               <p>
                 <span className={dungeonBehaviorClass}
-                  onClick={() => this.props.setDisplayForm({ form: 'dungeon_behavior', edit: false, targetId: dungeonBehavior.id })}
+                  onClick={() => this.props.setDisplayForm({ form: formTypes.dungeon_behavior, edit: false, targetId: dungeonBehavior.id })}
                 >{dungeonBehavior.name}</span>
               </p>
             )

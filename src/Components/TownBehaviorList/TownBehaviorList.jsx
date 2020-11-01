@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { fetchTownBehaviors } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class TownBehaviorList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -30,7 +33,7 @@ class TownBehaviorList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'town_behavior', edit: false, targetId: null })
+    this.props.setDisplayForm({ form: formTypes.town_behavior, edit: false, targetId: null })
   }
 
   getNewButton() {
@@ -50,13 +53,13 @@ class TownBehaviorList extends ExpandableList {
         <div className="detailList">
           {newTownBehaviors.map(townBehavior => {
             let townBehaviorClass = "ListDetail";
-            if (this.props.form === 'town_behavior' && this.props.targetId === townBehavior.id) {
+            if (this.props.form === formTypes.town_behavior && this.props.targetId === townBehavior.id) {
               townBehaviorClass += " activeItem";
             }
             return (
               <p>
                 <span className={townBehaviorClass}
-                  onClick={() => this.props.setDisplayForm({ form: 'town_behavior', edit: false, targetId: townBehavior.id })}
+                  onClick={() => this.props.setDisplayForm({ form: formTypes.town_behavior, edit: false, targetId: townBehavior.id })}
                 >{townBehavior.name}</span>
               </p>
             )

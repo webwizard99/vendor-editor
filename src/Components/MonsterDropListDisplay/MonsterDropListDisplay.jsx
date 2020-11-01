@@ -11,6 +11,7 @@ import { fetchMonsterDropLists, loadItems } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import itemTypes from '../../utilities/itemTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
@@ -133,7 +134,7 @@ class MonsterDropListDisplay extends DisplayStatic {
       <div className="MonsterDropListDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{thisName}</h2>
-          <div className="MonsterDropListEditButton" onClick={() => this.props.setDisplayForm({ form: 'monster_drop_list', edit: true, targetId: this.props.displayId })}>
+          <div className="MonsterDropListEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: true, targetId: this.props.displayId })}>
             <EditButton />
           </div>
         </div>

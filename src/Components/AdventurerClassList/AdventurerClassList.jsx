@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import { fetchAdventurerClasses } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utitlity imports
+import formTypes from '../../utilities/formTypes';
+
 class AdventurerClassList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -30,7 +33,7 @@ class AdventurerClassList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'adventurer_class', edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.adventurerClass, edit: false, targetId: null });
   }
 
   getNewButton() {
@@ -50,13 +53,13 @@ class AdventurerClassList extends ExpandableList {
         <div className="detailList">
           {newAdventurerClasses.map(adventurerClass => {
             let adventurerClassClass = "ListDetail";
-            if (this.props.form === 'adventurer_class' && this.props.targetId === adventurerClass.id) {
+            if (this.props.form === formTypes.adventurer_class && this.props.targetId === adventurerClass.id) {
               adventurerClassClass += " activeItem";
             }
             return (
               <p>
                 <span className={adventurerClassClass}
-                  onClick={() => this.props.setDisplayForm({ form: 'adventurer_class', edit: false, targetId: adventurerClass.id })}
+                  onClick={() => this.props.setDisplayForm({ form: formTypes.adventurerClass, edit: false, targetId: adventurerClass.id })}
                 >{adventurerClass.name}</span>
               </p>
             );

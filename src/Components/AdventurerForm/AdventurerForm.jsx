@@ -10,6 +10,7 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import formTypes from '../../utilities/formTypes';
 import postRequest from '../../utilities/itemPostRequests';
 import putRequest from '../../utilities/itemPutRequests';
 
@@ -57,7 +58,7 @@ class AdventurerForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'adventurer', targetId: this.props.displayId, edit: false });
+      this.props.setDisplayForm({ form: formTypes.adventurer, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -76,7 +77,7 @@ class AdventurerForm extends DisplayForm {
     this.addAdventurer.next().value.then(() => {
       this.props.fetchAdventurers();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'adventurer', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.adventurer, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }

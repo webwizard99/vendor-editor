@@ -11,6 +11,7 @@ import { fetchSuppliers } from '../../actions'
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class SupplierDisplay extends DisplayStatic {
@@ -74,7 +75,7 @@ class SupplierDisplay extends DisplayStatic {
       <div className="SupplierDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="SupplierEditButton" onClick={() => this.props.setDisplayForm({ form: 'supplier', edit: true, targetId: thisSupplier.id })}>
+          <div className="SupplierEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.supplier, edit: true, targetId: thisSupplier.id })}>
             <EditButton />
           </div>
         </div>

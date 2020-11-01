@@ -10,6 +10,7 @@ import { fetchDungeonBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import formTypes from '../../utilities/formTypes';
 import postRequest from '../../utilities/itemPostRequests';
 import putRequest from '../../utilities/itemPutRequests';
 
@@ -26,7 +27,7 @@ class DungeonBehaviorForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: 'dungeon_behavior', targetId: this.props.displayId, edit: false });
+      this.props.setDisplayForm({ form: formTypes.dungeon_behavior, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -45,7 +46,7 @@ class DungeonBehaviorForm extends DisplayForm {
     this.addDungeonBehavior.next().value.then(() => {
       this.props.fetchDungeonBehaviors();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: 'dungeon_behavior', targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.dungeon_behavior, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }

@@ -11,6 +11,7 @@ import { fetchArmor } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class ArmorDisplay extends DisplayStatic {
@@ -62,7 +63,7 @@ class ArmorDisplay extends DisplayStatic {
       <div className="ArmorDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="WeaponEditButton" onClick={() => this.props.setDisplayForm({ form: 'armor', edit: true, targetId: thisArmor.id })}>
+          <div className="WeaponEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.armor, edit: true, targetId: thisArmor.id })}>
             <EditButton />
           </div>
         </div>

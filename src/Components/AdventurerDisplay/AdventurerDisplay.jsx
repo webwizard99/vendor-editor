@@ -11,6 +11,7 @@ import { fetchAdventurers, loadAdventurerDetails } from '../../actions';
 import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
+import formTypes from '../../utilities/formTypes';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class AdventurerDisplay extends DisplayStatic {
@@ -85,7 +86,7 @@ class AdventurerDisplay extends DisplayStatic {
       <div className="AdventurerDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="AdventurerEditButton" onClick={() => this.props.setDisplayForm({ form: 'adventurer', edit: true, targetId: thisAdventurer.id })}>
+          <div className="AdventurerEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.adventurer, edit: true, targetId: thisAdventurer.id })}>
             <EditButton />
           </div>
         </div>

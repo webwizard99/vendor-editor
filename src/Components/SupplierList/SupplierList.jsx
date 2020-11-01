@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { fetchSuppliers } from '../../actions';
 import { SET_DETAIL_FORM, SET_DETAIL_REFRESH } from '../../actions/types';
 
+// js utility imports
+import formTypes from '../../utilities/formTypes';
+
 class SupplierList extends ExpandableList {
   constructor(props) {
     super(props);
@@ -29,7 +32,7 @@ class SupplierList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.supplier, edit: false, targetId: null });
   }
 
   getNewButton() {
@@ -50,13 +53,13 @@ class SupplierList extends ExpandableList {
         <div className="detailList">
           { newSuppliers.map(supplier => {
             let supplierClass = "ListDetail";
-            if (this.props.form === 'supplier' && this.props.targetId === supplier.id) {
+            if (this.props.form === formTypes.supplier && this.props.targetId === supplier.id) {
               supplierClass += " activeItem";
             }
             return (
               <p>
                 <span className={supplierClass}
-                  onClick={() => this.props.setDisplayForm({ form: 'supplier', edit: false, targetId: supplier.id })}>{supplier.name}</span>
+                  onClick={() => this.props.setDisplayForm({ form: formTypes.supplier, edit: false, targetId: supplier.id })}>{supplier.name}</span>
               </p>
             )
           })}
