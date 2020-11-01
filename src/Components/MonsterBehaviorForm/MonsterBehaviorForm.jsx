@@ -10,11 +10,14 @@ import { fetchMonsterBehaviors } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class MonsterBehaviorForm extends DisplayForm {
   constructor(props) {
     super(props);
 
+    this.addMonsterBehavior = this.addMonsterBehavior.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -27,8 +30,26 @@ class MonsterBehaviorForm extends DisplayForm {
     }
   }
 
+  *addMonsterBehavior(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('monster_behavior', data);
+    } else {
+      yield postRequest.makeRequest('monster_behavior', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addMonsterBehavior = this.addMonsterBehavior(data);
+    this.addMonsterBehavior.next().value.then(() => {
+      this.props.fetchMonsterBehaviors();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: 'monster_behavior', targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
