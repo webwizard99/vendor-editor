@@ -18,7 +18,7 @@ class AdventurerDisplay extends DisplayStatic {
   constructor(props) {
     super(props);
 
-    state = {
+    this.state = {
       initialized: false
     }
 
@@ -30,6 +30,7 @@ class AdventurerDisplay extends DisplayStatic {
   componentDidMount() {
     if (!this.props.adventurerClasses || !this.props.townBehaviors || !this.props.dungeonBehaviors) {
       this.props.loadAdventurerDetails();
+    } else {
       this.setInitialized(true);
     }
   }
