@@ -18,6 +18,11 @@ class AdventurerDisplay extends DisplayStatic {
   constructor(props) {
     super(props);
 
+    state = {
+      initialized: false
+    }
+
+    this.setInitialized = this.setInitialized.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.deleteAdventurer = this.deleteAdventurer.bind(this);
   }
@@ -25,7 +30,12 @@ class AdventurerDisplay extends DisplayStatic {
   componentDidMount() {
     if (!this.props.adventurerClasses || !this.props.townBehaviors || !this.props.dungeonBehaviors) {
       this.props.loadAdventurerDetails();
+      this.setInitialized(true);
     }
+  }
+
+  setInitialized(val) {
+    this.setState({ initialized: val});
   }
 
   getDeleteButton() {
@@ -58,7 +68,7 @@ class AdventurerDisplay extends DisplayStatic {
   getDisplay() {
     console.log(this.props.displayId);
     console.log(this.props.adventurers);
-    if (!this.props.adventurers) return '';
+    if (!this.props.adventurers || !this.state.initialized) return '';
     const allAdventurers = this.props.adventurers;
     const thisAdventurer = allAdventurers.find(adventurer => adventurer.id === this.props.displayId);
     const {
