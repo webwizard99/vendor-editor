@@ -76,6 +76,7 @@ class AdventurerDisplay extends DisplayStatic {
     console.log(this.props.displayId);
     console.log(this.props.adventurers);
     if (!this.props.adventurers || !this.state.initialized) return '';
+    debugger;
     const allAdventurers = this.props.adventurers;
     const thisAdventurer = allAdventurers.find(adventurer => adventurer.id === this.props.displayId);
     console.log(thisAdventurer);
