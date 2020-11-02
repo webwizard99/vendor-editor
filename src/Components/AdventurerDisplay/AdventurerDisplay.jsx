@@ -24,6 +24,7 @@ class AdventurerDisplay extends DisplayStatic {
 
     this.setInitialized = this.setInitialized.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.deleteAdventurer = this.deleteAdventurer.bind(this);
   }
 
@@ -32,7 +33,12 @@ class AdventurerDisplay extends DisplayStatic {
       this.props.loadAdventurerDetails();
       this.setInitialized(true);
     } 
-    
+  }
+
+  componentDidUpdate() {
+    if (this.props.adventurerClasses || this.props.townBehaviors || this.props.dungeonBehaviors) {
+      this.setInitialized(true);
+    }
   }
 
   setInitialized(val) {
