@@ -87,21 +87,21 @@ class AdventurerDisplay extends DisplayStatic {
       cunning,
       intelligence,
       constitution,
-      dungeon_behavior_id,
-      town_behavior_id,
-      adventurer_class_id
+      dungeonBehaviorId,
+      townBehaviorId,
+      adventurerClassId
     } = thisAdventurer;
     if (!this.props.dungeonBehaviors || !this.props.townBehaviors || !this.props.adventurerClasses) {
       return '';
     }
     const allDungeonBehaviors = this.props.dungeonBehaviors;
-    const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === dungeon_behavior_id);
+    const thisDungeonBehavior = allDungeonBehaviors.find(dungeonBehavior => dungeonBehavior.id === dungeonBehaviorId);
     const dungeonBehaviorName = thisDungeonBehavior.name;
     const allTownBehaviors = this.props.townBehaviors;
-    const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id === town_behavior_id);
+    const thisTownBehavior = allTownBehaviors.find(townBehavior => townBehavior.id === townBehaviorId);
     const townBehaviorName = thisTownBehavior.name;
     const allAdventurerClasses = this.props.adventurerClasses;
-    const thisAdventurerClass = allAdventurerClasses.find(adventurerClass => adventurerClass.id === adventurer_class_id);
+    const thisAdventurerClass = allAdventurerClasses.find(adventurerClass => adventurerClass.id === adventurerClassId);
     const adventurerClassname = thisAdventurerClass.name;
 
     return (
