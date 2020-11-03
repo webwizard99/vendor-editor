@@ -68,7 +68,7 @@ class AdventurerClassDisplay extends DisplayStatic {
       <div className="AdventurerClassDisplay">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
-          <div className="AdventurerClassEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.adventurerClass, edit: true, targetId: thisAdventurerClass.id })}>
+          <div className="AdventurerClassEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.adventurer_class, edit: true, targetId: thisAdventurerClass.id })}>
             <EditButton />
           </div>
         </div>

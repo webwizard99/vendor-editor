@@ -59,7 +59,7 @@ class AdventurerClassList extends ExpandableList {
             return (
               <p>
                 <span className={adventurerClassClass}
-                  onClick={() => this.props.setDisplayForm({ form: formTypes.adventurerClass, edit: false, targetId: adventurerClass.id })}
+                  onClick={() => this.props.setDisplayForm({ form: formTypes.adventurer_class, edit: false, targetId: adventurerClass.id })}
                 >{adventurerClass.name}</span>
               </p>
             );

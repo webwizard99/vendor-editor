@@ -26,7 +26,7 @@ class AdventurerClassForm extends DisplayForm {
     if (this.props.edit === false) {
       this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      this.props.setDisplayForm({ form: formTypes.adventurerClass, targetId: this.props.displayId, edit: false });
+      this.props.setDisplayForm({ form: formTypes.adventurer_class, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -45,7 +45,7 @@ class AdventurerClassForm extends DisplayForm {
     this.addAdventurerClass.next().value.then(() => {
       this.props.fetchAdventurerClasses();
       if (this.props.edit) {
-        this.props.setDisplayForm({ form: formTypes.adventurerClass, targetId: this.props.displayId, edit: false });
+        this.props.setDisplayForm({ form: formTypes.adventurer_class, targetId: this.props.displayId, edit: false });
       } else {
         this.props.setDisplayForm({ form: null, targetId: null, edit: false });
       }
