@@ -33,7 +33,7 @@ class AdventurerClassList extends ExpandableList {
 
   handleNew() {
     this.props.setRefresh(true);
-    this.props.setDisplayForm({ form: formTypes.adventurerClass, edit: false, targetId: null });
+    this.props.setDisplayForm({ form: formTypes.adventurer_class, edit: false, targetId: null });
   }
 
   getNewButton() {
