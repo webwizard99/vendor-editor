@@ -32,7 +32,11 @@ class AdventurerDisplay extends DisplayStatic {
     if (!this.props.adventurerClasses || !this.props.townBehaviors || !this.props.dungeonBehaviors) {
       this.props.loadAdventurerDetails();
       this.setInitialized(true);
-    } 
+    } else {
+      if (!this.state.initialized) {
+        this.setInitialized(true);
+      }
+    }
   }
 
   componentDidUpdate() {

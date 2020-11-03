@@ -13,7 +13,6 @@ export default function(state = initialState, action) {
       let newTargetId = action.payload.targetId;
       let newEdit = action.payload.edit;
       let newForm = action.payload.form;
-      console.log(`newTargetId: ${newTargetId}, newEdit: ${newEdit}, newForm: ${newForm}`);
       return {
         ...state,
         type: newForm,
