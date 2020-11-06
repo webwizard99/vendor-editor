@@ -25,6 +25,7 @@ import MonsterDropListDisplay from '../../Components/MonsterDropListDisplay/Mons
 import MonsterDropListForm from '../../Components/MonsterDropListForm/MonsterDropListForm';
 import MonsterBehaviorDisplay from '../../Components/MonsterBehaviorDisplay/MonsterBehaviorDisplay'
 import MonsterBehaviorForm from '../../Components/MonsterBehaviorForm/MonsterBehaviorForm';
+import MonsterDisplay from '../../Components/MonsterDisplay/MonsterDisplay';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
@@ -135,7 +136,7 @@ class DetailView extends React.Component {
     if (this.props.targetId === null || this.props.edit) {
       return 'MonsterForm';
     } else {
-      return 'MonsterDisplay';
+      return <MonsterDisplay />;
     }
   }
 

@@ -83,3 +83,8 @@ export const fetchMonsters = () => async dispatch => {
   const res = await axios.get('/monsters');
   dispatch({ type: SET_MONSTERS, payload: res.data });
 }
+
+export const loadMonsterDetails = () => async dispatch => {
+  dispatch(fetchMonsterBehaviors());
+  dispatch(fetchMonsterDropLists());
+}
