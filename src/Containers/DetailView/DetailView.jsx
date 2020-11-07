@@ -181,6 +181,7 @@ class DetailView extends React.Component {
   // }
 
   getDetail() {
+    
     if (!this.props.formType) {
       return (<div className="BlankForm">no details to display</div>);
     }
@@ -191,7 +192,13 @@ class DetailView extends React.Component {
     if (this.formTable[this.props.formType] === undefined) {
       return this.formTable['blank'];
     }
-    return this.formTable[this.props.formType][this.props.edit ? 'display': 'form'];
+    let displayType = '';
+    if (this.props.edit) {
+      displayType = 'form';
+    } else {
+      displayType = 'display';
+    }
+    return this.formTable[this.props.formType][displayType];
 
     // switch(this.props.formType) {
     //   case formTypes.potion:
