@@ -39,106 +39,146 @@ class DetailView extends React.Component {
     super(props);
 
     this.getDetail = this.getDetail.bind(this);
-    this.getPotionDetail = this.getPotionDetail.bind(this);
-    this.getWeaponDetail = this.getWeaponDetail.bind(this);
-    this.getArmorDetail = this.getArmorDetail.bind(this);
-    this.getSupplierDetail = this.getSupplierDetail.bind(this);
-    this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
-    this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
-    this.getAdventurerClassDetail = this.getAdventurerClassDetail.bind(this);
-    this.getAdventurerDetail = this.getAdventurerDetail.bind(this);
-    this.getMonsterDropListDetail = this.getMonsterDropListDetail.bind(this);
-    this.getMonsterBehaviorDetail = this.getMonsterBehaviorDetail.bind(this);
-    this.getMonsterDetail = this.getMonsterDetail.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.loadFormTable = this.loadFormTable.bind(this);
+    // this.getPotionDetail = this.getPotionDetail.bind(this);
+    // this.getWeaponDetail = this.getWeaponDetail.bind(this);
+    // this.getArmorDetail = this.getArmorDetail.bind(this);
+    // this.getSupplierDetail = this.getSupplierDetail.bind(this);
+    // this.getTownBehaviorDetail = this.getTownBehaviorDetail.bind(this);
+    // this.getDungeonBehaviorDetail = this.getDungeonBehaviorDetail.bind(this);
+    // this.getAdventurerClassDetail = this.getAdventurerClassDetail.bind(this);
+    // this.getAdventurerDetail = this.getAdventurerDetail.bind(this);
+    // this.getMonsterDropListDetail = this.getMonsterDropListDetail.bind(this);
+    // this.getMonsterBehaviorDetail = this.getMonsterBehaviorDetail.bind(this);
+    // this.getMonsterDetail = this.getMonsterDetail.bind(this);
   }
 
-  getPotionDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <PotionForm />
-    } else {
-      return <PotionDisplay />
-    }
+  formTable = {};
+
+  componentDidMount() {
+    this.loadFormTable();
   }
 
-  getWeaponDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <WeaponForm />
-    } else {
-      return <WeaponDisplay />
+  loadFormTable() {
+    const forms = formTypes;
+    let tempTable = {};
+    for (let form of forms) {
+      tempTable[form] = { display: null, form: null };
     }
+    this.formTable = tempTable;
+    this.formTable['blank'] = (<div className="BlankForm">detail type unknown</div>);
+    this.formTable[formTypes.potion].display = <PotionDisplay />;
+    this.formTable[formTypes.potion].form = <PotionForm />;
+    this.formTable[formTypes.armor].display = <ArmorDisplay />;
+    this.formTable[formTypes.armor].form = <ArmorForm />;
+    this.formTable[formTypes.weapon].display = <WeaponDisplay />;
+    this.formTable[formTypes.weapon].form = <WeaponForm />;
+    this.formTable[formTypes.supplier].display = <SupplierDisplay />;
+    this.formTable[formTypes.supplier].form = <SupplierForm />;
+    this.formTable[formTypes.town_behavior].display = <TownBehaviorDisplay />;
+    this.formTable[formTypes.town_behavior].form = <TownBehaviorForm />;
+    this.formTable[formTypes.dungeon_behavior].display = <DungeonBehaviorDisplay />;
+    this.formTable[formTypes.dungeon_behavior].form = <DungeonBehaviorForm />;
+    this.formTable[formTypes.adventurer_class].display = <AdventurerClassDisplay />;
+    this.formTable[formTypes.adventurer_class].form = <AdventurerClassForm />;
+    this.formTable[formTypes.adventurer].display = <AdventurerDisplay />;
+    this.formTable[formTypes.adventurer].form = <AdventurerForm />;
+    this.formTable[formTypes.monster_drop_list].display = <MonsterDropListDisplay />;
+    this.formTable[formTypes.monster_drop_list].form = <MonsterDropListForm />;
+    this.formTable[formTypes.monster_behavior].display = <MonsterBehaviorDisplay />;
+    this.formTable[formTypes.monster_behavior].form = <MonsterBehaviorForm />;
+    this.formTable[formTypes.monster].display = <MonsterDisplay />;
+    this.formTable[formTypes.monster].form = 'MonsterForm';
   }
 
-  getArmorDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <ArmorForm />
-    } else {
-      return <ArmorDisplay />
-    }
-  }
+  // getPotionDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <PotionForm />
+  //   } else {
+  //     return <PotionDisplay />
+  //   }
+  // }
 
-  getSupplierDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <SupplierForm />
-    } else {
-      return <SupplierDisplay />
-    }
-  }
+  // getWeaponDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <WeaponForm />
+  //   } else {
+  //     return <WeaponDisplay />
+  //   }
+  // }
 
-  getTownBehaviorDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <TownBehaviorForm />
-    } else {
-      return <TownBehaviorDisplay />
-    }
-  }
+  // getArmorDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <ArmorForm />
+  //   } else {
+  //     return <ArmorDisplay />
+  //   }
+  // }
 
-  getDungeonBehaviorDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <DungeonBehaviorForm />;
-    } else {
-      return <DungeonBehaviorDisplay />
-    }
-  }
+  // getSupplierDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <SupplierForm />
+  //   } else {
+  //     return <SupplierDisplay />
+  //   }
+  // }
 
-  getAdventurerClassDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <AdventurerClassForm />
-    } else {
-      return <AdventurerClassDisplay />
-    }
-  }
+  // getTownBehaviorDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <TownBehaviorForm />
+  //   } else {
+  //     return <TownBehaviorDisplay />
+  //   }
+  // }
 
-  getAdventurerDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <AdventurerForm />;
-    } else {
-      return <AdventurerDisplay />;
-    }
-  }
+  // getDungeonBehaviorDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <DungeonBehaviorForm />;
+  //   } else {
+  //     return <DungeonBehaviorDisplay />
+  //   }
+  // }
 
-  getMonsterDropListDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <MonsterDropListForm />;
-    } else {
-      return <MonsterDropListDisplay />;
-    }
-  }
+  // getAdventurerClassDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <AdventurerClassForm />
+  //   } else {
+  //     return <AdventurerClassDisplay />
+  //   }
+  // }
 
-  getMonsterBehaviorDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return <MonsterBehaviorForm />;
-    } else {
-      return <MonsterBehaviorDisplay />;
-    }
-  }
+  // getAdventurerDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <AdventurerForm />;
+  //   } else {
+  //     return <AdventurerDisplay />;
+  //   }
+  // }
 
-  getMonsterDetail() {
-    if (this.props.targetId === null || this.props.edit) {
-      return 'MonsterForm';
-    } else {
-      return <MonsterDisplay />;
-    }
-  }
+  // getMonsterDropListDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <MonsterDropListForm />;
+  //   } else {
+  //     return <MonsterDropListDisplay />;
+  //   }
+  // }
+
+  // getMonsterBehaviorDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return <MonsterBehaviorForm />;
+  //   } else {
+  //     return <MonsterBehaviorDisplay />;
+  //   }
+  // }
+
+  // getMonsterDetail() {
+  //   if (this.props.targetId === null || this.props.edit) {
+  //     return 'MonsterForm';
+  //   } else {
+  //     return <MonsterDisplay />;
+  //   }
+  // }
 
   getDetail() {
     if (!this.props.formType) {
@@ -148,33 +188,37 @@ class DetailView extends React.Component {
       this.props.setRefresh(false);
       return '';
     }
-
-    switch(this.props.formType) {
-      case formTypes.potion:
-        return this.getPotionDetail();
-      case formTypes.weapon:
-        return this.getWeaponDetail();
-      case formTypes.armor:
-        return this.getArmorDetail();
-      case formTypes.supplier:
-        return this.getSupplierDetail();
-      case formTypes.town_behavior:
-        return this.getTownBehaviorDetail();
-      case formTypes.dungeon_behavior:
-        return this.getDungeonBehaviorDetail();
-      case formTypes.adventurer_class:
-        return this.getAdventurerClassDetail();
-      case formTypes.adventurer:
-        return this.getAdventurerDetail();
-      case formTypes.monster_drop_list:
-        return this.getMonsterDropListDetail();
-      case formTypes.monster_behavior:
-        return this.getMonsterBehaviorDetail();
-      case formTypes.monster:
-        return this.getMonsterDetail();
-      default:
-        return (<div className="BlankForm">detail type unknown</div>)
+    if (this.formTable[this.props.formType] === undefined) {
+      return this.formTable['blank'];
     }
+    return this.formTable[this.props.edit ? 'display': 'form'][this.props.formType];
+
+    // switch(this.props.formType) {
+    //   case formTypes.potion:
+    //     return this.getPotionDetail();
+    //   case formTypes.weapon:
+    //     return this.getWeaponDetail();
+    //   case formTypes.armor:
+    //     return this.getArmorDetail();
+    //   case formTypes.supplier:
+    //     return this.getSupplierDetail();
+    //   case formTypes.town_behavior:
+    //     return this.getTownBehaviorDetail();
+    //   case formTypes.dungeon_behavior:
+    //     return this.getDungeonBehaviorDetail();
+    //   case formTypes.adventurer_class:
+    //     return this.getAdventurerClassDetail();
+    //   case formTypes.adventurer:
+    //     return this.getAdventurerDetail();
+    //   case formTypes.monster_drop_list:
+    //     return this.getMonsterDropListDetail();
+    //   case formTypes.monster_behavior:
+    //     return this.getMonsterBehaviorDetail();
+    //   case formTypes.monster:
+    //     return this.getMonsterDetail();
+    //   default:
+    //     return (<div className="BlankForm">detail type unknown</div>)
+    // }
   }
   
   render() {
