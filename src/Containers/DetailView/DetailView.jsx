@@ -193,7 +193,7 @@ class DetailView extends React.Component {
       return this.formTable['blank'];
     }
     let displayType = '';
-    if (this.props.edit) {
+    if (this.props.edit || this.props.targetId == null) {
       displayType = 'form';
     } else {
       displayType = 'display';
