@@ -61,7 +61,7 @@ class DetailView extends React.Component {
   }
 
   loadFormTable() {
-    const forms = formTypes;
+    const forms = Object.values(formTypes);
     let tempTable = {};
     for (let form of forms) {
       tempTable[form] = { display: null, form: null };
