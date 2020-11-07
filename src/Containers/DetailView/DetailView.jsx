@@ -191,7 +191,7 @@ class DetailView extends React.Component {
     if (this.formTable[this.props.formType] === undefined) {
       return this.formTable['blank'];
     }
-    return this.formTable[this.props.edit ? 'display': 'form'][this.props.formType];
+    return this.formTable[this.props.formType][this.props.edit ? 'display': 'form'];
 
     // switch(this.props.formType) {
     //   case formTypes.potion:
