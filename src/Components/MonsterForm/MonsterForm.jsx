@@ -3,6 +3,8 @@ import './MonsterForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
+import NewButton from '../NewButton/NewButton';
+import EditButton from '../EditButton/EditButton';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -22,6 +24,7 @@ class MonsterForm extends DisplayForm {
     this.getMonsterBehaviorOptions = this.getMonsterBehaviorOptions.bind(this);
     this.getMonsterDropListOptions = this.getMonsterDropListOptions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBreadcrumb = this.handleBreadcrumb.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +57,10 @@ class MonsterForm extends DisplayForm {
     } else {
       this.props.setDisplayForm({ form: formTypes.monster, targetId: this.props.displayId, edit: false });
     } 
+  }
+
+  handleBreadcrumb(dropListId) {
+    console.log(dropListId);
   }
 
   handleSubmit(e) {
@@ -137,6 +144,12 @@ class MonsterForm extends DisplayForm {
                 defaultValue={newMonsterDropList === undefined ? null : newMonsterDropList.id}>
                   {this.getMonsterDropListOptions()}
               </select>
+              <div className="new-monster-droplist-button" onClick={() => this.handleBreadcrumb(null)}>
+                <NewButton />
+              </div>
+              <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList.id)}>
+                <EditButton />
+              </div>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="boss">boss</label>
