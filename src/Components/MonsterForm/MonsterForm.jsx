@@ -82,9 +82,9 @@ class MonsterForm extends DisplayForm {
       const allMonsters = this.props.monsters;
       const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
       const allMonsterDropLists = this.props.monsterDropLists;
-      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === dropListId);
+      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
       const allMonsterBehaviors = this.props.monsterBehaviors;
-      const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === monsterBehaviorId);
+      const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === thisMonster.monsterBehaviorId);
       newId = thisMonster.id;
       newName = thisMonster.name;
       newHeading = newName;
