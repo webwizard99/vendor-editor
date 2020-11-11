@@ -2,7 +2,7 @@ import React from 'react';
 import './MonsterForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
-// import CloseFormButton from '../CloseFormButton/CloseFormButton';
+import CloseFormButton from '../CloseFormButton/CloseFormButton';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -61,7 +61,133 @@ class MonsterForm extends DisplayForm {
   }
 
   getForm() {
-    return 'MonsterForm';
+    if (!this.props.monsterBehaviors || !this.props.monsterDropLists) {
+      return '';
+    }
+    let newHeading = 'New Monster';
+    let newId;
+    let newName = '';
+    let newBoss = false;
+    let newLevel = 1;
+    let newHp = 1;
+    let newDamage = 0;
+    let newDefense = 0;
+    let newStealth = 0;
+    let newInitiative = 0;
+    let newSpecial = 0;
+    let newHeal = 0;
+    let newMonsterDropList, newMonsterBehavior;
+    
+    if (this.props.edit) {
+      const allMonsters = this.props.monsters;
+      const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
+      const allMonsterDropLists = this.props.monsterDropLists;
+      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === dropListId);
+      const allMonsterBehaviors = this.props.monsterBehaviors;
+      const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === monsterBehaviorId);
+      newId = thisMonster.id;
+      newName = thisMonster.name;
+      newHeading = newName;
+      newBoss = thisMonster.boss;
+      newLevel = thisMonster.level;
+      newHp = thisMonster.hp;
+      newDamage = thisMonster.damage;
+      newDefense = thisMonster.defense;
+      newStealth = thisMonster.stealth;
+      newInitiative = thisMonster.initiative;
+      newSpecial = thisMonster.special;
+      newHeal = thisMonster.heal;
+      newMonsterDropList = thisMonsterDropList;
+      newMonsterBehavior = thisMonsterBehavior;
+    }
+
+    return (
+      <div className="MonsterForm">
+        <div className="form-heading-bar">
+          <h2 className="form-heading">Monster: {newHeading}</h2>
+          <div className="close-monster-class-btn" onClick={this.handleCloseButton}>
+            <CloseFormButton />
+          </div>
+        </div>
+
+        <form action={'/monster'}
+          className="input-fields-area"
+          id="MonsterPostForm"
+          method="POST"
+          onSubmit={this.handleSubmit}>
+            <div className="input-group">
+              <label className="item-label" htmlFor="name">Name</label>
+              <input type="text" name="name" id="name" className="input-text" placeholder="adventurer name"
+                maxLength="26" required defaultValue={newName}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="monsterBehaviorId">monster behavior</label>
+              <select className="monster-behavior-select"
+                name="monsterBehaviorId"
+                id="monsterBehaviorId"
+                defaultValue={newMonsterBehavior === undefined ? null : newMonsterBehavior.id}>
+                  {this.getMonsterBehaviorOptions()}
+              </select>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="dropListId">monster droplist</label>
+              <select className="monster-droplist-select"
+                name="dropListId"
+                id="dropListId"
+                defaultValue={newMonsterDropList === undefined ? null : newMonsterDropList.id}>
+                  {this.getMonsterDropListOptions()}
+              </select>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="boss">boss</label>
+              <input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
+                value={true} required defaultValue={newBoss}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="level">level</label>
+              <input type="number" name="level" id="level" className="input-number" placeholder="#"
+                min="0" max="30" required defaultValue={newLevel}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="hp">hp</label>
+              <input type="number" name="hp" id="hp" className="input-number" placeholder="#"
+                min="0" max="1000" required defaultValue={newHp}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="damage">damage</label>
+              <input type="number" name="damage" id="damage" className="input-number" placeholder="#"
+                min="0" max="200" required defaultValue={newDamage}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="defense">defense</label>
+              <input type="number" name="defense" id="defense" className="input-number" placeholder="#"
+                min="0" max="200" required defaultValue={newDefense}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="stealth">stealth</label>
+              <input type="number" name="stealth" id="stealth" className="input-number" placeholder="#"
+                min="0" max="200" required defaultValue={newStealth}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="initiative">initiative</label>
+              <input type="number" name="initiative" id="initiative" className="input-number" placeholder="#"
+                min="0" max="200" required defaultValue={newInitiative}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="special">special</label>
+              <input type="number" name="special" id="special" className="input-number" placeholder="#"
+                min="0" max="1000" step="50" required defaultValue={newSpecial}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="heal">heal</label>
+              <input type="number" name="heal" id="heal" className="input-number" placeholder="#"
+                min="0" max="200" required defaultValue={newHeal}></input>
+            </div>
+            <input type="hidden" name="id" value={newId} />
+            <input type="submit" value={this.props.edit ? 'Update Monster' : 'Create Monster' } className="button create-button"></input>
+        </form>
+      </div>
+    )
   }
 }
 
