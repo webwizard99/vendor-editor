@@ -3,3 +3,9 @@
   scroll-snap-type: y;
   max-height: 100%;
 }
+
+.monster-droplist-controls {
+  height: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}

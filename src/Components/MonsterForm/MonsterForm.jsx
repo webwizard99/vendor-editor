@@ -3,7 +3,7 @@ import './MonsterForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
-import NewButton from '../NewButton/NewButton';
+import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
 import EditButton from '../EditButton/EditButton';
 
 // redux imports
@@ -144,11 +144,13 @@ class MonsterForm extends DisplayForm {
                 defaultValue={newMonsterDropList === undefined ? null : newMonsterDropList.id}>
                   {this.getMonsterDropListOptions()}
               </select>
-              <div className="new-monster-droplist-button" onClick={() => this.handleBreadcrumb(null)}>
-                <NewButton />
-              </div>
-              <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList.id)}>
-                <EditButton />
+              <div className="monster-droplist-controls">
+                <div className="new-monster-droplist-button" onClick={() => this.handleBreadcrumb(null)}>
+                  <AddOfferingButton />
+                </div>
+                <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList === null ? newMonsterDropList.id : null )}>
+                  <EditButton />
+                </div>
               </div>
             </div>
             <div className="input-group">
