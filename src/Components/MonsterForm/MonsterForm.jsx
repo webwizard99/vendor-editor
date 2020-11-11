@@ -117,7 +117,7 @@ class MonsterForm extends DisplayForm {
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" className="input-text" placeholder="adventurer name"
+              <input type="text" name="name" id="name" className="input-text" placeholder="monster name"
                 maxLength="26" required defaultValue={newName}></input>
             </div>
             <div className="input-group">
