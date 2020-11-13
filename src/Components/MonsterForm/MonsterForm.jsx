@@ -156,12 +156,12 @@ class MonsterForm extends DisplayForm {
                 id="dropListId"
                 onChange={this.handleDropListChange}
                 defaultValue={newMonsterDropList === undefined ? null : newMonsterDropList.id}>
-                  <select value={undefined}>--choose a droplist--</select>
-                  <select value={null} onClick={() => this.handleBreadcrumb(null)}>new droplist</select>
+                  <option value={undefined}>--choose a droplist--</option>
+                  <option value={null} onClick={() => this.handleBreadcrumb(null)}>new droplist</option>
                   {this.getMonsterDropListOptions()}
               </select>
               <div className="monster-droplist-controls">
-                <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList === null ? this.state.dropList : null )}>
+                <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList === null ? null : this.state.dropList)}>
                   <EditButton />
                 </div>
               </div>
