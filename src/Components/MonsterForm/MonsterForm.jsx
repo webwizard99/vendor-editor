@@ -3,7 +3,7 @@ import './MonsterForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
-import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
+// import NewButton from '../NewButton/NewButton';
 import EditButton from '../EditButton/EditButton';
 
 // redux imports
@@ -20,11 +20,16 @@ class MonsterForm extends DisplayForm {
   constructor(props) {
     super(props);
 
+    this.state = {
+      dropList: null
+    }
+
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getMonsterBehaviorOptions = this.getMonsterBehaviorOptions.bind(this);
     this.getMonsterDropListOptions = this.getMonsterDropListOptions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBreadcrumb = this.handleBreadcrumb.bind(this);
+    this.handleDropListChange = this.handleDropListChange.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +62,14 @@ class MonsterForm extends DisplayForm {
     } else {
       this.props.setDisplayForm({ form: formTypes.monster, targetId: this.props.displayId, edit: false });
     } 
+  }
+
+  handleDropListChange(e) {
+    let dropListId = e.target.value;
+    console.log(dropListId);
+    this.setState({
+      dropList: dropListId
+    });
   }
 
   handleBreadcrumb(dropListId) {
@@ -141,14 +154,14 @@ class MonsterForm extends DisplayForm {
               <select className="monster-droplist-select"
                 name="dropListId"
                 id="dropListId"
+                onChange={this.handleDropListChange}
                 defaultValue={newMonsterDropList === undefined ? null : newMonsterDropList.id}>
+                  <select value={undefined}>--choose a droplist--</select>
+                  <select value={null} onClick={() => this.handleBreadcrumb(null)}>new droplist</select>
                   {this.getMonsterDropListOptions()}
               </select>
               <div className="monster-droplist-controls">
-                <div className="new-monster-droplist-button" onClick={() => this.handleBreadcrumb(null)}>
-                  <AddOfferingButton />
-                </div>
-                <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList === null ? newMonsterDropList.id : null )}>
+                <div className="edit-monster-droplist-button" onClick={() => this.handleBreadcrumb(newMonsterDropList === null ? this.state.dropList : null )}>
                   <EditButton />
                 </div>
               </div>
