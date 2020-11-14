@@ -65,6 +65,7 @@ class MonsterForm extends DisplayForm {
   }
 
   handleDropListChange(e) {
+    console.log(e.target);
     let dropListId = e.target.value;
     console.log(dropListId);
     this.setState({
