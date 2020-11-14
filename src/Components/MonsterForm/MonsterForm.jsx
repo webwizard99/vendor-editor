@@ -68,6 +68,10 @@ class MonsterForm extends DisplayForm {
     console.log(e.target);
     let dropListId = e.target.value;
     console.log(dropListId);
+    console.log(typeof dropListId);
+    if (dropListId === 'new droplist') {
+      this.handleBreadcrumb(null);
+    }
     this.setState({
       dropList: dropListId
     });
@@ -75,6 +79,9 @@ class MonsterForm extends DisplayForm {
 
   handleBreadcrumb(dropListId) {
     console.log(dropListId);
+    if (dropListId !== null && typeof dropListId !== 'number') {
+      return;
+    }
   }
 
   handleSubmit(e) {
