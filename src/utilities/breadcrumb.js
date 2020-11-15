@@ -12,8 +12,7 @@ const breadcrumb = (function(){
     } = payload;
     this.displayPayload = displayPayload;
     this.formData = formData;
-    const breadcrumbPayload = { payload: { active: true, name: name } };
-    store.dispatch({ type: SET_BREADCRUMB, payload: breadcrumbPayload });
+    this.name = name;
   }
 
   Breadcrumb.prototype.dispatchDisplay = function() {
@@ -22,6 +21,11 @@ const breadcrumb = (function(){
 
   Breadcrumb.prototype.dispatchFormdata = function() {
     store.dispatch({ type: SET_BREADCRUMB_FORMDATA, formData: this.formData });
+  }
+
+  Breadcrumb.prototype.dispatchBreadcrumb = function() {
+    const breadcrumbPayload = { payload: { active: true, name: this.name } };
+    store.dispatch({ type: SET_BREADCRUMB, payload: breadcrumbPayload });
   }
 
   const setBreadcrumb = function(newBreadcrumb) {
@@ -41,6 +45,7 @@ const breadcrumb = (function(){
     setNewBreadcrumb: function(payload) {
       breadcrumb = new Breadcrumb(payload);
       breadcrumb.dispatchFormdata();
+      breadcrumb.dispatchBreadcrumb();
     },
 
     clearBreadcrumb: function() {
