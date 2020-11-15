@@ -65,10 +65,8 @@ class MonsterForm extends DisplayForm {
   }
 
   handleDropListChange(e) {
-    console.log(e.target);
     let dropListId = e.target.value;
-    console.log(dropListId);
-    console.log(typeof dropListId);
+    if (dropListId === '--choose a droplist--') return;
     if (dropListId === 'new droplist') {
       this.handleBreadcrumb(null);
     }
@@ -79,8 +77,24 @@ class MonsterForm extends DisplayForm {
 
   handleBreadcrumb(dropListId) {
     console.log(dropListId);
-    if (dropListId !== null && typeof dropListId !== 'number') {
-      return;
+    let resDropList;
+    if (dropListId !== null) {
+      resDropList = Number.parseInt(dropListId);
+    } else {
+      resDropList = dropListId;
+    }
+    let breadcrumbPayload = {};
+    breadcrumbPayload.name = formTypes.monster;
+    const monsterForm = document.querySelector('#monsterPostForm');
+    const data = new FormData(monsterForm);
+    const displayPayload = { form: formTypes.monster, edit: this.props.edit, targetId: this.props.displayId };
+    breadcrumbPayload.formData = data;
+    breadcrumbPayload.displayPayload = displayPayload;
+    breadcrumb.setNewBreadcrumb(breadcrumbPayload);
+    if (resDropList === null) {
+      this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: false, targetId: null });
+    } else {
+      this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: true, targetId: resDropList });
     }
   }
 
