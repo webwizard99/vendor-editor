@@ -3,7 +3,6 @@ import './MonsterForm.css';
 
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
-// import NewButton from '../NewButton/NewButton';
 import EditButton from '../EditButton/EditButton';
 
 // redux imports
@@ -13,7 +12,7 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import formTypes from '../../utilities/formTypes';
-// import formComposer from '../../utilities/formComposer';
+import formComposer from '../../utilities/formComposer';
 import breadcrumb from '../../utilities/breadcrumb';
 
 class MonsterForm extends DisplayForm {
@@ -52,7 +51,6 @@ class MonsterForm extends DisplayForm {
   }
 
   initializeMonsterDropListId() {
-    console.log('updating drop list state');
     let stateUpdate = {};
     stateUpdate.intialized = true;
     if (this.props.edit) {
@@ -114,7 +112,8 @@ class MonsterForm extends DisplayForm {
     let breadcrumbPayload = {};
     breadcrumbPayload.name = formTypes.monster;
     const monsterForm = document.querySelector('#MonsterPostForm');
-    const data = new FormData(monsterForm);
+    let data = new FormData(monsterForm);
+    data = formComposer.getObjectFromForm();
     const displayPayload = { form: formTypes.monster, edit: this.props.edit, targetId: this.props.displayId };
     breadcrumbPayload.formData = data;
     breadcrumbPayload.displayPayload = displayPayload;

@@ -17,6 +17,7 @@ import itemTypes from '../../utilities/itemTypes';
 import formTypes from '../../utilities/formTypes';
 import postRequests from '../../utilities/itemPostRequests';
 import putRequests from '../../utilities/itemPutRequests';
+import breadcrumb from '../../utilities/breadcrumb';
 
 class MonsterDropListForm extends DisplayForm {
   constructor(props) {
@@ -59,6 +60,14 @@ class MonsterDropListForm extends DisplayForm {
       newGoldMax = thisDropList.gold_max;
       newGoldChance = thisDropList.gold_chance;
       newDrops = thisDropList.drops;
+    }
+
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster) {
+      const breadcrumbForm = this.props.formData;
+      const breadcrumbName = breadcrumbForm.name;
+      if (breadcrumbName) {
+        newName = breadcrumbName;
+      }
     }
 
     let initialState = {};
@@ -142,10 +151,14 @@ class MonsterDropListForm extends DisplayForm {
 
   handleCloseButton(e) {
     e.preventDefault();
-    if (this.props.edit === false) {
-      this.props.setDisplayForm({ form: false, targetId: null, edit: false });
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster) {
+      breadcrumb.clearBreadcrumb();
     } else {
-      this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
+      if (this.props.edit === false) {
+        this.props.setDisplayForm({ form: false, targetId: null, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
+      }
     }
   }
 
@@ -328,7 +341,10 @@ const mapStateToProps = state => {
     monsterDropLists: state.dropLists.monster,
     armor: state.armor.armor,
     potions: state.potions.potions,
-    weapons: state.weapons.weapons
+    weapons: state.weapons.weapons,
+    breadcrumbActive: state.breadcrumb.active,
+    breadcrumbName: state.breadcrumb.name,
+    breadcrumbFormData: state.breadcrumb.formData
   }
 }
 

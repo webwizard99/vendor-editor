@@ -13,4 +13,4 @@ const formComposer = (function(){
   }
 }());
 
-export const formComposer;
+export default formComposer;
