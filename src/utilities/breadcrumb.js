@@ -12,7 +12,7 @@ const breadcrumb = (function(){
     } = payload;
     this.displayPayload = displayPayload;
     this.formData = formData;
-    const breadcrumbPayload = { active: true, name: name };
+    const breadcrumbPayload = { payload: { active: true, name: name } };
     store.dispatch({ type: SET_BREADCRUMB, payload: breadcrumbPayload });
   }
 
