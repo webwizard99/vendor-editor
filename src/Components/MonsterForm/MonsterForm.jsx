@@ -32,28 +32,38 @@ class MonsterForm extends DisplayForm {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBreadcrumb = this.handleBreadcrumb.bind(this);
     this.handleDropListChange = this.handleDropListChange.bind(this);
+    this.initializeMonsterDropListId = this.initializeMonsterDropListId.bind(this);
   }
 
   componentDidMount() {
     if (!this.props.monsterBehaviors || !this.props.monsterDropLists) {
       this.props.loadMonsterDetails();
+    } else {
+      if (!this.state.intialized) {
+        this.initializeMonsterDropListId();
+      }
     }
   }
 
   componentDidUpdate() {
     if (this.props.monsterBehaviors && this.props.monsterDropLists & !this.state.intialized) {
-      console.log('updating drop list state');
-      let stateUpdate = {};
-      stateUpdate.intialized = true;
-      if (this.props.edit) {
-        const allMonsters = this.props.monsters;
-      const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
-      const allMonsterDropLists = this.props.monsterDropLists;
-      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
-      stateUpdate.dropList = thisMonsterDropList.id;
-      }
-      this.setState(stateUpdate);
+      this.initializeMonsterDropListId();
     }
+  }
+
+  initializeMonsterDropListId() {
+    console.log('updating drop list state');
+    let stateUpdate = {};
+    stateUpdate.intialized = true;
+    if (this.props.edit) {
+      const allMonsters = this.props.monsters;
+    const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
+    const allMonsterDropLists = this.props.monsterDropLists;
+    const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
+    stateUpdate.dropList = thisMonsterDropList.id;
+    }
+    this.setState(stateUpdate);
+  
   }
   
   getMonsterBehaviorOptions() {
