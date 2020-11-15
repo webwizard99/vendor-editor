@@ -24,7 +24,8 @@ const breadcrumb = (function(){
   }
 
   Breadcrumb.prototype.dispatchBreadcrumb = function() {
-    const breadcrumbPayload = { payload: { active: true, name: this.name } };
+    const newName = this.name;
+    const breadcrumbPayload = { active: true, name: newName };
     store.dispatch({ type: SET_BREADCRUMB, payload: breadcrumbPayload });
   }
 
