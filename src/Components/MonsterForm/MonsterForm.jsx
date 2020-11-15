@@ -42,6 +42,7 @@ class MonsterForm extends DisplayForm {
 
   componentDidUpdate() {
     if (this.props.monsterBehaviors && this.props.monsterDropLists & !this.state.intialized) {
+      console.log('updating drop list state');
       let stateUpdate = {};
       stateUpdate.intialized = true;
       if (this.props.edit) {
@@ -49,7 +50,7 @@ class MonsterForm extends DisplayForm {
       const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
       const allMonsterDropLists = this.props.monsterDropLists;
       const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
-      stateUpdate.dropList = thisMonsterDropList;
+      stateUpdate.dropList = thisMonsterDropList.id;
       }
       this.setState(stateUpdate);
     }
