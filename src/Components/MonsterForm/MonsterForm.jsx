@@ -21,10 +21,12 @@ class MonsterForm extends DisplayForm {
     super(props);
 
     this.state = {
-      dropList: null
+      dropList: null,
+      intialized: false
     }
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.getMonsterBehaviorOptions = this.getMonsterBehaviorOptions.bind(this);
     this.getMonsterDropListOptions = this.getMonsterDropListOptions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +37,21 @@ class MonsterForm extends DisplayForm {
   componentDidMount() {
     if (!this.props.monsterBehaviors || !this.props.monsterDropLists) {
       this.props.loadMonsterDetails();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.monsterBehaviors && this.props.monsterDropLists & !this.state.intialized) {
+      let stateUpdate = {};
+      stateUpdate.intialized = true;
+      if (this.props.edit) {
+        const allMonsters = this.props.monsters;
+      const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
+      const allMonsterDropLists = this.props.monsterDropLists;
+      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
+      stateUpdate.dropList = thisMonsterDropList;
+      }
+      this.setState(stateUpdate);
     }
   }
   
