@@ -113,7 +113,7 @@ class MonsterForm extends DisplayForm {
     breadcrumbPayload.name = formTypes.monster;
     const monsterForm = document.querySelector('#MonsterPostForm');
     let data = new FormData(monsterForm);
-    data = formComposer.getObjectFromForm();
+    data = formComposer.getObjectFromForm(data);
     const displayPayload = { form: formTypes.monster, edit: this.props.edit, targetId: this.props.displayId };
     breadcrumbPayload.formData = data;
     breadcrumbPayload.displayPayload = displayPayload;
