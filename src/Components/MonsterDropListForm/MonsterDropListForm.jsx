@@ -178,7 +178,6 @@ class MonsterDropListForm extends DisplayForm {
 
   handleCloseButton(e) {
     e.preventDefault();
-    console.log(`active: ${this.props.breadcrumbActive}, name: ${this.props.breadcrumbName}`);
     if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
       breadcrumb.revertToBreadcrumb();
     } else {
