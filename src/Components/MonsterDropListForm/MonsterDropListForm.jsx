@@ -64,7 +64,7 @@ class MonsterDropListForm extends DisplayForm {
 
     console.log(this.props.breadcrumbActive);
     console.log(this.props.breadcrumbName);
-    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster) {
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
       const breadcrumbForm = this.props.formData;
       const breadcrumbName = breadcrumbForm.name;
       if (breadcrumbName) {
@@ -154,7 +154,7 @@ class MonsterDropListForm extends DisplayForm {
   handleCloseButton(e) {
     e.preventDefault();
     console.log(`active: ${this.props.breadcrumbActive}, name: ${this.props.breadcrumbName}`);
-    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster) {
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
       breadcrumb.revertToBreadcrumb();
     } else {
       if (this.props.edit === false) {

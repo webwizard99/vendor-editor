@@ -110,7 +110,7 @@ class MonsterForm extends DisplayForm {
       resDropList = dropListId;
     }
     let breadcrumbPayload = {};
-    breadcrumbPayload.name = formTypes.monster;
+    breadcrumbPayload.name = formTypes.monster_drop_list;
     const monsterForm = document.querySelector('#MonsterPostForm');
     let data = new FormData(monsterForm);
     data = formComposer.getObjectFromForm(data);
