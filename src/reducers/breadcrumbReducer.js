@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
       console.log('in breadcrumb reducer');
       const active = action.payload.active;
       const name = action.payload.name;
+      console.log(`active: ${active}, name: ${name}`);
       return {
         ...state,
         active: active,
