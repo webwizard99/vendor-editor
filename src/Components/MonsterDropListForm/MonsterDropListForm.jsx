@@ -59,7 +59,7 @@ class MonsterDropListForm extends DisplayForm {
     if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
       breadcrumbPass = true;
     }
-    if (!this.state.initialized && this.props.breadcrumbPass) {
+    if (!this.state.initialized && breadcrumbPass) {
       this.initializeFields();
     }
   }
