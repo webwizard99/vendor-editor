@@ -30,6 +30,7 @@ class MonsterDropListForm extends DisplayForm {
     this.getDropListOptions = this.getDropListOptions.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.addFormDrop = this.addFormDrop.bind(this);
     this.deleteDrop = this.deleteDrop.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -39,6 +40,8 @@ class MonsterDropListForm extends DisplayForm {
   }
 
   componentDidMount() {
+    console.log('MonsterDropListForm mounting...');
+    console.log(`initialized: ${this.state.initialized}, breadcrumbActive: ${this.props.breadcrumbActive}, breadcrumbFormData: ${this.props.breadcrumbFormData}`);
     let breadcrumbPass = false;
     if (!this.props.breadcrumbActive) {
       breadcrumbPass = true;
@@ -61,6 +64,12 @@ class MonsterDropListForm extends DisplayForm {
     }
     if (!this.state.initialized && breadcrumbPass) {
       this.initializeFields();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.initialized) {
+      this.setState({initialized: false });
     }
   }
 
