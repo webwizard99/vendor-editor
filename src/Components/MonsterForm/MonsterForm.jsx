@@ -102,7 +102,6 @@ class MonsterForm extends DisplayForm {
   }
 
   handleBreadcrumb(dropListId) {
-    console.log(dropListId);
     let resDropList;
     if (dropListId !== null) {
       resDropList = Number.parseInt(dropListId);
@@ -119,7 +118,6 @@ class MonsterForm extends DisplayForm {
     const displayPayload = { form: formTypes.monster, edit: currentEdit, targetId: currentId };
     breadcrumbPayload.formData = data;
     breadcrumbPayload.displayPayload = displayPayload;
-    console.log(breadcrumbPayload);
     breadcrumb.setNewBreadcrumb(breadcrumbPayload);
     if (resDropList === null) {
       this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: false, targetId: null });

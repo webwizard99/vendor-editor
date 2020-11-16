@@ -30,7 +30,6 @@ class MonsterDropListForm extends DisplayForm {
     this.getDropListOptions = this.getDropListOptions.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.addFormDrop = this.addFormDrop.bind(this);
     this.deleteDrop = this.deleteDrop.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -40,15 +39,17 @@ class MonsterDropListForm extends DisplayForm {
   }
 
   componentDidMount() {
-    console.log('MonsterDropListForm mounting...');
-    console.log(`initialized: ${this.state.initialized}, breadcrumbActive: ${this.props.breadcrumbActive}, breadcrumbFormData: ${this.props.breadcrumbFormData}`);
+    // create breadcrumb testing state variable
     let breadcrumbPass = false;
+    // if no breadcrumb exists, load component as normal
     if (!this.props.breadcrumbActive) {
       breadcrumbPass = true;
     }
+    // if breadcrumb is active but formData isn't loaded, fail test
     if (this.props.breadcrumbActive && !this.props.breadcrumbFormData) {
       breadcrumbPass = false;
     }
+    // if breadcrumb and formData are present, pass test
     if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
       breadcrumbPass = true;
     }
@@ -70,12 +71,6 @@ class MonsterDropListForm extends DisplayForm {
     }
   }
 
-  componentWillUnmount() {
-    if (this.state.initialized) {
-      this.setState({initialized: false });
-    }
-  }
-
   initializeFields() {
     if (this.props.edit && !this.props.monsterDropLists) return;
     let newName = '';
@@ -94,9 +89,6 @@ class MonsterDropListForm extends DisplayForm {
       newDrops = thisDropList.drops;
     }
 
-    console.log(this.props.breadcrumbActive);
-    console.log(this.props.breadcrumbName);
-    console.log(this.props.breadcrumbFormData);
     if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
       const breadcrumbForm = this.props.breadcrumbFormData;
       const breadcrumbName = breadcrumbForm.name;
