@@ -86,7 +86,7 @@ class MonsterDropListForm extends DisplayForm {
     console.log(this.props.breadcrumbName);
     console.log(this.props.breadcrumbFormData);
     if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
-      const breadcrumbForm = this.props.formData;
+      const breadcrumbForm = this.props.breadcrumbFormData;
       const breadcrumbName = breadcrumbForm.name;
       if (breadcrumbName) {
         newName = breadcrumbName;
