@@ -29,6 +29,7 @@ class MonsterDropListForm extends DisplayForm {
     this.initializeFields = this.initializeFields.bind(this);
     this.getDropListOptions = this.getDropListOptions.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.addFormDrop = this.addFormDrop.bind(this);
     this.deleteDrop = this.deleteDrop.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,10 +39,29 @@ class MonsterDropListForm extends DisplayForm {
   }
 
   componentDidMount() {
+    let breadcrumbPass = false;
+    if (!this.props.breadcrumbActive) {
+      breadcrumbPass = true;
+    }
+    if (this.props.breadcrumbActive && !this.props.breadcrumbFormData) {
+      breadcrumbPass = false;
+    }
     if (!this.props.armor || !this.props.potions || !this.props.weapons) {
       this.props.loadItems();
     }
-    this.initializeFields();
+    if (breadcrumbPass) {
+      this.initializeFields();
+    }
+  }
+
+  componentDidUpdate() {
+    let breadcrumbPass = false;
+    if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
+      breadcrumbPass = true;
+    }
+    if (!this.state.initialized && this.props.breadcrumbPass) {
+      this.initializeFields();
+    }
   }
 
   initializeFields() {
@@ -64,6 +84,7 @@ class MonsterDropListForm extends DisplayForm {
 
     console.log(this.props.breadcrumbActive);
     console.log(this.props.breadcrumbName);
+    console.log(this.props.breadcrumbFormData);
     if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
       const breadcrumbForm = this.props.formData;
       const breadcrumbName = breadcrumbForm.name;
