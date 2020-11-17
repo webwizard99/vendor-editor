@@ -63,7 +63,7 @@ class MonsterForm extends DisplayForm {
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
       const monsterForm = this.props.breadcrumbFormdata;
       console.log(monsterForm);
-      const monsterDropListId = monsterForm.dropListId;
+      const monsterDropListId = Number.parseInt(monsterForm.dropListId);
       stateUpdate.dropList = monsterDropListId;
     } 
     this.setState(stateUpdate);
@@ -189,24 +189,24 @@ class MonsterForm extends DisplayForm {
     }
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
       const monsterForm = this.props.breadcrumbFormdata;
-      const dropListId = monsterForm.dropListId;
-      const monsterBehaviorId = monsterForm.monsterBehaviorId;
+      const dropListId = Number.parseInt(monsterForm.dropListId);
+      const monsterBehaviorId = Number.parseInt(monsterForm.monsterBehaviorId);
       const allMonsterDropLists = this.props.monsterDropLists;
       const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === dropListId);
       const allMonsterBehaviors = this.props.monsterBehaviors;
       const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === monsterBehaviorId);
-      newId = monsterForm.id;
+      newId = Number.parseInt(monsterForm.id);
       newName = monsterForm.name;
       newHeading = newName;
-      newBoss = monsterForm.boss;
-      newLevel = monsterForm.level;
-      newHp = monsterForm.hp;
-      newDamage = monsterForm.damage;
-      newDefense = monsterForm.defense;
-      newStealth = monsterForm.stealth;
-      newInitiative = monsterForm.initiative;
-      newSpecial = monsterForm.special;
-      newHeal = monsterForm.heal;
+      newBoss = Number.parseInt(monsterForm.boss);
+      newLevel = Number.parseInt(monsterForm.level);
+      newHp = Number.parseInt(monsterForm.hp);
+      newDamage = Number.parseInt(monsterForm.damage);
+      newDefense = Number.parseInt(monsterForm.defense);
+      newStealth = Number.parseInt(monsterForm.stealth);
+      newInitiative = Number.parseInt(monsterForm.initiative);
+      newSpecial = Number.parseInt(monsterForm.special);
+      newHeal = Number.parseInt(monsterForm.heal);
       newMonsterDropList = thisMonsterDropList;
       newMonsterBehavior = thisMonsterBehavior;
     }
