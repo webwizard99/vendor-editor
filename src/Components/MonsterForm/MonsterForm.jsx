@@ -195,7 +195,7 @@ class MonsterForm extends DisplayForm {
       const allMonsterBehaviors = this.props.monsterBehaviors;
       const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === monsterBehaviorId);
       newId = monsterForm.id;
-      newname = monsterForm.name;
+      newName = monsterForm.name;
       newHeading = newName;
       newBoss = monsterForm.boss;
       newLevel = monsterForm.level;
