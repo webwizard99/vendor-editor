@@ -55,11 +55,16 @@ class MonsterForm extends DisplayForm {
     stateUpdate.intialized = true;
     if (this.props.edit) {
       const allMonsters = this.props.monsters;
-    const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
-    const allMonsterDropLists = this.props.monsterDropLists;
-    const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
-    stateUpdate.dropList = thisMonsterDropList.id;
+      const thisMonster = allMonsters.find(monster => monster.id === this.props.displayId);
+      const allMonsterDropLists = this.props.monsterDropLists;
+      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === thisMonster.dropListId);
+      stateUpdate.dropList = thisMonsterDropList.id;
     }
+    if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
+      const monsterForm = this.props.breadcrumbFormdata;
+      const monsterDropListId = monsterForm.dropListId;
+      stateUpdate.dropList = monsterDropListId;
+    } 
     this.setState(stateUpdate);
   
   }
@@ -102,23 +107,34 @@ class MonsterForm extends DisplayForm {
   }
 
   handleBreadcrumb(dropListId) {
+    // set dropList id to load appropriate drop list into
+    // monster form
     let resDropList;
     if (dropListId !== null) {
       resDropList = Number.parseInt(dropListId);
     } else {
       resDropList = dropListId;
     }
+    // breadcrumb payload composition to pass into breadcrumb module
     let breadcrumbPayload = {};
     breadcrumbPayload.name = formTypes.monster_drop_list;
+    // load form data into breadcrumb payload
     const monsterForm = document.querySelector('#MonsterPostForm');
     let data = new FormData(monsterForm);
     data = formComposer.getObjectFromForm(data);
+    let formDataPayload = {};
+    formDataPayload.formData = data;
+    formDataPayload.formDataName = formTypes.monster;
+    breadcrumbPayload.formDataPayload = formDataPayload;
+    // compose display payload to point back to MonsterForm with
+    // appropriate display values
     const currentEdit = this.props.edit;
     const currentId = this.props.displayId;
     const displayPayload = { form: formTypes.monster, edit: currentEdit, targetId: currentId };
-    breadcrumbPayload.formData = data;
     breadcrumbPayload.displayPayload = displayPayload;
+    // set breadcrumb
     breadcrumb.setNewBreadcrumb(breadcrumbPayload);
+    // switch to dependent form
     if (resDropList === null) {
       this.props.setDisplayForm({ form: formTypes.monster_drop_list, edit: false, targetId: null });
     } else {
@@ -170,6 +186,30 @@ class MonsterForm extends DisplayForm {
       newMonsterDropList = thisMonsterDropList;
       newMonsterBehavior = thisMonsterBehavior;
     }
+    if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
+      const monsterForm = this.props.breadcrumbFormdata;
+      const dropListId = monsterForm.dropListId;
+      const monsterBehaviorId = monsterForm.monsterBehaviorId;
+      const allMonsterDropLists = this.props.monsterDropLists;
+      const thisMonsterDropList = allMonsterDropLists.find(dropList => dropList.id === dropListId);
+      const allMonsterBehaviors = this.props.monsterBehaviors;
+      const thisMonsterBehavior = allMonsterBehaviors.find(monsterBehavior => monsterBehavior.id === monsterBehaviorId);
+      newId = monsterForm.id;
+      newname = monsterForm.name;
+      newHeading = newName;
+      newBoss = monsterForm.boss;
+      newLevel = monsterForm.level;
+      newHp = monsterForm.hp;
+      newDamage = monsterForm.damage;
+      newDefense = monsterForm.defense;
+      newStealth = monsterForm.stealth;
+      newInitiative = monsterForm.initiative;
+      newSpecial = monsterForm.special;
+      newHeal = monsterForm.heal;
+      newMonsterDropList = thisMonsterDropList;
+      newMonsterBehavior = thisMonsterBehavior;
+    }
+    
 
     return (
       <div className="MonsterForm">
@@ -276,7 +316,8 @@ const mapStateToProps = state => {
     monsterBehaviors: state.monsterBehaviors.behaviors,
     monsterDropLists: state.dropLists.monster,
     displayId: state.detail.targetId,
-    breadcrumbFormdata: state.breadcrumb.formData
+    breadcrumbFormdata: state.breadcrumb.formData,
+    breadcrumbFormdataName: state.breadcrumb.formDataName
   }
 }
 

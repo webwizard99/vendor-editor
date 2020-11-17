@@ -3,7 +3,8 @@ import { SET_BREADCRUMB, SET_BREADCRUMB_FORMDATA } from '../actions/types';
 const initialState = {
   active: false,
   name: '',
-  formData: null
+  formData: null,
+  formDataName: ''
 }
 
 export default function (state = initialState, action) {
@@ -19,7 +20,8 @@ export default function (state = initialState, action) {
     case SET_BREADCRUMB_FORMDATA:
       return {
         ...state,
-        formData: action.formData
+        formData: action.payload.formData,
+        formDataName: action.payload.formDataName
       }
     default:
       return state;
