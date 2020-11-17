@@ -210,10 +210,14 @@ class MonsterDropListForm extends DisplayForm {
     let updateMonsterDropList = this.updateMonsterDropList(data);
     updateMonsterDropList.next().value.then(() => {
       this.props.fetchMonsterDropLists();
-      if (this.props.edit) {
-        this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
+      if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
+        breadcrumb.revertToBreadcrumb();
       } else {
-        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+        if (this.props.edit) {
+          this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
+        } else {
+          this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+        }
       }
     });
   }
