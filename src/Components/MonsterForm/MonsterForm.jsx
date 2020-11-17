@@ -62,6 +62,7 @@ class MonsterForm extends DisplayForm {
     }
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
       const monsterForm = this.props.breadcrumbFormdata;
+      console.log(monsterForm);
       const monsterDropListId = monsterForm.dropListId;
       stateUpdate.dropList = monsterDropListId;
     } 
