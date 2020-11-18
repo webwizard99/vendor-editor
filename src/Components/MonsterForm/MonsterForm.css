@@ -4,8 +4,7 @@
   max-height: 100%;
 }
 
-.monster-droplist-controls {
-  height: 1.2rem;
-  display: flex;
-  justify-content: space-between;
+.monster-droplist-button {
+  margin-left: auto;
+  margin-right: auto;
 }
