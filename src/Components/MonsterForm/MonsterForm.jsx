@@ -30,7 +30,7 @@ class MonsterForm extends DisplayForm {
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.getMonsterBehaviorOptions = this.getMonsterBehaviorOptions.bind(this);
     this.getMonsterDropListOptions = this.getMonsterDropListOptions.bind(this);
-    this.addMonster = thia.addMonster.bind(this);
+    this.addMonster = this.addMonster.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBreadcrumb = this.handleBreadcrumb.bind(this);
     this.handleDropListChange = this.handleDropListChange.bind(this);
