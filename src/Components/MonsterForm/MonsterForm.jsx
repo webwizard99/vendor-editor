@@ -14,6 +14,8 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 import formTypes from '../../utilities/formTypes';
 import formComposer from '../../utilities/formComposer';
 import breadcrumb from '../../utilities/breadcrumb';
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class MonsterForm extends DisplayForm {
   constructor(props) {
@@ -28,6 +30,7 @@ class MonsterForm extends DisplayForm {
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.getMonsterBehaviorOptions = this.getMonsterBehaviorOptions.bind(this);
     this.getMonsterDropListOptions = this.getMonsterDropListOptions.bind(this);
+    this.addMonster = thia.addMonster.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBreadcrumb = this.handleBreadcrumb.bind(this);
     this.handleDropListChange = this.handleDropListChange.bind(this);
@@ -143,8 +146,29 @@ class MonsterForm extends DisplayForm {
     }
   }
 
+  *addMonster(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('monster', data);
+    } else {
+      yield postRequest.makeRequest('monster', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addMonster = this.addMonster(data);
+    this.addMonster.next().value.then(() => {
+      this.props.fetchMonsters();
+      if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
+        breadcrumb.clearBreadcrumbForm();
+      }
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: formTypes.monster, edit: false, targetId: this.props.displayId });
+      } else {
+        this.props.setDisplayForm({ form: null, edit: false, targetId: null });
+      }
+    })
   }
 
   getForm() {
