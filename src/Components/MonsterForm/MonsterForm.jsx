@@ -212,7 +212,6 @@ class MonsterForm extends DisplayForm {
       newMonsterBehavior = thisMonsterBehavior;
     }
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.monster) {
-      console.log(this.props.breadcrumbFormdata);
       const monsterForm = this.props.breadcrumbFormdata;
       const dropListId = Number.parseInt(monsterForm.dropListId);
       const monsterBehaviorId = Number.parseInt(monsterForm.monsterBehaviorId);
@@ -223,7 +222,9 @@ class MonsterForm extends DisplayForm {
       newId = Number.parseInt(monsterForm.id);
       newName = monsterForm.name;
       newHeading = newName;
+      console.log(monsterForm.boss);
       newBoss = monsterForm.boss === 'true' ? false: true;
+      console.log(newBoss);
       newLevel = Number.parseInt(monsterForm.level);
       newHp = Number.parseInt(monsterForm.hp);
       newDamage = Number.parseInt(monsterForm.damage);
