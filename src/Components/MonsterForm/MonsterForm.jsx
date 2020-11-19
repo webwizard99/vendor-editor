@@ -223,7 +223,7 @@ class MonsterForm extends DisplayForm {
       newName = monsterForm.name;
       newHeading = newName;
       console.log(monsterForm.boss);
-      newBoss = monsterForm.boss === 'true' ? false: true;
+      newBoss = monsterForm.boss === 'true' ? true: false;
       console.log(newBoss);
       newLevel = Number.parseInt(monsterForm.level);
       newHp = Number.parseInt(monsterForm.hp);
@@ -285,7 +285,7 @@ class MonsterForm extends DisplayForm {
             <div className="input-group">
               <label className="item-label" htmlFor="boss">boss</label>
               <input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
-                value={true} defaultValue={newBoss}></input>
+                value={true} checked={newBoss} defaultValue={newBoss}></input>
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="level">level</label>
