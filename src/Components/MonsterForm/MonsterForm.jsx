@@ -223,7 +223,7 @@ class MonsterForm extends DisplayForm {
       newId = Number.parseInt(monsterForm.id);
       newName = monsterForm.name;
       newHeading = newName;
-      newBoss = monsterForm.boss;
+      newBoss = monsterForm.boss === 'true' ? false: true;
       newLevel = Number.parseInt(monsterForm.level);
       newHp = Number.parseInt(monsterForm.hp);
       newDamage = Number.parseInt(monsterForm.damage);
@@ -280,6 +280,7 @@ class MonsterForm extends DisplayForm {
                 <EditButton />
               </div>
             </div>
+            <input type="hidden" name="boss" value={false} />
             <div className="input-group">
               <label className="item-label" htmlFor="boss">boss</label>
               <input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
