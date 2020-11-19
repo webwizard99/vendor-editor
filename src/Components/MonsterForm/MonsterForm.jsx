@@ -284,8 +284,10 @@ class MonsterForm extends DisplayForm {
             <input type="hidden" name="boss" value={false} />
             <div className="input-group">
               <label className="item-label" htmlFor="boss">boss</label>
-              <input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
-                value={true} checked={newBoss} defaultValue={newBoss}></input>
+              {newBoss === true ? (<input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
+                value={true} checked defaultValue={newBoss}></input>) :
+                (<input type="checkbox" name="boss" id="boss" className="input-boolean" placeholder="#"
+                value={true} defaultValue={newBoss}></input>)}
             </div>
             <div className="input-group">
               <label className="item-label" htmlFor="level">level</label>
