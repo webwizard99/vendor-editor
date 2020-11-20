@@ -8,10 +8,11 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchMonsters, loadMonsterDetails } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
+import deleteRequests from '../../utilities/deleteRequests';
 
 class MonsterDisplay extends DisplayStatic {
   constructor(props) {
@@ -24,6 +25,7 @@ class MonsterDisplay extends DisplayStatic {
     this.setInitialized = this.setInitialized.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.deleteMonster = this.deleteMonster.bind(this);
   }
 
   componentDidMount() {
@@ -48,11 +50,30 @@ class MonsterDisplay extends DisplayStatic {
   }
 
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
-      <div className="DeleteMonsterButton">
+      <div className="DeleteMonsterButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Monster from Database?'
+        })}>
         <DeleteButton />
       </div>
     )
+  }
+
+  *deleteMonster() {
+    yield deleteRequests.makeRequest('monster', this.props.displayId);
+  }
+
+  handleYes() {
+    const deleteMonster = this.deleteMonster();
+    deleteMonster.next().value.then(() => {
+      this.props.fetchMonsters();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    })
   }
 
   getDisplay() {
@@ -157,6 +178,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
     fetchMonsters: () => dispatch(fetchMonsters()),
     loadMonsterDetails: () => dispatch(loadMonsterDetails())
   }
