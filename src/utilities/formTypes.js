@@ -9,5 +9,6 @@ export default {
   adventurer: 'adventurer',
   monster_drop_list: 'monster_drop_list',
   monster_behavior: 'monster_behavior',
-  monster: 'monster'
+  monster: 'monster',
+  dungeon_tile: 'dungeon_tile'
 }

@@ -13,6 +13,7 @@ import dropListReducer from './dropListReducer';
 import monsterBehaviorReducer from './monsterBehaviorReducer';
 import monsterReducer from './monsterReducer';
 import breadcrumbReducer from './breadcrumbReducer';
+import dungeonTileReducer from './dungeonTileReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -28,5 +29,6 @@ export default combineReducers({
   dropLists: dropListReducer,
   monsterBehaviors: monsterBehaviorReducer,
   monsters: monsterReducer,
-  breadcrumb: breadcrumbReducer
+  breadcrumb: breadcrumbReducer,
+  dungeonTiles: dungeonTileReducer
 });
