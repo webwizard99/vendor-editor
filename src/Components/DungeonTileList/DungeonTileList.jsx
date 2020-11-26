@@ -41,6 +41,30 @@ class DungeonTileLIst extends ExpandableList {
       </div>
     )
   }
+
+  displayContents() {
+    if (!this.props.dungeonTiles) {
+      return '';
+    }
+    const newDungeonTiles = this.props.dungeonTiles;
+    return (
+      <div className="detailList">
+        {newDungeonTiles.map(dungeonTile => {
+          let dungeonTileClass = "ListDetail";
+          if (this.props.form === formTypes.dungeon_tile && dungeonTile.id === this.props.targetId) {
+            dungeonTileClass += " activeItem";
+          }
+          return (
+            <p>
+              <span className={dungeonTileClass}
+                onClick={() => this.props.setDisplayForm({ form: formTypes.dungeon_tile, edit: false, targetId: dungeonTile.id })}
+                >{dungeonTile.name}</span>
+            </p>
+          )
+        })}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => {

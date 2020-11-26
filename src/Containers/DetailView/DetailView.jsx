@@ -81,6 +81,8 @@ class DetailView extends React.Component {
     this.formTable[formTypes.monster_behavior].form = <MonsterBehaviorForm />;
     this.formTable[formTypes.monster].display = <MonsterDisplay />;
     this.formTable[formTypes.monster].form = <MonsterForm />;
+    this.formTable[formTypes.dungeon_tile].display = 'DungeonTileDisplay';
+    this.formTable[formTypes.dungeon_tile].form = 'DungeonTileForm';
   }
 
   
