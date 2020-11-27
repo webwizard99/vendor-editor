@@ -15,6 +15,8 @@ import formTypes from '../../utilities/formTypes';
 
 class DungeonTileLIst extends ExpandableList {
   constructor(props) {
+    super(props);
+
     this.getNewButton = this.getNewButton.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleNew = this.handleNew.bind(this);
