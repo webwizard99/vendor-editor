@@ -27,6 +27,8 @@ import MonsterBehaviorDisplay from '../../Components/MonsterBehaviorDisplay/Mons
 import MonsterBehaviorForm from '../../Components/MonsterBehaviorForm/MonsterBehaviorForm';
 import MonsterDisplay from '../../Components/MonsterDisplay/MonsterDisplay';
 import MonsterForm from '../../Components/MonsterForm/MonsterForm';
+// dungeon components
+import DungeonTileDisplay from '../../Components/DungeonTileDisplay/DungeonTileDisplay';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
@@ -81,7 +83,7 @@ class DetailView extends React.Component {
     this.formTable[formTypes.monster_behavior].form = <MonsterBehaviorForm />;
     this.formTable[formTypes.monster].display = <MonsterDisplay />;
     this.formTable[formTypes.monster].form = <MonsterForm />;
-    this.formTable[formTypes.dungeon_tile].display = 'DungeonTileDisplay';
+    this.formTable[formTypes.dungeon_tile].display = <DungeonTileDisplay />;
     this.formTable[formTypes.dungeon_tile].form = 'DungeonTileForm';
   }
 
