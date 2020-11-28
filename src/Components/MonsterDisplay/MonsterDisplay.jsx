@@ -12,6 +12,7 @@ import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
+import boolean from '../../utilities/boolean';
 import deleteRequests from '../../utilities/deleteRequests';
 
 class MonsterDisplay extends DisplayStatic {
@@ -116,7 +117,7 @@ class MonsterDisplay extends DisplayStatic {
           </div>
           <div className="display-group">
             <span className="display-label">boss</span>
-            <span className="display-text">{boss}</span>
+            <span className="display-text">{boolean.displayBooloean(boss)}</span>
           </div>
           <div className="display-group">
             <span className="display-label">level</span>

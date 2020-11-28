@@ -13,6 +13,7 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
+import boolean from '../../utilities/boolean';
 
 class DungeonTileDisplay extends DisplayStatic {
   getDeleteButton() {
@@ -50,11 +51,11 @@ class DungeonTileDisplay extends DisplayStatic {
           </div>
           <div className="display-group">
             <span className="display-label">boss</span>
-            <span className="display-text">{boss}</span>
+            <span className="display-text">{boolean.displayBooloean(boss)}</span>
           </div>
           <div className="display-group">
             <span className="display-label">stairs up</span>
-            <span className="display-text">{stairs_up}</span>
+            <span className="display-text">{boolean.displayBooloean(stairs_up)}</span>
           </div>
           <div className="display-group">
             <span className="display-label">treasure</span>
