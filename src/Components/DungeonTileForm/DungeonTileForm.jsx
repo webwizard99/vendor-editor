@@ -11,12 +11,15 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import formTypes from '../../utilities/formTypes';
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class DungeonTileForm extends DisplayForm {
   constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addDungeonTile = this.addDungeonTile.bind(this);
   }
 
   handleCloseButton(e) {
@@ -28,8 +31,26 @@ class DungeonTileForm extends DisplayForm {
     }
   }
 
+  *addDungeonTile(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('dungeon_tile', data);
+    } else {
+      yield postRequest.makeRequest('dungeon_tile', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const data = new FormData(e.target);
+    this.addDungeonTile = this.addDungeonTile(data);
+    this.addDungeonTile.next().value.then(() => {
+      this.props.fetchDungeonTiles();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: formTypes.dungeon_tile, edit: false, targetId: this.props.displayId });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
