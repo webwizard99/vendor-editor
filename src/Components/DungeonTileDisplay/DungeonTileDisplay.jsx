@@ -9,19 +9,45 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchDungeonTiles } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
 import boolean from '../../utilities/boolean';
+import deleteRequests from '../../utilities/deleteRequests';
 
 class DungeonTileDisplay extends DisplayStatic {
+  constructor(props) {
+    super(props);
+
+    this.deleteDungeonTile = this.deleteDungeonTile.bind(this);
+  }
+
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
-      <div className="DeleteDungeonTileButton">
+      <div className="DeleteDungeonTileButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Dungeon Tile from Database?'
+        })}>
         <DeleteButton />
       </div>
     )
+  }
+
+  *deleteDungeonTile() {
+    yield deleteRequests.makeRequest('dungeon_tile', this.props.displayId);
+  }
+
+  handleYes() {
+    const deleteDungeonTile = this.deleteDungeonTile();
+    deleteDungeonTile.next().value.then(() => {
+      this.props.fetchDungeonTiles();
+      this.props.setDialog({ active: false, text: ''});
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    })
   }
 
   getDisplay() {
@@ -85,7 +111,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchDungeonTiles: () => dispatch(fetchDungeonTiles())
+    fetchDungeonTiles: () => dispatch(fetchDungeonTiles()),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload })
   }
 }
 
