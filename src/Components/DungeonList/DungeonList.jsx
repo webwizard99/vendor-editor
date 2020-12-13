@@ -4,6 +4,7 @@ import './DungeonList.css';
 // component imports
 import ExpandableList from '../ExpandableList/ExpandableList';
 import DungeonTileList from '../DungeonTileList/DungeonTileList';
+import TreasureDropListList from '../TreasureDropListList/TreasureDropListList';
 
 class DungeonList extends ExpandableList {
   getTitle() {
@@ -14,6 +15,7 @@ class DungeonList extends ExpandableList {
     return (
       <div className="detailList">
         <DungeonTileList />
+        <TreasureDropListList />
       </div>
     )
   }

@@ -10,5 +10,6 @@ export default {
   monster_drop_list: 'monster_drop_list',
   monster_behavior: 'monster_behavior',
   monster: 'monster',
-  dungeon_tile: 'dungeon_tile'
+  dungeon_tile: 'dungeon_tile',
+  treasure_drop_list: 'treasure_drop_list'
 }
