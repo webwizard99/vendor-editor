@@ -1,27 +1,25 @@
 import React from 'react';
-import './MonsterDropListForm.css';
+import './TreasureDropListForm.css';
 
-//component imports
+// component imports
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
 
-//redux imports
+// redux imports
 import { connect } from 'react-redux';
-import { fetchMonsterDropLists, loadItems } from '../../actions';
+import { fetchTreasureDropLists, loadItems } from '../../actions';
 import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import itemTypes from '../../utilities/itemTypes';
 import formTypes from '../../utilities/formTypes';
-import postRequests from '../../utilities/itemPostRequests';
-import putRequests from '../../utilities/itemPutRequests';
-import breadcrumb from '../../utilities/breadcrumb';
 
-class MonsterDropListForm extends DisplayForm {
+class TreasureDropListForm extends DisplayForm {
   constructor(props) {
     super(props);
+
     this.state = {
       initialized: false
     }
@@ -35,66 +33,36 @@ class MonsterDropListForm extends DisplayForm {
     this.handleChange = this.handleChange.bind(this);
     this.getForm = this.getForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateMonsterDropList = this.updateMonsterDropList.bind(this);
   }
 
   componentDidMount() {
-    // create breadcrumb testing state variable
-    let breadcrumbPass = false;
-    // if no breadcrumb exists, load component as normal
-    if (!this.props.breadcrumbActive) {
-      breadcrumbPass = true;
-    }
-    // if breadcrumb is active but formData isn't loaded, fail test
-    if (this.props.breadcrumbActive && !this.props.breadcrumbFormData) {
-      breadcrumbPass = false;
-    }
-    // if breadcrumb and formData are present, pass test
-    if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
-      breadcrumbPass = true;
-    }
     if (!this.props.armor || !this.props.potions || !this.props.weapons) {
       this.props.loadItems();
-    }
-    if (breadcrumbPass) {
-      this.initializeFields();
     }
   }
 
   componentDidUpdate() {
-    let breadcrumbPass = false;
-    if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
-      breadcrumbPass = true;
-    }
-    if (!this.state.initialized && breadcrumbPass) {
+    if (!this.state.initialized) {
       this.initializeFields();
     }
   }
 
   initializeFields() {
-    if (this.props.edit && !this.props.monsterDropLists) return;
+    if (this.props.edit && !this.props.treasureDropLists) return;
     let newName = '';
     let newGoldMin = 0;
     let newGoldMax = 0;
     let newGoldChance = 0;
     let newDrops = [];
     if (this.props.edit) {
-      const allDropLists = this.props.monsterDropLists;
+      const allDropLists = this.props.treasureDropLists;
       const thisDropList = allDropLists.find(dropList => dropList.id === this.props.displayId);
-      const thisMonsterDropList = thisDropList.monster_drop_list;
-      newName = thisMonsterDropList.name;
+      const thisTreasureDropList = thisDropList.treasure_drop_list;
+      newName = thisTreasureDropList.name;
       newGoldMin = thisDropList.gold_min;
       newGoldMax = thisDropList.gold_max;
       newGoldChance = thisDropList.gold_chance;
       newDrops = thisDropList.drops;
-    }
-
-    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
-      const breadcrumbForm = this.props.breadcrumbFormData;
-      const breadcrumbName = breadcrumbForm.name;
-      if (breadcrumbName) {
-        newName = breadcrumbName;
-      }
     }
 
     let initialState = {};
@@ -178,14 +146,10 @@ class MonsterDropListForm extends DisplayForm {
 
   handleCloseButton(e) {
     e.preventDefault();
-    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
-      breadcrumb.revertToBreadcrumb();
+    if (this.props.edit === false) {
+      this.props.setDisplayForm({ form: false, targetId: null, edit: false });
     } else {
-      if (this.props.edit === false) {
-        this.props.setDisplayForm({ form: false, targetId: null, edit: false });
-      } else {
-        this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
-      }
+      this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
     }
   }
 
@@ -196,57 +160,34 @@ class MonsterDropListForm extends DisplayForm {
     this.setState(stateUpdate);
   }
 
-  *updateMonsterDropList(data) {
-    if (this.props.edit) {
-      yield putRequests.makeRequest('monster_drop_list', data);
-    } else {
-      yield postRequests.makeRequest('monster_drop_list', data);
-    }
-  }
-
   handleSubmit(e) {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    let updateMonsterDropList = this.updateMonsterDropList(data);
-    updateMonsterDropList.next().value.then(() => {
-      this.props.fetchMonsterDropLists();
-      if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.monster_drop_list) {
-        breadcrumb.revertToBreadcrumb();
-      } else {
-        if (this.props.edit) {
-          this.props.setDisplayForm({ form: formTypes.monster_drop_list, targetId: this.props.displayId, edit: false });
-        } else {
-          this.props.setDisplayForm({ form: null, targetId: null, edit: false });
-        }
-      }
-    });
+    e.preventDefault()
   }
 
   getForm() {
     if (!this.state.initialized) return '';
 
     let drops = [];
-    let newMonsterDroplistId = null;
+    let newTreasureDropListId = null;
     if (this.props.edit) {
-      const allDropsLists = this.props.monsterDropLists;
+      const allDropLists = this.props.treasureDropLists;
       const thisDropList = allDropsLists.find(dropList => dropList.id === this.props.displayId);
       drops = thisDropList.drops;
-      newMonsterDroplistId = thisDropList.monster_drop_list.id
+      newTreasureDropListId = thisDropList.treasure_drop_list.id
     }
 
-    let newHeading = 'New Monster Drop List';
+    let newHeading = 'New Treasure Drop List';
     let newId = null;
-    
+
     if (this.props.edit) {
       newHeading = this.state.name;
       newId = this.props.displayId;
-
     }
 
     const newDropKeys = this.state.newDropKeys;
 
     return (
-      <div className="MonsterDropListForm">
+      <div className="TreasureDropListForm">
         <div className="form-heading-bar">
           <h2 className="form-heading">{newHeading}</h2>
           <div className="close-monster-droplist-btn" onClick={this.handleCloseButton}>
@@ -254,9 +195,8 @@ class MonsterDropListForm extends DisplayForm {
           </div>
         </div>
 
-        <form action={'/monster_drop_list'}
+        <form action={'/treasure_drop_list'}
           className="input-fields-area"
-          id="MonsterDropListPostForm"
           method="POST"
           onSubmit={this.handleSubmit}>
             <div className="input-group">
@@ -353,38 +293,33 @@ class MonsterDropListForm extends DisplayForm {
               <input type="hidden" name="existingIds" value={this.state.presentIds} />
               <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
               <input type="hidden" name="newIndexes" value={this.state.newDropKeys} />
-              {/* <input type="hidden" name="newDropsCount" value={this.state.newD} */}
               <input type="hidden" name="id" value={newId} />
-              <input type="hidden" name="monsterDroplistId" value={newMonsterDroplistId} />
-              <input type="submit" value={this.props.edit ? 'Update Monster Droplist' : 'Create Monster Droplist'} className="button create-button"></input>
+              <input type="hidden" name="treasureDropListId" value={newTreasureDropListId} />
+              <input type="submit" value={this.props.edit ? 'Update Treasure Droplist' : 'Create Monster Droplist'} className="button create-button"></input>
             </div>
         </form>
       </div>
     )
   }
-  
 }
 
 const mapStateToProps = state => {
   return {
     edit: state.detail.edit,
     displayId: state.detail.targetId,
-    monsterDropLists: state.dropLists.monster,
+    treasureDropLists: state.dropLists.treasure,
     armor: state.armor.armor,
     potions: state.potions.potions,
-    weapons: state.weapons.weapons,
-    breadcrumbActive: state.breadcrumb.active,
-    breadcrumbName: state.breadcrumb.name,
-    breadcrumbFormData: state.breadcrumb.formData
+    weapons: state.weapons.weapons
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
-    fetchMonsterDropLists: () => dispatch(fetchMonsterDropLists()),
+    fetchTreasureDropLists: () => dispatch(fetchTreasureDropLists()),
     loadItems: () => dispatch(loadItems())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MonsterDropListForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TreasureDropListForm);
