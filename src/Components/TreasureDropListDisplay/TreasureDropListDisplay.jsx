@@ -8,7 +8,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchTreasureDropLists, loadItems } from '../../actions';
-import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
+import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
