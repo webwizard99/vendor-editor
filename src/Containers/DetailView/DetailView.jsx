@@ -31,7 +31,7 @@ import MonsterForm from '../../Components/MonsterForm/MonsterForm';
 import DungeonTileDisplay from '../../Components/DungeonTileDisplay/DungeonTileDisplay';
 import DungeonTileForm from '../../Components/DungeonTileForm/DungeonTileForm';
 import TreasureDropListDisplay from '../../Components/TreasureDropListDisplay/TreasureDropListDisplay';
-import TreasureDropListForm from '../../Components/TreasureDropListDisplay/TreasureDropListDisplay';
+import TreasureDropListForm from '../../Components/TreasureDropListForm/TreasureDropListForm';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';

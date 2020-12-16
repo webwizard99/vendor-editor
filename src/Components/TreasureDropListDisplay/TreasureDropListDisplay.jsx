@@ -5,8 +5,6 @@ import DisplayStatic from '../DisplayStatic/DisplayStatic';
 import EditButton from '../EditButton/EditButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
-// add comment to push ref
-
 // redux imports
 import { connect } from 'react-redux';
 import { fetchTreasureDropLists, loadItems } from '../../actions';
