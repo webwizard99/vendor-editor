@@ -203,7 +203,7 @@ class TreasureDropListForm extends DisplayForm {
           onSubmit={this.handleSubmit}>
             <div className="input-group">
               <label className="item-label" htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" className="input-text" placeholder="monster droplist name"
+              <input type="text" name="name" id="name" className="input-text" placeholder="treasure droplist name"
                 maxLength="26" onChange={this.handleChange} value={this.state.name}></input>
             </div> 
             <div className="input-group">
