@@ -171,7 +171,7 @@ class TreasureDropListForm extends DisplayForm {
     let newTreasureDropListId = null;
     if (this.props.edit) {
       const allDropLists = this.props.treasureDropLists;
-      const thisDropList = allDropsLists.find(dropList => dropList.id === this.props.displayId);
+      const thisDropList = allDropLists.find(dropList => dropList.id === this.props.displayId);
       drops = thisDropList.drops;
       newTreasureDropListId = thisDropList.treasure_drop_list.id
     }
