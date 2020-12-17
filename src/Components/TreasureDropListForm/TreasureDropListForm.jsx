@@ -38,11 +38,13 @@ class TreasureDropListForm extends DisplayForm {
   componentDidMount() {
     if (!this.props.armor || !this.props.potions || !this.props.weapons) {
       this.props.loadItems();
+    } else {
+      this.initializeFields();
     }
   }
 
   componentDidUpdate() {
-    if (!this.state.initialized) {
+    if (this.props.armor && this.props.potions && this.props.weapons && !this.state.initialized) {
       this.initializeFields();
     }
   }
