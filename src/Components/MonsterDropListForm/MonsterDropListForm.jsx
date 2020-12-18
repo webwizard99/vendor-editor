@@ -353,7 +353,6 @@ class MonsterDropListForm extends DisplayForm {
               <input type="hidden" name="existingIds" value={this.state.presentIds} />
               <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
               <input type="hidden" name="newIndexes" value={this.state.newDropKeys} />
-              {/* <input type="hidden" name="newDropsCount" value={this.state.newD} */}
               <input type="hidden" name="id" value={newId} />
               <input type="hidden" name="monsterDroplistId" value={newMonsterDroplistId} />
               <input type="submit" value={this.props.edit ? 'Update Monster Droplist' : 'Create Monster Droplist'} className="button create-button"></input>

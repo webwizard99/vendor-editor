@@ -15,6 +15,8 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 // js imports
 import itemTypes from '../../utilities/itemTypes';
 import formTypes from '../../utilities/formTypes';
+import postRequests from '../../utilities/itemPostRequests';
+import putRequests from '../../utilities/itemPutRequests';
 
 class TreasureDropListForm extends DisplayForm {
   constructor(props) {
@@ -33,6 +35,7 @@ class TreasureDropListForm extends DisplayForm {
     this.handleChange = this.handleChange.bind(this);
     this.getForm = this.getForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateTreasureDropList = this.updateTreasureDropList.bind(this);
   }
 
   componentDidMount() {
@@ -162,8 +165,26 @@ class TreasureDropListForm extends DisplayForm {
     this.setState(stateUpdate);
   }
 
+  *updateTreasureDropList(data) {
+    if (this.props.edit) {
+      yield putRequests.makeRequest('treasure_drop_list', data);
+    } else {
+      yield postRequests.makeRequest('treasure_drop_list', data);
+    }
+  }
+
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    const data = new FormData(e.target);
+    let updateTreasureDropList = this.updateTreasureDropList(data);
+    updateTreasureDropList.next().value.then(() => {
+      this.props.fetchTreasureDropLists();
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+      }
+    })
   }
 
   getForm() {
