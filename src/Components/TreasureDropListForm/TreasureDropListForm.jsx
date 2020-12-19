@@ -205,6 +205,7 @@ class TreasureDropListForm extends DisplayForm {
     if (this.props.edit) {
       newHeading = this.state.name;
       newId = this.props.displayId;
+      console.log(`name: ${newName}, gold_min: ${newGoldMin}, gold_max: ${newGoldMax}, gold_chance: ${newGoldChance}, id: ${newId}, treasureDropListId: ${newTreasureDropListId}`);
     }
 
     const newDropKeys = this.state.newDropKeys;
@@ -213,7 +214,7 @@ class TreasureDropListForm extends DisplayForm {
       <div className="TreasureDropListForm">
         <div className="form-heading-bar">
           <h2 className="form-heading">{newHeading}</h2>
-          <div className="close-monster-droplist-btn" onClick={this.handleCloseButton}>
+          <div className="close-treasure-droplist-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
         </div>
