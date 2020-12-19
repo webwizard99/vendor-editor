@@ -205,7 +205,6 @@ class TreasureDropListForm extends DisplayForm {
     if (this.props.edit) {
       newHeading = this.state.name;
       newId = this.props.displayId;
-      console.log(`name: ${this.state.name}, gold_min: ${this.state.gold_min}, gold_max: ${this.state.gold_max}, gold_chance: ${this.state.gold_chance}, id: ${newId}, treasureDropListId: ${newTreasureDropListId}`);
     }
 
     const newDropKeys = this.state.newDropKeys;
