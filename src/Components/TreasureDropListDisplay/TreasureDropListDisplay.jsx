@@ -31,6 +31,8 @@ class TreasureDropListDisplay extends DisplayStatic {
   }
 
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
       <div className="DeleteTreasureDropListButton"
         onClick={() => this.props.setDialog({

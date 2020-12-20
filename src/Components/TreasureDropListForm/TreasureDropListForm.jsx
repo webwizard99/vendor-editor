@@ -318,7 +318,7 @@ class TreasureDropListForm extends DisplayForm {
               <input type="hidden" name="newIndexes" value={this.state.newDropKeys} />
               <input type="hidden" name="id" value={newId} />
               <input type="hidden" name="treasureDropListId" value={newTreasureDropListId} />
-              <input type="submit" value={this.props.edit ? 'Update Treasure Droplist' : 'Create Monster Droplist'} className="button create-button"></input>
+              <input type="submit" value={this.props.edit ? 'Update Treasure Droplist' : 'Create Treasure Droplist'} className="button create-button"></input>
             </div>
         </form>
       </div>
