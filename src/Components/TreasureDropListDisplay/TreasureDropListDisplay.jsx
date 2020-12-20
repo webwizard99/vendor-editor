@@ -8,11 +8,12 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchTreasureDropLists, loadItems } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
 import itemTypes from '../../utilities/itemTypes';
+import deleteRequests from '../../utilities/deleteRequests';
 
 class TreasureDropListDisplay extends DisplayStatic {
   constructor(props) {
@@ -20,6 +21,7 @@ class TreasureDropListDisplay extends DisplayStatic {
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getDrops = this.getDrops.bind(this);
+    this.deleteDropList = this.deleteDropList.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +32,11 @@ class TreasureDropListDisplay extends DisplayStatic {
 
   getDeleteButton() {
     return (
-      <div className="DeleteTreasureDropListButton">
+      <div className="DeleteTreasureDropListButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Treasure DropList and Drops from Database?'
+        })}>
         <DeleteButton />
       </div>
     );
@@ -78,6 +84,37 @@ class TreasureDropListDisplay extends DisplayStatic {
           })}
         </div>
     )
+  }
+
+  *deleteDropList(payload) {
+    yield deleteRequests.makeRequestDropList(payload);
+  }
+
+  handleYes() {
+    // compose payload for delete request
+    let payload = {};
+    payload.route = 'treasure_drop_list';
+    payload.id = this.props.displayId;
+    const allDropLists = this.props.treasureDropLists;
+    const thisDropList = allDropLists.find(dropList => dropList.id === this.props.displayId);
+    const treasureDropListId = thisDropList.treasure_drop_list.id;
+    payload.treasureDropListId = treasureDropListId;
+    const drops = thisDropList.drops;
+    let dropIds = [];
+    if (drops.length > 0) {
+      drops.forEach(drop => {
+        dropIds.push(drop.id);
+      });
+    }
+    payload.dropIds = dropIds;
+
+    // invoke delete request
+    let deleteDropList = this.deleteDropList(payload);
+    deleteDropList.next().value.then(() => {
+      this.props.fetchTreasureDropLists();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    });
   }
 
   getDisplay() {
@@ -130,6 +167,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
     fetchTreasureDropLists: () => dispatch(fetchTreasureDropLists()),
     loadItems: () => dispatch(loadItems())
   }
