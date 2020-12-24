@@ -45,7 +45,7 @@ class LevelList extends ExpandableList {
   }
 
   displayContents() {
-    if (!this.props.level) {
+    if (!this.props.levels) {
       return '';
     } else {
       const newLevels = this.props.levels;
