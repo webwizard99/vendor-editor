@@ -5,6 +5,7 @@ import './DungeonList.css';
 import ExpandableList from '../ExpandableList/ExpandableList';
 import DungeonTileList from '../DungeonTileList/DungeonTileList';
 import TreasureDropListList from '../TreasureDropListList/TreasureDropListList';
+import LevelList from '../LevelList/LevelList';
 
 class DungeonList extends ExpandableList {
   getTitle() {
@@ -16,6 +17,7 @@ class DungeonList extends ExpandableList {
       <div className="detailList">
         <DungeonTileList />
         <TreasureDropListList />
+        <LevelList />
       </div>
     )
   }

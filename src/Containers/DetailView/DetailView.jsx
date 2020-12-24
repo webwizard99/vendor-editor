@@ -90,6 +90,8 @@ class DetailView extends React.Component {
     this.formTable[formTypes.dungeon_tile].form = <DungeonTileForm />;
     this.formTable[formTypes.treasure_drop_list].display = <TreasureDropListDisplay />;
     this.formTable[formTypes.treasure_drop_list].form = <TreasureDropListForm />;
+    this.formTable[formTypes.level].display = 'LevelDisplay';
+    this.formTable[formTypes.level].form = 'LevelForm';
   }
 
   

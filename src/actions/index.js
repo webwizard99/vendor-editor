@@ -12,7 +12,8 @@ import { FETCH_USER,
   SET_MONSTER_BEHAVIORS,
   SET_MONSTERS,
   SET_DUNGEON_TILES,
-  SET_TREASURE_DROP_LISTS } from './types';
+  SET_TREASURE_DROP_LISTS,
+  SET_LEVELS } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -99,4 +100,9 @@ export const fetchDungeonTiles = () => async dispatch => {
 export const fetchTreasureDropLists = () => async dispatch => {
   const res = await axios.get('/treasure_drop_lists');
   dispatch({ type: SET_TREASURE_DROP_LISTS, payload: res.data });
+}
+
+export const fetchLevels = () => async dispatch => {
+  const res = await axios.get('/levels');
+  dispatch({ type: SET_LEVELS, payload: res.data });
 }

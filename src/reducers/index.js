@@ -14,6 +14,7 @@ import monsterBehaviorReducer from './monsterBehaviorReducer';
 import monsterReducer from './monsterReducer';
 import breadcrumbReducer from './breadcrumbReducer';
 import dungeonTileReducer from './dungeonTileReducer';
+import levelReducer from './levelReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -30,5 +31,6 @@ export default combineReducers({
   monsterBehaviors: monsterBehaviorReducer,
   monsters: monsterReducer,
   breadcrumb: breadcrumbReducer,
-  dungeonTiles: dungeonTileReducer
+  dungeonTiles: dungeonTileReducer,
+  levels: levelReducer
 });
