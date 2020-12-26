@@ -106,3 +106,9 @@ export const fetchLevels = () => async dispatch => {
   const res = await axios.get('/levels');
   dispatch({ type: SET_LEVELS, payload: res.data });
 }
+
+export const loadLevelDetails = () => async dispatch => {
+  dispatch(fetchDungeonTiles());
+  dispatch(fetchTreasureDropLists());
+  dispatch(fetchMonsters());
+}

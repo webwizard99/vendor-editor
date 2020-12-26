@@ -32,6 +32,7 @@ import DungeonTileDisplay from '../../Components/DungeonTileDisplay/DungeonTileD
 import DungeonTileForm from '../../Components/DungeonTileForm/DungeonTileForm';
 import TreasureDropListDisplay from '../../Components/TreasureDropListDisplay/TreasureDropListDisplay';
 import TreasureDropListForm from '../../Components/TreasureDropListForm/TreasureDropListForm';
+import LevelDisplay from '../../Components/LevelDisplay/LevelDisplay';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
@@ -90,7 +91,7 @@ class DetailView extends React.Component {
     this.formTable[formTypes.dungeon_tile].form = <DungeonTileForm />;
     this.formTable[formTypes.treasure_drop_list].display = <TreasureDropListDisplay />;
     this.formTable[formTypes.treasure_drop_list].form = <TreasureDropListForm />;
-    this.formTable[formTypes.level].display = 'LevelDisplay';
+    this.formTable[formTypes.level].display = <LevelDisplay />;
     this.formTable[formTypes.level].form = 'LevelForm';
   }
 
