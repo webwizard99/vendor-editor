@@ -68,7 +68,6 @@ class LevelDisplay extends DisplayStatic {
       monsters_min_level,
       monsters_max_level
     } = thisLevel;
-    console.log(thisLevel);
     const allTreasureDropLists = this.props.treasureDropLists;
     const thisDropList = allTreasureDropLists.find(dropList => dropList.id === dropListId);
     const treasureDropListName = thisDropList.treasure_drop_list.name;
@@ -92,25 +91,27 @@ class LevelDisplay extends DisplayStatic {
             <EditButton />
           </div>
         </div>
-        <div className="display-group">
-          <span className="display-label">boss</span>
-          <span className="display-text">{boolean.displayBooloean(boss)}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">boss info</span>
-          <span className="display-text">{thisBossName}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">monsters min level</span>
-          <span className="display-text">{monsters_min_level}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">monsters max level</span>
-          <span className="display-text">{monsters_max_level}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">treasure drop list</span>
-          <span className="display-text">{treasureDropListName}</span>
+        <div className="display-fields-area">
+          <div className="display-group">
+            <span className="display-label">boss</span>
+            <span className="display-text">{boolean.displayBooloean(boss)}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">boss info</span>
+            <span className="display-text">{thisBossName}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">monsters min level</span>
+            <span className="display-text">{monsters_min_level}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">monsters max level</span>
+            <span className="display-text">{monsters_max_level}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">treasure drop list</span>
+            <span className="display-text">{treasureDropListName}</span>
+          </div>
         </div>
       </div>
     )

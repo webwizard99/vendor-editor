@@ -138,19 +138,21 @@ class TreasureDropListDisplay extends DisplayStatic {
             <EditButton />
           </div>
         </div>
-        <div className="display-group">
-          <span className="display-label">gold min</span>
-          <span className="display-text">{thisGoldMin}</span>
+        <div className="display-fields-area">
+          <div className="display-group">
+            <span className="display-label">gold min</span>
+            <span className="display-text">{thisGoldMin}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">gold max</span>
+            <span className="display-text">{thisGoldMax}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">gold chance</span>
+            <span className="display-text">{thisGoldChance}</span>
+          </div>
+          {this.getDrops(thisDrops)}
         </div>
-        <div className="display-group">
-          <span className="display-label">gold max</span>
-          <span className="display-text">{thisGoldMax}</span>
-        </div>
-        <div className="display-group">
-          <span className="display-label">gold chance</span>
-          <span className="display-text">{thisGoldChance}</span>
-        </div>
-        {this.getDrops(thisDrops)}
       </div>
     )
   }
