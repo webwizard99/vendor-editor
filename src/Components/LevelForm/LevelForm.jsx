@@ -246,11 +246,13 @@ class LevelForm extends DisplayForm {
         newBoss = false;
       }
       newBossId = thisLevel.boss_id;
-      newMonstersMinLevel = thisLevel.monsters_min_level;
-      newMonstersMaxLevel = thisLevel.monsters_max_level;
+      // newMonstersMinLevel = thisLevel.monsters_min_level;
+      // newMonstersMaxLevel = thisLevel.monsters_max_level;
       newDropListId = thisLevel.dropListId;
       newDungeonTiles = thisLevel.tile_assignements;
     }
+
+    const newAssignmentKeys = this.state.newAssignmentKeys;
 
     return (
       <div className="LevelForm extended">
@@ -301,7 +303,7 @@ class LevelForm extends DisplayForm {
                   <option value={null} onClick={() => this.handleBreadcrumb(null)}>new droplist</option>
                   {this.getTreasureDropListOptions()}
               </select>
-              <div className="edit-treasure-droplist-button" onClick={() => this.handleBreadcrumb(dropListId === null ? null : this.state.dropList)}>
+              <div className="edit-treasure-droplist-button" onClick={() => this.handleBreadcrumb(newDropListId === null ? null : this.state.dropList)}>
                 <EditButton />
               </div>
             </div>
@@ -349,20 +351,20 @@ class LevelForm extends DisplayForm {
                   <div className="form-inner-span">
                     <div className="form-half-span form-left-half">
                       <select className="assignment-select"
-                        name={`new-assignment-${newAssignmentIndex}-tileId`}
-                        id={`new-assignment-${newAssignmentIndex}-tileId`}
+                        name={`new-assignment-${index}-tileId`}
+                        id={`new-assignment-${index}-tileId`}
                         onChange={this.handleChange}
-                        value={this.state[`new-assignment-${newAssignmentIndex}-tileId`]}>
+                        value={this.state[`new-assignment-${index}-tileId`]}>
                           {this.getDungeonTileOptions()}
                       </select>
                     </div>
                     <div className="form-half-span form-right-half">
                       <input className="input-number"
                         type="number"
-                        name={`new-assignment-${newAssignmentIndex}-probability`}
-                        id={`new-assignment-${newAssignmentIndex}-probability`}
+                        name={`new-assignment-${index}-probability`}
+                        id={`new-assignment-${index}-probability`}
                         onChange={this.handleChange}
-                        value={this.state[`new-assignment-${newAssignmentIndex}-probability`]}>
+                        value={this.state[`new-assignment-${index}-probability`]}>
                       </input>
                       <span className="assignmentDelete"
                         onClick={() => this.deleteTileAssignement({ existing: false, assignmentId: index })}
