@@ -165,7 +165,7 @@ class LevelForm extends DisplayForm {
   handleDropListChange(e) {
     e.preventDefault();
     let dropListId = e.target.value;
-    if (dropListId = '--choose a droplist--') return;
+    if (dropListId === '--choose a droplist--') return;
     this.setState({ dropList: dropListId });
   }
 
