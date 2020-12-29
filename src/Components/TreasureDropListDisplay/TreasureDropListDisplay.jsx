@@ -151,6 +151,8 @@ class TreasureDropListDisplay extends DisplayStatic {
             <span className="display-label">gold chance</span>
             <span className="display-text">{thisGoldChance}</span>
           </div>
+          <div className="display-group-blank">
+          </div>
           {this.getDrops(thisDrops)}
         </div>
       </div>

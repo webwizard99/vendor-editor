@@ -25,6 +25,7 @@ class LevelDisplay extends DisplayStatic {
     this.setIntialized = this.setIntialized.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.getMonstersInRange = this.getMonstersInRange.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,44 @@ class LevelDisplay extends DisplayStatic {
         <DeleteButton />
       </div>
     );
+  }
+
+  getMonstersInRange(payload) {
+    let { min, max, monsters } = payload;
+    if (!this.props.monsters) return '';
+    if (typeof min !== 'number') {
+      min = Number.parseInt(min);
+    }
+    if (typeof max !== 'number') {
+      max = Number.parseInt(max);
+    }
+    let validMonsters = monsters.filter(monster => {
+      let monsterLevel = monster.level;
+      if (typeof monsterLevel !== 'number') {
+        monsterLevel = Number.parseInt(monsterLevel);
+      }
+      return (monsterLevel >= min && monsterLevel <= max);
+    });
+    return (
+      <div className="monster-valid-display subgroup-display">
+        <span className="display-label full-span">Monsters</span>
+        <span className="display-label pad half-span">Name</span>
+        <span className="display-label pad half-span">Level</span>
+        {!validMonsters ? '' : validMonsters.map(monster => {
+          return (
+            <div className="inner-span">
+              <span className="display-text half-span left-half">
+                {monster.name}
+              </span>
+              <span className="display-text half-span right-half">
+                {monster.level}
+              </span>
+            </div>
+          )
+        })}
+      </div>
+    )
+    
   }
 
   getDisplay() {
@@ -112,6 +151,9 @@ class LevelDisplay extends DisplayStatic {
             <span className="display-label">treasure drop list</span>
             <span className="display-text">{treasureDropListName}</span>
           </div>
+          <div className="display-group-blank">
+          </div>
+          {this.getMonstersInRange()}
         </div>
       </div>
     )
