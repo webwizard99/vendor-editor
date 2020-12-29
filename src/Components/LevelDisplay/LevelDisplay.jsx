@@ -68,6 +68,7 @@ class LevelDisplay extends DisplayStatic {
       monsters_min_level,
       monsters_max_level
     } = thisLevel;
+    console.log(thisLevel);
     const allTreasureDropLists = this.props.treasureDropLists;
     const thisDropList = allTreasureDropLists.find(dropList => dropList.id === dropListId);
     const treasureDropListName = thisDropList.treasure_drop_list.name;
