@@ -239,7 +239,7 @@ class MonsterForm extends DisplayForm {
       <div className="MonsterForm extended">
         <div className="form-heading-bar">
           <h2 className="form-heading">Monster: {newHeading}</h2>
-          <div className="close-monster-class-btn" onClick={this.handleCloseButton}>
+          <div className="close-monster-btn" onClick={this.handleCloseButton}>
             <CloseFormButton />
           </div>
         </div>
