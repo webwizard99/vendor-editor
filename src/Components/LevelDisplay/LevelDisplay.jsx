@@ -123,7 +123,7 @@ class LevelDisplay extends DisplayStatic {
     }
     
     return (
-      <div className="LevelDisplay">
+      <div className="LevelDisplay extended">
         <div className="heading-bar">
           <h2 className="display-heading">Level {number}</h2>
           <div className="LevelEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.level, edit: true, targetId: thisLevel.id })}>

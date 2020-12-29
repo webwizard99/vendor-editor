@@ -108,7 +108,7 @@ class DungeonBehaviorForm extends DisplayForm {
       newTryForLevel = thisDungeonBehavior.try_for_level;
     }
     return (
-      <div className="DungeonBehaviorForm">
+      <div className="DungeonBehaviorForm extended">
         <div className="form-heading-bar">
           <h2 className="form-heading">Dungeon Behavior: {newHeading}</h2>
           <div className="close-dungeon-behavior-btn" onClick={this.handleCloseButton}>

@@ -4,6 +4,19 @@
   background: rgb(160, 180, 160);
 }
 
+.extended, .extended-short {
+  overflow: auto;
+  scroll-snap-type: y;
+}
+
+.extended {
+  max-height: 100%;
+}
+
+.extended-short {
+  max-height: 85%;
+}
+
 .heading-bar {
   width: 100%;
   display: flex;

@@ -65,7 +65,7 @@ class AdventurerClassDisplay extends DisplayStatic {
     } = thisAdventurerClass;
 
     return (
-      <div className="AdventurerClassDisplay">
+      <div className="AdventurerClassDisplay extended-short">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="AdventurerClassEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.adventurer_class, edit: true, targetId: thisAdventurerClass.id })}>

@@ -103,7 +103,7 @@ class MonsterDisplay extends DisplayStatic {
     const monsterBehaviorName = thisMonsterBehavior.name;
 
     return (
-      <div className="MonsterDisplay">
+      <div className="MonsterDisplay extended-short">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="MonsterEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.monster, edit: true, targetId: thisMonster.id })}>

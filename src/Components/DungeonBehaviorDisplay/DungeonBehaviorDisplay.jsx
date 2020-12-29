@@ -77,7 +77,7 @@ class DungeonBehaviorDisplay extends DisplayStatic {
     } = thisDungeonBehavior;
 
     return (
-      <div className="DungeonBehaviorDisplay">
+      <div className="DungeonBehaviorDisplay extended">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="DungeonBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.dungeon_behavior, edit: true, targetId: thisDungeonBehavior.id })}>

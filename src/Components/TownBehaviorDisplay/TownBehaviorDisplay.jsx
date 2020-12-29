@@ -70,7 +70,7 @@ class TownBehaviorDisplay extends DisplayStatic {
     } = thisTownBehavior;
 
     return (
-      <div className="TownBehaviorDisplay">
+      <div className="TownBehaviorDisplay extended">
         <div className="heading-bar">
           <h2 className="display-heading">{name}</h2>
           <div className="TownBehaviorEditButton" onClick={() => this.props.setDisplayForm({ form: formTypes.town_behavior, edit: true, targetId: thisTownBehavior.id })}>

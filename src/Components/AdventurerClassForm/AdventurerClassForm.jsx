@@ -83,7 +83,7 @@ class AdventurerClassForm extends DisplayForm {
       newAnatomy = thisAdventurerClass.anatomy;
     }
     return (
-      <div className="AdventurerClassForm">
+      <div className="AdventurerClassForm extended-short">
         <div className="form-heading-bar">
           <h2 className="form-heading">Adventurer Class: {newHeading}</h2>
           <div className="close-adventurer-class-btn" onClick={this.handleCloseButton}>

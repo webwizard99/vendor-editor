@@ -121,7 +121,7 @@ class AdventurerForm extends DisplayForm {
     }
 
     return (
-      <div className="AdventurerForm">
+      <div className="AdventurerForm extended">
         <div className="form-heading-bar">
           <h2 className="form-heading">Adventurer: {newHeading}</h2>
           <div className="close-adventurer-class-btn" onClick={this.handleCloseButton}>
