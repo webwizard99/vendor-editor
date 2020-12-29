@@ -153,7 +153,7 @@ class LevelDisplay extends DisplayStatic {
           </div>
           <div className="display-group-blank">
           </div>
-          {this.getMonstersInRange()}
+          {this.getMonstersInRange({ min: monsters_min_level, max: monsters_max_level, monsters: allMonsters })}
         </div>
       </div>
     )
