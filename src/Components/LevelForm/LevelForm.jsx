@@ -22,7 +22,7 @@ class LevelForm extends DisplayForm {
 
     this.state = {
       dropList: null,
-      initializd: false
+      initialized: false
     }
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -67,7 +67,7 @@ class LevelForm extends DisplayForm {
 
     let minLevel = 1;
     let maxLevel = 1;
-    stateUpdate.initializd = true;
+    stateUpdate.initialized = true;
     const allLevels = this.props.levels;
     this.loadLevels(allLevels);
     if (this.props.edit) {
@@ -224,7 +224,7 @@ class LevelForm extends DisplayForm {
   }
 
   getForm() {
-    if (!this.props.monsters || !this.props.dungeonTiles || !this.props.treasureDropLists) {
+    if (!this.props.monsters || !this.props.dungeonTiles || !this.props.treasureDropLists || !this.state.initialized) {
       return '';
     }
 
@@ -252,7 +252,7 @@ class LevelForm extends DisplayForm {
       newDungeonTiles = thisLevel.tile_assignments;
     }
 
-    const newAssignmentKeys = this.state.newAssignmentKeys;
+    const newAssignmentKeys = this.state.newAssignmentKeys || [];
 
     return (
       <div className="LevelForm extended">
