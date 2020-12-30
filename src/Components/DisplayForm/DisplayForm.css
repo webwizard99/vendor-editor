@@ -13,6 +13,10 @@
   max-height: 100%;
 }
 
+.extended form, .extended-short form {
+  padding-bottom: 1rem;
+}
+
 .extended-short {
   max-height: 85%;
 }

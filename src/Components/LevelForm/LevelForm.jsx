@@ -4,6 +4,7 @@ import './LevelForm.css';
 import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import EditButton from '../EditButton/EditButton';
+import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -14,6 +15,7 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 import formTypes from '../../utilities/formTypes';
 import levelsManager from '../../utilities/levelsManager';
 import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
+
 
 
 class LevelForm extends DisplayForm {
@@ -292,6 +294,7 @@ class LevelForm extends DisplayForm {
               <input type="number" name="monsters_max_level" id="monsters_max_level" className="input-number" placeholder="#"
                 min="1" max="30" onChange={this.handleChange} required value={this.state.monsters_max_level}></input>
             </div>
+            {this.getMonstersInRange({ min: this.state.monsters_min_level, max: this.state.monsters_max_level, monsters: this.props.monsters })}
             <div className="input-group">
               <label className="item-label" htmlFor="dropListId">treasure droplist</label>
               <select className="treasure-droplist-select"
@@ -375,10 +378,16 @@ class LevelForm extends DisplayForm {
                   </div>
                 )
               })}
+              <div className="assignmentAdd form-full-span form-center-content"
+                onClick={this.addFormTileAssignment}
+              >
+                <AddOfferingButton />
+              </div>
             </div>
-            {this.getMonstersInRange({ min: this.state.monsters_min_level, max: this.state.monsters_max_level, monsters: this.props.monsters })}
             <input type="hidden" name="id" value={newId} />
-            <input type="submit" value={this.props.edit ? 'Update Level' : 'Create Level' } className="button create-button"></input>
+            <div className="submit-container">
+              <input type="submit" value={this.props.edit ? 'Update Level' : 'Create Level' } className="button create-button"></input>
+            </div>
         </form>
       </div>
     )
