@@ -13,6 +13,8 @@ import { SET_DETAIL_FORM } from '../../actions/types';
 
 // js imports
 import formTypes from '../../utilities/formTypes';
+import formComposer from '../../utilities/formComposer';
+import breadcrumb from '../../utilities/breadcrumb';
 import levelsManager from '../../utilities/levelsManager';
 import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 
@@ -81,6 +83,8 @@ class LevelForm extends DisplayForm {
       maxLevel = thisLevel.monsters_max_level;
     }
 
+    
+
     let presentIds = [];
     if (dungeonTiles.length > 0) {
       for (const assignment of dungeonTiles) {
@@ -89,6 +93,8 @@ class LevelForm extends DisplayForm {
         presentIds.push(assignment.id);
       }
     }
+
+    
     stateUpdate.presentIds = presentIds;
     stateUpdate.existingIdCount = dungeonTiles.length;
     stateUpdate.deletedIds = [];
@@ -98,6 +104,17 @@ class LevelForm extends DisplayForm {
     stateUpdate.monsters_min_level = minLevel;
     stateUpdate.monsters_max_level = maxLevel;
     stateUpdate.dungeonTiles = dungeonTiles;
+
+    if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.level) {
+      presentIds = [];
+      const levelForm = this.props.breadcrumbFormdata;
+      console.log(levelForm);
+      const dropListId = levelForm.dropListId;
+      stateUpdate.dropList = dropListId;
+      for (let [key, value] of Object.entries(levelForm)) {
+        stateUpdate[key] = value;
+      }
+    }
     this.setState(stateUpdate);
   }
 
@@ -218,7 +235,39 @@ class LevelForm extends DisplayForm {
   }
 
   handleBreadcrumb(dropListId) {
-    console.log(dropListId);
+    // set dropList id to load appropriate drop list into
+    // level form
+    let resDropList;
+    if (dropListId !== null) {
+      resDropList = Number.parseInt(dropListId);
+    } else {
+      resDropList = dropListId;
+    }
+
+    // breadcrumb payload composition to pass into breadcrumb module
+    let breadcrumbPayload = {};
+    breadcrumbPayload.name = formTypes.level;
+    const levelForm = document.querySelector('#LevelPostForm');
+    let data = new FormData(levelForm);
+    data = formComposer.getObjectFromForm(levelForm);
+    let formDataPayload = {};
+    formDataPayload.formData = data;
+    formDataPayload.formDataName = formTypes.level;
+    breadcrumbPayload.formDataPayload = formDataPayload; 
+    // compose display payload to point back to MonsterForm with
+    // appropriate display values
+    const currentEdit = this.props.edit;
+    const currentId = this.props.displayId;
+    const displayPayload = { form: formTypes.level, edit: currentEdit, targetId: currentId };
+    breadcrumbPayload.displayPayload = displayPayload;
+    // set breadcrumb
+    breadcrumb.setNewBreadcrumb(breadcrumbPayload);
+    // switch to dependent form
+    if (resDropList === null) {
+      this.props.setDisplayForm({ form: formTypes.treasure_drop_list, edit: false, targetId: null });
+    } else {
+      this.props.setDisplayForm({ form: formTypes.treasure_drop_list, edit: true, targetId: resDropList });
+    }
   }
 
   handleSubmit(e) {
@@ -386,8 +435,8 @@ class LevelForm extends DisplayForm {
               </div>
             </div>
             <input type="hidden" name="existingIds" value={this.state.presentIds} />
-          <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
-          <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
+            <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
+            <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
             <input type="hidden" name="id" value={newId} />
             <div className="submit-container">
               <input type="submit" value={this.props.edit ? 'Update Level' : 'Create Level' } className="button create-button"></input>
@@ -405,7 +454,9 @@ const mapStateToProps = state => {
     dungeonTiles: state.dungeonTiles.tiles,
     treasureDropLists: state.dropLists.treasure,
     levels: state.levels.levels,
-    displayId: state.detail.targetId
+    displayId: state.detail.targetId,
+    breadcrumbFormdata: state.breadcrumb.formData,
+    breadcrumbFormdataName: state.breadcrumb.formDataname
   }
 }
 
