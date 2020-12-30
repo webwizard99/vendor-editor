@@ -129,7 +129,7 @@ class LevelForm extends DisplayForm {
 
   deleteTileAssignement(payload) {
     const { existing, assignmentId } = payload;
-    let updatedState;
+    let updatedState = {};
     if (existing) {
       let newDeleted = this.state.deletedIds;
       let newCount = this.state.existingIdCount;
