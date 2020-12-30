@@ -16,8 +16,6 @@ import formTypes from '../../utilities/formTypes';
 import levelsManager from '../../utilities/levelsManager';
 import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 
-
-
 class LevelForm extends DisplayForm {
   constructor(props) {
     super(props);
@@ -195,23 +193,26 @@ class LevelForm extends DisplayForm {
       return (monsterLevel >= min && monsterLevel <= max);
     });
     return (
-      <div className="monster-valid-display subgroup-display">
-        <span className="display-label full-span">Monsters</span>
-        <span className="display-label pad half-span">Name</span>
-        <span className="display-label pad half-span">Level</span>
-        {!validMonsters ? '' : validMonsters.map(monster => {
-          return (
-            <div className="inner-span">
-              <span className="display-text half-span left-half">
-                {monster.name}
-              </span>
-              <span className="display-text half-span right-half">
-                {monster.level}
-              </span>
-            </div>
-          )
-        })}
+      <div className="form-center-content">
+        <div className="monster-valid-display subgroup-display">
+          <span className="display-label full-span">Monsters</span>
+          <span className="display-label pad half-span">Name</span>
+          <span className="display-label pad half-span">Level</span>
+          {!validMonsters ? '' : validMonsters.map(monster => {
+            return (
+              <div className="inner-span">
+                <span className="display-text half-span left-half">
+                  {monster.name}
+                </span>
+                <span className="display-text half-span right-half">
+                  {monster.level}
+                </span>
+              </div>
+            )
+          })}
+        </div>
       </div>
+      
     )
     
   }
