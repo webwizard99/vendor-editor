@@ -193,7 +193,7 @@ class LevelForm extends DisplayForm {
       return (monsterLevel >= min && monsterLevel <= max);
     });
     return (
-      <div className="form-center-content">
+      <div className="form-center-content form-inner-span">
         <div className="monster-valid-display subgroup-display">
           <span className="display-label full-span">Monsters</span>
           <span className="display-label pad half-span">Name</span>
@@ -296,8 +296,6 @@ class LevelForm extends DisplayForm {
                 min="1" max="30" onChange={this.handleChange} required value={this.state.monsters_max_level}></input>
             </div>
             {this.getMonstersInRange({ min: this.state.monsters_min_level, max: this.state.monsters_max_level, monsters: this.props.monsters })}
-            <div className="input-group-blank">
-            </div>
             <div className="input-group">
               <label className="item-label" htmlFor="dropListId">treasure droplist</label>
               <select className="treasure-droplist-select"
