@@ -76,7 +76,7 @@ class LevelForm extends DisplayForm {
       const allTreasureDropLists = this.props.treasureDropLists;
       const thisTreasureDropList = allTreasureDropLists.find(dropList => dropList.id === thisLevel.dropListId);
       stateUpdate.dropList = thisTreasureDropList.id;
-      dungeonTiles = thisLevel.tile_assignements;
+      dungeonTiles = thisLevel.tile_assignments;
       minLevel = thisLevel.monsters_min_level;
       maxLevel = thisLevel.monsters_max_level;
     }
