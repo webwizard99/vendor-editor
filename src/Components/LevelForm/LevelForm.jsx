@@ -49,7 +49,7 @@ class LevelForm extends DisplayForm {
   }
 
   componentDidUpdate() {
-    if (this.props.monsters && this.props.dungeonTiles && this.props.treasureDropLists) {
+    if (this.props.monsters && this.props.dungeonTiles && this.props.treasureDropLists && !this.state.initialized) {
       this.initializeFields()
     }
   }
