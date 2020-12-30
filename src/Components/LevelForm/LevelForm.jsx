@@ -249,7 +249,7 @@ class LevelForm extends DisplayForm {
       // newMonstersMinLevel = thisLevel.monsters_min_level;
       // newMonstersMaxLevel = thisLevel.monsters_max_level;
       newDropListId = thisLevel.dropListId;
-      newDungeonTiles = thisLevel.tile_assignements;
+      newDungeonTiles = thisLevel.tile_assignments;
     }
 
     const newAssignmentKeys = this.state.newAssignmentKeys;
