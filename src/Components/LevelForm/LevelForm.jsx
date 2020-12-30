@@ -313,7 +313,7 @@ class LevelForm extends DisplayForm {
               <span className="item-label form-pad form-half-span">Chance</span>
               {newDungeonTiles.length <= 0 ? '' : newDungeonTiles.map(assignment => {
                 let deletedMap = this.state.deletedIds;
-                if (deletedMap.length > 0 && deletedMap.includes(assignment.id)) {
+                if (deletedMap && deletedMap.length > 0 && deletedMap.includes(assignment.id)) {
                   return ''
                 }
                 return (
