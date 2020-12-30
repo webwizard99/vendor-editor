@@ -21,6 +21,14 @@
   max-height: 85%;
 }
 
+.submit-container {
+  width: 90%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-heading-bar {
   width: 100%;
   display: flex;

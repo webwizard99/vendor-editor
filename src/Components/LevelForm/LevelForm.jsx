@@ -295,6 +295,8 @@ class LevelForm extends DisplayForm {
                 min="1" max="30" onChange={this.handleChange} required value={this.state.monsters_max_level}></input>
             </div>
             {this.getMonstersInRange({ min: this.state.monsters_min_level, max: this.state.monsters_max_level, monsters: this.props.monsters })}
+            <div className="input-group-blank">
+            </div>
             <div className="input-group">
               <label className="item-label" htmlFor="dropListId">treasure droplist</label>
               <select className="treasure-droplist-select"
@@ -384,6 +386,9 @@ class LevelForm extends DisplayForm {
                 <AddOfferingButton />
               </div>
             </div>
+            <input type="hidden" name="existingIds" value={this.state.presentIds} />
+          <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
+          <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
             <input type="hidden" name="id" value={newId} />
             <div className="submit-container">
               <input type="submit" value={this.props.edit ? 'Update Level' : 'Create Level' } className="button create-button"></input>
