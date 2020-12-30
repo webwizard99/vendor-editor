@@ -246,7 +246,7 @@ class LevelForm extends DisplayForm {
 
     // breadcrumb payload composition to pass into breadcrumb module
     let breadcrumbPayload = {};
-    breadcrumbPayload.name = formTypes.level;
+    breadcrumbPayload.name = formTypes.treasure_drop_list;
     const levelForm = document.querySelector('#LevelPostForm');
     let data = new FormData(levelForm);
     // console.log(data);

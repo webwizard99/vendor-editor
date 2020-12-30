@@ -17,6 +17,7 @@ import itemTypes from '../../utilities/itemTypes';
 import formTypes from '../../utilities/formTypes';
 import postRequests from '../../utilities/itemPostRequests';
 import putRequests from '../../utilities/itemPutRequests';
+import breadcrumb from '../../utilities/breadcrumb';
 
 class TreasureDropListForm extends DisplayForm {
   constructor(props) {
@@ -39,15 +40,34 @@ class TreasureDropListForm extends DisplayForm {
   }
 
   componentDidMount() {
+    // create breadcrumb testing state variable
+    let breadcrumbPass = false;
+    // if no breadcrumb exists, load component as normal
+    if (!this.props.breadcrumbActive) {
+      breadcrumbPass = true;
+    }
+    // if breadcrumb is active but formData isn't loaded, fail test
+    if (this.props.breadcrumbActive && !this.props.breadcrumbFormData) {
+      breadcrumbPass = false;
+    }
+    // if breadcrumb and formData are present, pass test
+    if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
+      breadcrumbPass = true;
+    }
     if (!this.props.armor || !this.props.potions || !this.props.weapons) {
       this.props.loadItems();
-    } else {
+    }
+    if (breadcrumbPass) {
       this.initializeFields();
     }
   }
 
   componentDidUpdate() {
-    if (this.props.armor && this.props.potions && this.props.weapons && !this.state.initialized) {
+    let breadcrumbPass = false;
+    if (this.props.breadcrumbActive && this.props.breadcrumbFormData) {
+      breadcrumbPass = true;
+    }
+    if (this.props.armor && this.props.potions && this.props.weapons && !this.state.initialized && breadcrumbPass) {
       this.initializeFields();
     }
   }
@@ -151,10 +171,14 @@ class TreasureDropListForm extends DisplayForm {
 
   handleCloseButton(e) {
     e.preventDefault();
-    if (this.props.edit === false) {
-      this.props.setDisplayForm({ form: false, targetId: null, edit: false });
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.level) {
+      breadcrumb.revertToBreadcrumb();
     } else {
-      this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
+      if (this.props.edit === false) {
+        this.props.setDisplayForm({ form: false, targetId: null, edit: false });
+      } else {
+        this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
+      }
     }
   }
 
@@ -179,10 +203,14 @@ class TreasureDropListForm extends DisplayForm {
     let updateTreasureDropList = this.updateTreasureDropList(data);
     updateTreasureDropList.next().value.then(() => {
       this.props.fetchTreasureDropLists();
-      if (this.props.edit) {
-        this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
+      if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.treasure_drop_list) {
+        breadcrumb.revertToBreadcrumb();
       } else {
-        this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+        if (this.props.edit) {
+          this.props.setDisplayForm({ form: formTypes.treasure_drop_list, targetId: this.props.displayId, edit: false });
+        } else {
+          this.props.setDisplayForm({ form: null, targetId: null, edit: false });
+        }
       }
     })
   }
@@ -333,7 +361,10 @@ const mapStateToProps = state => {
     treasureDropLists: state.dropLists.treasure,
     armor: state.armor.armor,
     potions: state.potions.potions,
-    weapons: state.weapons.weapons
+    weapons: state.weapons.weapons,
+    breadcrumbActive: state.breadcrumb.active,
+    breadcrumbName: state.breadcrumb.name,
+    breadcrumbFormData: state.breadcrumb.formData
   }
 }
 
