@@ -249,7 +249,8 @@ class LevelForm extends DisplayForm {
     breadcrumbPayload.name = formTypes.level;
     const levelForm = document.querySelector('#LevelPostForm');
     let data = new FormData(levelForm);
-    data = formComposer.getObjectFromForm(levelForm);
+    // console.log(data);
+    data = formComposer.getObjectFromForm(data);
     let formDataPayload = {};
     formDataPayload.formData = data;
     formDataPayload.formDataName = formTypes.level;
