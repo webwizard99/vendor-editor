@@ -105,6 +105,8 @@ class LevelForm extends DisplayForm {
     stateUpdate.monsters_max_level = maxLevel;
     stateUpdate.dungeonTiles = dungeonTiles;
 
+    console.log(this.props.breadcrumbFormdataName);
+    console.log(this.props.breadcrumbFormdata);
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.level) {
       presentIds = [];
       const levelForm = this.props.breadcrumbFormdata;
