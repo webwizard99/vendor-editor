@@ -171,7 +171,8 @@ class TreasureDropListForm extends DisplayForm {
 
   handleCloseButton(e) {
     e.preventDefault();
-    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.level) {
+    console.log(this.props.breadcrumbName);
+    if (this.props.breadcrumbActive && this.props.breadcrumbName === formTypes.treasure_drop_list) {
       breadcrumb.revertToBreadcrumb();
     } else {
       if (this.props.edit === false) {
