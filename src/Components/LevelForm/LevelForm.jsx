@@ -18,6 +18,8 @@ import formComposer from '../../utilities/formComposer';
 import breadcrumb from '../../utilities/breadcrumb';
 import levelsManager from '../../utilities/levelsManager';
 import stringArrayHandler from '../../utilities/stringArrayHandler';
+import postRequest from '../../utilities/itemPostRequests';
+import putRequest from '../../utilities/itemPutRequests';
 
 class LevelForm extends DisplayForm {
   constructor(props) {
@@ -35,6 +37,7 @@ class LevelForm extends DisplayForm {
     this.addFormTileAssignment = this.addFormTileAssignment.bind(this);
     this.deleteTileAssignement = this.deleteTileAssignement.bind(this);
     this.getTreasureDropListOptions = this.getTreasureDropListOptions.bind(this);
+    this.addLevel = this.addLevel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropListChange = this.handleDropListChange.bind(this);
     this.initializeFields = this.initializeFields.bind(this);
@@ -106,8 +109,6 @@ class LevelForm extends DisplayForm {
     stateUpdate.monsters_max_level = maxLevel;
     stateUpdate.dungeonTiles = dungeonTiles;
 
-    console.log(this.props.breadcrumbFormdataName);
-    console.log(this.props.breadcrumbFormdata);
     if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.level) {
       presentIds = [];
       const levelForm = this.props.breadcrumbFormdata;
@@ -285,9 +286,29 @@ class LevelForm extends DisplayForm {
     }
   }
 
+  addLevel(data) {
+    if (this.props.edit) {
+      yield putRequest.makeRequest('level', data);
+    } else {
+      yield postRequest.makeRequest('level', data);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-
+    const data = new FormData(e.target);
+    this.addLevel = this.addLevel(data);
+    this.addLevel.next().value.then(() => {
+      this.props.fetchLevels();
+      if (this.props.breadcrumbFormdata && this.props.breadcrumbFormdataName === formTypes.level) {
+        breadcrumb.clearBreadcrumbForm();
+      }
+      if (this.props.edit) {
+        this.props.setDisplayForm({ form: formTypes.level, edit: false, targetId: this.props.displayId });
+      } else {
+        this.props.setDisplayForm({ form: null, edit: false, targetId: null });
+      }
+    })
   }
 
   getForm() {
@@ -299,8 +320,6 @@ class LevelForm extends DisplayForm {
     let newNumber = levelsManager.getLowestNewLevel();
     let newBoss = false;
     let newBossId;
-    // let newMonstersMinLevel = 1;
-    // let newMonstersMaxLevel = 1;
     let newDropListId;
     let newDungeonTiles = [];
 
@@ -313,8 +332,6 @@ class LevelForm extends DisplayForm {
         newBoss = false;
       }
       newBossId = thisLevel.boss_id;
-      // newMonstersMinLevel = thisLevel.monsters_min_level;
-      // newMonstersMaxLevel = thisLevel.monsters_max_level;
       newDropListId = thisLevel.dropListId;
       newDungeonTiles = thisLevel.tile_assignments;
     }
