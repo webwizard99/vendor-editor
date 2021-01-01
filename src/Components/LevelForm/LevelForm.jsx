@@ -459,7 +459,7 @@ const mapStateToProps = state => {
     levels: state.levels.levels,
     displayId: state.detail.targetId,
     breadcrumbFormdata: state.breadcrumb.formData,
-    breadcrumbFormdataName: state.breadcrumb.formDataname
+    breadcrumbFormdataName: state.breadcrumb.formDataName
   }
 }
 
