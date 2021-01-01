@@ -5,6 +5,7 @@ import DisplayForm from '../DisplayForm/DisplayForm';
 import CloseFormButton from '../CloseFormButton/CloseFormButton';
 import EditButton from '../EditButton/EditButton';
 import AddOfferingButton from '../AddOfferingButton/AddOfferingButton';
+import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
 
 // redux imports
 import { connect } from 'react-redux';
@@ -16,7 +17,7 @@ import formTypes from '../../utilities/formTypes';
 import formComposer from '../../utilities/formComposer';
 import breadcrumb from '../../utilities/breadcrumb';
 import levelsManager from '../../utilities/levelsManager';
-import DeleteOfferingButton from '../DeleteOfferingButton/DeleteOfferingButton';
+import stringArrayHandler from '../../utilities/stringArrayHandler';
 
 class LevelForm extends DisplayForm {
   constructor(props) {
@@ -114,7 +115,18 @@ class LevelForm extends DisplayForm {
       const dropListId = levelForm.dropListId;
       stateUpdate.dropList = dropListId;
       for (let [key, value] of Object.entries(levelForm)) {
-        stateUpdate[key] = value;
+        if (key === 'presentIds' || key === 'deletedIds' || key === 'newAssignmentKeys') {
+          let stringArr = value;
+          if (stringArr === '') {
+            stringArr = [];
+          } else {
+            stringArr = stringArrayHandler.getArrayFromString(stringArr);
+          }
+          stateUpdate[key] = stringArr;
+        } else {
+          stateUpdate[key] = value;
+        }
+        
       }
     }
     this.setState(stateUpdate);
@@ -437,7 +449,7 @@ class LevelForm extends DisplayForm {
                 <AddOfferingButton />
               </div>
             </div>
-            <input type="hidden" name="existingIds" value={this.state.presentIds} />
+            <input type="hidden" name="presentIds" value={this.state.presentIds} />
             <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
             <input type="hidden" name="newAssignmentKeys" value={this.state.newAssignmentKeys} />
             <input type="hidden" name="id" value={newId} />
