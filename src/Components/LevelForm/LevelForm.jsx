@@ -439,7 +439,7 @@ class LevelForm extends DisplayForm {
             </div>
             <input type="hidden" name="existingIds" value={this.state.presentIds} />
             <input type="hidden" name="deletedIds" value={this.state.deletedIds} />
-            <input type="hidden" name="newIndexes" value={this.state.newOfferingKeys} />
+            <input type="hidden" name="newAssignmentKeys" value={this.state.newAssignmentKeys} />
             <input type="hidden" name="id" value={newId} />
             <div className="submit-container">
               <input type="submit" value={this.props.edit ? 'Update Level' : 'Create Level' } className="button create-button"></input>
