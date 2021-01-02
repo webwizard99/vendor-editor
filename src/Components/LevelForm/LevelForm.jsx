@@ -286,7 +286,7 @@ class LevelForm extends DisplayForm {
     }
   }
 
-  addLevel(data) {
+  *addLevel(data) {
     if (this.props.edit) {
       yield putRequest.makeRequest('level', data);
     } else {
