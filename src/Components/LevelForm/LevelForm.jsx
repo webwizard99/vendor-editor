@@ -326,6 +326,7 @@ class LevelForm extends DisplayForm {
     if (this.props.edit) {
       const allLevels = this.props.levels;
       const thisLevel = allLevels.find(level => level.id === this.props.displayId);
+      newId = this.props.displayId;
       newNumber = thisLevel.number;
       newBoss = thisLevel.boss;
       if (newBoss !== 'true' && newBoss !== true) {
@@ -449,6 +450,7 @@ class LevelForm extends DisplayForm {
                         name={`new-assignment-${index}-probability`}
                         id={`new-assignment-${index}-probability`}
                         onChange={this.handleChange}
+                        step="50"
                         value={this.state[`new-assignment-${index}-probability`]}>
                       </input>
                       <span className="assignmentDelete"
