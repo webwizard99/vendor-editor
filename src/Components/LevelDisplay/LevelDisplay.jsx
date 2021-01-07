@@ -61,7 +61,7 @@ class LevelDisplay extends DisplayStatic {
   getTileAssignments() {
     const allLevels = this.props.levels;
     const thisLevel = allLevels.find(level => level.id === this.props.displayId);
-    const tileAssignments = this.level.tile_assignments;
+    const tileAssignments = thisLevel.tile_assignments;
     const allTiles = this.props.dungeonTiles;
 
     return (
