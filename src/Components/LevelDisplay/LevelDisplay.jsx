@@ -26,6 +26,7 @@ class LevelDisplay extends DisplayStatic {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.getMonstersInRange = this.getMonstersInRange.bind(this);
+    this.getTileAssignments = this.getTileAssignments.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +56,34 @@ class LevelDisplay extends DisplayStatic {
         <DeleteButton />
       </div>
     );
+  }
+
+  getTileAssignments() {
+    const allLevels = this.props.levels;
+    const thisLevel = allLevels.find(level => level.id === this.props.displayId);
+    const tileAssignments = this.level.tile_assignments;
+    const allTiles = this.props.dungeonTiles;
+
+    return (
+      <div className="tile-assignment-display subgroup-display">
+        <span className="display-label full-span">Tile Assignments</span>
+        <span className="display-label pad half-span">Tile</span>
+        <span className="display-label pad half-span">Probability</span>
+        { tileAssignments.map(tileAssignment => {
+          const thisTile = allTiles.map(tile => tile.id === tileAssignment.tileId);
+          return (
+            <div className="inner-span">
+              <span className="display-text half-span left-half">
+                {thisTile.name}
+              </span>
+              <span className="display-text half-span right-half">
+                {tileAssignment.probability}
+              </span>
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 
   getMonstersInRange(payload) {
@@ -154,6 +183,7 @@ class LevelDisplay extends DisplayStatic {
           <div className="display-group-blank">
           </div>
           {this.getMonstersInRange({ min: monsters_min_level, max: monsters_max_level, monsters: allMonsters })}
+          {this.getTileAssignments()}
         </div>
       </div>
     )
