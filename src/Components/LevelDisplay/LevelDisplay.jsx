@@ -8,11 +8,12 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 // redux imports
 import { connect } from 'react-redux';
 import { fetchLevels, loadLevelDetails } from '../../actions';
-import { SET_DETAIL_FORM } from '../../actions/types';
+import { SET_DETAIL_FORM, SET_DIALOG } from '../../actions/types';
 
 // js utility imports
 import formTypes from '../../utilities/formTypes';
 import boolean from '../../utilities/boolean';
+import deleteRequests from '../../utilities/deleteRequests';
 
 class LevelDisplay extends DisplayStatic {
   constructor(props) {
@@ -25,6 +26,7 @@ class LevelDisplay extends DisplayStatic {
     this.setIntialized = this.setIntialized.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.deleteLevel = this.deleteLevel.bind(this);
     this.getMonstersInRange = this.getMonstersInRange.bind(this);
     this.getTileAssignments = this.getTileAssignments.bind(this);
   }
@@ -51,11 +53,46 @@ class LevelDisplay extends DisplayStatic {
   }
 
   getDeleteButton() {
+    const thisRef = this;
+    window.dialogRef = thisRef;
     return (
-      <div className="DeleteLevelButton">
+      <div className="DeleteLevelButton"
+        onClick={() => this.props.setDialog({
+          active: true,
+          text: 'Delete Level and Tile Assignments from Database?'
+        })}>
         <DeleteButton />
       </div>
     );
+  }
+
+  *deleteLevel(payload) {
+    yield deleteRequests.makeRequestLevel(payload);
+  }
+
+  handleYes() {
+    // compose payload for delete request
+    let payload = {};
+    payload.route = 'level';
+    payload.id = this.props.displayId;
+    const allLevels = this.props.levels;
+    const thisLevel = allLevels.find(level => level.id === this.props.displayId);
+    const assignments = thisLevel.tile_assignments;
+    let assignementIds = [];
+    if (assignements && assignments.length > 0) {
+      assignments.forEach(assignment => {
+        assignementIds.push(assignment.id);
+      });
+    }
+    payload.assignmentIds = assignementIds;
+
+    // invoke delete request
+    let deleteLevel = this.deleteLevel(payload);
+    deleteLevel.next().value.then(() => {
+      this.props.fetchLevels();
+      this.props.setDialog({ active: false, text: '' });
+      this.props.setDisplayForm({ form: false, edit: false, targetId: null });
+    });
   }
 
   getTileAssignments() {
@@ -205,6 +242,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDisplayForm: (payload) => dispatch({ type: SET_DETAIL_FORM, payload: payload }),
+    setDialog: (payload) => dispatch({ type: SET_DIALOG, payload: payload }),
     fetchLevels: () => dispatch(fetchLevels()),
     loadLevelDetails: () => dispatch(loadLevelDetails())
   }
