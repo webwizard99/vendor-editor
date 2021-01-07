@@ -70,7 +70,7 @@ class LevelDisplay extends DisplayStatic {
         <span className="display-label pad half-span">Tile</span>
         <span className="display-label pad half-span">Probability</span>
         { tileAssignments.map(tileAssignment => {
-          const thisTile = allTiles.map(tile => tile.id === tileAssignment.tileId);
+          const thisTile = allTiles.find(tile => tile.id === tileAssignment.tileId);
           return (
             <div className="inner-span">
               <span className="display-text half-span left-half">
@@ -183,6 +183,8 @@ class LevelDisplay extends DisplayStatic {
           <div className="display-group-blank">
           </div>
           {this.getMonstersInRange({ min: monsters_min_level, max: monsters_max_level, monsters: allMonsters })}
+          <div className="display-group-blank">
+          </div>
           {this.getTileAssignments()}
         </div>
       </div>
