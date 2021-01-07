@@ -78,13 +78,13 @@ class LevelDisplay extends DisplayStatic {
     const allLevels = this.props.levels;
     const thisLevel = allLevels.find(level => level.id === this.props.displayId);
     const assignments = thisLevel.tile_assignments;
-    let assignementIds = [];
-    if (assignements && assignments.length > 0) {
+    let assignmentIds = [];
+    if (assignments && assignments.length > 0) {
       assignments.forEach(assignment => {
-        assignementIds.push(assignment.id);
+        assignmentIds.push(assignment.id);
       });
     }
-    payload.assignmentIds = assignementIds;
+    payload.assignmentIds = assignmentIds;
 
     // invoke delete request
     let deleteLevel = this.deleteLevel(payload);
