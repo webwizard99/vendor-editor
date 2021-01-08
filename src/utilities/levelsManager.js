@@ -7,7 +7,13 @@ const levelsManager = (function(){
         levels.push(level);
       }
       levels.sort((level1, level2) => {
-        return level1 > level2;
+        if (level1 > level2) {
+          return 1;
+        } else if (level2 > level1) {
+          return -1;
+        } else {
+          return 0;
+        };
       })
       console.log(levels);
     },
