@@ -62,7 +62,7 @@ class LevelForm extends DisplayForm {
 
   loadLevels(levels) {
     const levelNumbers = levels.map(level => level.number);
-    console.log(levels);
+    console.log(levelNumbers);
     levelsManager.loadLevels(levelNumbers);
   }
 

@@ -6,15 +6,15 @@ const levelsManager = (function(){
       for (let level of levelarr) {
         levels.push(level);
       }
-      levels.filter((level1, level2) => {
-        return level1.number > level2.number;
+      levels.sort((level1, level2) => {
+        return level1 > level2;
       })
       console.log(levels);
     },
     getLowestNewLevel() {
       let lowestLevel = 1;
       for (let level of levels) {
-        if (level.number === lowestLevel) {
+        if (level === lowestLevel) {
           lowestLevel++;
         }
       }
