@@ -8,6 +8,7 @@ const levelsManager = (function(){
         levels.filter((level1, level2) => {
           return level1 > level2;
         })
+      console.log(levels);
       }
     },
     getLowestNewLevel() {
@@ -17,6 +18,7 @@ const levelsManager = (function(){
           lowestLevel++;
         }
       }
+      console.log(lowestLevel);
       return lowestLevel;
     }
   }
