@@ -49,6 +49,15 @@ class LevelList extends ExpandableList {
       return '';
     } else {
       const newLevels = this.props.levels;
+      newLevels.sort((level1, level2) => {
+        if (level1.number > level2.number) {
+          return 1
+        } else if (level1.number < level2.number) {
+          return -1
+        } else {
+          return 0;
+        }
+      })
       return (
         <div className="detailList">
           {newLevels.map(level => {
