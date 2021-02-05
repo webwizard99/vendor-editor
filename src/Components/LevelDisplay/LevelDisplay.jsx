@@ -107,7 +107,7 @@ class LevelDisplay extends DisplayStatic {
         <span className="display-label pad half-span">Tile</span>
         <span className="display-label pad half-span">Probability</span>
         { tileAssignments.map(tileAssignment => {
-          const thisTile = allTiles.find(tile => tile.id === tileAssignment.tileId);
+          const thisTile = allTiles.find(tile => tile.id === tileAssignment.dungeonTileId);
           return (
             <div className="inner-span">
               <span className="display-text half-span left-half">

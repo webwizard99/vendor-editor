@@ -93,7 +93,7 @@ class LevelForm extends DisplayForm {
     let presentIds = [];
     if (dungeonTiles.length > 0) {
       for (const assignment of dungeonTiles) {
-        stateUpdate[`assignment-${assignment.id}-tileId`] = assignment.tileId;
+        stateUpdate[`assignment-${assignment.id}-tileId`] = assignment.dungeonTileId;
         stateUpdate[`assignment-${assignment.id}-probability`] = assignment.probability;
         presentIds.push(assignment.id);
       }
