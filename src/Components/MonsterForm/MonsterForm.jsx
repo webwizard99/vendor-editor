@@ -186,6 +186,7 @@ class MonsterForm extends DisplayForm {
     let newInitiative = 0;
     let newSpecial = 0;
     let newHeal = 0;
+    let newExperience = 0;
     let newMonsterDropList, newMonsterBehavior;
     
     if (this.props.edit) {
@@ -207,6 +208,7 @@ class MonsterForm extends DisplayForm {
       newInitiative = thisMonster.initiative;
       newSpecial = thisMonster.special;
       newHeal = thisMonster.heal;
+      newHeal = thisMonster.experience;
       newMonsterDropList = thisMonsterDropList;
       newMonsterBehavior = thisMonsterBehavior;
     }
@@ -230,6 +232,7 @@ class MonsterForm extends DisplayForm {
       newInitiative = Number.parseInt(monsterForm.initiative);
       newSpecial = Number.parseInt(monsterForm.special);
       newHeal = Number.parseInt(monsterForm.heal);
+      newExperience = Number.parseInt(monsterForm.experience);
       newMonsterDropList = thisMonsterDropList;
       newMonsterBehavior = thisMonsterBehavior;
     }
@@ -325,6 +328,11 @@ class MonsterForm extends DisplayForm {
               <label className="item-label" htmlFor="heal">heal</label>
               <input type="number" name="heal" id="heal" className="input-number" placeholder="#"
                 min="0" max="200" required defaultValue={newHeal}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="experience">experience</label>
+              <input type="number" name="experience" id="experience" className="input-number" placeholder="#"
+                min="0" max="56000" required defaultValue={newExperience}></input>
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Monster' : 'Create Monster' } className="button create-button"></input>

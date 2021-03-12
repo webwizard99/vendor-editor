@@ -92,6 +92,7 @@ class MonsterDisplay extends DisplayStatic {
       initiative,
       special,
       heal,
+      experience,
       dropListId,
       monsterBehaviorId
     } = thisMonster;
@@ -152,6 +153,10 @@ class MonsterDisplay extends DisplayStatic {
             <span className="display-text">{heal}</span>
           </div>
           <div className="display-group">
+            <span className="display-label">experience</span>
+            <span className="display-text">{experience}</span>
+          </div>
+          <div className="display-group">
             <span className="display-label">drop list</span>
             <span className="display-text">{monsterDropListName}</span>
           </div>
@@ -162,8 +167,6 @@ class MonsterDisplay extends DisplayStatic {
         </div>
       </div>
     )
-      
-    
   }
 }
 
