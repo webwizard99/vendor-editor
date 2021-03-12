@@ -73,7 +73,8 @@ class DungeonBehaviorDisplay extends DisplayStatic {
       upgrade_inventory,
       fight_boss_monster,
       prefer_weaker_monster,
-      try_for_level
+      try_for_level,
+      set_trap
     } = thisDungeonBehavior;
 
     return (
@@ -172,6 +173,10 @@ class DungeonBehaviorDisplay extends DisplayStatic {
           <div className="display-group">
             <span className="display-label">try for level</span>
             <span className="display-text">{try_for_level}</span>
+          </div>
+          <div className="display-group">
+            <span className="display-label">set trap</span>
+            <span className="display-text">{set_trap}</span>
           </div>
         </div>
       </div>

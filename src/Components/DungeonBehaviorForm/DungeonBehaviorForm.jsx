@@ -78,6 +78,7 @@ class DungeonBehaviorForm extends DisplayForm {
     let newFightBossMonster = 0;
     let newPreferWeakerMonster = 0;
     let newTryForLevel = 0;
+    let newSetTrap = 0;
 
     if (this.props.edit) {
       const allDungeonBehaviors = this.props.dungeonBehaviors;
@@ -106,6 +107,7 @@ class DungeonBehaviorForm extends DisplayForm {
       newFightBossMonster = thisDungeonBehavior.fight_boss_monster;
       newPreferWeakerMonster = thisDungeonBehavior.prefer_weaker_monster;
       newTryForLevel = thisDungeonBehavior.try_for_level;
+      newSetTrap = thisDungeonBehavior.set_trap;
     }
     return (
       <div className="DungeonBehaviorForm extended">
@@ -229,6 +231,11 @@ class DungeonBehaviorForm extends DisplayForm {
               <label className="item-label" htmlFor="try_for_level">try for level</label>
               <input type="number" name="try_for_level" id="try_for_level" className="input-number" placeholder="#"
                 step="50" min="0" max="1000" required defaultValue={newTryForLevel}></input>
+            </div>
+            <div className="input-group">
+              <label className="item-label" htmlFor="set_trap">set trap</label>
+              <input type="number" name="set_trap" id="set_trap" className="input-number" placeholder="#"
+                step="50" min="0" max="1000" required defaultValue={newSetTrap}></input>
             </div>
             <input type="hidden" name="id" value={newId} />
             <input type="submit" value={this.props.edit ? 'Update Dungeon Behavior' : 'Create Dungeon Behavior' } className="button create-button"></input>
