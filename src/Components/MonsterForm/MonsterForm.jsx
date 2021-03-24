@@ -208,7 +208,7 @@ class MonsterForm extends DisplayForm {
       newInitiative = thisMonster.initiative;
       newSpecial = thisMonster.special;
       newHeal = thisMonster.heal;
-      newHeal = thisMonster.experience;
+      newExperience = thisMonster.experience;
       newMonsterDropList = thisMonsterDropList;
       newMonsterBehavior = thisMonsterBehavior;
     }
